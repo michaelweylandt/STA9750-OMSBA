@@ -1,0 +1,33 @@
+---
+title: "{{< var course.short >}} - Slides"
+editor: 
+  markdown: 
+    wrap: 80
+---
+
+This site hosts the following slides: 
+
+```{r}
+#| results: 'asis'
+#| echo: false
+library(rmarkdown)
+library(glue)
+library(purrr)
+library(stringr)
+SLIDE_FILES <- list.files("slides", full.names = TRUE)
+
+build_md_link <- function(file){
+  header_info <- rmarkdown::yaml_front_matter(file)
+  topic <- header_info[["topic"]]
+  if(is.null(topic)){
+      return(NULL)
+  } else {
+      html <- basename(file) |> str_replace("qmd", "html")
+      glue("- [{topic}](./slides/{html})\n")
+  }
+}
+
+map(SLIDE_FILES, build_md_link) |> discard(is.null) |> walk(cat)
+```
+
+More will be added later. 

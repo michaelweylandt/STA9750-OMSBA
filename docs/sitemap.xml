@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://michael-weylandt.com/STA9750-OMSBA/index.html</loc>
-    <lastmod>2025-03-31T16:31:59.928Z</lastmod>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/tidy_data.html</loc>
+    <lastmod>2025-03-31T18:01:14.558Z</lastmod>
   </url>
   <url>
-    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/tidy_data.html</loc>
-    <lastmod>2025-03-31T16:30:10.809Z</lastmod>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/statistical_modeling.html</loc>
+    <lastmod>2025-03-31T16:48:27.292Z</lastmod>
+  </url>
+  <url>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides.html</loc>
+    <lastmod>2025-03-31T18:02:49.755Z</lastmod>
+  </url>
+  <url>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/index.html</loc>
+    <lastmod>2025-03-31T18:01:40.166Z</lastmod>
+  </url>
+  <url>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/objectives.html</loc>
+    <lastmod>2025-03-31T17:22:21.144Z</lastmod>
+  </url>
+  <url>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/selecting_and_filtering.html</loc>
+    <lastmod>2025-03-31T16:48:27.290Z</lastmod>
+  </url>
+  <url>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/tidy1.html</loc>
+    <lastmod>2025-03-31T16:48:27.293Z</lastmod>
   </url>
 </urlset>

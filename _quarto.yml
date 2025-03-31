@@ -5,15 +5,22 @@ project:
   render:
     - "*.qmd"
     - "**/*.qmd"
-    - "!advice"
 
 website:
-  title: "STA 9750"
+  title: "STA 9750 - OMSBA"
   description:
     Basic Software Tools for Data Analysis
   site-url: "https://michael-weylandt.com/STA9750-OMSBA/"
   repo-url: https://github.com/michaelweylandt/STA9750-OMSBA
   repo-actions: [edit, source, issue]
+  navbar:
+    background: primary
+    search: false
+    right:
+      - text: "Slides"
+        href: "./slides.html"
+      - text: "Learning Objectives"
+        href: "./objectives.html"
 
 format:
   html:

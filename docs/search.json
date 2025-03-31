@@ -1,9 +1,660 @@
 [
   {
+    "objectID": "slides/tidy_data.html#introduction",
+    "href": "slides/tidy_data.html#introduction",
+    "title": " Software Tools for Data Analysis  STA 9750  Michael Weylandt",
+    "section": "Introduction",
+    "text": "Introduction\nIn this video:\n\n\nIntroduce the concept of Tidy Data\nIdentify Key Aspects of Tidy Data\nLearn to Diagnose Non-Tidy Data\n\n\n\nLater:\n\nManipulation of Tidy Data\n\n\n\nBut first - review!"
+  },
+  {
+    "objectID": "slides/tidy_data.html#data-frames",
+    "href": "slides/tidy_data.html#data-frames",
+    "title": " Software Tools for Data Analysis  STA 9750  Michael Weylandt",
+    "section": "Data Frames",
+    "text": "Data Frames\ndata.frame - R’s tabular data storage\n\n\n  Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n1          5.1         3.5          1.4         0.2  setosa\n2          4.9         3.0          1.4         0.2  setosa\n3          4.7         3.2          1.3         0.2  setosa"
+  },
+  {
+    "objectID": "slides/tidy_data.html#data-frames-1",
+    "href": "slides/tidy_data.html#data-frames-1",
+    "title": " Software Tools for Data Analysis  STA 9750  Michael Weylandt",
+    "section": "Data Frames",
+    "text": "Data Frames\nKey features:\n\n\nTabular (rows and columns) structure\nEntries in the same column are all of the same type\nColumns may be different types"
+  },
+  {
+    "objectID": "slides/tidy_data.html#data-frames-2",
+    "href": "slides/tidy_data.html#data-frames-2",
+    "title": " Software Tools for Data Analysis  STA 9750  Michael Weylandt",
+    "section": "Data Frames",
+    "text": "Data Frames\nCan be manipulated using standard R syntax:\n\ntable(iris[iris$Petal.Length &gt; 5,\"Species\"])\n\n\n    setosa versicolor  virginica \n         0          1         41 \n\n\n\n\n$ extracts a column as a vector\nname[row index, column index]\n\nLogical row indexing to select rows where Petal Length &gt; 5\nColumn indexing by name to select a single column"
+  },
+  {
+    "objectID": "slides/tidy_data.html#what-is-tidy-data",
+    "href": "slides/tidy_data.html#what-is-tidy-data",
+    "title": " Software Tools for Data Analysis  STA 9750  Michael Weylandt",
+    "section": "What is Tidy Data?",
+    "text": "What is Tidy Data?\n“Tidy Data”: Organizational principles to make data manipulation easy and safe\n\n“Best practices”\nTidy data will decrease chance of errors and increase productivity\n\n\nWhat does it mean to be tidy?\n\n\nEverything in its proper place"
+  },
+  {
+    "objectID": "slides/tidy_data.html#tidy-data-1",
+    "href": "slides/tidy_data.html#tidy-data-1",
+    "title": " Software Tools for Data Analysis  STA 9750  Michael Weylandt",
+    "section": "Tidy Data",
+    "text": "Tidy Data\n\n\n  species bill_length_mm flipper_length_mm body_mass_g    sex\n1  Adelie           39.1               181        3750   male\n2  Adelie           39.5               186        3800 female\n3  Adelie           40.3               195        3250 female\n\n\n\nKey features:\n\n\nEach row is one observation (🐧)\nEach column has one and only one fact\nAll values are in the table - not hiding in row and column names"
+  },
+  {
+    "objectID": "slides/tidy_data.html#tidy-data-2",
+    "href": "slides/tidy_data.html#tidy-data-2",
+    "title": " Software Tools for Data Analysis  STA 9750  Michael Weylandt",
+    "section": "Tidy Data",
+    "text": "Tidy Data\n\n\nFigure from R for Data Science by H. Wickham"
+  },
+  {
+    "objectID": "slides/tidy_data.html#tidy-data---why",
+    "href": "slides/tidy_data.html#tidy-data---why",
+    "title": " Software Tools for Data Analysis  STA 9750  Michael Weylandt",
+    "section": "Tidy Data - Why?",
+    "text": "Tidy Data - Why?\nWhy emphasize tidy data?\n\nMinimize distractions:\n\nFree to focus on analysis not code\n\n\n\nOnce data is “tidy”, you can focus on the real questions\n“Tidying up” - goal of pre-processing"
+  },
+  {
+    "objectID": "slides/tidy_data.html#tidy-data---who-and-when",
+    "href": "slides/tidy_data.html#tidy-data---who-and-when",
+    "title": " Software Tools for Data Analysis  STA 9750  Michael Weylandt",
+    "section": "Tidy Data - Who (and When)?",
+    "text": "Tidy Data - Who (and When)?\nThe name and principles of “tidy data” were popularized by H. Wickham (2014)\n\nCore ideas are much older, dating back to (at least) Codd’s Relational Model in the 1970s, now ubiquitous in relational databases\n\n\nNow found in Python (pandas), Julia (DataFrames), Rust (polars) and more"
+  },
+  {
+    "objectID": "slides/tidy_data.html#tidy-data---how-and-where",
+    "href": "slides/tidy_data.html#tidy-data---how-and-where",
+    "title": " Software Tools for Data Analysis  STA 9750  Michael Weylandt",
+    "section": "Tidy Data - How (and Where)?",
+    "text": "Tidy Data - How (and Where)?\ntidyverse - Packages for Manipulating Tidy Data:\n\n\nggplot2: Visualization\ndplyr: SQL-like operations\ntidyr: Reshaping and cleaning data\nreadr: Ingest tidy data into R\nstringr, forcats, lubridate: Tidy manipulation of different data types\ntidymodels: Tidy manipulation of statistical models\n\n\n\nMore helpers in the background (tibble, vctrs, …)"
+  },
+  {
+    "objectID": "slides/tidy_data.html#some-untidy-examples",
+    "href": "slides/tidy_data.html#some-untidy-examples",
+    "title": " Software Tools for Data Analysis  STA 9750  Michael Weylandt",
+    "section": "Some Untidy Examples",
+    "text": "Some Untidy Examples\nBaruch college business core enrollment:\n\n\n# A tibble: 6 × 4\n  Semester Course     Enrollment   Cap\n  &lt;chr&gt;    &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;\n1 Fall     Accounting        200   250\n2 Fall     Law               100   125\n3 Fall     Statistics        200   200\n4 Spring   Accounting        300   350\n5 Spring   Law                50   100\n6 Spring   Statistics        400   400"
+  },
+  {
+    "objectID": "slides/tidy_data.html#some-untidy-examples-1",
+    "href": "slides/tidy_data.html#some-untidy-examples-1",
+    "title": " Software Tools for Data Analysis  STA 9750  Michael Weylandt",
+    "section": "Some Untidy Examples",
+    "text": "Some Untidy Examples\nMultiple pieces of information in a single cell:\n\n\n# A tibble: 6 × 3\n  Semester Course     Enrollment  \n  &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;       \n1 Fall     Accounting \"200 of 250\"\n2 Fall     Law        \"100 of 125\"\n3 Fall     Statistics \"200 of 200\"\n4 Spring   Accounting \"300 of 350\"\n5 Spring   Law        \" 50 of 100\"\n6 Spring   Statistics \"400 of 400\""
+  },
+  {
+    "objectID": "slides/tidy_data.html#some-untidy-examples-2",
+    "href": "slides/tidy_data.html#some-untidy-examples-2",
+    "title": " Software Tools for Data Analysis  STA 9750  Michael Weylandt",
+    "section": "Some Untidy Examples",
+    "text": "Some Untidy Examples\nMixing distinct facts in a single column:\n\n\n# A tibble: 12 × 4\n   Semester Course     Number Type      \n   &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;     \n 1 Fall     Accounting    200 Enrollment\n 2 Fall     Accounting    250 Cap       \n 3 Fall     Law           100 Enrollment\n 4 Fall     Law           125 Cap       \n 5 Fall     Statistics    200 Enrollment\n 6 Fall     Statistics    200 Cap       \n 7 Spring   Accounting    300 Enrollment\n 8 Spring   Accounting    350 Cap       \n 9 Spring   Law            50 Enrollment\n10 Spring   Law           100 Cap       \n11 Spring   Statistics    400 Enrollment\n12 Spring   Statistics    400 Cap"
+  },
+  {
+    "objectID": "slides/tidy_data.html#some-untidy-examples-3",
+    "href": "slides/tidy_data.html#some-untidy-examples-3",
+    "title": " Software Tools for Data Analysis  STA 9750  Michael Weylandt",
+    "section": "Some Untidy Examples",
+    "text": "Some Untidy Examples\nSpread across two tables:\n\n\n# A tibble: 6 × 3\n  Semester Course     Enrollment\n  &lt;chr&gt;    &lt;chr&gt;           &lt;dbl&gt;\n1 Fall     Accounting        200\n2 Fall     Law               100\n3 Fall     Statistics        200\n# ℹ 3 more rows\n\n\nand\n\n\n# A tibble: 6 × 3\n  Semester Course       Cap\n  &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt;\n1 Fall     Accounting   250\n2 Fall     Law          125\n3 Fall     Statistics   200\n# ℹ 3 more rows"
+  },
+  {
+    "objectID": "slides/tidy_data.html#looking-ahead-1",
+    "href": "slides/tidy_data.html#looking-ahead-1",
+    "title": " Software Tools for Data Analysis  STA 9750  Michael Weylandt",
+    "section": "Looking Ahead",
+    "text": "Looking Ahead\nFor now, we’ll provide you with tidy data\n\nUpcoming topics:\n\n\nVisualizing Tidy Data (Week 3)\nStatistical Models of Tidy Data (Week 4)\nManipulating Tidy Data (Week 5)\nTaking Untidy Web Data and Making it Tidy (Week 7)"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#introduction",
+    "href": "slides/statistical_modeling.html#introduction",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "Introduction",
+    "text": "Introduction\nIn this video:\n\n\nSelecting Columns\nSelecting Rows\nModifying Columns and Creating New Columns\n\n\n\nLater:\n\nComputing Summary Statistics with Tidy Tools\n\n\n\nBut first - review!"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#tidy-data",
+    "href": "slides/statistical_modeling.html#tidy-data",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "Tidy Data",
+    "text": "Tidy Data\nTidy data - everything in its proper place:\n\nOne and only one type of information per column\nOne and only one observation per row\nNo values ‘hiding’ in column or row names\n\n\n\n\n# A tibble: 3 × 8\n  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie  Torgersen           39.1          18.7               181        3750\n2 Adelie  Torgersen           39.5          17.4               186        3800\n3 Adelie  Torgersen           40.3          18                 195        3250\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#tidyverse",
+    "href": "slides/statistical_modeling.html#tidyverse",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "tidyverse",
+    "text": "tidyverse\ntidyverse - Tools for manipulating tidy data\n\nMake sure to load the tidyverse package before using\n\nlibrary(tidyverse)\n\nWill print some messages about conflicts - safe to ignore"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#tidyverse-1",
+    "href": "slides/statistical_modeling.html#tidyverse-1",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "tidyverse",
+    "text": "tidyverse\nTidyverse tools have excellent documentation\n\nVisit tidyverse.org for overall information\nIndividual packages: ggplot2.tidyverse.org, dplyr.tidyverse.org, etc.\n\n\n\nFunction Reference - Detailed information on specific functions\nVignettes / Articles - Big picture tutorials"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#dplyr",
+    "href": "slides/statistical_modeling.html#dplyr",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "dplyr",
+    "text": "dplyr\nYou have already seen one tidyverse package: ggplot2\n\nToday we start with dplyr - ‘grammar of data manipulation’"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#select",
+    "href": "slides/statistical_modeling.html#select",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "select",
+    "text": "select\nThe select function can be used to select certain columns\n\nselect(penguins, species, bill_length_mm, body_mass_g, sex)\n\n# A tibble: 344 × 4\n   species bill_length_mm body_mass_g sex   \n   &lt;fct&gt;            &lt;dbl&gt;       &lt;int&gt; &lt;fct&gt; \n 1 Adelie            39.1        3750 male  \n 2 Adelie            39.5        3800 female\n 3 Adelie            40.3        3250 female\n 4 Adelie            NA            NA &lt;NA&gt;  \n 5 Adelie            36.7        3450 female\n 6 Adelie            39.3        3650 male  \n 7 Adelie            38.9        3625 female\n 8 Adelie            39.2        4675 male  \n 9 Adelie            34.1        3475 &lt;NA&gt;  \n10 Adelie            42          4250 &lt;NA&gt;  \n# ℹ 334 more rows\n\n\n\nFirst argument is data\nOther arguments are columns to be selected"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#select-1",
+    "href": "slides/statistical_modeling.html#select-1",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "select",
+    "text": "select\nContrast\n\nselect(penguins, species, bill_length_mm, body_mass_g, sex)\n\nand\n\npenguins[,c(\"species\", \"bill_length_mm\", \"body_mass_g\", \"sex\")]\n\nNo quotes around column names"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#put-that-in-your-pipe",
+    "href": "slides/statistical_modeling.html#put-that-in-your-pipe",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "|> - Put that in your Pipe",
+    "text": "|&gt; - Put that in your Pipe\nR supports piped operations - feeding the output of one function into another\n\nselect(penguins, species, bill_length_mm, body_mass_g, sex)\n\nis equivalent to\n\npenguins |&gt; select(species, bill_length_mm, body_mass_g, sex)\n\n\nRead |&gt; as “and then”\ndplyr plays very nicely with pipes"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#select-2",
+    "href": "slides/statistical_modeling.html#select-2",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "select",
+    "text": "select\nLike vector indexing, negative sign drops columns:\n\npenguins |&gt; select(-species)\n\n# A tibble: 344 × 7\n   island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year\n   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt; &lt;fct&gt; &lt;int&gt;\n 1 Torge…           39.1          18.7               181        3750 male   2007\n 2 Torge…           39.5          17.4               186        3800 fema…  2007\n 3 Torge…           40.3          18                 195        3250 fema…  2007\n 4 Torge…           NA            NA                  NA          NA &lt;NA&gt;   2007\n 5 Torge…           36.7          19.3               193        3450 fema…  2007\n 6 Torge…           39.3          20.6               190        3650 male   2007\n 7 Torge…           38.9          17.8               181        3625 fema…  2007\n 8 Torge…           39.2          19.6               195        4675 male   2007\n 9 Torge…           34.1          18.1               193        3475 &lt;NA&gt;   2007\n10 Torge…           42            20.2               190        4250 &lt;NA&gt;   2007\n# ℹ 334 more rows"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#select-3",
+    "href": "slides/statistical_modeling.html#select-3",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "select",
+    "text": "select\n: operator selects a range of columns\n\npenguins |&gt; select(bill_length_mm:body_mass_g)\n\n# A tibble: 344 × 4\n   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n            &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1           39.1          18.7               181        3750\n 2           39.5          17.4               186        3800\n 3           40.3          18                 195        3250\n 4           NA            NA                  NA          NA\n 5           36.7          19.3               193        3450\n 6           39.3          20.6               190        3650\n 7           38.9          17.8               181        3625\n 8           39.2          19.6               195        4675\n 9           34.1          18.1               193        3475\n10           42            20.2               190        4250\n# ℹ 334 more rows"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#select-4",
+    "href": "slides/statistical_modeling.html#select-4",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "select",
+    "text": "select\nselect also supports several “smart” helpers to pick columns\n\npenguins |&gt; select(contains(\"bill\"))\n\n# A tibble: 344 × 2\n   bill_length_mm bill_depth_mm\n            &lt;dbl&gt;         &lt;dbl&gt;\n 1           39.1          18.7\n 2           39.5          17.4\n 3           40.3          18  \n 4           NA            NA  \n 5           36.7          19.3\n 6           39.3          20.6\n 7           38.9          17.8\n 8           39.2          19.6\n 9           34.1          18.1\n10           42            20.2\n# ℹ 334 more rows"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#select-5",
+    "href": "slides/statistical_modeling.html#select-5",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "select",
+    "text": "select\n\npenguins |&gt; select(ends_with(\"mm\"))\n\n# A tibble: 344 × 3\n   bill_length_mm bill_depth_mm flipper_length_mm\n            &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;\n 1           39.1          18.7               181\n 2           39.5          17.4               186\n 3           40.3          18                 195\n 4           NA            NA                  NA\n 5           36.7          19.3               193\n 6           39.3          20.6               190\n 7           38.9          17.8               181\n 8           39.2          19.6               195\n 9           34.1          18.1               193\n10           42            20.2               190\n# ℹ 334 more rows"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#select-6",
+    "href": "slides/statistical_modeling.html#select-6",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "select",
+    "text": "select\nHelpers can be combined using & (intersection) and | (union) operations:\n\npenguins |&gt; select(contains(\"bill\") | ends_with(\"g\"))\n\n# A tibble: 344 × 3\n   bill_length_mm bill_depth_mm body_mass_g\n            &lt;dbl&gt;         &lt;dbl&gt;       &lt;int&gt;\n 1           39.1          18.7        3750\n 2           39.5          17.4        3800\n 3           40.3          18          3250\n 4           NA            NA            NA\n 5           36.7          19.3        3450\n 6           39.3          20.6        3650\n 7           38.9          17.8        3625\n 8           39.2          19.6        4675\n 9           34.1          18.1        3475\n10           42            20.2        4250\n# ℹ 334 more rows"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#select-7",
+    "href": "slides/statistical_modeling.html#select-7",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "select",
+    "text": "select\nPredicate operator can select columns based on properties of values\n\npenguins |&gt; select(where(is.numeric))"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#select-8",
+    "href": "slides/statistical_modeling.html#select-8",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "select",
+    "text": "select\nwhere combines very nicely with other selectors\n\npenguins |&gt; select(where(is.numeric) & ends_with(\"mm\"))"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#filter",
+    "href": "slides/statistical_modeling.html#filter",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "filter",
+    "text": "filter\nWhile select is used for column selection, filter is used for row selection\n\npenguins |&gt; filter(bill_length_mm &gt; 40)\n\n\nSimilar syntax to select:\n\nNo need to quote column names\nData is first (piped) argument\nLater arguments specify action"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#filter-1",
+    "href": "slides/statistical_modeling.html#filter-1",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "filter",
+    "text": "filter\nContrast\n\npenguins |&gt; filter(bill_length_mm &gt; 40)\n\nwith\n\npenguins[penguins$bill_length_mm &gt; 40, ]"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#filter-2",
+    "href": "slides/statistical_modeling.html#filter-2",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "filter",
+    "text": "filter\nMultiple filters give the intersection:\n\npenguins |&gt; filter(bill_length_mm &gt; 40, sex == \"female\")\n\n\nUse logical operators to get the union:\n\npenguins |&gt; filter(bill_length_mm &gt; 40 | sex == \"female\")"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#filter-3",
+    "href": "slides/statistical_modeling.html#filter-3",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "filter",
+    "text": "filter\nPipes are very useful for multi-step operations\n\npenguins |&gt; filter(bill_length_mm &gt; 40) |&gt; select(species)\n\n\nCompare to\n\nselect(filter(penguins, bill_length_mm &gt; 40), species)\n\nPiped form lets us read left to right instead of inside out"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#filter-4",
+    "href": "slides/statistical_modeling.html#filter-4",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "filter",
+    "text": "filter\nCan use more complex comparisons in filter:\n\nfilter(penguins, body_mass_g &gt; mean(body_mass_g, na.rm=TRUE))\n\n\nWhat would happen without na.rm=TRUE?\nYou will explore much more complicated examples in the accompanying activity."
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#filter-5",
+    "href": "slides/statistical_modeling.html#filter-5",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "filter",
+    "text": "filter\nCommon mistake - using only a single equals sign for equality\n\npenguins |&gt; filter(sex = \"female\")\n\nError in `filter()`:\n! We detected a named input.\nℹ This usually means that you've used `=` instead of `==`.\nℹ Did you mean `sex == \"female\"`?"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#filter-extensions",
+    "href": "slides/statistical_modeling.html#filter-extensions",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "filter extensions",
+    "text": "filter extensions\nFunctions implementing extensions of filter:\n\nslice_min\nslice_max\nslice_head\nslice_tail"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#filter-extensions-1",
+    "href": "slides/statistical_modeling.html#filter-extensions-1",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "filter extensions",
+    "text": "filter extensions\nslice_sample is useful for getting a random subset of your data.\n\nUseful if exploring a large data set\n\n\npenguins |&gt; slice_sample(n=10)\n\n# A tibble: 10 × 8\n   species   island   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;     &lt;fct&gt;             &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie    Dream              39.6          18.8               190        4600\n 2 Adelie    Torgers…           35.1          19.4               193        4200\n 3 Gentoo    Biscoe             49.3          15.7               217        5850\n 4 Chinstrap Dream              46.8          16.5               189        3650\n 5 Adelie    Dream              40.8          18.4               195        3900\n 6 Adelie    Dream              35.7          18                 202        3550\n 7 Adelie    Dream              38.8          20                 190        3950\n 8 Gentoo    Biscoe             47.7          15                 216        4750\n 9 Adelie    Biscoe             39.7          18.9               184        3550\n10 Adelie    Torgers…           42.8          18.5               195        4250\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#mutate",
+    "href": "slides/statistical_modeling.html#mutate",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "mutate",
+    "text": "mutate\nSo far we have only done subsetting. What about creating new columns?\n\n\npenguins |&gt; \n    mutate(body_mass_lb = body_mass_g / 453) |&gt;\n    select(contains(\"body\"))\n\n# A tibble: 344 × 2\n   body_mass_g body_mass_lb\n         &lt;int&gt;        &lt;dbl&gt;\n 1        3750         8.28\n 2        3800         8.39\n 3        3250         7.17\n 4          NA        NA   \n 5        3450         7.62\n 6        3650         8.06\n 7        3625         8.00\n 8        4675        10.3 \n 9        3475         7.67\n10        4250         9.38\n# ℹ 334 more rows"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#mutate-1",
+    "href": "slides/statistical_modeling.html#mutate-1",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "mutate",
+    "text": "mutate\n\npenguins |&gt; \n    mutate(body_mass_lb = body_mass_g / 453) |&gt;\n    select(contains(\"body\"))\n\nSimilar syntax to select and filter\n\nTo name the new column, put name on the left of the =.\nIf you leave it out, you get an unhelpful default:\n\npenguins |&gt; mutate(body_mass_g / 453) |&gt; select(contains(\"body\"))\n\n\n\n# A tibble: 344 × 2\n  body_mass_g `body_mass_g/453`\n        &lt;int&gt;             &lt;dbl&gt;\n1        3750              8.28\n2        3800              8.39\n3        3250              7.17\n# ℹ 341 more rows"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#mutate-2",
+    "href": "slides/statistical_modeling.html#mutate-2",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "mutate",
+    "text": "mutate\nCan change columns “in place” by careful renaming:\n\npenguins |&gt; \n    select(where(is.character) | where(is.factor)) |&gt;\n    mutate(species = toupper(species))\n\n# A tibble: 344 × 3\n   species island    sex   \n   &lt;chr&gt;   &lt;fct&gt;     &lt;fct&gt; \n 1 ADELIE  Torgersen male  \n 2 ADELIE  Torgersen female\n 3 ADELIE  Torgersen female\n 4 ADELIE  Torgersen &lt;NA&gt;  \n 5 ADELIE  Torgersen female\n 6 ADELIE  Torgersen male  \n 7 ADELIE  Torgersen female\n 8 ADELIE  Torgersen male  \n 9 ADELIE  Torgersen &lt;NA&gt;  \n10 ADELIE  Torgersen &lt;NA&gt;  \n# ℹ 334 more rows"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#mutate-3",
+    "href": "slides/statistical_modeling.html#mutate-3",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "mutate",
+    "text": "mutate\nCan do arbitrary vectorized operations and access recently created columns:\n\npenguins |&gt; \n    select(where(is.numeric)) |&gt;\n    mutate(weight_kg = body_mass_g / 1000,\n           height_m = body_height_mm / 1000, \n           bmi = weight_kg / height_m^2)\n\n(Sadly, don’t actually have height data)"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#mutate-4",
+    "href": "slides/statistical_modeling.html#mutate-4",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "mutate",
+    "text": "mutate\n?mutate has several helpful functions:\n\ncumsum, cummean\nlead, lag\nif_else, case_when"
+  },
+  {
+    "objectID": "slides/statistical_modeling.html#rename",
+    "href": "slides/statistical_modeling.html#rename",
+    "title": "STA 9750  Statistical Modeling",
+    "section": "rename",
+    "text": "rename\nUse of mutate to rename:\n\npenguins |&gt; mutate(Year = year) |&gt; select(-year)\n\n\nrename combines both steps:\n\npenguins |&gt; rename(Year = year) \n\nNo new functionality - clearer intent"
+  },
+  {
+    "objectID": "slides.html",
+    "href": "slides.html",
+    "title": "STA 9750 - OSMBA - Slides",
+    "section": "",
+    "text": "This site hosts the following slides:\n\nTidy Data\n\nMore will be added later."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Welcome",
     "section": "",
-    "text": "Welcome to the offering of STA9750 as a part of the Online MSBA at Zicklin School of Business, Baruch College CUNY."
+    "text": "Welcome to the offering of STA 9750 - OSMBA as a part of the Online MSBA at Zicklin School of Business, Baruch College CUNY.\nFor now, this shell holds only slides for recording of course materials. It will eventually host extended worked examples, supplemental data sets, and interactive activities."
+  },
+  {
+    "objectID": "objectives.html",
+    "href": "objectives.html",
+    "title": "STA 9750 - OSMBA - Course Learning Objectives",
+    "section": "",
+    "text": "This course provides an understanding of the principles and concepts of using computer tools for data analysis and visualization. Students will learn to use a scientific programming language (such as R) to import and export data from and into spreadsheets or other statistical software packages. They will gain experience in analyzing both quantitative and qualitative data, and statistical modelling techniques will be introduced. Written reports will prepare students for clear communication of their analysis in professional settings. This course is designed primarily for Masters’ students in statistics and quantitative methods and modeling (QMM), and those interested in carrying out sophisticated statistical analyses of data using statistical software."
+  },
+  {
+    "objectID": "objectives.html#official-course-description",
+    "href": "objectives.html#official-course-description",
+    "title": "STA 9750 - OSMBA - Course Learning Objectives",
+    "section": "",
+    "text": "This course provides an understanding of the principles and concepts of using computer tools for data analysis and visualization. Students will learn to use a scientific programming language (such as R) to import and export data from and into spreadsheets or other statistical software packages. They will gain experience in analyzing both quantitative and qualitative data, and statistical modelling techniques will be introduced. Written reports will prepare students for clear communication of their analysis in professional settings. This course is designed primarily for Masters’ students in statistics and quantitative methods and modeling (QMM), and those interested in carrying out sophisticated statistical analyses of data using statistical software."
+  },
+  {
+    "objectID": "objectives.html#program-learning-goals",
+    "href": "objectives.html#program-learning-goals",
+    "title": "STA 9750 - OSMBA - Course Learning Objectives",
+    "section": "Program Learning Goals",
+    "text": "Program Learning Goals\nThis course contributes to the program learning goals of several MS programs offered by the Zicklin School of Business.\n\nMS in Business Analytics\nThis course contributes to the following Program Learning Goals for the MS in Business Analytics:\n\nMSBA Program Learning Goals\n\n\n\n\n\n\n\nSTA 9750 - OSMBA Learning Goal\nMSBA Learning Goal\nDescription\n\n\n\n\n✓\nData Management\nStudents will be able to apply methods, tools, and software for acquiring, managing/storing, and accessing structured and unstructured data. Students will also demonstrate knowledge of the strategic uses of data.\n\n\n✓\nFoundational Statistical / Quantitative Skills\nStudents will be able to prepare data for statistical analysis, perform basic exploratory and descriptive analysis as well as employ foundational statistical techniques needed to analyze data.\n\n\n✓\nAdvanced Statistical/Quantitative Skills\nStudents will be able to build and interpret advanced predictive models. Students will be able to combine business rules and mathematical models to optimize business decisions from data.\n\n\n\nEthical Awareness\nStudents will be able to articulate an understanding of ethical issues in all phases of business analytics with particular emphasis on the new possibilities afforded by the emergence of big data.\n\n\n✓\nProfessional Communication\nStudents will be able to explain complex analytical models and their results orally and in writing to technical and non technical/lay audiences.\n\n\n✓\nKnowledge Integration\nStudents will be able to apply the three key types of analytics (descriptive, predictive, and prescriptive) in a business domain to add value to business decision-making.\n\n\n\n\n\nMS in Quantitative Methods & Modeling\nThis course contributes to the following Program Learning Goals for the MS in Quantitative Methods & Modeling:\n\nMSQMM Program Learning Goals\n\n\n\n\n\n\n\nSTA 9750 - OSMBA Learning Goal\nMSQMM Learning Goal\nDescription\n\n\n\n\n✓\nOperations Research & Mathematical Modeling\nStudents will be able to effectively model, evaluate, and solve quantitative (business) problems using quantitative modeling methods (e.g. deterministic and probabilistic operations research techniques).\n\n\n✓\nStatistics\nStudents will be able to correctly apply appropriate statistical methods when defining, solving, and analyzing problems.\n\n\n✓\nTechnology Competency\nStudents will be able to use current technological tools, including spreadsheets and specialized software, when solving problems.\n\n\n✓\nProfessional Communication\nStudents will be able to effectively communicate their problem solving methods and solutions to technical and non-technical audiences.\n\n\n\n\n\nMS in Statistics\nThis course contributes to the following Program Learning Goals for the MS in Statistics:\n\nMS Statistics Program Learning Goals\n\n\n\n\n\n\n\nSTA 9750 - OSMBA Learning Goal\nMS Stat Learning Goal\nDescription\n\n\n\n\n✓\nGeneral Statistical Competence\nStudents will be able to apply appropriate probability models and statistical techniques when analyzing problems from business and other fields.\n\n\n✓\nStatistical Practice\nStudents will become familiar with the standard tools of statistical practice for multiple regression, along with the tools of a subset of specialized statistical areas such as multivariate analysis, applied sampling, time series analysis, experimental design, data mining, categorical analysis, and/or stochastic processes.\n\n\n✓\nTechnology Competency\nStudents will learn to use one or more of the benchmark statistical software platforms, such as SAS or R."
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#introduction",
+    "href": "slides/selecting_and_filtering.html#introduction",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "Introduction",
+    "text": "Introduction\nIn this video:\n\n\nSelecting Columns\nSelecting Rows\nModifying Columns and Creating New Columns\n\n\n\nLater:\n\nComputing Summary Statistics with Tidy Tools\n\n\n\nBut first - review!"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#tidy-data",
+    "href": "slides/selecting_and_filtering.html#tidy-data",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "Tidy Data",
+    "text": "Tidy Data\nTidy data - everything in its proper place:\n\nOne and only one type of information per column\nOne and only one observation per row\nNo values ‘hiding’ in column or row names\n\n\n\n\n# A tibble: 3 × 8\n  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie  Torgersen           39.1          18.7               181        3750\n2 Adelie  Torgersen           39.5          17.4               186        3800\n3 Adelie  Torgersen           40.3          18                 195        3250\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#tidyverse",
+    "href": "slides/selecting_and_filtering.html#tidyverse",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "tidyverse",
+    "text": "tidyverse\ntidyverse - Tools for manipulating tidy data\n\nMake sure to load the tidyverse package before using\n\nlibrary(tidyverse)\n\nWill print some messages about conflicts - safe to ignore"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#tidyverse-1",
+    "href": "slides/selecting_and_filtering.html#tidyverse-1",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "tidyverse",
+    "text": "tidyverse\nTidyverse tools have excellent documentation\n\nVisit tidyverse.org for overall information\nIndividual packages: ggplot2.tidyverse.org, dplyr.tidyverse.org, etc.\n\n\n\nFunction Reference - Detailed information on specific functions\nVignettes / Articles - Big picture tutorials"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#dplyr",
+    "href": "slides/selecting_and_filtering.html#dplyr",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "dplyr",
+    "text": "dplyr\nYou have already seen one tidyverse package: ggplot2\n\nToday we start with dplyr - ‘grammar of data manipulation’"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#select",
+    "href": "slides/selecting_and_filtering.html#select",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "select",
+    "text": "select\nThe select function can be used to select certain columns\n\nselect(penguins, species, bill_length_mm, body_mass_g, sex)\n\n# A tibble: 344 × 4\n   species bill_length_mm body_mass_g sex   \n   &lt;fct&gt;            &lt;dbl&gt;       &lt;int&gt; &lt;fct&gt; \n 1 Adelie            39.1        3750 male  \n 2 Adelie            39.5        3800 female\n 3 Adelie            40.3        3250 female\n 4 Adelie            NA            NA &lt;NA&gt;  \n 5 Adelie            36.7        3450 female\n 6 Adelie            39.3        3650 male  \n 7 Adelie            38.9        3625 female\n 8 Adelie            39.2        4675 male  \n 9 Adelie            34.1        3475 &lt;NA&gt;  \n10 Adelie            42          4250 &lt;NA&gt;  \n# ℹ 334 more rows\n\n\n\nFirst argument is data\nOther arguments are columns to be selected"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#select-1",
+    "href": "slides/selecting_and_filtering.html#select-1",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "select",
+    "text": "select\nContrast\n\nselect(penguins, species, bill_length_mm, body_mass_g, sex)\n\nand\n\npenguins[,c(\"species\", \"bill_length_mm\", \"body_mass_g\", \"sex\")]\n\nNo quotes around column names"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#put-that-in-your-pipe",
+    "href": "slides/selecting_and_filtering.html#put-that-in-your-pipe",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "|> - Put that in your Pipe",
+    "text": "|&gt; - Put that in your Pipe\nR supports piped operations - feeding the output of one function into another\n\nselect(penguins, species, bill_length_mm, body_mass_g, sex)\n\nis equivalent to\n\npenguins |&gt; select(species, bill_length_mm, body_mass_g, sex)\n\n\nRead |&gt; as “and then”\ndplyr plays very nicely with pipes"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#select-2",
+    "href": "slides/selecting_and_filtering.html#select-2",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "select",
+    "text": "select\nLike vector indexing, negative sign drops columns:\n\npenguins |&gt; select(-species)\n\n# A tibble: 344 × 7\n   island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex    year\n   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt; &lt;fct&gt; &lt;int&gt;\n 1 Torge…           39.1          18.7               181        3750 male   2007\n 2 Torge…           39.5          17.4               186        3800 fema…  2007\n 3 Torge…           40.3          18                 195        3250 fema…  2007\n 4 Torge…           NA            NA                  NA          NA &lt;NA&gt;   2007\n 5 Torge…           36.7          19.3               193        3450 fema…  2007\n 6 Torge…           39.3          20.6               190        3650 male   2007\n 7 Torge…           38.9          17.8               181        3625 fema…  2007\n 8 Torge…           39.2          19.6               195        4675 male   2007\n 9 Torge…           34.1          18.1               193        3475 &lt;NA&gt;   2007\n10 Torge…           42            20.2               190        4250 &lt;NA&gt;   2007\n# ℹ 334 more rows"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#select-3",
+    "href": "slides/selecting_and_filtering.html#select-3",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "select",
+    "text": "select\n: operator selects a range of columns\n\npenguins |&gt; select(bill_length_mm:body_mass_g)\n\n# A tibble: 344 × 4\n   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n            &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1           39.1          18.7               181        3750\n 2           39.5          17.4               186        3800\n 3           40.3          18                 195        3250\n 4           NA            NA                  NA          NA\n 5           36.7          19.3               193        3450\n 6           39.3          20.6               190        3650\n 7           38.9          17.8               181        3625\n 8           39.2          19.6               195        4675\n 9           34.1          18.1               193        3475\n10           42            20.2               190        4250\n# ℹ 334 more rows"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#select-4",
+    "href": "slides/selecting_and_filtering.html#select-4",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "select",
+    "text": "select\nselect also supports several “smart” helpers to pick columns\n\npenguins |&gt; select(contains(\"bill\"))\n\n# A tibble: 344 × 2\n   bill_length_mm bill_depth_mm\n            &lt;dbl&gt;         &lt;dbl&gt;\n 1           39.1          18.7\n 2           39.5          17.4\n 3           40.3          18  \n 4           NA            NA  \n 5           36.7          19.3\n 6           39.3          20.6\n 7           38.9          17.8\n 8           39.2          19.6\n 9           34.1          18.1\n10           42            20.2\n# ℹ 334 more rows"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#select-5",
+    "href": "slides/selecting_and_filtering.html#select-5",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "select",
+    "text": "select\n\npenguins |&gt; select(ends_with(\"mm\"))\n\n# A tibble: 344 × 3\n   bill_length_mm bill_depth_mm flipper_length_mm\n            &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;\n 1           39.1          18.7               181\n 2           39.5          17.4               186\n 3           40.3          18                 195\n 4           NA            NA                  NA\n 5           36.7          19.3               193\n 6           39.3          20.6               190\n 7           38.9          17.8               181\n 8           39.2          19.6               195\n 9           34.1          18.1               193\n10           42            20.2               190\n# ℹ 334 more rows"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#select-6",
+    "href": "slides/selecting_and_filtering.html#select-6",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "select",
+    "text": "select\nHelpers can be combined using & (intersection) and | (union) operations:\n\npenguins |&gt; select(contains(\"bill\") | ends_with(\"g\"))\n\n# A tibble: 344 × 3\n   bill_length_mm bill_depth_mm body_mass_g\n            &lt;dbl&gt;         &lt;dbl&gt;       &lt;int&gt;\n 1           39.1          18.7        3750\n 2           39.5          17.4        3800\n 3           40.3          18          3250\n 4           NA            NA            NA\n 5           36.7          19.3        3450\n 6           39.3          20.6        3650\n 7           38.9          17.8        3625\n 8           39.2          19.6        4675\n 9           34.1          18.1        3475\n10           42            20.2        4250\n# ℹ 334 more rows"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#select-7",
+    "href": "slides/selecting_and_filtering.html#select-7",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "select",
+    "text": "select\nPredicate operator can select columns based on properties of values\n\npenguins |&gt; select(where(is.numeric))"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#select-8",
+    "href": "slides/selecting_and_filtering.html#select-8",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "select",
+    "text": "select\nwhere combines very nicely with other selectors\n\npenguins |&gt; select(where(is.numeric) & ends_with(\"mm\"))"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#filter",
+    "href": "slides/selecting_and_filtering.html#filter",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "filter",
+    "text": "filter\nWhile select is used for column selection, filter is used for row selection\n\npenguins |&gt; filter(bill_length_mm &gt; 40)\n\n\nSimilar syntax to select:\n\nNo need to quote column names\nData is first (piped) argument\nLater arguments specify action"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#filter-1",
+    "href": "slides/selecting_and_filtering.html#filter-1",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "filter",
+    "text": "filter\nContrast\n\npenguins |&gt; filter(bill_length_mm &gt; 40)\n\nwith\n\npenguins[penguins$bill_length_mm &gt; 40, ]"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#filter-2",
+    "href": "slides/selecting_and_filtering.html#filter-2",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "filter",
+    "text": "filter\nMultiple filters give the intersection:\n\npenguins |&gt; filter(bill_length_mm &gt; 40, sex == \"female\")\n\n\nUse logical operators to get the union:\n\npenguins |&gt; filter(bill_length_mm &gt; 40 | sex == \"female\")"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#filter-3",
+    "href": "slides/selecting_and_filtering.html#filter-3",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "filter",
+    "text": "filter\nPipes are very useful for multi-step operations\n\npenguins |&gt; filter(bill_length_mm &gt; 40) |&gt; select(species)\n\n\nCompare to\n\nselect(filter(penguins, bill_length_mm &gt; 40), species)\n\nPiped form lets us read left to right instead of inside out"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#filter-4",
+    "href": "slides/selecting_and_filtering.html#filter-4",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "filter",
+    "text": "filter\nCan use more complex comparisons in filter:\n\nfilter(penguins, body_mass_g &gt; mean(body_mass_g, na.rm=TRUE))\n\n\nWhat would happen without na.rm=TRUE?\nYou will explore much more complicated examples in the accompanying activity."
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#filter-5",
+    "href": "slides/selecting_and_filtering.html#filter-5",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "filter",
+    "text": "filter\nCommon mistake - using only a single equals sign for equality\n\npenguins |&gt; filter(sex = \"female\")\n\nError in `filter()`:\n! We detected a named input.\nℹ This usually means that you've used `=` instead of `==`.\nℹ Did you mean `sex == \"female\"`?"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#filter-extensions",
+    "href": "slides/selecting_and_filtering.html#filter-extensions",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "filter extensions",
+    "text": "filter extensions\nFunctions implementing extensions of filter:\n\nslice_min\nslice_max\nslice_head\nslice_tail"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#filter-extensions-1",
+    "href": "slides/selecting_and_filtering.html#filter-extensions-1",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "filter extensions",
+    "text": "filter extensions\nslice_sample is useful for getting a random subset of your data.\n\nUseful if exploring a large data set\n\n\npenguins |&gt; slice_sample(n=10)\n\n# A tibble: 10 × 8\n   species   island   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;     &lt;fct&gt;             &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie    Dream              38.3          19.2               189        3950\n 2 Chinstrap Dream              52.8          20                 205        4550\n 3 Adelie    Torgers…           34.6          17.2               189        3200\n 4 Adelie    Torgers…           35.1          19.4               193        4200\n 5 Chinstrap Dream              50.8          19                 210        4100\n 6 Chinstrap Dream              46.6          17.8               193        3800\n 7 Gentoo    Biscoe             48.4          14.6               213        5850\n 8 Adelie    Torgers…           40.9          16.8               191        3700\n 9 Gentoo    Biscoe             48.4          16.3               220        5400\n10 Gentoo    Biscoe             45.8          14.2               219        4700\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#mutate",
+    "href": "slides/selecting_and_filtering.html#mutate",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "mutate",
+    "text": "mutate\nSo far we have only done subsetting. What about creating new columns?\n\n\npenguins |&gt; \n    mutate(body_mass_lb = body_mass_g / 453) |&gt;\n    select(contains(\"body\"))\n\n# A tibble: 344 × 2\n   body_mass_g body_mass_lb\n         &lt;int&gt;        &lt;dbl&gt;\n 1        3750         8.28\n 2        3800         8.39\n 3        3250         7.17\n 4          NA        NA   \n 5        3450         7.62\n 6        3650         8.06\n 7        3625         8.00\n 8        4675        10.3 \n 9        3475         7.67\n10        4250         9.38\n# ℹ 334 more rows"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#mutate-1",
+    "href": "slides/selecting_and_filtering.html#mutate-1",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "mutate",
+    "text": "mutate\n\npenguins |&gt; \n    mutate(body_mass_lb = body_mass_g / 453) |&gt;\n    select(contains(\"body\"))\n\nSimilar syntax to select and filter\n\nTo name the new column, put name on the left of the =.\nIf you leave it out, you get an unhelpful default:\n\npenguins |&gt; mutate(body_mass_g / 453) |&gt; select(contains(\"body\"))\n\n\n\n# A tibble: 344 × 2\n  body_mass_g `body_mass_g/453`\n        &lt;int&gt;             &lt;dbl&gt;\n1        3750              8.28\n2        3800              8.39\n3        3250              7.17\n# ℹ 341 more rows"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#mutate-2",
+    "href": "slides/selecting_and_filtering.html#mutate-2",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "mutate",
+    "text": "mutate\nCan change columns “in place” by careful renaming:\n\npenguins |&gt; \n    select(where(is.character) | where(is.factor)) |&gt;\n    mutate(species = toupper(species))\n\n# A tibble: 344 × 3\n   species island    sex   \n   &lt;chr&gt;   &lt;fct&gt;     &lt;fct&gt; \n 1 ADELIE  Torgersen male  \n 2 ADELIE  Torgersen female\n 3 ADELIE  Torgersen female\n 4 ADELIE  Torgersen &lt;NA&gt;  \n 5 ADELIE  Torgersen female\n 6 ADELIE  Torgersen male  \n 7 ADELIE  Torgersen female\n 8 ADELIE  Torgersen male  \n 9 ADELIE  Torgersen &lt;NA&gt;  \n10 ADELIE  Torgersen &lt;NA&gt;  \n# ℹ 334 more rows"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#mutate-3",
+    "href": "slides/selecting_and_filtering.html#mutate-3",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "mutate",
+    "text": "mutate\nCan do arbitrary vectorized operations and access recently created columns:\n\npenguins |&gt; \n    select(where(is.numeric)) |&gt;\n    mutate(weight_kg = body_mass_g / 1000,\n           height_m = body_height_mm / 1000, \n           bmi = weight_kg / height_m^2)\n\n(Sadly, don’t actually have height data)"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#mutate-4",
+    "href": "slides/selecting_and_filtering.html#mutate-4",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "mutate",
+    "text": "mutate\n?mutate has several helpful functions:\n\ncumsum, cummean\nlead, lag\nif_else, case_when"
+  },
+  {
+    "objectID": "slides/selecting_and_filtering.html#rename",
+    "href": "slides/selecting_and_filtering.html#rename",
+    "title": "STA 9750  Selecting, Filtering, and Modifying with Tidy Data Tools",
+    "section": "rename",
+    "text": "rename\nUse of mutate to rename:\n\npenguins |&gt; mutate(Year = year) |&gt; select(-year)\n\n\nrename combines both steps:\n\npenguins |&gt; rename(Year = year) \n\nNo new functionality - clearer intent"
+  },
+  {
+    "objectID": "slides/tidy1.html#tester",
+    "href": "slides/tidy1.html#tester",
+    "title": "STA 9750  Tidy Data",
+    "section": "Tester",
+    "text": "Tester"
+  },
+  {
+    "objectID": "slides/tidy1.html#introduction",
+    "href": "slides/tidy1.html#introduction",
+    "title": "STA 9750  Tidy Data",
+    "section": "Introduction",
+    "text": "Introduction\nIn this video:\n\n\nIntroduce the concept of Tidy Data\nIdentify Key Aspects of Tidy Data\nLearn to Diagnose Non-Tidy Data\n\n\n\nLater:\n\nManipulation of Tidy Data\n\n\n\nBut first - review!"
+  },
+  {
+    "objectID": "slides/tidy1.html#data-frames",
+    "href": "slides/tidy1.html#data-frames",
+    "title": "STA 9750  Tidy Data",
+    "section": "Data Frames",
+    "text": "Data Frames\ndata.frame - R’s tabular data storage\n\n\n  Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n1          5.1         3.5          1.4         0.2  setosa\n2          4.9         3.0          1.4         0.2  setosa\n3          4.7         3.2          1.3         0.2  setosa"
+  },
+  {
+    "objectID": "slides/tidy1.html#data-frames-1",
+    "href": "slides/tidy1.html#data-frames-1",
+    "title": "STA 9750  Tidy Data",
+    "section": "Data Frames",
+    "text": "Data Frames\nKey features:\n\n\nTabular (rows and columns) structure\nEntries in the same column are all of the same type\nColumns may be different types"
+  },
+  {
+    "objectID": "slides/tidy1.html#data-frames-2",
+    "href": "slides/tidy1.html#data-frames-2",
+    "title": "STA 9750  Tidy Data",
+    "section": "Data Frames",
+    "text": "Data Frames\nCan be manipulated using standard R syntax:\n\ntable(iris[iris$Petal.Length &gt; 5,\"Species\"])\n\n\n    setosa versicolor  virginica \n         0          1         41 \n\n\n\n\n$ extracts a column as a vector\nname[row index, column index]\n\nLogical row indexing to select rows where Petal Length &gt; 5\nColumn indexing by name to select a single column"
+  },
+  {
+    "objectID": "slides/tidy1.html#what-is-tidy-data",
+    "href": "slides/tidy1.html#what-is-tidy-data",
+    "title": "STA 9750  Tidy Data",
+    "section": "What is Tidy Data?",
+    "text": "What is Tidy Data?\n“Tidy Data”: Organizational principles to make data manipulation easy and safe\n\n“Best practices”\nTidy data will decrease chance of errors and increase productivity\n\n\nWhat does it mean to be tidy?\n\n\nEverything in its proper place"
+  },
+  {
+    "objectID": "slides/tidy1.html#tidy-data-1",
+    "href": "slides/tidy1.html#tidy-data-1",
+    "title": "STA 9750  Tidy Data",
+    "section": "Tidy Data",
+    "text": "Tidy Data\n\n\n  species bill_length_mm flipper_length_mm body_mass_g    sex\n1  Adelie           39.1               181        3750   male\n2  Adelie           39.5               186        3800 female\n3  Adelie           40.3               195        3250 female\n\n\n\nKey features:\n\n\nEach row is one observation (🐧)\nEach column has one and only one fact\nAll values are in the table - not hiding in row and column names"
+  },
+  {
+    "objectID": "slides/tidy1.html#tidy-data-2",
+    "href": "slides/tidy1.html#tidy-data-2",
+    "title": "STA 9750  Tidy Data",
+    "section": "Tidy Data",
+    "text": "Tidy Data\n\n\nFigure from R for Data Science by H. Wickham"
+  },
+  {
+    "objectID": "slides/tidy1.html#tidy-data---why",
+    "href": "slides/tidy1.html#tidy-data---why",
+    "title": "STA 9750  Tidy Data",
+    "section": "Tidy Data - Why?",
+    "text": "Tidy Data - Why?\nWhy emphasize tidy data?\n\nMinimize distractions:\n\nFree to focus on analysis not code\n\n\n\nOnce data is “tidy”, you can focus on the real questions\n“Tidying up” - goal of pre-processing"
+  },
+  {
+    "objectID": "slides/tidy1.html#tidy-data---who-and-when",
+    "href": "slides/tidy1.html#tidy-data---who-and-when",
+    "title": "STA 9750  Tidy Data",
+    "section": "Tidy Data - Who (and When)?",
+    "text": "Tidy Data - Who (and When)?\nThe name and principles of “tidy data” were popularized by H. Wickham (2014)\n\nCore ideas are much older, dating back to (at least) Codd’s Relational Model in the 1970s, now ubiquitous in relational databases\n\n\nNow found in Python (pandas), Julia (DataFrames), Rust (polars) and more"
+  },
+  {
+    "objectID": "slides/tidy1.html#tidy-data---how-and-where",
+    "href": "slides/tidy1.html#tidy-data---how-and-where",
+    "title": "STA 9750  Tidy Data",
+    "section": "Tidy Data - How (and Where)?",
+    "text": "Tidy Data - How (and Where)?\ntidyverse - Packages for Manipulating Tidy Data:\n\n\nggplot2: Visualization\ndplyr: SQL-like operations\ntidyr: Reshaping and cleaning data\nreadr: Ingest tidy data into R\nstringr, forcats, lubridate: Tidy manipulation of different data types\ntidymodels: Tidy manipulation of statistical models\n\n\n\nMore helpers in the background (tibble, vctrs, …)"
+  },
+  {
+    "objectID": "slides/tidy1.html#some-untidy-examples",
+    "href": "slides/tidy1.html#some-untidy-examples",
+    "title": "STA 9750  Tidy Data",
+    "section": "Some Untidy Examples",
+    "text": "Some Untidy Examples\nBaruch college business core enrollment:\n\n\n# A tibble: 6 × 4\n  Semester Course     Enrollment   Cap\n  &lt;chr&gt;    &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;\n1 Fall     Accounting        200   250\n2 Fall     Law               100   125\n3 Fall     Statistics        200   200\n4 Spring   Accounting        300   350\n5 Spring   Law                50   100\n6 Spring   Statistics        400   400"
+  },
+  {
+    "objectID": "slides/tidy1.html#some-untidy-examples-1",
+    "href": "slides/tidy1.html#some-untidy-examples-1",
+    "title": "STA 9750  Tidy Data",
+    "section": "Some Untidy Examples",
+    "text": "Some Untidy Examples\nMultiple pieces of information in a single cell:\n\n\n# A tibble: 6 × 3\n  Semester Course     Enrollment  \n  &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;       \n1 Fall     Accounting \"200 of 250\"\n2 Fall     Law        \"100 of 125\"\n3 Fall     Statistics \"200 of 200\"\n4 Spring   Accounting \"300 of 350\"\n5 Spring   Law        \" 50 of 100\"\n6 Spring   Statistics \"400 of 400\""
+  },
+  {
+    "objectID": "slides/tidy1.html#some-untidy-examples-2",
+    "href": "slides/tidy1.html#some-untidy-examples-2",
+    "title": "STA 9750  Tidy Data",
+    "section": "Some Untidy Examples",
+    "text": "Some Untidy Examples\nMixing distinct facts in a single column:\n\n\n# A tibble: 12 × 4\n   Semester Course     Number Type      \n   &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;     \n 1 Fall     Accounting    200 Enrollment\n 2 Fall     Accounting    250 Cap       \n 3 Fall     Law           100 Enrollment\n 4 Fall     Law           125 Cap       \n 5 Fall     Statistics    200 Enrollment\n 6 Fall     Statistics    200 Cap       \n 7 Spring   Accounting    300 Enrollment\n 8 Spring   Accounting    350 Cap       \n 9 Spring   Law            50 Enrollment\n10 Spring   Law           100 Cap       \n11 Spring   Statistics    400 Enrollment\n12 Spring   Statistics    400 Cap"
+  },
+  {
+    "objectID": "slides/tidy1.html#some-untidy-examples-3",
+    "href": "slides/tidy1.html#some-untidy-examples-3",
+    "title": "STA 9750  Tidy Data",
+    "section": "Some Untidy Examples",
+    "text": "Some Untidy Examples\nSpread across two tables:\n\n\n# A tibble: 6 × 3\n  Semester Course     Enrollment\n  &lt;chr&gt;    &lt;chr&gt;           &lt;dbl&gt;\n1 Fall     Accounting        200\n2 Fall     Law               100\n3 Fall     Statistics        200\n# ℹ 3 more rows\n\n\nand\n\n\n# A tibble: 6 × 3\n  Semester Course       Cap\n  &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt;\n1 Fall     Accounting   250\n2 Fall     Law          125\n3 Fall     Statistics   200\n# ℹ 3 more rows"
+  },
+  {
+    "objectID": "slides/tidy1.html#looking-ahead-1",
+    "href": "slides/tidy1.html#looking-ahead-1",
+    "title": "STA 9750  Tidy Data",
+    "section": "Looking Ahead",
+    "text": "Looking Ahead\nFor now, we’ll provide you with tidy data\n\nUpcoming topics:\n\n\nVisualizing Tidy Data (Week 3)\nStatistical Models of Tidy Data (Week 4)\nManipulating Tidy Data (Week 5)\nTaking Untidy Web Data and Making it Tidy (Week 7)"
   }
 ]

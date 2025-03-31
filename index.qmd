@@ -3,7 +3,11 @@ title: "Welcome"
 format: html
 ---
 
-Welcome to the offering of STA9750 as a part of the
+Welcome to the offering of {{< var course.short >}} as a part of the
 [Online MSBA](https://zicklin.baruch.cuny.edu/academic-programs/graduate/ms/online-msba/) 
 at Zicklin School of Business, Baruch College CUNY.
 
+For now, this shell holds only slides for recording of
+course materials. It will eventually host extended
+worked examples, supplemental data sets, and interactive
+activities.
