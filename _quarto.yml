@@ -1,0 +1,30 @@
+project:
+  type: website
+  output-dir: docs
+  execute-dir: project
+  render:
+    - "*.qmd"
+    - "**/*.qmd"
+    - "!advice"
+
+website:
+  title: "STA 9750"
+  description:
+    Basic Software Tools for Data Analysis
+  site-url: "https://michael-weylandt.com/STA9750-OMSBA/"
+  repo-url: https://github.com/michaelweylandt/STA9750-OMSBA
+  repo-actions: [edit, source, issue]
+
+format:
+  html:
+    theme: sandstone
+    margin-left: 0em
+    toc: true
+    code-copy: true
+    toc_depth: 5
+
+execute:
+  freeze: false
+
+editor:
+  mode: source
