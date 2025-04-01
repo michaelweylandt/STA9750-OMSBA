@@ -26,7 +26,6 @@ build_md_link <- function(file){
   if(is.null(topic)){
       return(NULL)
   } else {
-      browser()
       html <- file |> 
           str_replace("qmd", "html")
       glue("- [{topic}](./{html}){{target='_blank'}}\n")

@@ -132,11 +132,50 @@
 </div>
 
 </section>
-<section class="slide level2">
-
-
+<section>
+<section id="section" class="title-slide slide level1 center">
+<h1>Reshaping Tidy Data</h1>
 
 </section>
+<section id="where-are-we" class="slide level2">
+<h2>Where are We?</h2>
+<div style="font-size: 85%;">
+<ul>
+<li><code>R</code> Basics</li>
+<li>Data Visualization</li>
+<li><code>R</code> Programming</li>
+<li><span style="color: blue;">Tidy Data Manipulation</span>
+<ul>
+<li>Selecting Rows and Columns</li>
+<li>Computing Groupwise Summaries</li>
+<li>Joining Tables</li>
+<li><span style="color: blue;">Reshaping Tables</span></li>
+</ul></li>
+<li><code>python</code> Basics</li>
+<li>Web Scraping with <code>python</code></li>
+</ul>
+</div>
+</section>
+<section id="goals-for-this-video" class="slide level2">
+<h2>Goals for this Video</h2>
+<p>In this video:</p>
+<div>
+<ul>
+<li class="fragment"></li>
+<li class="fragment"></li>
+<li class="fragment"></li>
+<li class="fragment"></li>
+</ul>
+</div>
+</section>
+<section id="looking-ahead" class="slide level2">
+<h2>Looking Ahead</h2>
+</section>
+<section id="learning-more" class="slide level2">
+<h2>Learning More</h2>
+
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -352,6 +391,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

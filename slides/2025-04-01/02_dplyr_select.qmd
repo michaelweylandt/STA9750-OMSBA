@@ -15,8 +15,8 @@ topic: "Tidy Column Selection"
   - Computing Groupwise Summaries
   - Joining Tables
   - Reshaping Tables
-- `Python` Basics
-- Web Scraping with `Python`
+- `python` Basics
+- Web Scraping with `python`
 
 :::
 

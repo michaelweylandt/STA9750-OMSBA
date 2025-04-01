@@ -1,0 +1,48 @@
+---
+topic: "`python` Basics: Syntax"
+---
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(tidyverse)
+library(palmerpenguins)
+```
+
+# {{< meta topic >}}
+
+## Where are We?
+
+::: {style="font-size: 85%;"}
+- `R` Basics
+- Data Visualization
+- `R` Programming
+- Tidy Data Manipulation
+- [`python` Basics]{color="blue"}
+  - Installing `python`
+  - [Basic Syntax and Control Flow]{color="blue"}
+  - `python` Objects
+  - Using Packages
+- Web Scraping with `python`
+
+:::
+
+
+## Goals for this Video
+
+In this video: 
+
+::: incremental
+
+- 
+- 
+- 
+- 
+
+:::
+
+
+## Looking Ahead
+
+## Learning More

@@ -1,10 +1,150 @@
 [
   {
+    "objectID": "slides/2025-05-06/13_python_basics_objects.html#where-are-we",
+    "href": "slides/2025-05-06/13_python_basics_objects.html#where-are-we",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Where are We?",
+    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\npython Basics\n\nInstalling python\nBasic Syntax and Control Flow\npython Objects\nUsing Packages\n\nWeb Scraping with python"
+  },
+  {
+    "objectID": "slides/2025-05-06/13_python_basics_objects.html#goals-for-this-video",
+    "href": "slides/2025-05-06/13_python_basics_objects.html#goals-for-this-video",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Goals for this Video",
+    "text": "Goals for this Video\nIn this video:"
+  },
+  {
+    "objectID": "slides/2025-05-06/13_python_basics_objects.html#looking-ahead",
+    "href": "slides/2025-05-06/13_python_basics_objects.html#looking-ahead",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Looking Ahead",
+    "text": "Looking Ahead"
+  },
+  {
+    "objectID": "slides/2025-05-06/13_python_basics_objects.html#learning-more",
+    "href": "slides/2025-05-06/13_python_basics_objects.html#learning-more",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Learning More",
+    "text": "Learning More"
+  },
+  {
+    "objectID": "slides/2025-05-06/11_python_basics_syntax.html#where-are-we",
+    "href": "slides/2025-05-06/11_python_basics_syntax.html#where-are-we",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Where are We?",
+    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\npython Basics\n\nInstalling python\nBasic Syntax and Control Flow\npython Objects\nUsing Packages\n\nWeb Scraping with python"
+  },
+  {
+    "objectID": "slides/2025-05-06/11_python_basics_syntax.html#goals-for-this-video",
+    "href": "slides/2025-05-06/11_python_basics_syntax.html#goals-for-this-video",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Goals for this Video",
+    "text": "Goals for this Video\nIn this video:"
+  },
+  {
+    "objectID": "slides/2025-05-06/11_python_basics_syntax.html#looking-ahead",
+    "href": "slides/2025-05-06/11_python_basics_syntax.html#looking-ahead",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Looking Ahead",
+    "text": "Looking Ahead"
+  },
+  {
+    "objectID": "slides/2025-05-06/11_python_basics_syntax.html#learning-more",
+    "href": "slides/2025-05-06/11_python_basics_syntax.html#learning-more",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Learning More",
+    "text": "Learning More"
+  },
+  {
+    "objectID": "slides/2025-04-29/09_modeling.html#where-are-we",
+    "href": "slides/2025-04-29/09_modeling.html#where-are-we",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Where are We?",
+    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\n\nStatistical Analysis\n\nTidy Data Manipulation\npython Basics\nWeb Scraping with python"
+  },
+  {
+    "objectID": "slides/2025-04-29/09_modeling.html#goals-for-this-video",
+    "href": "slides/2025-04-29/09_modeling.html#goals-for-this-video",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Goals for this Video",
+    "text": "Goals for this Video\nIn this video:"
+  },
+  {
+    "objectID": "slides/2025-04-29/09_modeling.html#looking-ahead",
+    "href": "slides/2025-04-29/09_modeling.html#looking-ahead",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Looking Ahead",
+    "text": "Looking Ahead"
+  },
+  {
+    "objectID": "slides/2025-04-29/09_modeling.html#learning-more",
+    "href": "slides/2025-04-29/09_modeling.html#learning-more",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Learning More",
+    "text": "Learning More"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#where-are-we",
+    "href": "slides/2025-04-22/07_dplyr_join.html#where-are-we",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Where are We?",
+    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\n\nSelecting Rows and Columns\nComputing Groupwise Summaries\nJoining Tables\nReshaping Tables\n\npython Basics\nWeb Scraping with python"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#goals-for-this-video",
+    "href": "slides/2025-04-22/07_dplyr_join.html#goals-for-this-video",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Goals for this Video",
+    "text": "Goals for this Video\nIn this video:"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#looking-ahead",
+    "href": "slides/2025-04-22/07_dplyr_join.html#looking-ahead",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Looking Ahead",
+    "text": "Looking Ahead"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#learning-more",
+    "href": "slides/2025-04-22/07_dplyr_join.html#learning-more",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Learning More",
+    "text": "Learning More"
+  },
+  {
+    "objectID": "slides/2025-04-22/05_dplyr_groupby.html#where-are-we",
+    "href": "slides/2025-04-22/05_dplyr_groupby.html#where-are-we",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Where are We?",
+    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\n\nSelecting Rows and Columns\nComputing Groupwise Summaries\nJoining Tables\nReshaping Tables\n\npython Basics\nWeb Scraping with python"
+  },
+  {
+    "objectID": "slides/2025-04-22/05_dplyr_groupby.html#goals-for-this-video",
+    "href": "slides/2025-04-22/05_dplyr_groupby.html#goals-for-this-video",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Goals for this Video",
+    "text": "Goals for this Video\nIn this video:"
+  },
+  {
+    "objectID": "slides/2025-04-22/05_dplyr_groupby.html#looking-ahead",
+    "href": "slides/2025-04-22/05_dplyr_groupby.html#looking-ahead",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Looking Ahead",
+    "text": "Looking Ahead"
+  },
+  {
+    "objectID": "slides/2025-04-22/05_dplyr_groupby.html#learning-more",
+    "href": "slides/2025-04-22/05_dplyr_groupby.html#learning-more",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Learning More",
+    "text": "Learning More"
+  },
+  {
     "objectID": "slides/2025-04-01/03_dplyr_filter.html#where-are-we",
     "href": "slides/2025-04-01/03_dplyr_filter.html#where-are-we",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
     "section": "Where are We?",
-    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\n\nSelecting Rows and Columns\nComputing Groupwise Summaries\nJoining Tables\nReshaping Tables\n\nPython Basics\nWeb Scraping with Python"
+    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\n\nSelecting Rows and Columns\nComputing Groupwise Summaries\nJoining Tables\nReshaping Tables\n\npython Basics\nWeb Scraping with python"
   },
   {
     "objectID": "slides/2025-04-01/03_dplyr_filter.html#goals-for-this-video",
@@ -74,7 +214,7 @@
     "href": "slides/2025-04-01/03_dplyr_filter.html#filter-extensions",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
     "section": "filter extensions",
-    "text": "filter extensions\nslice_sample: random subset of your data\n\nUseful if exploring a large data set\n\n\npenguins |&gt; slice_sample(n=10)\n\n# A tibble: 10 × 8\n   species   island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;     &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Chinstrap Dream            42.5          17.3               187        3350\n 2 Chinstrap Dream            46            18.9               195        4150\n 3 Adelie    Dream            40.8          18.4               195        3900\n 4 Gentoo    Biscoe           46.4          15                 216        4700\n 5 Chinstrap Dream            49.8          17.3               198        3675\n 6 Adelie    Dream            33.1          16.1               178        2900\n 7 Chinstrap Dream            52.8          20                 205        4550\n 8 Adelie    Dream            36.9          18.6               189        3500\n 9 Gentoo    Biscoe           45.1          14.5               215        5000\n10 Adelie    Dream            36            18.5               186        3100\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+    "text": "filter extensions\nslice_sample: random subset of your data\n\nUseful if exploring a large data set\n\n\npenguins |&gt; slice_sample(n=10)\n\n# A tibble: 10 × 8\n   species   island   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;     &lt;fct&gt;             &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie    Torgers…           37.2          19.4               184        3900\n 2 Adelie    Biscoe             37.9          18.6               193        2925\n 3 Gentoo    Biscoe             52.1          17                 230        5550\n 4 Chinstrap Dream              51.3          19.2               193        3650\n 5 Adelie    Torgers…           35.7          17                 189        3350\n 6 Gentoo    Biscoe             59.6          17                 230        6050\n 7 Gentoo    Biscoe             45.7          13.9               214        4400\n 8 Chinstrap Dream              46            18.9               195        4150\n 9 Adelie    Torgers…           35.9          16.6               190        3050\n10 Gentoo    Biscoe             45.2          16.4               223        5950\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
   },
   {
     "objectID": "slides/2025-04-01/03_dplyr_filter.html#looking-ahead",
@@ -95,7 +235,7 @@
     "href": "slides/2025-04-01/01_tidy.html#where-are-we",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
     "section": "Where are We?",
-    "text": "Where are We?\n\n\nR Basics\n\nVariables and “Calculator Math”\nVectors\nData Frames\n\nData Visualization\nR Programming\nData Manipulation\nPython Basics\nWeb Scraping with Python"
+    "text": "Where are We?\n\n\nR Basics\n\nVariables and “Calculator Math”\nVectors\nData Frames\n\nData Visualization\nR Programming\nData Manipulation\npython Basics\nWeb Scraping with python"
   },
   {
     "objectID": "slides/2025-04-01/01_tidy.html#goals-for-this-video",
@@ -249,14 +389,14 @@
     "href": "slides.html",
     "title": "STA 9750 - OSMBA - Slides",
     "section": "",
-    "text": "This site hosts the following slides:\nCalled from: .f(.x[[i]], …) debug: html &lt;- str_replace(file, “qmd”, “html”) debug: glue(“- {topic}{{target=’_blank’}}“) Called from: .f(.x[[i]], …) debug: html &lt;- str_replace(file,”qmd”, “html”) debug: glue(“- {topic}{{target=’_blank’}}“) Called from: .f(.x[[i]], …) debug: html &lt;- str_replace(file,”qmd”, “html”) debug: glue(“- {topic}{{target=’_blank’}}“) Called from: .f(.x[[i]], …) debug: html &lt;- str_replace(file,”qmd”, “html”) debug: glue(“- {topic}{{target=’_blank’}}“) - Tidy Data - Tidy Column Selection - Tidy Row Selection - Tidy Column Manipulation\nMore will be added later."
+    "text": "This site hosts the following slides:\n\nTidy Data\nTidy Column Selection\nTidy Row Selection\nTidy Column Manipulation\nGroupwise Operations\nSummarizing Group Statistics\nJoining Multiple Tables\nReshaping Tidy Data\nBasic Statistical Analysis\nInstalling python\npython Basics: Syntax\npython Basics: Control Flow\npython Basics: Objects\npython Basics: Control Flow\n\nMore will be added later."
   },
   {
     "objectID": "slides/2025-04-01/02_dplyr_select.html#where-are-we",
     "href": "slides/2025-04-01/02_dplyr_select.html#where-are-we",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
     "section": "Where are We?",
-    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\n\nSelecting Rows and Columns\nComputing Groupwise Summaries\nJoining Tables\nReshaping Tables\n\nPython Basics\nWeb Scraping with Python"
+    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\n\nSelecting Rows and Columns\nComputing Groupwise Summaries\nJoining Tables\nReshaping Tables\n\npython Basics\nWeb Scraping with python"
   },
   {
     "objectID": "slides/2025-04-01/02_dplyr_select.html#goals-for-this-video",
@@ -396,7 +536,7 @@
     "href": "slides/2025-04-01/04_dplyr_mutate.html#where-are-we",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
     "section": "Where are We?",
-    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\n\nSelecting Rows and Columns\nComputing Groupwise Summaries\nJoining Tables\nReshaping Tables\n\nPython Basics\nWeb Scraping with Python"
+    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\n\nSelecting Rows and Columns\nComputing Groupwise Summaries\nJoining Tables\nReshaping Tables\n\npython Basics\nWeb Scraping with python"
   },
   {
     "objectID": "slides/2025-04-01/04_dplyr_mutate.html#goals-for-this-video",
@@ -502,5 +642,145 @@
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
     "section": "Learning More",
     "text": "Learning More\nFor more, check out Chapter 3 - “Data Transformation” of R for Data Science"
+  },
+  {
+    "objectID": "slides/2025-04-22/06_dplyr_summarize.html#where-are-we",
+    "href": "slides/2025-04-22/06_dplyr_summarize.html#where-are-we",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Where are We?",
+    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\n\nSelecting Rows and Columns\nComputing Groupwise Summaries\nJoining Tables\nReshaping Tables\n\npython Basics\nWeb Scraping with python"
+  },
+  {
+    "objectID": "slides/2025-04-22/06_dplyr_summarize.html#goals-for-this-video",
+    "href": "slides/2025-04-22/06_dplyr_summarize.html#goals-for-this-video",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Goals for this Video",
+    "text": "Goals for this Video\nIn this video:"
+  },
+  {
+    "objectID": "slides/2025-04-22/06_dplyr_summarize.html#looking-ahead",
+    "href": "slides/2025-04-22/06_dplyr_summarize.html#looking-ahead",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Looking Ahead",
+    "text": "Looking Ahead"
+  },
+  {
+    "objectID": "slides/2025-04-22/06_dplyr_summarize.html#learning-more",
+    "href": "slides/2025-04-22/06_dplyr_summarize.html#learning-more",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Learning More",
+    "text": "Learning More"
+  },
+  {
+    "objectID": "slides/2025-04-22/08_tidyr_pivot.html#where-are-we",
+    "href": "slides/2025-04-22/08_tidyr_pivot.html#where-are-we",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Where are We?",
+    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\n\nSelecting Rows and Columns\nComputing Groupwise Summaries\nJoining Tables\nReshaping Tables\n\npython Basics\nWeb Scraping with python"
+  },
+  {
+    "objectID": "slides/2025-04-22/08_tidyr_pivot.html#goals-for-this-video",
+    "href": "slides/2025-04-22/08_tidyr_pivot.html#goals-for-this-video",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Goals for this Video",
+    "text": "Goals for this Video\nIn this video:"
+  },
+  {
+    "objectID": "slides/2025-04-22/08_tidyr_pivot.html#looking-ahead",
+    "href": "slides/2025-04-22/08_tidyr_pivot.html#looking-ahead",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Looking Ahead",
+    "text": "Looking Ahead"
+  },
+  {
+    "objectID": "slides/2025-04-22/08_tidyr_pivot.html#learning-more",
+    "href": "slides/2025-04-22/08_tidyr_pivot.html#learning-more",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Learning More",
+    "text": "Learning More"
+  },
+  {
+    "objectID": "slides/2025-04-29/10_python_install.html#where-are-we",
+    "href": "slides/2025-04-29/10_python_install.html#where-are-we",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Where are We?",
+    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\npython Basics\n\nInstalling python\nBasic Syntax and Control Flow\npython Objects\nUsing Packages\n\nWeb Scraping with python"
+  },
+  {
+    "objectID": "slides/2025-04-29/10_python_install.html#goals-for-this-video",
+    "href": "slides/2025-04-29/10_python_install.html#goals-for-this-video",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Goals for this Video",
+    "text": "Goals for this Video\nIn this video:"
+  },
+  {
+    "objectID": "slides/2025-04-29/10_python_install.html#looking-ahead",
+    "href": "slides/2025-04-29/10_python_install.html#looking-ahead",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Looking Ahead",
+    "text": "Looking Ahead"
+  },
+  {
+    "objectID": "slides/2025-04-29/10_python_install.html#learning-more",
+    "href": "slides/2025-04-29/10_python_install.html#learning-more",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Learning More",
+    "text": "Learning More"
+  },
+  {
+    "objectID": "slides/2025-05-06/12_python_basics_control.html#where-are-we",
+    "href": "slides/2025-05-06/12_python_basics_control.html#where-are-we",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Where are We?",
+    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\npython Basics\n\nInstalling python\nBasic Syntax and Control Flow\npython Objects\nUsing Packages\n\nWeb Scraping with python"
+  },
+  {
+    "objectID": "slides/2025-05-06/12_python_basics_control.html#goals-for-this-video",
+    "href": "slides/2025-05-06/12_python_basics_control.html#goals-for-this-video",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Goals for this Video",
+    "text": "Goals for this Video\nIn this video:"
+  },
+  {
+    "objectID": "slides/2025-05-06/12_python_basics_control.html#looking-ahead",
+    "href": "slides/2025-05-06/12_python_basics_control.html#looking-ahead",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Looking Ahead",
+    "text": "Looking Ahead"
+  },
+  {
+    "objectID": "slides/2025-05-06/12_python_basics_control.html#learning-more",
+    "href": "slides/2025-05-06/12_python_basics_control.html#learning-more",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Learning More",
+    "text": "Learning More"
+  },
+  {
+    "objectID": "slides/2025-05-06/14_python_packages.html#where-are-we",
+    "href": "slides/2025-05-06/14_python_packages.html#where-are-we",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Where are We?",
+    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\npython Basics\n\nInstalling python\nBasic Syntax and Control Flow\npython Objects\nUsing Packages\n\nWeb Scraping with python"
+  },
+  {
+    "objectID": "slides/2025-05-06/14_python_packages.html#goals-for-this-video",
+    "href": "slides/2025-05-06/14_python_packages.html#goals-for-this-video",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Goals for this Video",
+    "text": "Goals for this Video\nIn this video:"
+  },
+  {
+    "objectID": "slides/2025-05-06/14_python_packages.html#looking-ahead",
+    "href": "slides/2025-05-06/14_python_packages.html#looking-ahead",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Looking Ahead",
+    "text": "Looking Ahead"
+  },
+  {
+    "objectID": "slides/2025-05-06/14_python_packages.html#learning-more",
+    "href": "slides/2025-05-06/14_python_packages.html#learning-more",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Learning More",
+    "text": "Learning More"
   }
 ]

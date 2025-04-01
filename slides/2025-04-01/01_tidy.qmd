@@ -15,8 +15,8 @@ topic: "Tidy Data"
 - Data Visualization
 - `R` Programming
 - Data Manipulation
-- `Python` Basics
-- Web Scraping with `Python`
+- `python` Basics
+- Web Scraping with `python`
 
 :::
 

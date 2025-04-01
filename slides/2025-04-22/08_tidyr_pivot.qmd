@@ -1,0 +1,48 @@
+---
+topic: "Reshaping Tidy Data"
+---
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(tidyverse)
+library(palmerpenguins)
+```
+
+# {{< meta topic >}}
+
+## Where are We?
+
+::: {style="font-size: 85%;"}
+- `R` Basics
+- Data Visualization
+- `R` Programming
+- [Tidy Data Manipulation]{color="blue"}
+  - Selecting Rows and Columns
+  - Computing Groupwise Summaries
+  - Joining Tables
+  - [Reshaping Tables]{color="blue"}
+- `python` Basics
+- Web Scraping with `python`
+
+:::
+
+
+## Goals for this Video
+
+In this video: 
+
+::: incremental
+
+- 
+- 
+- 
+- 
+
+:::
+
+
+## Looking Ahead
+
+## Learning More

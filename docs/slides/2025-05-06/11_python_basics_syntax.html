@@ -27,71 +27,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-9d3b37a317269be8b2e8947eb21faaa1.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -199,7 +134,7 @@
 </section>
 <section>
 <section id="section" class="title-slide slide level1 center">
-<h1>Tidy Row Selection</h1>
+<h1><code>python</code> Basics: Syntax</h1>
 
 </section>
 <section id="where-are-we" class="slide level2">
@@ -209,14 +144,14 @@
 <li><code>R</code> Basics</li>
 <li>Data Visualization</li>
 <li><code>R</code> Programming</li>
-<li><span style="color: blue;">Tidy Data Manipulation</span>
+<li>Tidy Data Manipulation</li>
+<li><span style="color: blue;"><code>python</code> Basics</span>
 <ul>
-<li><span style="color: blue;">Selecting Rows and Columns</span></li>
-<li>Computing Groupwise Summaries</li>
-<li>Joining Tables</li>
-<li>Reshaping Tables</li>
+<li>Installing <code>python</code></li>
+<li><span style="color: blue;">Basic Syntax and Control Flow</span></li>
+<li><code>python</code> Objects</li>
+<li>Using Packages</li>
 </ul></li>
-<li><code>python</code> Basics</li>
 <li>Web Scraping with <code>python</code></li>
 </ul>
 </div>
@@ -226,182 +161,18 @@
 <p>In this video:</p>
 <div>
 <ul>
-<li class="fragment"><code>filter</code> out rows in a tidy way</li>
-<li class="fragment">Apply Boolean operators</li>
-<li class="fragment"><code>slice</code> and dice to find maxima and minima</li>
+<li class="fragment"></li>
+<li class="fragment"></li>
+<li class="fragment"></li>
+<li class="fragment"></li>
 </ul>
-</div>
-</section>
-<section id="filter" class="slide level2">
-<h2>filter</h2>
-<p>While <code>select</code> is used for column selection, <code>filter</code> is used for row selection</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">filter</span>(bill_length_mm <span class="sc">&gt;</span> <span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<p>Similar syntax to <code>select</code>:</p>
-<ul>
-<li>No need to quote column names</li>
-<li>Data is first (piped) argument</li>
-<li>Later arguments specify action</li>
-</ul>
-</div>
-</section>
-<section id="filter-1" class="slide level2">
-<h2>filter</h2>
-<p>Contrast</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">filter</span>(bill_length_mm <span class="sc">&gt;</span> <span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>with</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>penguins[penguins<span class="sc">$</span>bill_length_mm <span class="sc">&gt;</span> <span class="dv">40</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="filter-2" class="slide level2">
-<h2>filter</h2>
-<p>Multiple filters give the <em>intersection</em>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">filter</span>(bill_length_mm <span class="sc">&gt;</span> <span class="dv">40</span>, sex <span class="sc">==</span> <span class="st">"female"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<p>Use logical operators to get the <em>union</em>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">filter</span>(bill_length_mm <span class="sc">&gt;</span> <span class="dv">40</span> <span class="sc">|</span> sex <span class="sc">==</span> <span class="st">"female"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div class="fragment">
-<p><img data-src="https://r4ds.hadley.nz/diagrams/transform.png" style="width:60.0%"></p>
-</div>
-</section>
-<section id="filter-3" class="slide level2">
-<h2>filter</h2>
-<p>Pipes are very useful for multi-step operations</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">filter</span>(bill_length_mm <span class="sc">&gt;</span> <span class="dv">40</span>) <span class="sc">|&gt;</span> <span class="fu">select</span>(species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<p>Compare to</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">select</span>(<span class="fu">filter</span>(penguins, bill_length_mm <span class="sc">&gt;</span> <span class="dv">40</span>), species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Piped form reads left to right instead of inside out</p>
-</div>
-</section>
-<section id="filter-4" class="slide level2">
-<h2>filter</h2>
-<p>Can use more complex comparisons in <code>filter</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">filter</span>(body_mass_g <span class="sc">&gt;</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 149 × 8
-   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
-   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
- 1 Adelie  Torgersen           39.2          19.6               195        4675
- 2 Adelie  Torgersen           42            20.2               190        4250
- 3 Adelie  Torgersen           34.6          21.1               198        4400
- 4 Adelie  Torgersen           42.5          20.7               197        4500
- 5 Adelie  Dream               39.8          19.1               184        4650
- 6 Adelie  Dream               44.1          19.7               196        4400
- 7 Adelie  Dream               39.6          18.8               190        4600
- 8 Adelie  Biscoe              40.1          18.9               188        4300
- 9 Adelie  Biscoe              41.3          21.1               195        4400
-10 Adelie  Torgersen           41.8          19.4               198        4450
-# ℹ 139 more rows
-# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
-</div>
-</div>
-<div class="fragment">
-<p>What would happen without <code>na.rm=TRUE</code>?</p>
-</div>
-</section>
-<section id="filter-5" class="slide level2">
-<h2>filter</h2>
-<p>Common mistake - using only a single equals sign for equality</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="at">sex =</span> <span class="st">"female"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in `filter()`:
-! We detected a named input.
-ℹ This usually means that you've used `=` instead of `==`.
-ℹ Did you mean `sex == "female"`?</code></pre>
-</div>
-</div>
-</section>
-<section id="slice-functions" class="slide level2">
-<h2>slice functions</h2>
-<p>The <code>slice_*</code> family extend <code>filter</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">slice_max</span>(body_mass_g, <span class="at">n=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 8
-  species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
-  &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
-1 Gentoo  Biscoe           49.2          15.2               221        6300
-# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
-</div>
-</div>
-<div class="fragment">
-<p>Equivalent to:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">filter</span>(body_mass_g <span class="sc">==</span> <span class="fu">max</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</section>
-<section id="slice-functions-1" class="slide level2">
-<h2>slice functions</h2>
-<p>Standard slices:</p>
-<ul>
-<li><code>slice_min</code></li>
-<li><code>slice_max</code></li>
-<li><code>slice_head</code></li>
-<li><code>slice_tail</code></li>
-</ul>
-<div class="fragment">
-<p>Can specify:</p>
-<ul>
-<li><code>n=</code> to get top/bottom <span class="math inline">\(n\)</span></li>
-<li><code>prop=</code> to select a fraction</li>
-</ul>
-</div>
-</section>
-<section id="filter-extensions" class="slide level2">
-<h2>filter extensions</h2>
-<p><code>slice_sample</code>: random subset of your data</p>
-<ul>
-<li>Useful if exploring a large data set</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 8
-   species   island   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
-   &lt;fct&gt;     &lt;fct&gt;             &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
- 1 Adelie    Torgers…           37.2          19.4               184        3900
- 2 Adelie    Biscoe             37.9          18.6               193        2925
- 3 Gentoo    Biscoe             52.1          17                 230        5550
- 4 Chinstrap Dream              51.3          19.2               193        3650
- 5 Adelie    Torgers…           35.7          17                 189        3350
- 6 Gentoo    Biscoe             59.6          17                 230        6050
- 7 Gentoo    Biscoe             45.7          13.9               214        4400
- 8 Chinstrap Dream              46            18.9               195        4150
- 9 Adelie    Torgers…           35.9          16.6               190        3050
-10 Gentoo    Biscoe             45.2          16.4               223        5950
-# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
-</div>
 </div>
 </section>
 <section id="looking-ahead" class="slide level2">
 <h2>Looking Ahead</h2>
-<ul>
-<li>Selecting Columns ✅</li>
-<li>Selecting Rows ✅</li>
-<li>Transforming Columns</li>
-</ul>
 </section>
 <section id="learning-more" class="slide level2">
 <h2>Learning More</h2>
-<p>For more, check out <a href="https://r4ds.hadley.nz/data-transform#rows">Chapter 3 - “Data Transformation”</a> of <em><code>R</code> for Data Science</em></p>
 
 
 </section></section>
