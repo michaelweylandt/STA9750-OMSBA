@@ -1,51 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/tidy_data.html</loc>
-    <lastmod>2025-03-31T19:51:12.815Z</lastmod>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-05-06/13_python_pydata.html</loc>
+    <lastmod>2025-04-01T02:16:00.980Z</lastmod>
   </url>
   <url>
-    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/statistical_modeling.html</loc>
-    <lastmod>2025-03-31T16:48:27.292Z</lastmod>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-05-06/11_python_basics.html</loc>
+    <lastmod>2025-04-01T02:16:00.979Z</lastmod>
   </url>
   <url>
-    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides.html</loc>
-    <lastmod>2025-03-31T21:38:15.420Z</lastmod>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-29/09_modeling.html</loc>
+    <lastmod>2025-04-01T02:15:27.555Z</lastmod>
   </url>
   <url>
-    <loc>https://michael-weylandt.com/STA9750-OMSBA/index.html</loc>
-    <lastmod>2025-03-31T18:01:40.166Z</lastmod>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-22/7_dplyr_join.html</loc>
+    <lastmod>2025-04-01T02:15:02.103Z</lastmod>
+  </url>
+  <url>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-22/5_dplyr_groupby.html</loc>
+    <lastmod>2025-04-01T02:15:02.103Z</lastmod>
+  </url>
+  <url>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-01/03_dplyr_filter.html</loc>
+    <lastmod>2025-04-01T00:44:17.479Z</lastmod>
+  </url>
+  <url>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-01/01_tidy.html</loc>
+    <lastmod>2025-04-01T00:13:14.693Z</lastmod>
   </url>
   <url>
     <loc>https://michael-weylandt.com/STA9750-OMSBA/objectives.html</loc>
     <lastmod>2025-03-31T17:22:21.144Z</lastmod>
   </url>
   <url>
-    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/selecting_and_filtering.html</loc>
-    <lastmod>2025-03-31T16:48:27.290Z</lastmod>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/index.html</loc>
+    <lastmod>2025-03-31T18:01:40.166Z</lastmod>
   </url>
   <url>
-    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/tidy1.html</loc>
-    <lastmod>2025-03-31T16:48:27.293Z</lastmod>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides.html</loc>
+    <lastmod>2025-03-31T21:38:15.420Z</lastmod>
   </url>
   <url>
-    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-01/tidy.html</loc>
-    <lastmod>2025-03-31T19:56:02.052Z</lastmod>
-  </url>
-  <url>
-    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-01/1_tidy.html</loc>
-    <lastmod>2025-04-01T00:13:14.693Z</lastmod>
-  </url>
-  <url>
-    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-01/2_dplyr_select.html</loc>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-01/02_dplyr_select.html</loc>
     <lastmod>2025-04-01T00:49:58.294Z</lastmod>
   </url>
   <url>
-    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-01/4_dplyr_mutate.html</loc>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-01/04_dplyr_mutate.html</loc>
     <lastmod>2025-04-01T01:31:23.612Z</lastmod>
   </url>
   <url>
-    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-01/3_dplyr_filter.html</loc>
-    <lastmod>2025-04-01T00:44:17.479Z</lastmod>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-22/6_dplyr_summarize.html</loc>
+    <lastmod>2025-04-01T02:15:02.103Z</lastmod>
+  </url>
+  <url>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-22/8_tidyr_pivot.html</loc>
+    <lastmod>2025-04-01T02:15:02.103Z</lastmod>
+  </url>
+  <url>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-29/10_python_install.html</loc>
+    <lastmod>2025-04-01T02:15:27.555Z</lastmod>
+  </url>
+  <url>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-05-06/12_python_packages.html</loc>
+    <lastmod>2025-04-01T02:16:00.980Z</lastmod>
   </url>
 </urlset>
