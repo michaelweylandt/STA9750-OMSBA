@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/tidy_data.html</loc>
-    <lastmod>2025-03-31T18:01:14.558Z</lastmod>
+    <lastmod>2025-03-31T19:51:12.815Z</lastmod>
   </url>
   <url>
     <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/statistical_modeling.html</loc>
@@ -10,7 +10,7 @@
   </url>
   <url>
     <loc>https://michael-weylandt.com/STA9750-OMSBA/slides.html</loc>
-    <lastmod>2025-03-31T18:02:49.755Z</lastmod>
+    <lastmod>2025-03-31T21:38:15.420Z</lastmod>
   </url>
   <url>
     <loc>https://michael-weylandt.com/STA9750-OMSBA/index.html</loc>
@@ -27,5 +27,25 @@
   <url>
     <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/tidy1.html</loc>
     <lastmod>2025-03-31T16:48:27.293Z</lastmod>
+  </url>
+  <url>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-01/tidy.html</loc>
+    <lastmod>2025-03-31T19:56:02.052Z</lastmod>
+  </url>
+  <url>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-01/1_tidy.html</loc>
+    <lastmod>2025-04-01T00:13:14.693Z</lastmod>
+  </url>
+  <url>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-01/2_dplyr_select.html</loc>
+    <lastmod>2025-04-01T00:49:58.294Z</lastmod>
+  </url>
+  <url>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-01/4_dplyr_mutate.html</loc>
+    <lastmod>2025-04-01T01:31:23.612Z</lastmod>
+  </url>
+  <url>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-01/3_dplyr_filter.html</loc>
+    <lastmod>2025-04-01T00:44:17.479Z</lastmod>
   </url>
 </urlset>

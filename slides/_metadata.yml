@@ -1,0 +1,10 @@
+title: "</br></br></br></br></br>Software Tools for Data Analysis</br>STA 9750</br>Michael Weylandt"
+format:
+  revealjs:
+    theme: [default, styles.scss]
+    title-slide-attributes:
+      data-background-image: "../baruch_title.png"
+      data-background-size: 100% 100%
+    width: 80%
+filters:
+  - highlight-text

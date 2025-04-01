@@ -1,0 +1,341 @@
+---
+topic: "Tidy Data"
+---
+
+# {{< meta topic >}}
+
+## Where are We? 
+
+::: {style="font-size: 85%;"}
+
+- [`R` Basics]{color="#0000FF"}
+  - Variables and "Calculator Math"
+  - Vectors
+  - [Data Frames]{color="#000FF"}
+- Data Visualization
+- `R` Programming
+- Data Manipulation
+- `Python` Basics
+- Web Scraping with `Python`
+
+:::
+
+## Goals for this Video
+
+In this video: 
+
+::: incremental
+
+- Introduce the concept of Tidy Data
+- Identify Key Aspects of Tidy Data
+- Learn to Diagnose Non-Tidy Data
+
+:::
+
+## Data Frames in R
+
+`data.frame` - `R`'s _tabular_ data storage
+
+```{r}
+#| echo: !expr c(1, 3)
+library(palmerpenguins)
+penguins <- as.data.frame(penguins)
+head(penguins)
+```
+
+## Data Frames in R
+
+`palmerpenguins`
+
+::: incremental
+- 344 penguins observed on the Palmer Islands (Antarctica)
+- 3 species, 3 islands, 3 years
+- 4 numeric variables
+- One categorial (`factor`) variable (`sex`)
+:::
+
+[![](https://allisonhorst.github.io/palmerpenguins/logo.png){width=10%}](https://allisonhorst.github.io/palmerpenguins/)
+
+## Data Frames in R
+
+Key features: 
+
+::: incremental
+
+- Tabular (rows and columns) structure
+- Entries in the same column are all of the same type
+- Columns may be different types
+
+::: 
+
+## Data Frames in R
+
+Can be manipulated using standard `R` syntax: 
+
+```{r}
+#| echo: true
+table(penguins[penguins$bill_length_mm > 40, "species"])
+```
+
+::: incremental 
+
+- `$` extracts a column as a vector
+- `df[row index, column index]`
+  - Logical row indexing to select rows where `bill_length_mm` > 40
+  - Column indexing by name to select a single column
+  
+:::
+
+
+# Tidy Data
+
+## What is Tidy Data?
+
+"Tidy Data": 
+
+- Principles to make data manipulation *safe* and *easy*
+- Decrease chance of errors
+- Increase productivity
+
+. . . 
+
+What does it mean to be tidy? 
+
+::: incremental
+
+- **Everything in its proper place**
+
+::: 
+
+## Tidy Data
+
+Recall our penguins: 
+
+```{r}
+library(palmerpenguins); head(as.data.frame(penguins)[,c(1,3, 5, 6, 7)])
+```
+
+. . . 
+
+Key features: 
+
+::: incremental
+
+- Each row is one observation (🐧)
+- Each column has _one and only one_ fact
+- All values are in the table 
+  - Not hiding in row and column names
+
+:::
+
+## Tidy Data
+
+[![](https://r4ds.had.co.nz/images/tidy-1.png)](https://r4ds.hadley.nz/data-tidy.html)
+
+> Figure from [*`R` for Data Science*](https://r4ds.hadley.nz/) by H. Wickham
+
+
+<!-- Not sure why this is needed, but without it image above doesn't render -->
+
+![](https://allisonhorst.github.io/palmerpenguins/logo.png){width=00%}
+
+## Tidy - Why? 
+
+Why emphasize tidy data? 
+
+. . . 
+
+Minimize distractions: 
+
+- Free to focus on _analysis_ not _code_ 
+
+. . . 
+
+Once data is "tidy", you can focus on the real questions
+
+. . . 
+
+First goal for data pre-processing ("tidying up")
+
+## Tidy - Who (and When)?
+
+The name and principles of "tidy data" were popularized by H. Wickham (2014)
+
+. . . 
+
+Core ideas are much older, dating back to (at least) Codd's *Relational Model*
+in the 1970s, now ubiquitous in relational databases (SQL)
+
+. . . 
+
+Now found in: 
+
+- Python (`pandas`)
+- Julia (`DataFrames`)
+- Rust (`polars`) 
+- and more
+
+## Tidy - How (and Where)?
+
+`tidyverse` - Packages for Manipulating Tidy Data: 
+
+::: incremental
+
+- `ggplot2`: Visualization
+- `dplyr`: `SQL`-like operations
+- `tidyr`: Reshaping and cleaning data
+- `readr`: Ingest tidy data into `R`
+- Tidy manipulation of different data types: 
+  - `stringr`, `forcats`, `lubridate`
+
+:::
+
+. . . 
+
+More helpers in the background (`tibble`, `vctrs`, ...)
+
+## Aside: tibbles
+
+You will sometimes see `tibble` (`tbl_df`) as a synonym for `data.frame`
+
+- Minor differences in output formatting
+- Fewer edge cases
+
+
+## Some Untidy Examples
+
+Baruch college business core enrollment:
+
+```{r}
+library(tidyverse)
+D <- tribble(
+    ~Semester, ~Course,      ~Enrollment, ~Cap,
+       "Fall", "Accounting",         200,  250,
+       "Fall", "Law",                100,  125,
+       "Fall", "Statistics",         200,  200,
+     "Spring", "Accounting",         300,  350,
+     "Spring", "Law",                50,   100,
+     "Spring", "Statistics",         400,  400
+)
+```
+
+```{r}
+print(D)
+```
+
+. . . 
+
+Tidy! ✅ 
+
+. . . 
+
+- Each row is one unit (a class) 👍
+- Columns are well-typed 👍
+- One piece of information per column 👍
+
+## Some Untidy Examples
+
+```{r}
+tribble(
+    ~Semester, ~Course,      ~Enrollment,
+       "Fall", "Accounting", "200 of 250",
+       "Fall", "Law",        "100 of 125",
+       "Fall", "Statistics", "200 of 200",
+     "Spring", "Accounting", "300 of 350",
+     "Spring", "Law",        " 50 of 100",
+     "Spring", "Statistics", "400 of 400"
+)
+```
+
+. . . 
+
+Untidy! ❌
+
+. . . 
+
+Multiple pieces of information per cell (`Enrollment`)
+
+## Some Untidy Examples
+
+```{r}
+tribble(
+    ~Semester, ~Course,      ~Number, ~Type,
+       "Fall", "Accounting",     200, "Enrollment",
+       "Fall", "Accounting",     250, "Cap",
+       "Fall", "Law",        100, "Enrollment",
+       "Fall", "Law",        125, "Cap",
+       "Fall", "Statistics", 200, "Enrollment",
+       "Fall", "Statistics", 200, "Cap",
+       "Spring", "Accounting",     300, "Enrollment",
+       "Spring", "Accounting",     350, "Cap",
+       "Spring", "Law",        50, "Enrollment",
+       "Spring", "Law",        100, "Cap",
+       "Spring", "Statistics", 400, "Enrollment",
+       "Spring", "Statistics", 400, "Cap"
+)
+```
+
+. . . 
+
+Untidy! ❌
+
+. . . 
+
+Mixing two pieces of information (Enrollments and Caps)
+
+*Tip*: When one unit spans multiple rows, likely untidy
+
+## Some Untidy Examples
+
+```{r}
+library(tidyverse)
+D <- tribble(
+    ~Semester, ~Course,      ~Enrollment, ~Cap,
+       "Fall", "Accounting",         200,  250,
+       "Fall", "Law",                100,  125,
+       "Fall", "Statistics",         200,  200,
+     "Spring", "Accounting",         300,  350,
+     "Spring", "Law",                50,   100,
+     "Spring", "Statistics",         400,  400
+)
+```
+
+```{r}
+print(D |> select(Semester, Course, Enrollment), n=3)
+```
+
+and 
+
+```{r}
+print(D |> select(Semester, Course, Cap), n=3)
+```
+
+
+. . . 
+
+Untidy! ❌
+
+. . . 
+
+Data spread across multiple columns
+
+# Wrap-Up
+
+## Looking Ahead
+
+For now, we'll provide you with *tidy* data
+
+. . . 
+
+Upcoming topics: 
+
+::: incremental 
+
+- Visualizing Tidy Data (Week 3)
+- Statistical Models of Tidy Data (Week 4)
+- Manipulating Tidy Data (Week 5)
+- Taking Untidy Web Data and Making it Tidy (Week 7)
+
+::: 
+
+

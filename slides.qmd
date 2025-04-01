@@ -14,7 +14,11 @@ library(rmarkdown)
 library(glue)
 library(purrr)
 library(stringr)
-SLIDE_FILES <- list.files("slides", full.names = TRUE)
+SLIDE_FILES <- list.files("slides", 
+                          pattern="*qmd$",
+                          full.names = TRUE, 
+                          recursive = TRUE, 
+                          include.dirs = FALSE)
 
 build_md_link <- function(file){
   header_info <- rmarkdown::yaml_front_matter(file)
@@ -22,12 +26,18 @@ build_md_link <- function(file){
   if(is.null(topic)){
       return(NULL)
   } else {
-      html <- basename(file) |> str_replace("qmd", "html")
-      glue("- [{topic}](./slides/{html})\n")
+      html <- file |> 
+          str_replace("slides/", "./") |>
+          str_replace("qmd", "html")
+      glue("- [{topic}](./slides/{html}){{target='_blank'}}\n")
   }
 }
 
-map(SLIDE_FILES, build_md_link) |> discard(is.null) |> walk(cat)
+map(SLIDE_FILES, build_md_link) |> 
+    discard(is.null) |> 
+    list_c() |>
+    sort() |>
+    walk(cat, sep="\n")
 ```
 
 More will be added later. 

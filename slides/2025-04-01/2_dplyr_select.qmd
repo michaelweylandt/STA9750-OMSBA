@@ -1,0 +1,294 @@
+---
+topic: "Tidy Column Selection"
+---
+
+# {{< meta topic >}}
+
+## Where are We?
+
+::: {style="font-size: 85%;"}
+- `R` Basics
+- Data Visualization
+- `R` Programming
+- [Tidy Data Manipulation]{color="blue"}
+  - [Selecting Rows and Columns]{color="blue"}
+  - Computing Groupwise Summaries
+  - Joining Tables
+  - Reshaping Tables
+- `Python` Basics
+- Web Scraping with `Python`
+
+:::
+
+## Goals for this Video
+
+In this video: 
+
+::: incremental
+
+- Introduce the `dplyr` package and the pipe operator (`|>`)
+- `select` and `rename` columns in a tidy way
+- Use advanced selectors for _groups_ of columns
+
+:::
+
+## Tidy Data
+
+Recall our definition of "tidy" data - everything in its proper place: 
+
+::: incremental
+- One and only one type of information per column
+- One and only one observation per row
+- No values 'hiding' in column or row names
+:::
+
+. . . 
+
+Return of the `palmerpenguins`:
+
+```{r}
+library(palmerpenguins); 
+penguins |> 
+    dplyr::select(species, island, bill_length_mm)  |>
+    print(n=2)
+```
+
+## Tidy Tools for Tidy Data
+
+`tidyverse` - Tools for manipulating tidy data
+
+. . . 
+
+Make sure to load the `tidyverse` package before using
+
+```{r}
+#| echo: true
+#| message: true
+#| warning: true
+library(tidyverse)
+```
+
+Safe to ignore messages about conflicts
+
+## tidyverse Packages
+
+![](https://tidyverse.tidyverse.org/logo.png){fig-align="center" width="10%"}
+
+`tidyverse` tools have _excellent_ documentation
+
+- Visit `tidyverse.org` for overall information
+- Individual packages: `ggplot2.tidyverse.org`, `dplyr.tidyverse.org`, *etc.*
+
+. . . 
+
+- Function Reference - Details of specific functions
+- Vignettes / Articles - Big picture tutorials
+
+
+![](https://tidyverse.tidyverse.org/logo.png){width="0%"}
+
+
+## dplyr
+
+You have already seen one `tidyverse` package: `ggplot2`
+
+. . . 
+
+Today we start with `dplyr` - 'grammar of data manipulation'
+
+![](https://dplyr.tidyverse.org/logo.png){fig-align="center"}
+
+
+## select
+
+The `select` function can be used to select certain columns
+
+```{r}
+#| echo: true
+select(penguins, species, bill_length_mm, body_mass_g, sex)
+```
+
+. . . 
+
+Arguments: data => columns we want
+
+## select
+
+Contrast
+
+```{r}
+#| echo: true
+#| eval: false
+select(penguins, species, bill_length_mm, body_mass_g, sex)
+```
+
+with
+
+```{r}
+#| eval: false
+#| echo: true
+penguins[,c("species", "bill_length_mm", "body_mass_g", "sex")]
+```
+
+. . . 
+
+</br>
+
+Key differences:
+
+- No quotes around column names
+- Pass names as arguments, not 1 vector
+
+## Put that in your Pipe
+
+`R` supports _piped_ operations - feeding the output of one function into another
+
+```{r}
+#| eval: false
+#| echo: true
+select(penguins, species, bill_length_mm, body_mass_g, sex)
+```
+
+is equivalent to 
+
+```{r}
+#| eval: false
+#| echo: true
+penguins |> select(species, bill_length_mm, body_mass_g, sex)
+```
+
+. . . 
+
+Read `|>` as "and then"
+
+`dplyr` plays _very nicely_ with pipes
+
+## select
+
+Like vector indexing, negative sign _drops_ columns: 
+
+```{r}
+#| echo: true
+penguins |> select(-species)
+```
+
+## select
+
+`:` operator selects a _range_ of columns
+
+```{r}
+#| echo: true
+penguins |> select(bill_length_mm:body_mass_g)
+```
+
+You can also use `c` here
+
+## select
+
+`select` also supports several "smart" helpers to pick columns
+
+```{r}
+#| echo: true
+penguins |> select(contains("bill"))
+```
+
+## select
+
+See `?dplyr_tidy_select` for more helpers
+
+```{r}
+#| echo: true
+penguins |> select(ends_with("mm"))
+```
+
+## select
+
+Helpers can be combined using `&` (intersection) and `|` (union) operations:
+
+```{r}
+#| echo: true
+penguins |> select(contains("bill") | ends_with("g"))
+```
+
+## select 
+
+_Predicate_ operator can select columns based on properties of values
+
+```{r}
+#| echo: true
+#| eval: false
+penguins |> select(where(is.numeric))
+```
+
+. . . 
+
+Also: `is.character` and `is.factor`
+
+. . . 
+
+Can be extended to more complex checks:
+
+- Pass a custom _function_ 
+- (Not covered here; see docs for examples)
+
+## select 
+
+`where` combines nicely with other selectors:
+
+```{r}
+#| echo: true
+#| eval: false
+penguins |> select(where(is.numeric) & ends_with("mm"))
+```
+
+## rename
+
+Use `rename` to change column names:
+```{r}
+#| echo: true
+#| eval: false
+penguins |> 
+    select(where(is.numeric) & ends_with("mm")) |>
+    rename(`Bill Length (mm)`=bill_length_mm, 
+           `Bill Depth (mm)`=bill_depth_mm,
+           `Flipper Length (mm)`=flipper_length_mm)
+```
+
+```{r}
+#| echo: false
+#| eval: true
+penguins |> 
+    select(where(is.numeric) & ends_with("mm")) |>
+    rename(`Bill Length (mm)`=bill_length_mm, 
+           `Bill Depth (mm)`=bill_depth_mm,
+           `Flipper Length (mm)`=flipper_length_mm) |>
+    head(n=6) |>
+    kableExtra::kbl() |>
+    kableExtra::kable_classic(full_width=FALSE) |>
+    kableExtra::kable_styling(font_size = 20)
+```
+
+Particularly useful for formatting output
+
+## rename
+
+`rename` tips: 
+
+::: incremental
+
+- Use backticks (`) to surround 'non-syntactic' names
+- Useful to make names useful `R` variables pre-analysis
+- Useful to make names proper English post-analysis
+
+:::
+
+## Looking Ahead
+
+- Selecting Columns ✅ 
+- Selecting Rows
+- Transforming Columns
+
+## Learning More
+
+For more, check out 
+[Chapter 3 - "Data Transformation"](https://r4ds.hadley.nz/data-transform#sec-select) of *`R` for Data Science*

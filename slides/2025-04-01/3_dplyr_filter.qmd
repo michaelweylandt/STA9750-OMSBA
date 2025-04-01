@@ -1,0 +1,207 @@
+---
+topic: "Tidy Row Selection"
+---
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(tidyverse)
+library(palmerpenguins)
+```
+
+# {{< meta topic >}}
+
+## Where are We?
+
+::: {style="font-size: 85%;"}
+- `R` Basics
+- Data Visualization
+- `R` Programming
+- [Tidy Data Manipulation]{color="blue"}
+  - [Selecting Rows and Columns]{color="blue"}
+  - Computing Groupwise Summaries
+  - Joining Tables
+  - Reshaping Tables
+- `Python` Basics
+- Web Scraping with `Python`
+
+:::
+
+
+## Goals for this Video
+
+In this video: 
+
+::: incremental
+
+- `filter` out rows in a tidy way
+- Apply Boolean operators
+- `slice` and dice to find maxima and minima
+
+:::
+
+## filter
+
+While `select` is used for column selection, `filter` is used for row selection
+
+```{r}
+#| echo: true
+#| eval: false
+penguins |> filter(bill_length_mm > 40)
+```
+
+. . . 
+
+Similar syntax to `select`: 
+
+- No need to quote column names
+- Data is first (piped) argument
+- Later arguments specify action
+
+## filter
+
+Contrast
+
+```{r}
+#| echo: true
+#| eval: false
+penguins |> filter(bill_length_mm > 40)
+```
+
+with 
+
+```{r}
+#| echo: true
+#| eval: false
+penguins[penguins$bill_length_mm > 40, ]
+```
+
+## filter
+
+Multiple filters give the _intersection_:
+
+```{r}
+#| echo: true
+#| eval: false
+penguins |> filter(bill_length_mm > 40, sex == "female")
+```
+
+. . . 
+
+Use logical operators to get the _union_: 
+
+```{r}
+#| echo: true
+#| eval: false
+penguins |> filter(bill_length_mm > 40 | sex == "female")
+```
+
+. . . 
+
+![](https://r4ds.hadley.nz/diagrams/transform.png){width="60%"}
+
+## filter
+
+Pipes are very useful for multi-step operations
+
+```{r}
+#| echo: true
+#| eval: false
+penguins |> filter(bill_length_mm > 40) |> select(species)
+```
+
+. . . 
+
+Compare to 
+
+```{r}
+#| echo: true
+#| eval: false
+select(filter(penguins, bill_length_mm > 40), species)
+```
+
+Piped form reads left to right instead of inside out
+
+## filter
+
+Can use more complex comparisons in `filter`: 
+
+```{r}
+#| echo: true
+#| eval: true
+penguins |> filter(body_mass_g > mean(body_mass_g, na.rm=TRUE))
+```
+
+. . . 
+
+What would happen without `na.rm=TRUE`? 
+
+## filter
+
+Common mistake - using only a single equals sign for equality
+
+```{r}
+#| error: true
+#| echo: true
+penguins |> filter(sex = "female")
+```
+
+## slice functions
+
+The `slice_*` family extend `filter`:
+
+```{r}
+#| echo: true
+penguins |> slice_max(body_mass_g, n=1)
+```
+
+. . . 
+
+Equivalent to: 
+
+```{r}
+#| echo: true
+#| eval: false
+penguins |> filter(body_mass_g == max(body_mass_g, na.rm=TRUE))
+```
+
+## slice functions
+
+Standard slices: 
+
+- `slice_min`
+- `slice_max`
+- `slice_head`
+- `slice_tail`
+
+. . . 
+
+Can specify: 
+
+- `n=` to get top/bottom $n$
+- `prop=` to select a fraction
+
+## filter extensions
+
+`slice_sample`: random subset of your data 
+
+- Useful if exploring a large data set
+
+```{r}
+#| echo: true
+penguins |> slice_sample(n=10)
+```
+
+## Looking Ahead
+
+
+- Selecting Columns ✅ 
+- Selecting Rows ✅ 
+- Transforming Columns
+
+## Learning More
+
+For more, check out 
+[Chapter 3 - "Data Transformation"](https://r4ds.hadley.nz/data-transform#rows) of *`R` for Data Science*
+

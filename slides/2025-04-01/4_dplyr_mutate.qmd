@@ -1,0 +1,256 @@
+---
+topic: "Tidy Column Manipulation"
+---
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(tidyverse)
+library(palmerpenguins)
+```
+
+# {{< meta topic >}}
+
+## Where are We?
+
+::: {style="font-size: 85%;"}
+- `R` Basics
+- Data Visualization
+- `R` Programming
+- [Tidy Data Manipulation]{color="blue"}
+  - [Selecting Rows and Columns]{color="blue"}
+  - Computing Groupwise Summaries
+  - Joining Tables
+  - Reshaping Tables
+- `Python` Basics
+- Web Scraping with `Python`
+
+:::
+
+
+## Goals for this Video
+
+In this video: 
+
+::: incremental
+
+- `mutate` rows to safely transform data
+- Perform conditional transformations
+- Compute running and cumulative statistics
+- Apply simple aggregation and window functions
+
+:::
+
+
+## mutate
+
+So far we have only subsetted our data. Can we create _new_ columns? 
+
+. . . 
+
+```{r}
+#| echo: true
+penguins |> 
+    mutate(body_mass_lb = body_mass_g / 453) |>
+    select(contains("body"))
+```
+
+## mutate
+
+```{r}
+#| echo: true
+#| eval: false
+penguins |> 
+    mutate(body_mass_lb = body_mass_g / 453) |>
+    select(contains("body"))
+```
+
+Similar syntax to `select` and `filter`
+
+. . . 
+
+Put name on the left of the `=`
+
+If you omit a name, unhelpful default: 
+
+```{r}
+#| echo: true
+#| eval: false
+penguins |> mutate(body_mass_g / 453) |> select(contains("body"))
+```
+
+```{r}
+penguins |> mutate(body_mass_g / 453) |> select(contains("body")) |> print(n=3)
+```
+
+## mutate
+
+Can change columns "in place" by careful renaming: 
+
+```{r}
+#| echo: true
+#| eval: true
+penguins |> 
+    select(where(is.character) | where(is.factor)) |>
+    mutate(species = toupper(species)) |>
+    slice_head(n=5)
+```
+
+. . . 
+
+Use this sparingly - destroys 'original' values
+
+
+## mutate
+
+Can do arbitrary vectorized operations and access recently
+created columns:
+
+```{r}
+#| echo: true
+#| eval: false
+penguins |> 
+    select(where(is.numeric)) |>
+    mutate(weight_kg = body_mass_g / 1000,
+           height_m = body_height_mm / 1000, 
+           bmi = weight_kg / height_m^2)
+```
+
+(Sadly, don't actually have height data)
+
+## mutate helpers
+
+`?mutate` lists several helpful functions: 
+
+- `if_else`, `case_when`
+- `cumsum`, `cummean`
+- `lead`, `lag`
+- `min_rank`, `dense_rank`
+
+## Complex Transforms
+
+Use `case_when` for transforms that depend on other values:
+
+```{r}
+#| echo: true
+#| eval: true
+penguins |>
+  mutate(cuteness_level = 
+    case_when(
+        species == "Adelie" ~ "Exceptionally", 
+        species == "Gentoo" ~ "Remarkably",
+        species == "Chinstrap" ~ "Stunningly"
+    )) |>
+  select(species, cuteness_level, body_mass_g) |> 
+  slice_head(n=5)
+```
+
+
+## Complex Transforms
+
+`case_when` specifies a _series_ of tests. First one passed is used: 
+
+```{r}
+#| eval: false
+#| echo: true
+case_when(
+    test1 ~ value1, 
+    test2 ~ value2
+    ...
+)
+```
+
+Use `TRUE` for default values
+
+## Cumulative Stats
+
+The `cum*` family of functions compute cumulative values
+
+- `cummean`
+- `cummax`, `cummin`
+- `cumsum`, `cumprod`
+
+. . . 
+
+These depend on the order of the data
+
+You may want to use `arrange` to order data first
+
+
+## Cumulative Stats
+
+```{r}
+#| echo: true
+penguins |>
+    arrange(body_mass_g) |> # Defaults to increasing; use desc() to reverse
+    mutate(average_mass = cummean(body_mass_g), 
+           number_of_penguins = row_number()) |>
+    select(species, 
+           body_mass_g,
+           average_mass,  
+           number_of_penguins) |>
+    slice_head(n=5)
+```
+
+_Rolling_ statistics are a bit trickier - look into `RcppRoll`
+
+## Ranking
+
+To assign ranks, use the `*_rank` functions: 
+
+```{r}
+#| echo: true
+penguins |>
+    mutate(body_mass_rank = min_rank(body_mass_g)) |>
+    select(contains("body_mass")) |>
+    slice_head(n=5)
+```
+
+- `min_rank` and `dense_rank` differ in treatment of ties
+
+## Ranking
+
+`percent_rank` and `cume_dist` for CDF-type ranking
+
+```{r}
+#| echo: true
+penguins |>
+    mutate(body_mass_pct_rank = round(percent_rank(body_mass_g), 2),
+           body_mass_cdf      = round(cume_dist(body_mass_g), 2)) |>
+    select(contains("body_mass")) |>
+    slice_head(n=5)
+```
+
+CDF: `cume_dist` $\leq$  vs `percent_rank` $<$
+
+## Ranking
+
+Use `ntile` to split data into quartiles, deciles, *etc.*
+
+```{r}
+#| echo: true
+penguins |>
+    mutate(body_mass_decile = ntile(body_mass_g, 10)) |>
+    select(contains("body_mass")) |>
+    slice_head(n=5)
+```
+
+## Looking Ahead
+
+- Selecting Columns ✅ 
+- Selecting Rows ✅ 
+- Transforming Columns ✅ 
+
+. . . 
+
+Now it's your turn!
+
+Time to apply these tools to flights leaving NYC
+
+## Learning More
+
+For more, check out 
+[Chapter 3 - "Data Transformation"](https://r4ds.hadley.nz/data-transform#sec-mutate) 
+of *`R` for Data Science*
+
