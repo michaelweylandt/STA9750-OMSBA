@@ -81,6 +81,7 @@ penguins |> mutate(body_mass_g / 453) |> select(contains("body"))
 ```
 
 ```{r}
+#| echo: false
 penguins |> mutate(body_mass_g / 453) |> select(contains("body")) |> print(n=3)
 ```
 

@@ -59,6 +59,10 @@ Similar syntax to `select`:
 - Data is first (piped) argument
 - Later arguments specify action
 
+. . . 
+
+Instead of names, provide logical tests (filters)
+
 ## filter
 
 Contrast
@@ -135,7 +139,7 @@ penguins |> filter(body_mass_g > mean(body_mass_g, na.rm=TRUE))
 
 . . . 
 
-What would happen without `na.rm=TRUE`? 
+What would happen without `na.rm=TRUE`? Why?
 
 ## filter
 

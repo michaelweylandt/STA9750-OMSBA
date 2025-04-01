@@ -47,6 +47,7 @@ Recall our definition of "tidy" data - everything in its proper place:
 Return of the `palmerpenguins`:
 
 ```{r}
+#| echo: false
 library(palmerpenguins); 
 penguins |> 
     dplyr::select(species, island, bill_length_mm)  |>

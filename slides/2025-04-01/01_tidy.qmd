@@ -11,7 +11,7 @@ topic: "Tidy Data"
 - [`R` Basics]{color="#0000FF"}
   - Variables and "Calculator Math"
   - Vectors
-  - [Data Frames]{color="#000FF"}
+  - [Data Frames]{color="#0000FF"}
 - Data Visualization
 - `R` Programming
 - Data Manipulation
@@ -207,6 +207,9 @@ You will sometimes see `tibble` (`tbl_df`) as a synonym for `data.frame`
 Baruch college business core enrollment:
 
 ```{r}
+#| echo: false
+#| message: false
+#| warning: false
 library(tidyverse)
 D <- tribble(
     ~Semester, ~Course,      ~Enrollment, ~Cap,
@@ -220,6 +223,7 @@ D <- tribble(
 ```
 
 ```{r}
+#| echo: false
 print(D)
 ```
 
@@ -313,11 +317,11 @@ print(D |> select(Semester, Course, Cap), n=3)
 
 . . . 
 
-Untidy! ❌
+[A little bit] Untidy! ❌
 
 . . . 
 
-Data spread across multiple columns
+Data spread across multiple tables
 
 # Wrap-Up
 
