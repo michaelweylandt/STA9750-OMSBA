@@ -26,17 +26,17 @@ build_md_link <- function(file){
   if(is.null(topic)){
       return(NULL)
   } else {
+      browser()
       html <- file |> 
-          str_replace("slides/", "./") |>
           str_replace("qmd", "html")
-      glue("- [{topic}](./slides/{html}){{target='_blank'}}\n")
+      glue("- [{topic}](./{html}){{target='_blank'}}\n")
   }
 }
 
-map(SLIDE_FILES, build_md_link) |> 
-    discard(is.null) |> 
-    list_c() |>
+SLIDE_FILES |>
     sort() |>
+    map(build_md_link) |> 
+    discard(is.null) |> 
     walk(cat, sep="\n")
 ```
 

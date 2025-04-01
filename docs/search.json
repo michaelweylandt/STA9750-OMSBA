@@ -249,7 +249,7 @@
     "href": "slides.html",
     "title": "STA 9750 - OSMBA - Slides",
     "section": "",
-    "text": "This site hosts the following slides:\n\nTidy Column Manipulation\nTidy Column Selection\nTidy Data\nTidy Row Selection\n\nMore will be added later."
+    "text": "This site hosts the following slides:\nCalled from: .f(.x[[i]], …) debug: html &lt;- str_replace(file, “qmd”, “html”) debug: glue(“- {topic}{{target=’_blank’}}“) Called from: .f(.x[[i]], …) debug: html &lt;- str_replace(file,”qmd”, “html”) debug: glue(“- {topic}{{target=’_blank’}}“) Called from: .f(.x[[i]], …) debug: html &lt;- str_replace(file,”qmd”, “html”) debug: glue(“- {topic}{{target=’_blank’}}“) Called from: .f(.x[[i]], …) debug: html &lt;- str_replace(file,”qmd”, “html”) debug: glue(“- {topic}{{target=’_blank’}}“) - Tidy Data - Tidy Column Selection - Tidy Row Selection - Tidy Column Manipulation\nMore will be added later."
   },
   {
     "objectID": "slides/2025-04-01/02_dplyr_select.html#where-are-we",

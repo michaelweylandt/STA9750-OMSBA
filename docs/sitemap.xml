@@ -38,7 +38,7 @@
   </url>
   <url>
     <loc>https://michael-weylandt.com/STA9750-OMSBA/slides.html</loc>
-    <lastmod>2025-03-31T21:38:15.420Z</lastmod>
+    <lastmod>2025-04-01T02:27:57.890Z</lastmod>
   </url>
   <url>
     <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-01/02_dplyr_select.html</loc>
@@ -63,5 +63,21 @@
   <url>
     <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-05-06/12_python_packages.html</loc>
     <lastmod>2025-04-01T02:16:00.980Z</lastmod>
+  </url>
+  <url>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-22/08_tidyr_pivot.html</loc>
+    <lastmod>2025-04-01T02:15:02.103Z</lastmod>
+  </url>
+  <url>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-22/06_dplyr_summarize.html</loc>
+    <lastmod>2025-04-01T02:15:02.103Z</lastmod>
+  </url>
+  <url>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-22/05_dplyr_groupby.html</loc>
+    <lastmod>2025-04-01T02:15:02.103Z</lastmod>
+  </url>
+  <url>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-22/07_dplyr_join.html</loc>
+    <lastmod>2025-04-01T02:15:02.103Z</lastmod>
   </url>
 </urlset>
