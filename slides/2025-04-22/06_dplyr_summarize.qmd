@@ -35,14 +35,205 @@ In this video:
 
 ::: incremental
 
-- 
-- 
-- 
-- 
+- Combine multiple rows using `summarize`
+- Compute overall and group-wise summary statistics
 
 :::
 
+## group_by
+
+You have already seen `group_by` modify the operation of 'aggregation' functions: 
+
+- `min`, `max`
+- `mean`, `sum`, 
+- `ntile`
+
+*etc*
+
+. . . 
+
+No reduction in data complexity unless combined with `filter`
+
+## group_by + summarize
+
+Combine `group_by` and `summarize` to compute _summary statistics_
+
+```{r}
+penguins |> 
+    group_by(species) |> 
+    summarize(avg_mass = mean(body_mass_g, na.rm=TRUE))
+```
+
+. . . 
+
+Unlike `filter`, these are _new rows_: 
+
+- One row summarizing each group
+- Not a subset of old rows
+
+## group_by + summarize
+
+```{r}
+penguins |> 
+    group_by(species) |> 
+    summarize(avg_mass = mean(body_mass_g, na.rm=TRUE))
+```
+
+What happened to other features (e.g., `flipper_length_mm`)? 
+
+. . . 
+
+`summarize` only keeps: 
+
+1) Grouping variables (`species`)
+2) Created variables (`avg_mass`)
+
+All other data is dropped
+
+## group_by + summarize
+
+Can perform multiple summaries at once:
+
+```{r}
+penguins |> 
+    group_by(species) |> 
+    summarize(avg_mass = mean(body_mass_g, na.rm=TRUE), 
+              sd_mass = sd(body_mass_g, na.rm=TRUE))
+```
+
+Important to do all summaries in one call
+
+## summarize helpers
+
+The `n()` function will count the number of rows in a group
+ 
+```{r}
+penguins |> 
+    group_by(species) |> 
+    summarize(mass_avg = mean(body_mass_g, na.rm=TRUE), 
+              mass_sd = sd(body_mass_g, na.rm=TRUE), 
+              n = n(), 
+              mass_se = mass_sd / sqrt(n))
+```
+
+## summarize helpers
+
+`cur_group()` returns the current group name
+
+```{r}
+penguins |> 
+    group_by(species) |> 
+    summarize(mass_avg = mean(body_mass_g, na.rm=TRUE), 
+              mass_sd = sd(body_mass_g, na.rm=TRUE), 
+              n = n(), 
+              mass_se = mass_sd / sqrt(n), 
+              species_cap = toupper(cur_group()))
+```
+
+Can also use `species` directly
+
+## summarize removes grouping
+
+`summarize` removes the _last_ level of grouping
+
+```{r}
+penguins |> 
+    group_by(species) |> 
+    summarize(mass_avg = mean(body_mass_g, na.rm=TRUE))
+```
+
+No grouping remains
+
+
+## summarize removes grouping
+
+`summarize` removes the _last_ level of grouping
+
+```{r}
+penguins |> 
+    group_by(species, sex) |> 
+    summarize(mass_avg = mean(body_mass_g, na.rm=TRUE))
+```
+
+Grouping by `species` still active
+
+## summarize removes grouping
+
+Advice: 
+
+- `group_by` should be as close to `summarize` as possible
+- `ungroup` and re-`group_by` defensively
+
+## summarize column names
+
+Like `mutate`, you should always give `summarize` column names
+
+Defaults are unhelpful: 
+
+```{r}
+penguins |> 
+    group_by(species) |>
+    summarize(sd(body_mass_g, na.rm=TRUE))
+```
+
+## summarize multiple columns
+
+Remember the selection helpers from `select`
+
+```{r}
+penguins |> 
+    select(where(is.numeric))
+```
+
+## summarize multiple columns
+
+Can be used inside `summarize` as well
+
+```{r}
+safe_mean <- function(x) mean(x, na.rm=TRUE)
+penguins |> 
+    group_by(species) |>
+    summarize(across(where(is.numeric), safe_mean))
+```
+
+## summarize without group_by
+
+Without `group_by`, `summarize` takes summaries of the entire data set: 
+
+```{r}
+penguins |> 
+    summarize(n=n(), 
+              across(where(is.numeric), safe_mean))
+```
+
+## summarize and group_by
+
+`summarize` computes _summary statistics_ of a population
+
+- means, standard deviations, counts, *etc.*
+
+`group_by` changes these to _conditional summary statistics_
+
+- *E.g.*, mean of body mass, conditional on `adelie` species
+
+. . . 
+
+Many steps of real data analysis fits this pattern
+
+If you dive deeper into split-apply-combine, can determine
+group-wise models as well (e.g., different trends for
+different groups)
 
 ## Looking Ahead
 
+- Apply Grouped Operations ✅ 
+- Summarize Across Multiple Rows ✅ 
+- Join Multiple Tables
+- Reshape Tables with `pivot` Operations
+
 ## Learning More
+
+
+For more, check out 
+[Sections 3.5-3.6 - "Groups"](https://r4ds.hadley.nz/data-transform.html#groups) 
+of *`R` for Data Science*

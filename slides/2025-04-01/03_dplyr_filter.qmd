@@ -181,12 +181,12 @@ Standard slices:
 
 . . . 
 
-Can specify: 
+Specify one of: 
 
 - `n=` to get top/bottom $n$
 - `prop=` to select a fraction
 
-## filter extensions
+## slice functions
 
 `slice_sample`: random subset of your data 
 

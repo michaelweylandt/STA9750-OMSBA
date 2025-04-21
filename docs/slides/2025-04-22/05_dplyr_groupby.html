@@ -27,6 +27,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-7178ceb0ddec93948d1ae946e30bd356.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -161,18 +226,378 @@
 <p>In this video:</p>
 <div>
 <ul>
-<li class="fragment"></li>
-<li class="fragment"></li>
-<li class="fragment"></li>
-<li class="fragment"></li>
+<li class="fragment">Understand “grouped” <code>dplyr</code> operations</li>
+<li class="fragment">Use nested/compound group structures</li>
+<li class="fragment">Apply <code>rowwise()</code> operations</li>
 </ul>
+</div>
+</section>
+<section id="group_by" class="slide level2">
+<h2>group_by</h2>
+<p>So far, we have applied <em>vectorized</em> operations to <code>data.frame</code>s:</p>
+<ul>
+<li><code>select</code>: Keep and drop columns</li>
+<li><code>mutate</code>: Create new columns</li>
+<li><code>filter</code>: Keep and drop rows</li>
+</ul>
+<div class="fragment">
+<p>For each of these, we have operated on the <em>whole</em> data set</p>
+<p>Often, we instead want to operate on <em>chunks</em> of the data at a time</p>
+</div>
+</section>
+<section id="group_by-1" class="slide level2">
+<h2>group_by</h2>
+<p>Recall our penguins:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>penguins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 3
+  species bill_length_mm body_mass_g
+  &lt;fct&gt;            &lt;dbl&gt;       &lt;int&gt;
+1 Adelie            39.1        3750
+2 Adelie            39.5        3800
+3 Adelie            40.3        3250
+# ℹ 341 more rows</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>Heaviest penguin:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">slice_max</span>(body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  species bill_length_mm body_mass_g
+  &lt;fct&gt;            &lt;dbl&gt;       &lt;int&gt;
+1 Gentoo            49.2        6300</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="group_by-2" class="slide level2">
+<h2>group_by</h2>
+<p>How can we get the <em>heaviest</em> penguin <em>of each species</em>?</p>
+<div class="fragment">
+<p>Conceptually:</p>
+<ul>
+<li>Split the data into three groups</li>
+<li>Apply <code>slice_max</code> to each group separately</li>
+<li>Combine the three rows back together</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Sometimes called the <em>split-apply-combine</em> paradigm</p>
+</div>
+</section>
+<section id="group_by-3" class="slide level2">
+<h2>group_by</h2>
+<p>Implemented using the <code>group_by</code> <em>adverb</em></p>
+<ul>
+<li>Doesn’t do anything on its own</li>
+<li>Changes the behavior of other functions</li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> <span class="fu">slice_max</span>(body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 8
+# Groups:   species [3]
+  species   island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+  &lt;fct&gt;     &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+1 Adelie    Biscoe           43.2          19                 197        4775
+2 Chinstrap Dream            52            20.7               210        4800
+3 Gentoo    Biscoe           49.2          15.2               221        6300
+# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="looking-closer" class="slide level2">
+<h2>Looking Closer</h2>
+<p>Let’s take this step-by-step</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">group_by</span>(species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 8
+# Groups:   species [3]
+   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+ 1 Adelie  Torgersen           39.1          18.7               181        3750
+ 2 Adelie  Torgersen           39.5          17.4               186        3800
+ 3 Adelie  Torgersen           40.3          18                 195        3250
+ 4 Adelie  Torgersen           NA            NA                  NA          NA
+ 5 Adelie  Torgersen           36.7          19.3               193        3450
+ 6 Adelie  Torgersen           39.3          20.6               190        3650
+ 7 Adelie  Torgersen           38.9          17.8               181        3625
+ 8 Adelie  Torgersen           39.2          19.6               195        4675
+ 9 Adelie  Torgersen           34.1          18.1               193        3475
+10 Adelie  Torgersen           42            20.2               190        4250
+# ℹ 334 more rows
+# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+</div>
+</div>
+<p>Same data as before, but here <code># Groups: species[3]</code></p>
+</section>
+<section id="effects-of-group_by" class="slide level2">
+<h2>Effects of group_by</h2>
+<p><code>group_by</code> changes behavior of <em>aggregating</em> functions:</p>
+<ul>
+<li><code>min()</code>, <code>max()</code>, <code>n()</code>, <code>sum()</code>, <code>prod()</code>, <em>etc.</em></li>
+</ul>
+<p>Many other operations use these internally</p>
+</section>
+<section id="effects-of-group_by-1" class="slide level2">
+<h2>Effects of group_by</h2>
+<p>Recall</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">slice_max</span>(body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>is equivalent to:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">filter</span>(body_mass_g <span class="sc">==</span> <span class="fu">max</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>or even</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a></a>    <span class="fu">mutate</span>(<span class="at">mass_max =</span> <span class="fu">max</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
+<span id="cb11-3"><a></a>    <span class="fu">filter</span>(body_mass_g <span class="sc">==</span> mass_max)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="effects-of-group_by-2" class="slide level2">
+<h2>Effects of group_by</h2>
+<p>Looking at the first step</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a></a>    <span class="fu">mutate</span>(<span class="at">mass_max =</span> <span class="fu">max</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 3
+  species body_mass_g mass_max
+  &lt;fct&gt;         &lt;int&gt;    &lt;int&gt;
+1 Adelie         3750     6300
+2 Adelie         3800     6300
+3 Adelie         3250     6300
+# ℹ 341 more rows</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>With <code>group_by</code>, a different <code>max</code> for each group</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a></a>    <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span></span>
+<span id="cb14-3"><a></a>    <span class="fu">mutate</span>(<span class="at">mass_max =</span> <span class="fu">max</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 3
+# Groups:   species [3]
+  species body_mass_g mass_max
+  &lt;fct&gt;         &lt;int&gt;    &lt;int&gt;
+1 Adelie         3750     4775
+2 Adelie         3800     4775
+3 Adelie         3250     4775
+# ℹ 341 more rows</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="effects-of-group_by-3" class="slide level2">
+<h2>Effects of group_by</h2>
+<p>Hence,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a></a>    <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span></span>
+<span id="cb16-3"><a></a>    <span class="fu">mutate</span>(<span class="at">mass_max =</span> <span class="fu">max</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
+<span id="cb16-4"><a></a>    <span class="fu">filter</span>(body_mass_g <span class="sc">==</span> mass_max)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> <span class="fu">slice_max</span>(body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 8
+# Groups:   species [3]
+  species   island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+  &lt;fct&gt;     &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+1 Adelie    Biscoe           43.2          19                 197        4775
+2 Chinstrap Dream            52            20.7               210        4800
+3 Gentoo    Biscoe           49.2          15.2               221        6300
+# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+</div>
+</div>
+<p>gives a 3 row answer (one per group)</p>
+</section>
+<section id="effects-of-group_by-4" class="slide level2">
+<h2>Effects of group_by</h2>
+<p>Operations do not have to select only a single row like <code>slice_max</code></p>
+<div class="fragment">
+<p>To get “above average” penguins for each species</p>
+</div>
+</section>
+<section id="compound-grouping" class="slide level2">
+<h2>Compound Grouping</h2>
+<p>Can apply <code>group_by</code> to create “compound” groups</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">group_by</span>(species, year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 8
+# Groups:   species, year [9]
+   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+ 1 Adelie  Torgersen           39.1          18.7               181        3750
+ 2 Adelie  Torgersen           39.5          17.4               186        3800
+ 3 Adelie  Torgersen           40.3          18                 195        3250
+ 4 Adelie  Torgersen           NA            NA                  NA          NA
+ 5 Adelie  Torgersen           36.7          19.3               193        3450
+ 6 Adelie  Torgersen           39.3          20.6               190        3650
+ 7 Adelie  Torgersen           38.9          17.8               181        3625
+ 8 Adelie  Torgersen           39.2          19.6               195        4675
+ 9 Adelie  Torgersen           34.1          18.1               193        3475
+10 Adelie  Torgersen           42            20.2               190        4250
+# ℹ 334 more rows
+# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+</div>
+</div>
+<p><span class="math inline">\(9 = 3 \times 3\)</span> groups</p>
+</section>
+<section id="compound-grouping-1" class="slide level2">
+<h2>Compound Grouping</h2>
+<p>Grouped operations apply as before:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a></a>    <span class="fu">group_by</span>(species, year) <span class="sc">|&gt;</span> </span>
+<span id="cb21-3"><a></a>    <span class="fu">slice_max</span>(body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 8
+# Groups:   species, year [9]
+  species   island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+  &lt;fct&gt;     &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+1 Adelie    Torgersen           39.2          19.6               195        4675
+2 Adelie    Torgersen           42.9          17.6               196        4700
+3 Adelie    Biscoe              43.2          19                 197        4775
+4 Chinstrap Dream               49.2          18.2               195        4400
+5 Chinstrap Dream               52            20.7               210        4800
+6 Chinstrap Dream               50.8          18.5               201        4450
+7 Gentoo    Biscoe              49.2          15.2               221        6300
+8 Gentoo    Biscoe              51.1          16.3               220        6000
+9 Gentoo    Biscoe              48.8          16.2               222        6000
+# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="compound-grouping-2" class="slide level2">
+<h2>Compound Grouping</h2>
+<p>Missing ‘combinations’ automatically dropped:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a></a>    <span class="fu">group_by</span>(species, island) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 4
+# Groups:   species, island [5]
+   species island    body_mass_g sex   
+   &lt;fct&gt;   &lt;fct&gt;           &lt;int&gt; &lt;fct&gt; 
+ 1 Adelie  Torgersen        3750 male  
+ 2 Adelie  Torgersen        3800 female
+ 3 Adelie  Torgersen        3250 female
+ 4 Adelie  Torgersen          NA &lt;NA&gt;  
+ 5 Adelie  Torgersen        3450 female
+ 6 Adelie  Torgersen        3650 male  
+ 7 Adelie  Torgersen        3625 female
+ 8 Adelie  Torgersen        4675 male  
+ 9 Adelie  Torgersen        3475 &lt;NA&gt;  
+10 Adelie  Torgersen        4250 &lt;NA&gt;  
+# ℹ 334 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="stopping-grouped-operations" class="slide level2">
+<h2>Stopping grouped operations</h2>
+<p>Once you are done with grouped operations, <code>ungroup</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a></a>    <span class="fu">group_by</span>(species, island) <span class="sc">|&gt;</span></span>
+<span id="cb25-3"><a></a>    <span class="fu">slice_max</span>(body_mass_g) <span class="sc">|&gt;</span></span>
+<span id="cb25-4"><a></a>    <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 8
+  species   island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+  &lt;fct&gt;     &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+1 Adelie    Biscoe              43.2          19                 197        4775
+2 Adelie    Dream               39.8          19.1               184        4650
+3 Adelie    Torgersen           42.9          17.6               196        4700
+4 Chinstrap Dream               52            20.7               210        4800
+5 Gentoo    Biscoe              49.2          15.2               221        6300
+# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="grouping-on-numeric-variables" class="slide level2">
+<h2>Grouping on Numeric Variables</h2>
+<p>In general, grouping on continuous variables is a bad choice:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 8
+# Groups:   body_mass_g [95]
+   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+ 1 Adelie  Torgersen           39.1          18.7               181        3750
+ 2 Adelie  Torgersen           39.5          17.4               186        3800
+ 3 Adelie  Torgersen           40.3          18                 195        3250
+ 4 Adelie  Torgersen           NA            NA                  NA          NA
+ 5 Adelie  Torgersen           36.7          19.3               193        3450
+ 6 Adelie  Torgersen           39.3          20.6               190        3650
+ 7 Adelie  Torgersen           38.9          17.8               181        3625
+ 8 Adelie  Torgersen           39.2          19.6               195        4675
+ 9 Adelie  Torgersen           34.1          18.1               193        3475
+10 Adelie  Torgersen           42            20.2               190        4250
+# ℹ 334 more rows
+# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+</div>
+</div>
+<p>(Analogy: Checking <em>exact equality</em> of continuous random variables)</p>
+</section>
+<section id="grouping-on-numeric-variables-1" class="slide level2">
+<h2>Grouping on Numeric Variables</h2>
+<p>Better choices:</p>
+<ul>
+<li>Group on quantiles (<code>ntile</code>) or cut points (<code>cut</code>)</li>
+</ul>
+</section>
+<section id="rowwise-operations" class="slide level2">
+<h2>rowwise Operations</h2>
+<p><em>Rarely</em>, you may need to apply an operation to each row separately without vectorization</p>
+<p><code>rowwise</code> lets you do so - makes each row its own group</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 4
+# Rowwise: 
+  sex    island    flipper_length_mm body_mass_g
+  &lt;fct&gt;  &lt;fct&gt;                 &lt;int&gt;       &lt;int&gt;
+1 male   Torgersen               181        3750
+2 female Torgersen               186        3800
+# ℹ 342 more rows</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>Note: This is a bit dangerous - vectorization is important for data integrity</p>
 </div>
 </section>
 <section id="looking-ahead" class="slide level2">
 <h2>Looking Ahead</h2>
+<ul>
+<li>Apply Grouped Operations ✅</li>
+<li>Summarize Across Multiple Rows</li>
+<li>Join Multiple Tables</li>
+<li>Reshape Tables with <code>pivot</code> Operations</li>
+</ul>
 </section>
 <section id="learning-more" class="slide level2">
 <h2>Learning More</h2>
+<p>For more, check out <a href="https://r4ds.hadley.nz/data-transform.html#groups">Sections 3.5-3.6 - “Groups”</a> of <em><code>R</code> for Data Science</em></p>
 
 
 </section></section>

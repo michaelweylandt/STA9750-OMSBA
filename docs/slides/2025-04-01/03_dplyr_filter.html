@@ -361,15 +361,15 @@
 <li><code>slice_tail</code></li>
 </ul>
 <div class="fragment">
-<p>Can specify:</p>
+<p>Specify one of:</p>
 <ul>
 <li><code>n=</code> to get top/bottom <span class="math inline">\(n\)</span></li>
 <li><code>prop=</code> to select a fraction</li>
 </ul>
 </div>
 </section>
-<section id="filter-extensions" class="slide level2">
-<h2>filter extensions</h2>
+<section id="slice-functions-2" class="slide level2">
+<h2>slice functions</h2>
 <p><code>slice_sample</code>: random subset of your data</p>
 <ul>
 <li>Useful if exploring a large data set</li>
@@ -380,16 +380,16 @@
 <pre><code># A tibble: 10 × 8
    species   island   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
    &lt;fct&gt;     &lt;fct&gt;             &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
- 1 Adelie    Biscoe             39.7          18.9               184        3550
- 2 Chinstrap Dream              51.9          19.5               206        3950
- 3 Chinstrap Dream              50.6          19.4               193        3800
- 4 Adelie    Torgers…           38.6          17                 188        2900
- 5 Adelie    Dream              37.6          19.3               181        3300
- 6 Chinstrap Dream              54.2          20.8               201        4300
- 7 Gentoo    Biscoe             48.5          14.1               220        5300
- 8 Gentoo    Biscoe             51.5          16.3               230        5500
- 9 Adelie    Torgers…           35.2          15.9               186        3050
-10 Adelie    Biscoe             38.1          16.5               198        3825
+ 1 Adelie    Torgers…           39.2          19.6               195        4675
+ 2 Adelie    Dream              37.5          18.9               179        2975
+ 3 Adelie    Torgers…           39.3          20.6               190        3650
+ 4 Chinstrap Dream              47.6          18.3               195        3850
+ 5 Adelie    Biscoe             36.5          16.6               181        2850
+ 6 Gentoo    Biscoe             49.1          15                 228        5500
+ 7 Gentoo    Biscoe             44.5          14.7               214        4850
+ 8 Gentoo    Biscoe             44            13.6               208        4350
+ 9 Gentoo    Biscoe             47.7          15                 216        4750
+10 Gentoo    Biscoe             41.7          14.7               210        4700
 # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 </div>
 </div>

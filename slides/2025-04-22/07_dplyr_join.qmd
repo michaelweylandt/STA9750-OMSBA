@@ -35,14 +35,23 @@ In this video:
 
 ::: incremental
 
-- 
-- 
-- 
-- 
+- Identify suitable _keys_ 
+- Understand different types of `join` operators
+- Specify columns to be used in joins
 
 :::
 
 
 ## Looking Ahead
 
+- Apply Grouped Operations ✅ 
+- Summarize Across Multiple Rows ✅ 
+- Join Multiple Tables ✅ 
+- Reshape Tables with `pivot` Operations
+
 ## Learning More
+
+For more, check out 
+[Chapter 19 - "Joins"](https://r4ds.hadley.nz/joins.html) 
+of *`R` for Data Science*
+

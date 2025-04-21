@@ -45,4 +45,14 @@ In this video:
 
 ## Looking Ahead
 
+- Apply Grouped Operations ✅ 
+- Summarize Across Multiple Rows ✅ 
+- Join Multiple Tables ✅ 
+- Reshape Tables with `pivot` Operations ✅ 
+
 ## Learning More
+
+For more, check out 
+[Chapter 5 - "Tidying"](https://r4ds.hadley.nz/data-tidy.html) 
+of *`R` for Data Science*
+
