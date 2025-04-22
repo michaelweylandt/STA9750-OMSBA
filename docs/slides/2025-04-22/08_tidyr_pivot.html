@@ -27,6 +27,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-7178ceb0ddec93948d1ae946e30bd356.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -134,7 +199,7 @@
 </section>
 <section>
 <section id="section" class="title-slide slide level1 center">
-<h1>Summarizing Group Statistics</h1>
+<h1>Reshaping Tidy Data</h1>
 
 </section>
 <section id="where-are-we" class="slide level2">
@@ -147,9 +212,9 @@
 <li><span style="color: blue;">Tidy Data Manipulation</span>
 <ul>
 <li>Selecting Rows and Columns</li>
-<li><span style="color: blue;">Computing Groupwise Summaries</span></li>
+<li>Computing Groupwise Summaries</li>
 <li>Joining Tables</li>
-<li>Reshaping Tables</li>
+<li><span style="color: blue;">Reshaping Tables</span></li>
 </ul></li>
 <li><code>python</code> Basics</li>
 <li>Web Scraping with <code>python</code></li>
@@ -161,243 +226,156 @@
 <p>In this video:</p>
 <div>
 <ul>
-<li class="fragment">Combine multiple rows using <code>summarize</code></li>
-<li class="fragment">Compute overall and group-wise summary statistics</li>
+<li class="fragment">Identify wide and long format data</li>
+<li class="fragment">Pivot data from wide to long format</li>
+<li class="fragment">Pivot data from long to wide format</li>
 </ul>
 </div>
 </section>
-<section id="group_by" class="slide level2">
-<h2>group_by</h2>
-<p>You have already seen <code>group_by</code> modify the operation of ‘aggregation’ functions:</p>
-<ul>
-<li><code>min</code>, <code>max</code></li>
-<li><code>mean</code>, <code>sum</code>,</li>
-<li><code>ntile</code></li>
-</ul>
-<p><em>etc</em></p>
+<section id="tidy-data" class="slide level2">
+<h2>Tidy Data</h2>
+<p>Recall our Baruch enrollment example of tidy data ✅</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  Semester Course     Enrollment   Cap
+  &lt;chr&gt;    &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;
+1 Fall     Accounting        200   250
+2 Fall     Law               100   125
+3 Fall     Statistics        200   200
+4 Spring   Accounting        300   350
+5 Spring   Law                50   100
+6 Spring   Statistics        400   400</code></pre>
+</div>
+</div>
+</section>
+<section id="tidy-data-1" class="slide level2">
+<h2>Tidy Data</h2>
+<p>We can plot this</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">ggplot</span>(D, <span class="fu">aes</span>(<span class="at">x=</span>Semester, <span class="at">y=</span>Enrollment, <span class="at">color=</span>Course)) <span class="sc">+</span></span>
+<span id="cb2-2"><a></a>    <span class="fu">geom_jitter</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="08_tidyr_pivot_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="tidy-data-2" class="slide level2">
+<h2>Tidy Data</h2>
+<p>Not easy to plot both <code>Enrollment</code> and <code>Cap</code> columns</p>
 <div class="fragment">
-<p>No reduction in data complexity unless combined with <code>filter</code></p>
-</div>
-</section>
-<section id="group_by-summarize" class="slide level2">
-<h2>group_by + summarize</h2>
-<p>Combine <code>group_by</code> and <code>summarize</code> to compute <em>summary statistics</em></p>
+<p>Need data in this “untidy” format</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 2
-  species   avg_mass
-  &lt;fct&gt;        &lt;dbl&gt;
-1 Adelie       3701.
-2 Chinstrap    3733.
-3 Gentoo       5076.</code></pre>
+<pre><code># A tibble: 12 × 4
+   Semester Course     Number Type      
+   &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;     
+ 1 Fall     Accounting    200 Enrollment
+ 2 Fall     Accounting    250 Cap       
+ 3 Fall     Law           100 Enrollment
+ 4 Fall     Law           125 Cap       
+ 5 Fall     Statistics    200 Enrollment
+ 6 Fall     Statistics    200 Cap       
+ 7 Spring   Accounting    300 Enrollment
+ 8 Spring   Accounting    350 Cap       
+ 9 Spring   Law            50 Enrollment
+10 Spring   Law           100 Cap       
+11 Spring   Statistics    400 Enrollment
+12 Spring   Statistics    400 Cap       </code></pre>
 </div>
 </div>
-<div class="fragment">
-<p>Unlike <code>filter</code>, these are <em>new rows</em>:</p>
+</div>
+</section>
+<section id="tidy-data-3" class="slide level2">
+<h2>Tidy Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(D2, <span class="fu">aes</span>(<span class="at">x=</span>Semester, <span class="at">y=</span>Number, <span class="at">shape=</span>Type, <span class="at">color=</span>Course)) <span class="sc">+</span></span>
+<span id="cb4-2"><a></a>    <span class="fu">geom_jitter</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="08_tidyr_pivot_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="wide-and-long-data" class="slide level2">
+<h2>Wide and Long Data</h2>
+<p>We switched from a “wide” format to a “long” format</p>
 <ul>
-<li>One row summarizing each group</li>
-<li>Not a subset of old rows</li>
-</ul>
-</div>
-</section>
-<section id="group_by-summarize-1" class="slide level2">
-<h2>group_by + summarize</h2>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 2
-  species   avg_mass
-  &lt;fct&gt;        &lt;dbl&gt;
-1 Adelie       3701.
-2 Chinstrap    3733.
-3 Gentoo       5076.</code></pre>
-</div>
-</div>
-<p>What happened to other features (e.g., <code>flipper_length_mm</code>)?</p>
-<div class="fragment">
-<p><code>summarize</code> only keeps:</p>
-<ol type="1">
-<li>Grouping variables (<code>species</code>)</li>
-<li>Created variables (<code>avg_mass</code>)</li>
-</ol>
-<p>All other data is dropped</p>
-</div>
-</section>
-<section id="group_by-summarize-2" class="slide level2">
-<h2>group_by + summarize</h2>
-<p>Can perform multiple summaries at once:</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-  species   avg_mass sd_mass
-  &lt;fct&gt;        &lt;dbl&gt;   &lt;dbl&gt;
-1 Adelie       3701.    459.
-2 Chinstrap    3733.    384.
-3 Gentoo       5076.    504.</code></pre>
-</div>
-</div>
-<p>Important to do all summaries in one call</p>
-</section>
-<section id="summarize-helpers" class="slide level2">
-<h2>summarize helpers</h2>
-<p>The <code>n()</code> function will count the number of rows in a group</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 5
-  species   mass_avg mass_sd     n mass_se
-  &lt;fct&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;
-1 Adelie       3701.    459.   152    37.2
-2 Chinstrap    3733.    384.    68    46.6
-3 Gentoo       5076.    504.   124    45.3</code></pre>
-</div>
-</div>
-</section>
-<section id="summarize-helpers-1" class="slide level2">
-<h2>summarize helpers</h2>
-<p><code>cur_group()</code> returns the current group name</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 6
-  species   mass_avg mass_sd     n mass_se species_cap
-  &lt;fct&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;      
-1 Adelie       3701.    459.   152    37.2 1          
-2 Chinstrap    3733.    384.    68    46.6 2          
-3 Gentoo       5076.    504.   124    45.3 3          </code></pre>
-</div>
-</div>
-<p>Can also use <code>species</code> directly</p>
-</section>
-<section id="removes-grouping" class="slide level2">
-<h2>Removes grouping</h2>
-<p><code>summarize</code> removes the <em>last</em> level of grouping</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 2
-  species   mass_avg
-  &lt;fct&gt;        &lt;dbl&gt;
-1 Adelie       3701.
-2 Chinstrap    3733.
-3 Gentoo       5076.</code></pre>
-</div>
-</div>
-<p>No grouping remains</p>
-</section>
-<section id="removes-grouping-1" class="slide level2">
-<h2>Removes grouping</h2>
-<p><code>summarize</code> removes the <em>last</em> level of grouping</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 3
-# Groups:   species [3]
-  species   sex    mass_avg
-  &lt;fct&gt;     &lt;fct&gt;     &lt;dbl&gt;
-1 Adelie    female    3369.
-2 Adelie    male      4043.
-3 Adelie    &lt;NA&gt;      3540 
-4 Chinstrap female    3527.
-5 Chinstrap male      3939.
-# ℹ 3 more rows</code></pre>
-</div>
-</div>
-<p>Grouping by <code>species</code> still active</p>
-</section>
-<section id="removes-grouping-2" class="slide level2">
-<h2>Removes grouping</h2>
-<p>Advice:</p>
-<ul>
-<li><code>group_by</code> should be as close to <code>summarize</code> as possible</li>
-<li><code>ungroup</code> and re-<code>group_by</code> defensively</li>
+<li>Not absolute terms, relative to each other</li>
+<li>Wide has more columns (tidier), long is easier for certain plots</li>
 </ul>
 </section>
-<section id="column-names" class="slide level2">
-<h2>Column names</h2>
-<p>Like <code>mutate</code>, you should always give <code>summarize</code> column names</p>
-<p>Defaults are unhelpful:</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 2
-  species   `sd(body_mass_g, na.rm = TRUE)`
-  &lt;fct&gt;                               &lt;dbl&gt;
-1 Adelie                               459.
-2 Chinstrap                            384.
-3 Gentoo                               504.</code></pre>
-</div>
-</div>
-</section>
-<section id="multiple-columns" class="slide level2">
-<h2>Multiple columns</h2>
-<p>Remember the selection helpers from <code>select</code></p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 344 × 5
-   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year
-            &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt; &lt;int&gt;
- 1           39.1          18.7               181        3750  2007
- 2           39.5          17.4               186        3800  2007
- 3           40.3          18                 195        3250  2007
- 4           NA            NA                  NA          NA  2007
- 5           36.7          19.3               193        3450  2007
- 6           39.3          20.6               190        3650  2007
- 7           38.9          17.8               181        3625  2007
- 8           39.2          19.6               195        4675  2007
- 9           34.1          18.1               193        3475  2007
-10           42            20.2               190        4250  2007
-# ℹ 334 more rows</code></pre>
-</div>
-</div>
-</section>
-<section id="multiple-columns-1" class="slide level2">
-<h2>Multiple columns</h2>
-<p>Can be used inside <code>summarize</code> as well</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 6
-  species   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year
-  &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
-1 Adelie              38.8          18.3              190.       3701. 2008.
-2 Chinstrap           48.8          18.4              196.       3733. 2008.
-3 Gentoo              47.5          15.0              217.       5076. 2008.</code></pre>
-</div>
-</div>
-</section>
-<section id="without-group_by" class="slide level2">
-<h2>Without group_by</h2>
-<p>Without <code>group_by</code>, <code>summarize</code> takes summaries of the entire data set:</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 6
-      n bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year
-  &lt;dbl&gt;          &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
-1   344           43.9          17.2              201.       4202. 2008.</code></pre>
-</div>
-</div>
-</section>
-<section id="summarize-and-group_by" class="slide level2">
-<h2>summarize and group_by</h2>
-<p><code>summarize</code> computes <em>summary statistics</em> of a population</p>
+<section id="pivots" class="slide level2">
+<h2>Pivots</h2>
+<p><code>pivot</code> operations can be used to switch between formats</p>
 <ul>
-<li>means, standard deviations, counts, <em>etc.</em></li>
+<li><code>pivot_longer</code> combine columns</li>
+<li><code>pivot_wider</code> split a column</li>
 </ul>
-<p><code>group_by</code> changes these to <em>conditional summary statistics</em></p>
-<ul>
-<li><em>E.g.</em>, mean of body mass, conditional on <code>adelie</code> species</li>
-</ul>
-<div class="fragment">
-<p>Many steps of real data analysis fits this pattern</p>
-<p>If you dive deeper into split-apply-combine, can determine group-wise models as well (e.g., different trends for different groups)</p>
+<p>Syntax is hard to remember - use <code>?pivot_wider</code> and <code>?pivot_longer</code> for examples</p>
+</section>
+<section id="wide-to-long" class="slide level2">
+<h2>Wide to Long</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 4
+  Semester Course     Type       Number
+  &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;       &lt;dbl&gt;
+1 Fall     Accounting Enrollment    200
+2 Fall     Accounting Cap           250
+3 Fall     Law        Enrollment    100
+# ℹ 9 more rows</code></pre>
 </div>
+</div>
+<ul>
+<li><code>cols</code> to pivot</li>
+<li><code>names_to</code>: column where to put (old) column name</li>
+<li><code>values_to</code>: column where to store old values</li>
+</ul>
+</section>
+<section id="long-to-wide" class="slide level2">
+<h2>Long to Wide</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  Semester Course     Enrollment   Cap
+  &lt;chr&gt;    &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;
+1 Fall     Accounting        200   250
+2 Fall     Law               100   125
+3 Fall     Statistics        200   200
+4 Spring   Accounting        300   350
+5 Spring   Law                50   100
+6 Spring   Statistics        400   400</code></pre>
+</div>
+</div>
+<ul>
+<li><code>id_cols</code>: columns kept in place</li>
+<li><code>names_from</code>: column where to get new column names</li>
+<li><code>values_from</code>: column where to get values</li>
+</ul>
 </section>
 <section id="looking-ahead" class="slide level2">
 <h2>Looking Ahead</h2>
 <ul>
 <li>Apply Grouped Operations ✅</li>
 <li>Summarize Across Multiple Rows ✅</li>
-<li>Join Multiple Tables</li>
-<li>Reshape Tables with <code>pivot</code> Operations</li>
+<li>Join Multiple Tables ✅</li>
+<li>Reshape Tables with <code>pivot</code> Operations ✅</li>
 </ul>
+<div class="fragment">
+<p>Now it’s your turn!</p>
+</div>
 </section>
 <section id="learning-more" class="slide level2">
 <h2>Learning More</h2>
-<p>For more, check out <a href="https://r4ds.hadley.nz/data-transform.html#groups">Sections 3.5-3.6 - “Groups”</a> of <em><code>R</code> for Data Science</em></p>
+<p>For more, check out <a href="https://r4ds.hadley.nz/data-tidy.html">Chapter 5 - “Tidying”</a> of <em><code>R</code> for Data Science</em></p>
 
 
 </section></section>

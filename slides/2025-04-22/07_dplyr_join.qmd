@@ -28,7 +28,6 @@ library(palmerpenguins)
 
 :::
 
-
 ## Goals for this Video
 
 In this video: 
@@ -41,6 +40,289 @@ In this video:
 
 :::
 
+## Combining Tables
+
+Often in data analysis, we combine data from multiple sources to create new insights
+
+`join`s provide us a unified framework for combining data sets
+
+## New Example Data
+
+```{r}
+band_members
+```
+
+```{r}
+band_instruments
+```
+
+## New Example Data
+
+Partial alignment on `name`
+
+Missing:
+
+- Keith (Richards) of the Rolling Stones in `band_members`
+- Mick (Jagger) as a guitarist in `band_instruments`
+
+## Table Keys
+
+Recall the concept of a _key_ - a unique identifier in a table
+
+- Ideally a single column (e.g., Employee ID)
+- Sometimes several columns (name + birth date)
+
+In our example, `name` is a key we can use
+
+## Your First Join
+
+Recall our two data sets
+
++-------------------+-------------------+
+| `band_instruments`| `band_members`    |
++========+==========+========+==========+
+| `name` | `plays`  | `name` | `band`   |
++--------+----------+--------+----------+
+| John   | guitar   | Mick   | Stones   |
++--------+----------+--------+----------+
+| Paul   | bass     | John   | Beatles  |
++--------+----------+--------+----------+
+| Keith  | guitar   | Paul   | Beatles  |
++--------+----------+--------+----------+
+
+## Your First Join
+
+To use `name` as a key, reorder rows so that `name` matches
+
++-------------------+-------------------+
+| `band_instruments`| `band_members`    |
++========+==========+========+==========+
+| `name` | `plays`  | `name` | `band`   |
++--------+----------+--------+----------+
+| John   | guitar   | John   | Beatles  |
++--------+----------+--------+----------+
+| Paul   | bass     | Paul   | Beatles  |
++--------+----------+--------+----------+
+| Keith  | guitar   |        |          |
++--------+----------+--------+----------+
+|        |          | Mick   | Stones   |
++--------+----------+--------+----------+
+
+
+
+## Your First Join
+
+Note that `Keith` and `Mick` don't have a matching row
+
++-------------------+-------------------+
+| `band_instruments`| `band_members`    |
++========+==========+========+==========+
+| `name` | `plays`  | `name` | `band`   |
++--------+----------+--------+----------+
+| John   | guitar   | John   | Beatles  |
++--------+----------+--------+----------+
+| Paul   | bass     | Paul   | Beatles  |
++--------+----------+--------+----------+
+| Keith  | guitar   |        |          |
++--------+----------+--------+----------+
+|        |          | Mick   | Stones   |
++--------+----------+--------+----------+
+
+## Your First Join
+
+We will definitely keep 
+
++-------------------+-------------------+
+| `band_instruments`| `band_members`    |
++========+==========+========+==========+
+| `name` | `plays`  | `name` | `band`   |
++--------+----------+--------+----------+
+| John   | guitar   | John   | Beatles  |
++--------+----------+--------+----------+
+| Paul   | bass     | Paul   | Beatles  |
++--------+----------+--------+----------+
+
+Need to decide on unmatched rows
+
+## Your First Inner Join
+
+`inner_join` - keep only rows with matches
+
+| `name` | `plays` | `band`  |
+|--------|---------|---------|
+| John   | guitar  | Beatles |
+| Paul   | bass    | Beatles |
+
+## Your First Full Join
+
+`full_join` - keep _all_ rows and fill with `NA`
+
+| `name` | `plays` | `band`  |
+|--------|---------|---------|
+| John   | guitar  | Beatles |
+| Paul   | bass    | Beatles |
+| Keith  | guitar  | `NA`    |
+| Mick   | `NA`    | Stones  |
+
+## Your First Left Join
+
+`left_join` - keep unmatched rows from first ("left") table
+
+
+| `name` | `plays` | `band`  |
+|--------|---------|---------|
+| John   | guitar  | Beatles |
+| Paul   | bass    | Beatles |
+| Keith  | guitar  | `NA`    |
+
+
+## Your First Right Join
+
+`right_join` - keep unmatched rows from first ("right") table
+
+
+| `name` | `plays` | `band`  |
+|--------|---------|---------|
+| John   | guitar  | Beatles |
+| Paul   | bass    | Beatles |
+| Mick   | `NA`    | Stones  |
+
+## Types of Joins
+
+
+Figure from *`R` for Data Science*
+
+
+![](https://r4ds.hadley.nz/diagrams/join/venn.png){width="80%"}
+
+
+Figure from *`R` for Data Science*
+
+## Specifying Joins
+
+In `R`, we specify joins with the `join_by` function
+
+```{r}
+#| eval: false
+inner_join(band_instruments, band_members, join_by(name == name))
+```
+
+`join_by` gives a "Join Specification"
+
+- `name` == `name` are column names from first and second table
+- Be explicit or `R` will "auto-guess" based on names matched
+
+## inner_join
+
+`inner_join` discards unmatched rows
+
+![](https://r4ds.hadley.nz/diagrams/join/inner.png){width="40%"}
+
+```{r}
+inner_join(band_instruments, 
+           band_members, 
+           join_by(name == name))
+```
+
+## full_join
+
+`full_join` keeps all rows
+
+![](https://r4ds.hadley.nz/diagrams/join/full.png){width="40%"}
+
+```{r}
+full_join(band_instruments, 
+          band_members, 
+          join_by(name == name))
+```
+
+
+## left_join
+
+`left_join` keeps unmatched rows from first table
+
+![](https://r4ds.hadley.nz/diagrams/join/left.png){width="40%"}
+
+```{r}
+left_join(band_instruments, 
+          band_members, 
+          join_by(name == name))
+```
+
+## right_join
+
+`right_join` flips `left_join`
+
+
+![](https://r4ds.hadley.nz/diagrams/join/right.png){width="40%"}
+
+```{r}
+right_join(band_instruments, 
+           band_members, 
+           join_by(name == name))
+```
+
+## Picking a Join
+
+Type of join depends on treatment of missing values
+
+- Why is data missing? 
+- If going to `na.rm=TRUE`, `inner_join`
+- If going to investigate further, `full` or `left`/`right`
+
+## Specifying Column Names
+
+```{r}
+band_instruments2
+```
+
+Same as before, but now `name` -> `artist`
+
+## Specifying Names
+
+```{r}
+inner_join(band_instruments2, 
+           band_members, 
+           join_by(artist == name))
+```
+
+## Computing Z-Scores
+
+Let's compute the `z`-scores of mass for our penguins by species
+
+```{r}
+penguin_stats <- penguins |>
+    group_by(species) |>
+    summarize(mass_mean = mean(body_mass_g, na.rm=TRUE), 
+              mass_sd = sd(body_mass_g, na.rm=TRUE))
+
+penguin_stats
+```
+
+## Computing Z-Scores
+
+```{r}
+penguins |>
+    inner_join(penguin_stats, 
+               join_by(species == species)) |>
+    select(species, body_mass_g, mass_mean, mass_sd)
+```
+
+## Computing Z-Scores
+
+```{r}
+penguins |>
+    inner_join(penguin_stats, 
+               join_by(species == species)) |>
+    mutate(mass_z = (body_mass_g - mass_mean) / mass_sd) |>
+    select(species, body_mass_g, mass_z)
+```
+
+## Computing Z-Scores
+
+Join onto summary statistics to get group (species) statistics
+
+`inner_join` since we know all penguins match to one species
 
 ## Looking Ahead
 

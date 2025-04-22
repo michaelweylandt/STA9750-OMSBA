@@ -132,7 +132,7 @@ penguins |>
 
 Can also use `species` directly
 
-## summarize removes grouping
+## Removes grouping
 
 `summarize` removes the _last_ level of grouping
 
@@ -145,26 +145,36 @@ penguins |>
 No grouping remains
 
 
-## summarize removes grouping
+## Removes grouping
 
 `summarize` removes the _last_ level of grouping
 
 ```{r}
+#| eval: false
 penguins |> 
     group_by(species, sex) |> 
     summarize(mass_avg = mean(body_mass_g, na.rm=TRUE))
 ```
 
+```{r}
+#| echo: false
+#| eval: true
+penguins |> 
+    group_by(species, sex) |> 
+    summarize(mass_avg = mean(body_mass_g, na.rm=TRUE)) |>
+    print(n=5)
+```
+
 Grouping by `species` still active
 
-## summarize removes grouping
+## Removes grouping
 
 Advice: 
 
 - `group_by` should be as close to `summarize` as possible
 - `ungroup` and re-`group_by` defensively
 
-## summarize column names
+## Column names
 
 Like `mutate`, you should always give `summarize` column names
 
@@ -176,7 +186,7 @@ penguins |>
     summarize(sd(body_mass_g, na.rm=TRUE))
 ```
 
-## summarize multiple columns
+## Multiple columns
 
 Remember the selection helpers from `select`
 
@@ -185,7 +195,7 @@ penguins |>
     select(where(is.numeric))
 ```
 
-## summarize multiple columns
+## Multiple columns
 
 Can be used inside `summarize` as well
 
@@ -196,7 +206,7 @@ penguins |>
     summarize(across(where(is.numeric), safe_mean))
 ```
 
-## summarize without group_by
+## Without group_by
 
 Without `group_by`, `summarize` takes summaries of the entire data set: 
 

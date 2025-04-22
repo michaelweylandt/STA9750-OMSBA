@@ -167,6 +167,526 @@
 </ul>
 </div>
 </section>
+<section id="combining-tables" class="slide level2">
+<h2>Combining Tables</h2>
+<p>Often in data analysis, we combine data from multiple sources to create new insights</p>
+<p><code>join</code>s provide us a unified framework for combining data sets</p>
+</section>
+<section id="new-example-data" class="slide level2">
+<h2>New Example Data</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  name  band   
+  &lt;chr&gt; &lt;chr&gt;  
+1 Mick  Stones 
+2 John  Beatles
+3 Paul  Beatles</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  name  plays 
+  &lt;chr&gt; &lt;chr&gt; 
+1 John  guitar
+2 Paul  bass  
+3 Keith guitar</code></pre>
+</div>
+</div>
+</section>
+<section id="new-example-data-1" class="slide level2">
+<h2>New Example Data</h2>
+<p>Partial alignment on <code>name</code></p>
+<p>Missing:</p>
+<ul>
+<li>Keith (Richards) of the Rolling Stones in <code>band_members</code></li>
+<li>Mick (Jagger) as a guitarist in <code>band_instruments</code></li>
+</ul>
+</section>
+<section id="table-keys" class="slide level2">
+<h2>Table Keys</h2>
+<p>Recall the concept of a <em>key</em> - a unique identifier in a table</p>
+<ul>
+<li>Ideally a single column (e.g., Employee ID)</li>
+<li>Sometimes several columns (name + birth date)</li>
+</ul>
+<p>In our example, <code>name</code> is a key we can use</p>
+</section>
+<section id="your-first-join" class="slide level2">
+<h2>Your First Join</h2>
+<p>Recall our two data sets</p>
+<table class="caption-top" style="width:56%;">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 15%">
+<col style="width: 12%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2"><code>band_instruments</code></th>
+<th colspan="2"><code>band_members</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>name</code></td>
+<td><code>plays</code></td>
+<td><code>name</code></td>
+<td><code>band</code></td>
+</tr>
+<tr class="even">
+<td>John</td>
+<td>guitar</td>
+<td>Mick</td>
+<td>Stones</td>
+</tr>
+<tr class="odd">
+<td>Paul</td>
+<td>bass</td>
+<td>John</td>
+<td>Beatles</td>
+</tr>
+<tr class="even">
+<td>Keith</td>
+<td>guitar</td>
+<td>Paul</td>
+<td>Beatles</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="your-first-join-1" class="slide level2">
+<h2>Your First Join</h2>
+<p>To use <code>name</code> as a key, reorder rows so that <code>name</code> matches</p>
+<table class="caption-top" style="width:56%;">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 15%">
+<col style="width: 12%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2"><code>band_instruments</code></th>
+<th colspan="2"><code>band_members</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>name</code></td>
+<td><code>plays</code></td>
+<td><code>name</code></td>
+<td><code>band</code></td>
+</tr>
+<tr class="even">
+<td>John</td>
+<td>guitar</td>
+<td>John</td>
+<td>Beatles</td>
+</tr>
+<tr class="odd">
+<td>Paul</td>
+<td>bass</td>
+<td>Paul</td>
+<td>Beatles</td>
+</tr>
+<tr class="even">
+<td>Keith</td>
+<td>guitar</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>Mick</td>
+<td>Stones</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="your-first-join-2" class="slide level2">
+<h2>Your First Join</h2>
+<p>Note that <code>Keith</code> and <code>Mick</code> don’t have a matching row</p>
+<table class="caption-top" style="width:56%;">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 15%">
+<col style="width: 12%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2"><code>band_instruments</code></th>
+<th colspan="2"><code>band_members</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>name</code></td>
+<td><code>plays</code></td>
+<td><code>name</code></td>
+<td><code>band</code></td>
+</tr>
+<tr class="even">
+<td>John</td>
+<td>guitar</td>
+<td>John</td>
+<td>Beatles</td>
+</tr>
+<tr class="odd">
+<td>Paul</td>
+<td>bass</td>
+<td>Paul</td>
+<td>Beatles</td>
+</tr>
+<tr class="even">
+<td>Keith</td>
+<td>guitar</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>Mick</td>
+<td>Stones</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="your-first-join-3" class="slide level2">
+<h2>Your First Join</h2>
+<p>We will definitely keep</p>
+<table class="caption-top" style="width:56%;">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 15%">
+<col style="width: 12%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2"><code>band_instruments</code></th>
+<th colspan="2"><code>band_members</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>name</code></td>
+<td><code>plays</code></td>
+<td><code>name</code></td>
+<td><code>band</code></td>
+</tr>
+<tr class="even">
+<td>John</td>
+<td>guitar</td>
+<td>John</td>
+<td>Beatles</td>
+</tr>
+<tr class="odd">
+<td>Paul</td>
+<td>bass</td>
+<td>Paul</td>
+<td>Beatles</td>
+</tr>
+</tbody>
+</table>
+<p>Need to decide on unmatched rows</p>
+</section>
+<section id="your-first-inner-join" class="slide level2">
+<h2>Your First Inner Join</h2>
+<p><code>inner_join</code> - keep only rows with matches</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th><code>name</code></th>
+<th><code>plays</code></th>
+<th><code>band</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>John</td>
+<td>guitar</td>
+<td>Beatles</td>
+</tr>
+<tr class="even">
+<td>Paul</td>
+<td>bass</td>
+<td>Beatles</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="your-first-full-join" class="slide level2">
+<h2>Your First Full Join</h2>
+<p><code>full_join</code> - keep <em>all</em> rows and fill with <code>NA</code></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th><code>name</code></th>
+<th><code>plays</code></th>
+<th><code>band</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>John</td>
+<td>guitar</td>
+<td>Beatles</td>
+</tr>
+<tr class="even">
+<td>Paul</td>
+<td>bass</td>
+<td>Beatles</td>
+</tr>
+<tr class="odd">
+<td>Keith</td>
+<td>guitar</td>
+<td><code>NA</code></td>
+</tr>
+<tr class="even">
+<td>Mick</td>
+<td><code>NA</code></td>
+<td>Stones</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="your-first-left-join" class="slide level2">
+<h2>Your First Left Join</h2>
+<p><code>left_join</code> - keep unmatched rows from first (“left”) table</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th><code>name</code></th>
+<th><code>plays</code></th>
+<th><code>band</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>John</td>
+<td>guitar</td>
+<td>Beatles</td>
+</tr>
+<tr class="even">
+<td>Paul</td>
+<td>bass</td>
+<td>Beatles</td>
+</tr>
+<tr class="odd">
+<td>Keith</td>
+<td>guitar</td>
+<td><code>NA</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="your-first-right-join" class="slide level2">
+<h2>Your First Right Join</h2>
+<p><code>right_join</code> - keep unmatched rows from first (“right”) table</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th><code>name</code></th>
+<th><code>plays</code></th>
+<th><code>band</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>John</td>
+<td>guitar</td>
+<td>Beatles</td>
+</tr>
+<tr class="even">
+<td>Paul</td>
+<td>bass</td>
+<td>Beatles</td>
+</tr>
+<tr class="odd">
+<td>Mick</td>
+<td><code>NA</code></td>
+<td>Stones</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="types-of-joins" class="slide level2">
+<h2>Types of Joins</h2>
+<p>Figure from <em><code>R</code> for Data Science</em></p>
+<p><img data-src="https://r4ds.hadley.nz/diagrams/join/venn.png" style="width:80.0%"></p>
+<p>Figure from <em><code>R</code> for Data Science</em></p>
+</section>
+<section id="specifying-joins" class="slide level2">
+<h2>Specifying Joins</h2>
+<p>In <code>R</code>, we specify joins with the <code>join_by</code> function</p>
+<p><code>join_by</code> gives a “Join Specification”</p>
+<ul>
+<li><code>name</code> == <code>name</code> are column names from first and second table</li>
+<li>Be explicit or <code>R</code> will “auto-guess” based on names matched</li>
+</ul>
+</section>
+<section id="inner_join" class="slide level2">
+<h2>inner_join</h2>
+<p><code>inner_join</code> discards unmatched rows</p>
+<p><img data-src="https://r4ds.hadley.nz/diagrams/join/inner.png" style="width:40.0%"></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  name  plays  band   
+  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  
+1 John  guitar Beatles
+2 Paul  bass   Beatles</code></pre>
+</div>
+</div>
+</section>
+<section id="full_join" class="slide level2">
+<h2>full_join</h2>
+<p><code>full_join</code> keeps all rows</p>
+<p><img data-src="https://r4ds.hadley.nz/diagrams/join/full.png" style="width:40.0%"></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+  name  plays  band   
+  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  
+1 John  guitar Beatles
+2 Paul  bass   Beatles
+3 Keith guitar &lt;NA&gt;   
+4 Mick  &lt;NA&gt;   Stones </code></pre>
+</div>
+</div>
+</section>
+<section id="left_join" class="slide level2">
+<h2>left_join</h2>
+<p><code>left_join</code> keeps unmatched rows from first table</p>
+<p><img data-src="https://r4ds.hadley.nz/diagrams/join/left.png" style="width:40.0%"></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  name  plays  band   
+  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  
+1 John  guitar Beatles
+2 Paul  bass   Beatles
+3 Keith guitar &lt;NA&gt;   </code></pre>
+</div>
+</div>
+</section>
+<section id="right_join" class="slide level2">
+<h2>right_join</h2>
+<p><code>right_join</code> flips <code>left_join</code></p>
+<p><img data-src="https://r4ds.hadley.nz/diagrams/join/right.png" style="width:40.0%"></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  name  plays  band   
+  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  
+1 John  guitar Beatles
+2 Paul  bass   Beatles
+3 Mick  &lt;NA&gt;   Stones </code></pre>
+</div>
+</div>
+</section>
+<section id="picking-a-join" class="slide level2">
+<h2>Picking a Join</h2>
+<p>Type of join depends on treatment of missing values</p>
+<ul>
+<li>Why is data missing?</li>
+<li>If going to <code>na.rm=TRUE</code>, <code>inner_join</code></li>
+<li>If going to investigate further, <code>full</code> or <code>left</code>/<code>right</code></li>
+</ul>
+</section>
+<section id="specifying-column-names" class="slide level2">
+<h2>Specifying Column Names</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  artist plays 
+  &lt;chr&gt;  &lt;chr&gt; 
+1 John   guitar
+2 Paul   bass  
+3 Keith  guitar</code></pre>
+</div>
+</div>
+<p>Same as before, but now <code>name</code> -&gt; <code>artist</code></p>
+</section>
+<section id="specifying-names" class="slide level2">
+<h2>Specifying Names</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  artist plays  band   
+  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  
+1 John   guitar Beatles
+2 Paul   bass   Beatles</code></pre>
+</div>
+</div>
+</section>
+<section id="computing-z-scores" class="slide level2">
+<h2>Computing Z-Scores</h2>
+<p>Let’s compute the <code>z</code>-scores of mass for our penguins by species</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  species   mass_mean mass_sd
+  &lt;fct&gt;         &lt;dbl&gt;   &lt;dbl&gt;
+1 Adelie        3701.    459.
+2 Chinstrap     3733.    384.
+3 Gentoo        5076.    504.</code></pre>
+</div>
+</div>
+</section>
+<section id="computing-z-scores-1" class="slide level2">
+<h2>Computing Z-Scores</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 4
+   species body_mass_g mass_mean mass_sd
+   &lt;fct&gt;         &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+ 1 Adelie         3750     3701.    459.
+ 2 Adelie         3800     3701.    459.
+ 3 Adelie         3250     3701.    459.
+ 4 Adelie           NA     3701.    459.
+ 5 Adelie         3450     3701.    459.
+ 6 Adelie         3650     3701.    459.
+ 7 Adelie         3625     3701.    459.
+ 8 Adelie         4675     3701.    459.
+ 9 Adelie         3475     3701.    459.
+10 Adelie         4250     3701.    459.
+# ℹ 334 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="computing-z-scores-2" class="slide level2">
+<h2>Computing Z-Scores</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 3
+   species body_mass_g mass_z
+   &lt;fct&gt;         &lt;int&gt;  &lt;dbl&gt;
+ 1 Adelie         3750  0.108
+ 2 Adelie         3800  0.217
+ 3 Adelie         3250 -0.983
+ 4 Adelie           NA NA    
+ 5 Adelie         3450 -0.547
+ 6 Adelie         3650 -0.110
+ 7 Adelie         3625 -0.165
+ 8 Adelie         4675  2.12 
+ 9 Adelie         3475 -0.492
+10 Adelie         4250  1.20 
+# ℹ 334 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="computing-z-scores-3" class="slide level2">
+<h2>Computing Z-Scores</h2>
+<p>Join onto summary statistics to get group (species) statistics</p>
+<p><code>inner_join</code> since we know all penguins match to one species</p>
+</section>
 <section id="looking-ahead" class="slide level2">
 <h2>Looking Ahead</h2>
 <ul>
