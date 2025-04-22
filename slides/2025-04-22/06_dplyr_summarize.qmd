@@ -56,9 +56,10 @@ No reduction in data complexity unless combined with `filter`
 
 ## group_by + summarize
 
-Combine `group_by` and `summarize` to compute _summary statistics_
+`group_by` and `summarize` $\implies$ _summary statistics_
 
 ```{r}
+#| echo: true
 penguins |> 
     group_by(species) |> 
     summarize(avg_mass = mean(body_mass_g, na.rm=TRUE))
@@ -95,6 +96,7 @@ All other data is dropped
 Can perform multiple summaries at once:
 
 ```{r}
+#| echo: true
 penguins |> 
     group_by(species) |> 
     summarize(avg_mass = mean(body_mass_g, na.rm=TRUE), 
@@ -108,6 +110,7 @@ Important to do all summaries in one call
 The `n()` function will count the number of rows in a group
  
 ```{r}
+#| echo: true
 penguins |> 
     group_by(species) |> 
     summarize(mass_avg = mean(body_mass_g, na.rm=TRUE), 
@@ -121,6 +124,7 @@ penguins |>
 `cur_group()` returns the current group name
 
 ```{r}
+#| echo: true
 penguins |> 
     group_by(species) |> 
     summarize(mass_avg = mean(body_mass_g, na.rm=TRUE), 
@@ -137,6 +141,7 @@ Can also use `species` directly
 `summarize` removes the _last_ level of grouping
 
 ```{r}
+#| echo: true
 penguins |> 
     group_by(species) |> 
     summarize(mass_avg = mean(body_mass_g, na.rm=TRUE))
@@ -151,6 +156,7 @@ No grouping remains
 
 ```{r}
 #| eval: false
+#| echo: true
 penguins |> 
     group_by(species, sex) |> 
     summarize(mass_avg = mean(body_mass_g, na.rm=TRUE))
@@ -176,11 +182,12 @@ Advice:
 
 ## Column names
 
-Like `mutate`, you should always give `summarize` column names
+Like `mutate`, give `summarize` column names
 
 Defaults are unhelpful: 
 
 ```{r}
+#| echo: true
 penguins |> 
     group_by(species) |>
     summarize(sd(body_mass_g, na.rm=TRUE))
@@ -191,8 +198,10 @@ penguins |>
 Remember the selection helpers from `select`
 
 ```{r}
+#| echo: true
 penguins |> 
-    select(where(is.numeric))
+    select(where(is.numeric)) |>
+    print(n=4)
 ```
 
 ## Multiple columns
@@ -200,6 +209,7 @@ penguins |>
 Can be used inside `summarize` as well
 
 ```{r}
+#| echo: true
 safe_mean <- function(x) mean(x, na.rm=TRUE)
 penguins |> 
     group_by(species) |>
@@ -211,6 +221,7 @@ penguins |>
 Without `group_by`, `summarize` takes summaries of the entire data set: 
 
 ```{r}
+#| echo: true
 penguins |> 
     summarize(n=n(), 
               across(where(is.numeric), safe_mean))

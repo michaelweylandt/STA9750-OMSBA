@@ -186,7 +186,7 @@ penguins |>
     print(n=3)
 ```
 
-. . . 
+## Effects of group_by
 
 With `group_by`, a different `max` for each group
 
@@ -239,6 +239,7 @@ To get "above average" penguins for each species
 
 ```{r}
 #| eval: false
+#| echo: true
 penguins |> 
     group_by(species) |> 
     filter(body_mass_g > mean(body_mass_g, na.rm=TRUE))
@@ -285,7 +286,7 @@ penguins |>
     group_by(species, island) 
 ```
 
-## Stopping grouped operations
+## Stopping groups
 
 Once you are done with grouped operations, `ungroup`
 
@@ -297,7 +298,7 @@ penguins |>
     ungroup()
 ```
 
-## Grouping on Numeric Variables
+## Numeric Variables
 
 In general, grouping on continuous variables is a bad
 choice: 
@@ -308,7 +309,7 @@ penguins |> group_by(body_mass_g)
 
 (Analogy: Checking _exact equality_ of continuous random variables)
 
-## Grouping on Numeric Variables
+## Numeric Variables
 
 Better choices: 
 
@@ -316,6 +317,7 @@ Better choices:
 
 ```{r}
 #| eval: false
+#| echo: true
 penguins |>
     mutate(mass_5ile = ntile(body_mass_g, 5)) |>
     group_by(mass_5ile) |>
@@ -331,6 +333,7 @@ separately without vectorization
 
 ```{r}
 #| eval: false
+#| echo: true
 penguins |> rowwise()
 ```
 

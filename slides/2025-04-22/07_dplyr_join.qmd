@@ -49,10 +49,12 @@ Often in data analysis, we combine data from multiple sources to create new insi
 ## New Example Data
 
 ```{r}
+#| echo: true
 band_members
 ```
 
 ```{r}
+#| echo: true
 band_instruments
 ```
 
@@ -273,6 +275,7 @@ Type of join depends on treatment of missing values
 ## Specifying Column Names
 
 ```{r}
+#| echo: true
 band_instruments2
 ```
 
@@ -281,6 +284,7 @@ Same as before, but now `name` -> `artist`
 ## Specifying Names
 
 ```{r}
+#| echo: true
 inner_join(band_instruments2, 
            band_members, 
            join_by(artist == name))
@@ -291,6 +295,7 @@ inner_join(band_instruments2,
 Let's compute the `z`-scores of mass for our penguins by species
 
 ```{r}
+#| echo: true
 penguin_stats <- penguins |>
     group_by(species) |>
     summarize(mass_mean = mean(body_mass_g, na.rm=TRUE), 
@@ -302,6 +307,7 @@ penguin_stats
 ## Computing Z-Scores
 
 ```{r}
+#| echo: true
 penguins |>
     inner_join(penguin_stats, 
                join_by(species == species)) |>
@@ -311,6 +317,7 @@ penguins |>
 ## Computing Z-Scores
 
 ```{r}
+#| echo: true
 penguins |>
     inner_join(penguin_stats, 
                join_by(species == species)) |>
