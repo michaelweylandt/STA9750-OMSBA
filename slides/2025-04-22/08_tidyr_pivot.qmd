@@ -129,7 +129,9 @@ We switched from a "wide" format to a "long" format
 - `pivot_longer` combine columns 
 - `pivot_wider` split a column 
 
-Syntax is hard to remember - use `?pivot_wider` and `?pivot_longer` for examples
+Syntax is hard to remember: 
+
+- use `?pivot_wider` and `?pivot_longer` 
 
 ## Wide to Long
 

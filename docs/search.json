@@ -766,57 +766,57 @@
     "objectID": "slides/2025-04-22/06_dplyr_summarize.html#where-are-we",
     "href": "slides/2025-04-22/06_dplyr_summarize.html#where-are-we",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "R Basics\nData Visualization\nR Programming\nTidy Data Manipulation\n\nSelecting Rows and Columns\nComputing Groupwise Summaries\nJoining Tables\nReshaping Tables\n\npython Basics\nWeb Scraping with python"
+    "section": "Where are We?",
+    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\n\nSelecting Rows and Columns\nComputing Groupwise Summaries\nJoining Tables\nReshaping Tables\n\npython Basics\nWeb Scraping with python"
   },
   {
     "objectID": "slides/2025-04-22/06_dplyr_summarize.html#goals-for-this-video",
     "href": "slides/2025-04-22/06_dplyr_summarize.html#goals-for-this-video",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "In this video:\n\n\nCombine multiple rows using summarize\nCompute overall and group-wise summary statistics"
+    "section": "Goals for this Video",
+    "text": "Goals for this Video\nIn this video:\n\n\nCombine multiple rows using summarize\nCompute overall and group-wise summary statistics"
   },
   {
     "objectID": "slides/2025-04-22/06_dplyr_summarize.html#group_by",
     "href": "slides/2025-04-22/06_dplyr_summarize.html#group_by",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "You have already seen group_by modify the operation of ‘aggregation’ functions:\n\nmin, max\nmean, sum,\nntile\n\netc\n. . .\nNo reduction in data complexity unless combined with filter"
+    "section": "group_by",
+    "text": "group_by\nYou have already seen group_by modify the operation of ‘aggregation’ functions:\n\nmin, max\nmean, sum,\nntile\n\netc\n\nNo reduction in data complexity unless combined with filter"
   },
   {
     "objectID": "slides/2025-04-22/06_dplyr_summarize.html#group_by-summarize",
     "href": "slides/2025-04-22/06_dplyr_summarize.html#group_by-summarize",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "group_by and summarize \\(\\implies\\) summary statistics\n\npenguins |&gt; \n    group_by(species) |&gt; \n    summarize(avg_mass = mean(body_mass_g, na.rm=TRUE))\n\n# A tibble: 3 × 2\n  species   avg_mass\n  &lt;fct&gt;        &lt;dbl&gt;\n1 Adelie       3701.\n2 Chinstrap    3733.\n3 Gentoo       5076.\n\n\n. . .\nUnlike filter, these are new rows:\n\nOne row summarizing each group\nNot a subset of old rows"
+    "section": "group_by + summarize",
+    "text": "group_by + summarize\ngroup_by and summarize \\(\\implies\\) summary statistics\n\npenguins |&gt; \n    group_by(species) |&gt; \n    summarize(avg_mass = mean(body_mass_g, na.rm=TRUE))\n\n# A tibble: 3 × 2\n  species   avg_mass\n  &lt;fct&gt;        &lt;dbl&gt;\n1 Adelie       3701.\n2 Chinstrap    3733.\n3 Gentoo       5076.\n\n\n\nUnlike filter, these are new rows:\n\nOne row summarizing each group\nNot a subset of old rows"
   },
   {
     "objectID": "slides/2025-04-22/06_dplyr_summarize.html#group_by-summarize-1",
     "href": "slides/2025-04-22/06_dplyr_summarize.html#group_by-summarize-1",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "penguins |&gt; \n    group_by(species) |&gt; \n    summarize(avg_mass = mean(body_mass_g, na.rm=TRUE))\n\n# A tibble: 3 × 2\n  species   avg_mass\n  &lt;fct&gt;        &lt;dbl&gt;\n1 Adelie       3701.\n2 Chinstrap    3733.\n3 Gentoo       5076.\n\n\nWhat happened to other features (e.g., flipper_length_mm)?\n. . .\nsummarize only keeps:\n\nGrouping variables (species)\nCreated variables (avg_mass)\n\nAll other data is dropped"
+    "section": "group_by + summarize",
+    "text": "group_by + summarize\n\npenguins |&gt; \n    group_by(species) |&gt; \n    summarize(avg_mass = mean(body_mass_g, na.rm=TRUE))\n\n# A tibble: 3 × 2\n  species   avg_mass\n  &lt;fct&gt;        &lt;dbl&gt;\n1 Adelie       3701.\n2 Chinstrap    3733.\n3 Gentoo       5076.\n\n\nWhat happened to other features (e.g., flipper_length_mm)?\n\nsummarize only keeps:\n\nGrouping variables (species)\nCreated variables (avg_mass)\n\nAll other data is dropped"
   },
   {
     "objectID": "slides/2025-04-22/06_dplyr_summarize.html#group_by-summarize-2",
     "href": "slides/2025-04-22/06_dplyr_summarize.html#group_by-summarize-2",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "Can perform multiple summaries at once:\n\npenguins |&gt; \n    group_by(species) |&gt; \n    summarize(avg_mass = mean(body_mass_g, na.rm=TRUE), \n              sd_mass = sd(body_mass_g, na.rm=TRUE))\n\n# A tibble: 3 × 3\n  species   avg_mass sd_mass\n  &lt;fct&gt;        &lt;dbl&gt;   &lt;dbl&gt;\n1 Adelie       3701.    459.\n2 Chinstrap    3733.    384.\n3 Gentoo       5076.    504.\n\n\nImportant to do all summaries in one call"
+    "section": "group_by + summarize",
+    "text": "group_by + summarize\nCan perform multiple summaries at once:\n\npenguins |&gt; \n    group_by(species) |&gt; \n    summarize(avg_mass = mean(body_mass_g, na.rm=TRUE), \n              sd_mass = sd(body_mass_g, na.rm=TRUE))\n\n# A tibble: 3 × 3\n  species   avg_mass sd_mass\n  &lt;fct&gt;        &lt;dbl&gt;   &lt;dbl&gt;\n1 Adelie       3701.    459.\n2 Chinstrap    3733.    384.\n3 Gentoo       5076.    504.\n\n\nImportant to do all summaries in one call"
   },
   {
     "objectID": "slides/2025-04-22/06_dplyr_summarize.html#summarize-helpers",
     "href": "slides/2025-04-22/06_dplyr_summarize.html#summarize-helpers",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "The n() function will count the number of rows in a group\n\npenguins |&gt; \n    group_by(species) |&gt; \n    summarize(mass_avg = mean(body_mass_g, na.rm=TRUE), \n              mass_sd = sd(body_mass_g, na.rm=TRUE), \n              n = n(), \n              mass_se = mass_sd / sqrt(n))\n\n# A tibble: 3 × 5\n  species   mass_avg mass_sd     n mass_se\n  &lt;fct&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;\n1 Adelie       3701.    459.   152    37.2\n2 Chinstrap    3733.    384.    68    46.6\n3 Gentoo       5076.    504.   124    45.3"
+    "section": "summarize helpers",
+    "text": "summarize helpers\nThe n() function will count the number of rows in a group\n\npenguins |&gt; \n    group_by(species) |&gt; \n    summarize(mass_avg = mean(body_mass_g, na.rm=TRUE), \n              mass_sd = sd(body_mass_g, na.rm=TRUE), \n              n = n(), \n              mass_se = mass_sd / sqrt(n))\n\n# A tibble: 3 × 5\n  species   mass_avg mass_sd     n mass_se\n  &lt;fct&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;\n1 Adelie       3701.    459.   152    37.2\n2 Chinstrap    3733.    384.    68    46.6\n3 Gentoo       5076.    504.   124    45.3"
   },
   {
     "objectID": "slides/2025-04-22/06_dplyr_summarize.html#summarize-helpers-1",
     "href": "slides/2025-04-22/06_dplyr_summarize.html#summarize-helpers-1",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "cur_group() returns the current group name\n\npenguins |&gt; \n    group_by(species) |&gt; \n    summarize(mass_avg = mean(body_mass_g, na.rm=TRUE), \n              mass_sd = sd(body_mass_g, na.rm=TRUE), \n              n = n(), \n              mass_se = mass_sd / sqrt(n), \n              species_cap = toupper(cur_group()))\n\n# A tibble: 3 × 6\n  species   mass_avg mass_sd     n mass_se species_cap\n  &lt;fct&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;      \n1 Adelie       3701.    459.   152    37.2 1          \n2 Chinstrap    3733.    384.    68    46.6 2          \n3 Gentoo       5076.    504.   124    45.3 3          \n\n\nCan also use species directly"
+    "section": "summarize helpers",
+    "text": "summarize helpers\ncur_group() returns the current group name\n\npenguins |&gt; \n    group_by(species) |&gt; \n    summarize(mass_avg = mean(body_mass_g, na.rm=TRUE), \n              mass_sd = sd(body_mass_g, na.rm=TRUE), \n              n = n(), \n              mass_se = mass_sd / sqrt(n), \n              species_cap = toupper(cur_group()))\n\n# A tibble: 3 × 6\n  species   mass_avg mass_sd     n mass_se species_cap\n  &lt;fct&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;      \n1 Adelie       3701.    459.   152    37.2 1          \n2 Chinstrap    3733.    384.    68    46.6 2          \n3 Gentoo       5076.    504.   124    45.3 3          \n\n\nCan also use species directly"
   },
   {
     "objectID": "slides/2025-04-22/06_dplyr_summarize.html#summarize-removes-grouping",
@@ -871,22 +871,22 @@
     "objectID": "slides/2025-04-22/06_dplyr_summarize.html#summarize-and-group_by",
     "href": "slides/2025-04-22/06_dplyr_summarize.html#summarize-and-group_by",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "summarize computes summary statistics of a population\n\nmeans, standard deviations, counts, etc.\n\ngroup_by changes these to conditional summary statistics\n\nE.g., mean of body mass, conditional on adelie species\n\n. . .\nMany steps of real data analysis fits this pattern\nIf you dive deeper into split-apply-combine, can determine group-wise models as well (e.g., different trends for different groups)"
+    "section": "summarize and group_by",
+    "text": "summarize and group_by\nsummarize computes summary statistics of a population\n\nmeans, standard deviations, counts, etc.\n\ngroup_by changes these to conditional summary statistics\n\nE.g., mean of body mass, conditional on adelie species\n\n\nMany steps of real data analysis fits this pattern\nIf you dive deeper into split-apply-combine, can determine group-wise models as well (e.g., different trends for different groups)"
   },
   {
     "objectID": "slides/2025-04-22/06_dplyr_summarize.html#looking-ahead",
     "href": "slides/2025-04-22/06_dplyr_summarize.html#looking-ahead",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "Apply Grouped Operations ✅\nSummarize Across Multiple Rows ✅\nJoin Multiple Tables\nReshape Tables with pivot Operations"
+    "section": "Looking Ahead",
+    "text": "Looking Ahead\n\nApply Grouped Operations ✅\nSummarize Across Multiple Rows ✅\nJoin Multiple Tables\nReshape Tables with pivot Operations"
   },
   {
     "objectID": "slides/2025-04-22/06_dplyr_summarize.html#learning-more",
     "href": "slides/2025-04-22/06_dplyr_summarize.html#learning-more",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "For more, check out Sections 3.5-3.6 - “Groups” of R for Data Science"
+    "section": "Learning More",
+    "text": "Learning More\nFor more, check out Sections 3.5-3.6 - “Groups” of R for Data Science"
   },
   {
     "objectID": "slides/2025-04-29/08_tidyr_pivot.html#where-are-we",
@@ -1228,50 +1228,50 @@
     "objectID": "slides/2025-04-22/06_dplyr_summarize.html#removes-grouping",
     "href": "slides/2025-04-22/06_dplyr_summarize.html#removes-grouping",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "summarize removes the last level of grouping\n\npenguins |&gt; \n    group_by(species) |&gt; \n    summarize(mass_avg = mean(body_mass_g, na.rm=TRUE))\n\n# A tibble: 3 × 2\n  species   mass_avg\n  &lt;fct&gt;        &lt;dbl&gt;\n1 Adelie       3701.\n2 Chinstrap    3733.\n3 Gentoo       5076.\n\n\nNo grouping remains"
+    "section": "Removes grouping",
+    "text": "Removes grouping\nsummarize removes the last level of grouping\n\npenguins |&gt; \n    group_by(species) |&gt; \n    summarize(mass_avg = mean(body_mass_g, na.rm=TRUE))\n\n# A tibble: 3 × 2\n  species   mass_avg\n  &lt;fct&gt;        &lt;dbl&gt;\n1 Adelie       3701.\n2 Chinstrap    3733.\n3 Gentoo       5076.\n\n\nNo grouping remains"
   },
   {
     "objectID": "slides/2025-04-22/06_dplyr_summarize.html#removes-grouping-1",
     "href": "slides/2025-04-22/06_dplyr_summarize.html#removes-grouping-1",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "summarize removes the last level of grouping\n\npenguins |&gt; \n    group_by(species, sex) |&gt; \n    summarize(mass_avg = mean(body_mass_g, na.rm=TRUE))\n\n\n\n`summarise()` has grouped output by 'species'. You can override using the\n`.groups` argument.\n\n\n# A tibble: 8 × 3\n# Groups:   species [3]\n  species   sex    mass_avg\n  &lt;fct&gt;     &lt;fct&gt;     &lt;dbl&gt;\n1 Adelie    female    3369.\n2 Adelie    male      4043.\n3 Adelie    &lt;NA&gt;      3540 \n4 Chinstrap female    3527.\n5 Chinstrap male      3939.\n# ℹ 3 more rows\n\n\nGrouping by species still active"
+    "section": "Removes grouping",
+    "text": "Removes grouping\nsummarize removes the last level of grouping\n\npenguins |&gt; \n    group_by(species, sex) |&gt; \n    summarize(mass_avg = mean(body_mass_g, na.rm=TRUE))\n\n\n\n`summarise()` has grouped output by 'species'. You can override using the\n`.groups` argument.\n\n\n# A tibble: 8 × 3\n# Groups:   species [3]\n  species   sex    mass_avg\n  &lt;fct&gt;     &lt;fct&gt;     &lt;dbl&gt;\n1 Adelie    female    3369.\n2 Adelie    male      4043.\n3 Adelie    &lt;NA&gt;      3540 \n4 Chinstrap female    3527.\n5 Chinstrap male      3939.\n# ℹ 3 more rows\n\n\nGrouping by species still active"
   },
   {
     "objectID": "slides/2025-04-22/06_dplyr_summarize.html#removes-grouping-2",
     "href": "slides/2025-04-22/06_dplyr_summarize.html#removes-grouping-2",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "Advice:\n\ngroup_by should be as close to summarize as possible\nungroup and re-group_by defensively"
+    "section": "Removes grouping",
+    "text": "Removes grouping\nAdvice:\n\ngroup_by should be as close to summarize as possible\nungroup and re-group_by defensively"
   },
   {
     "objectID": "slides/2025-04-22/06_dplyr_summarize.html#column-names",
     "href": "slides/2025-04-22/06_dplyr_summarize.html#column-names",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "Like mutate, give summarize column names\nDefaults are unhelpful:\n\npenguins |&gt; \n    group_by(species) |&gt;\n    summarize(sd(body_mass_g, na.rm=TRUE))\n\n# A tibble: 3 × 2\n  species   `sd(body_mass_g, na.rm = TRUE)`\n  &lt;fct&gt;                               &lt;dbl&gt;\n1 Adelie                               459.\n2 Chinstrap                            384.\n3 Gentoo                               504."
+    "section": "Column names",
+    "text": "Column names\nLike mutate, give summarize column names\nDefaults are unhelpful:\n\npenguins |&gt; \n    group_by(species) |&gt;\n    summarize(sd(body_mass_g, na.rm=TRUE))\n\n# A tibble: 3 × 2\n  species   `sd(body_mass_g, na.rm = TRUE)`\n  &lt;fct&gt;                               &lt;dbl&gt;\n1 Adelie                               459.\n2 Chinstrap                            384.\n3 Gentoo                               504."
   },
   {
     "objectID": "slides/2025-04-22/06_dplyr_summarize.html#multiple-columns",
     "href": "slides/2025-04-22/06_dplyr_summarize.html#multiple-columns",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "Remember the selection helpers from select\n\npenguins |&gt; \n    select(where(is.numeric)) |&gt;\n    print(n=4)\n\n# A tibble: 344 × 5\n  bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year\n           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt; &lt;int&gt;\n1           39.1          18.7               181        3750  2007\n2           39.5          17.4               186        3800  2007\n3           40.3          18                 195        3250  2007\n4           NA            NA                  NA          NA  2007\n# ℹ 340 more rows"
+    "section": "Multiple columns",
+    "text": "Multiple columns\nRemember the selection helpers from select\n\npenguins |&gt; \n    select(where(is.numeric)) |&gt;\n    print(n=4)\n\n# A tibble: 344 × 5\n  bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year\n           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt; &lt;int&gt;\n1           39.1          18.7               181        3750  2007\n2           39.5          17.4               186        3800  2007\n3           40.3          18                 195        3250  2007\n4           NA            NA                  NA          NA  2007\n# ℹ 340 more rows"
   },
   {
     "objectID": "slides/2025-04-22/06_dplyr_summarize.html#multiple-columns-1",
     "href": "slides/2025-04-22/06_dplyr_summarize.html#multiple-columns-1",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "Can be used inside summarize as well\n\nsafe_mean &lt;- function(x) mean(x, na.rm=TRUE)\npenguins |&gt; \n    group_by(species) |&gt;\n    summarize(across(where(is.numeric), safe_mean))\n\n# A tibble: 3 × 6\n  species   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year\n  &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n1 Adelie              38.8          18.3              190.       3701. 2008.\n2 Chinstrap           48.8          18.4              196.       3733. 2008.\n3 Gentoo              47.5          15.0              217.       5076. 2008."
+    "section": "Multiple columns",
+    "text": "Multiple columns\nCan be used inside summarize as well\n\nsafe_mean &lt;- function(x) mean(x, na.rm=TRUE)\npenguins |&gt; \n    group_by(species) |&gt;\n    summarize(across(where(is.numeric), safe_mean))\n\n# A tibble: 3 × 6\n  species   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year\n  &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n1 Adelie              38.8          18.3              190.       3701. 2008.\n2 Chinstrap           48.8          18.4              196.       3733. 2008.\n3 Gentoo              47.5          15.0              217.       5076. 2008."
   },
   {
     "objectID": "slides/2025-04-22/06_dplyr_summarize.html#without-group_by",
     "href": "slides/2025-04-22/06_dplyr_summarize.html#without-group_by",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "Without group_by, summarize takes summaries of the entire data set:\n\npenguins |&gt; \n    summarize(n=n(), \n              across(where(is.numeric), safe_mean))\n\n# A tibble: 1 × 6\n      n bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year\n  &lt;dbl&gt;          &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n1   344           43.9          17.2              201.       4202. 2008."
+    "section": "Without group_by",
+    "text": "Without group_by\nWithout group_by, summarize takes summaries of the entire data set:\n\npenguins |&gt; \n    summarize(n=n(), \n              across(where(is.numeric), safe_mean))\n\n# A tibble: 1 × 6\n      n bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year\n  &lt;dbl&gt;          &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n1   344           43.9          17.2              201.       4202. 2008."
   },
   {
     "objectID": "slides/2025-04-22/07_dplyr_join.html#specifying-names",
@@ -1285,91 +1285,91 @@
     "href": "slides/2025-04-22/08_tidyr_pivot.html",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
     "section": "",
-    "text": "R Basics\nData Visualization\nR Programming\nTidy Data Manipulation\n\nSelecting Rows and Columns\nComputing Groupwise Summaries\nJoining Tables\nReshaping Tables\n\npython Basics\nWeb Scraping with python\n\n\n\n\n\nIn this video:\n\n\nIdentify wide and long format data\nPivot data from wide to long format\nPivot data from long to wide format\n\n\n\n\n\nRecall our Baruch enrollment example of tidy data ✅\n\n\n# A tibble: 6 × 4\n  Semester Course     Enrollment   Cap\n  &lt;chr&gt;    &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;\n1 Fall     Accounting        200   250\n2 Fall     Law               100   125\n3 Fall     Statistics        200   200\n4 Spring   Accounting        300   350\n5 Spring   Law                50   100\n6 Spring   Statistics        400   400\n\n\n\n\n\nWe can plot this\n\nggplot(D, aes(x=Semester, y=Enrollment, color=Course)) +\n    geom_jitter() + theme_bw()\n\n\n\n\n\n\n\n\n\n\n\nNot easy to plot both Enrollment and Cap columns\n. . .\nNeed data in this “untidy” format\n\n\n# A tibble: 12 × 4\n   Semester Course     Number Type      \n   &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;     \n 1 Fall     Accounting    200 Enrollment\n 2 Fall     Accounting    250 Cap       \n 3 Fall     Law           100 Enrollment\n 4 Fall     Law           125 Cap       \n 5 Fall     Statistics    200 Enrollment\n 6 Fall     Statistics    200 Cap       \n 7 Spring   Accounting    300 Enrollment\n 8 Spring   Accounting    350 Cap       \n 9 Spring   Law            50 Enrollment\n10 Spring   Law           100 Cap       \n11 Spring   Statistics    400 Enrollment\n12 Spring   Statistics    400 Cap       \n\n\n\n\n\n\nggplot(D2, aes(x=Semester, y=Number, shape=Type, color=Course)) +\n    geom_jitter() + theme_bw() + theme(legend.position = \"bottom\")\n\n\n\n\n\n\n\n\n\n\n\nWe switched from a “wide” format to a “long” format\n\nNot absolute terms, relative to each other\nWide has more columns (tidier)\nLong is easier for certain plots\n\n\n\n\npivot operations can be used to switch between formats\n\npivot_longer combine columns\npivot_wider split a column\n\nSyntax is hard to remember - use ?pivot_wider and ?pivot_longer for examples\n\n\n\n\npivot_longer(D, \n             cols=c(Enrollment, Cap), \n             names_to=\"Type\",  # Quote since not a current column\n             values_to=\"Number\")\n\n\n\n# A tibble: 12 × 4\n  Semester Course     Type       Number\n  &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;       &lt;dbl&gt;\n1 Fall     Accounting Enrollment    200\n2 Fall     Accounting Cap           250\n3 Fall     Law        Enrollment    100\n# ℹ 9 more rows\n\n\n\ncols to pivot\nnames_to: column where to put (old) column name\nvalues_to: column where to store old values\n\n\n\n\n\npivot_wider(D2, \n            id_cols = c(Semester, Course), \n            values_from = Number, \n            names_from = Type)\n\n# A tibble: 6 × 4\n  Semester Course     Enrollment   Cap\n  &lt;chr&gt;    &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;\n1 Fall     Accounting        200   250\n2 Fall     Law               100   125\n3 Fall     Statistics        200   200\n4 Spring   Accounting        300   350\n5 Spring   Law                50   100\n6 Spring   Statistics        400   400\n\n\n\nid_cols: columns kept in place\nnames_from: column where to get new column names\nvalues_from: column where to get values\n\n\n\n\n\nApply Grouped Operations ✅\nSummarize Across Multiple Rows ✅\nJoin Multiple Tables ✅\nReshape Tables with pivot Operations ✅\n\n. . .\nNow it’s your turn!\n\n\n\nFor more, check out Chapter 5 - “Tidying” of R for Data Science"
+    "text": "R Basics\nData Visualization\nR Programming\nTidy Data Manipulation\n\nSelecting Rows and Columns\nComputing Groupwise Summaries\nJoining Tables\nReshaping Tables\n\npython Basics\nWeb Scraping with python\n\n\n\n\n\nIn this video:\n\n\nIdentify wide and long format data\nPivot data from wide to long format\nPivot data from long to wide format\n\n\n\n\n\nRecall our Baruch enrollment example of tidy data ✅\n\n\n# A tibble: 6 × 4\n  Semester Course     Enrollment   Cap\n  &lt;chr&gt;    &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;\n1 Fall     Accounting        200   250\n2 Fall     Law               100   125\n3 Fall     Statistics        200   200\n4 Spring   Accounting        300   350\n5 Spring   Law                50   100\n6 Spring   Statistics        400   400\n\n\n\n\n\nWe can plot this\n\nggplot(D, aes(x=Semester, y=Enrollment, color=Course)) +\n    geom_jitter() + theme_bw()\n\n\n\n\n\n\n\n\n\n\n\nNot easy to plot both Enrollment and Cap columns\n. . .\nNeed data in this “untidy” format\n\n\n# A tibble: 12 × 4\n   Semester Course     Number Type      \n   &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;     \n 1 Fall     Accounting    200 Enrollment\n 2 Fall     Accounting    250 Cap       \n 3 Fall     Law           100 Enrollment\n 4 Fall     Law           125 Cap       \n 5 Fall     Statistics    200 Enrollment\n 6 Fall     Statistics    200 Cap       \n 7 Spring   Accounting    300 Enrollment\n 8 Spring   Accounting    350 Cap       \n 9 Spring   Law            50 Enrollment\n10 Spring   Law           100 Cap       \n11 Spring   Statistics    400 Enrollment\n12 Spring   Statistics    400 Cap       \n\n\n\n\n\n\nggplot(D2, aes(x=Semester, y=Number, shape=Type, color=Course)) +\n    geom_jitter() + theme_bw() + theme(legend.position = \"bottom\")\n\n\n\n\n\n\n\n\n\n\n\nWe switched from a “wide” format to a “long” format\n\nNot absolute terms, relative to each other\nWide has more columns (tidier)\nLong is easier for certain plots\n\n\n\n\npivot operations can be used to switch between formats\n\npivot_longer combine columns\npivot_wider split a column\n\nSyntax is hard to remember:\n\nuse ?pivot_wider and ?pivot_longer\n\n\n\n\n\npivot_longer(D, \n             cols=c(Enrollment, Cap), \n             names_to=\"Type\",  # Quote since not a current column\n             values_to=\"Number\")\n\n\n\n# A tibble: 12 × 4\n  Semester Course     Type       Number\n  &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;       &lt;dbl&gt;\n1 Fall     Accounting Enrollment    200\n2 Fall     Accounting Cap           250\n3 Fall     Law        Enrollment    100\n# ℹ 9 more rows\n\n\n\ncols to pivot\nnames_to: column where to put (old) column name\nvalues_to: column where to store old values\n\n\n\n\n\npivot_wider(D2, \n            id_cols = c(Semester, Course), \n            values_from = Number, \n            names_from = Type)\n\n# A tibble: 6 × 4\n  Semester Course     Enrollment   Cap\n  &lt;chr&gt;    &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;\n1 Fall     Accounting        200   250\n2 Fall     Law               100   125\n3 Fall     Statistics        200   200\n4 Spring   Accounting        300   350\n5 Spring   Law                50   100\n6 Spring   Statistics        400   400\n\n\n\nid_cols: columns kept in place\nnames_from: column where to get new column names\nvalues_from: column where to get values\n\n\n\n\n\nApply Grouped Operations ✅\nSummarize Across Multiple Rows ✅\nJoin Multiple Tables ✅\nReshape Tables with pivot Operations ✅\n\n. . .\nNow it’s your turn!\n\n\n\nFor more, check out Chapter 5 - “Tidying” of R for Data Science"
   },
   {
     "objectID": "slides/2025-04-22/08_tidyr_pivot.html#where-are-we",
     "href": "slides/2025-04-22/08_tidyr_pivot.html#where-are-we",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "R Basics\nData Visualization\nR Programming\nTidy Data Manipulation\n\nSelecting Rows and Columns\nComputing Groupwise Summaries\nJoining Tables\nReshaping Tables\n\npython Basics\nWeb Scraping with python"
+    "section": "Where are We?",
+    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\n\nSelecting Rows and Columns\nComputing Groupwise Summaries\nJoining Tables\nReshaping Tables\n\npython Basics\nWeb Scraping with python"
   },
   {
     "objectID": "slides/2025-04-22/08_tidyr_pivot.html#goals-for-this-video",
     "href": "slides/2025-04-22/08_tidyr_pivot.html#goals-for-this-video",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "In this video:\n\n\nIdentify wide and long format data\nPivot data from wide to long format\nPivot data from long to wide format"
+    "section": "Goals for this Video",
+    "text": "Goals for this Video\nIn this video:\n\n\nIdentify wide and long format data\nPivot data from wide to long format\nPivot data from long to wide format"
   },
   {
     "objectID": "slides/2025-04-22/08_tidyr_pivot.html#looking-ahead",
     "href": "slides/2025-04-22/08_tidyr_pivot.html#looking-ahead",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "Apply Grouped Operations ✅\nSummarize Across Multiple Rows ✅\nJoin Multiple Tables ✅\nReshape Tables with pivot Operations ✅\n\n. . .\nNow it’s your turn!"
+    "section": "Looking Ahead",
+    "text": "Looking Ahead\n\nApply Grouped Operations ✅\nSummarize Across Multiple Rows ✅\nJoin Multiple Tables ✅\nReshape Tables with pivot Operations ✅\n\n\nNow it’s your turn!"
   },
   {
     "objectID": "slides/2025-04-22/08_tidyr_pivot.html#learning-more",
     "href": "slides/2025-04-22/08_tidyr_pivot.html#learning-more",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "For more, check out Chapter 5 - “Tidying” of R for Data Science"
+    "section": "Learning More",
+    "text": "Learning More\nFor more, check out Chapter 5 - “Tidying” of R for Data Science"
   },
   {
     "objectID": "slides/2025-04-22/08_tidyr_pivot.html#tidy-data",
     "href": "slides/2025-04-22/08_tidyr_pivot.html#tidy-data",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "Recall our Baruch enrollment example of tidy data ✅\n\n\n# A tibble: 6 × 4\n  Semester Course     Enrollment   Cap\n  &lt;chr&gt;    &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;\n1 Fall     Accounting        200   250\n2 Fall     Law               100   125\n3 Fall     Statistics        200   200\n4 Spring   Accounting        300   350\n5 Spring   Law                50   100\n6 Spring   Statistics        400   400"
+    "section": "Tidy Data",
+    "text": "Tidy Data\nRecall our Baruch enrollment example of tidy data ✅\n\n\n# A tibble: 6 × 4\n  Semester Course     Enrollment   Cap\n  &lt;chr&gt;    &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;\n1 Fall     Accounting        200   250\n2 Fall     Law               100   125\n3 Fall     Statistics        200   200\n4 Spring   Accounting        300   350\n5 Spring   Law                50   100\n6 Spring   Statistics        400   400"
   },
   {
     "objectID": "slides/2025-04-22/08_tidyr_pivot.html#tidy-data-1",
     "href": "slides/2025-04-22/08_tidyr_pivot.html#tidy-data-1",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "We can plot this\n\nggplot(D, aes(x=Semester, y=Enrollment, color=Course)) +\n    geom_jitter() + theme_bw()"
+    "section": "Tidy Data",
+    "text": "Tidy Data\nWe can plot this\n\nggplot(D, aes(x=Semester, y=Enrollment, color=Course)) +\n    geom_jitter() + theme_bw()"
   },
   {
     "objectID": "slides/2025-04-22/08_tidyr_pivot.html#tidy-data-2",
     "href": "slides/2025-04-22/08_tidyr_pivot.html#tidy-data-2",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "Not easy to plot both Enrollment and Cap columns\n. . .\nNeed data in this “untidy” format\n\n\n# A tibble: 12 × 4\n   Semester Course     Number Type      \n   &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;     \n 1 Fall     Accounting    200 Enrollment\n 2 Fall     Accounting    250 Cap       \n 3 Fall     Law           100 Enrollment\n 4 Fall     Law           125 Cap       \n 5 Fall     Statistics    200 Enrollment\n 6 Fall     Statistics    200 Cap       \n 7 Spring   Accounting    300 Enrollment\n 8 Spring   Accounting    350 Cap       \n 9 Spring   Law            50 Enrollment\n10 Spring   Law           100 Cap       \n11 Spring   Statistics    400 Enrollment\n12 Spring   Statistics    400 Cap"
+    "section": "Tidy Data",
+    "text": "Tidy Data\nNot easy to plot both Enrollment and Cap columns\n\nNeed data in this “untidy” format\n\n\n# A tibble: 12 × 4\n   Semester Course     Number Type      \n   &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;     \n 1 Fall     Accounting    200 Enrollment\n 2 Fall     Accounting    250 Cap       \n 3 Fall     Law           100 Enrollment\n 4 Fall     Law           125 Cap       \n 5 Fall     Statistics    200 Enrollment\n 6 Fall     Statistics    200 Cap       \n 7 Spring   Accounting    300 Enrollment\n 8 Spring   Accounting    350 Cap       \n 9 Spring   Law            50 Enrollment\n10 Spring   Law           100 Cap       \n11 Spring   Statistics    400 Enrollment\n12 Spring   Statistics    400 Cap"
   },
   {
     "objectID": "slides/2025-04-22/08_tidyr_pivot.html#tidy-data-3",
     "href": "slides/2025-04-22/08_tidyr_pivot.html#tidy-data-3",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "ggplot(D2, aes(x=Semester, y=Number, shape=Type, color=Course)) +\n    geom_jitter() + theme_bw() + theme(legend.position = \"bottom\")"
+    "section": "Tidy Data",
+    "text": "Tidy Data\n\nggplot(D2, aes(x=Semester, y=Number, shape=Type, color=Course)) +\n    geom_jitter() + theme_bw() + theme(legend.position = \"bottom\")"
   },
   {
     "objectID": "slides/2025-04-22/08_tidyr_pivot.html#wide-and-long-data",
     "href": "slides/2025-04-22/08_tidyr_pivot.html#wide-and-long-data",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "We switched from a “wide” format to a “long” format\n\nNot absolute terms, relative to each other\nWide has more columns (tidier)\nLong is easier for certain plots"
+    "section": "Wide and Long Data",
+    "text": "Wide and Long Data\nWe switched from a “wide” format to a “long” format\n\nNot absolute terms, relative to each other\nWide has more columns (tidier)\nLong is easier for certain plots"
   },
   {
     "objectID": "slides/2025-04-22/08_tidyr_pivot.html#pivots",
     "href": "slides/2025-04-22/08_tidyr_pivot.html#pivots",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "pivot operations can be used to switch between formats\n\npivot_longer combine columns\npivot_wider split a column\n\nSyntax is hard to remember - use ?pivot_wider and ?pivot_longer for examples"
+    "section": "Pivots",
+    "text": "Pivots\npivot operations can be used to switch between formats\n\npivot_longer combine columns\npivot_wider split a column\n\nSyntax is hard to remember:\n\nuse ?pivot_wider and ?pivot_longer"
   },
   {
     "objectID": "slides/2025-04-22/08_tidyr_pivot.html#wide-to-long",
     "href": "slides/2025-04-22/08_tidyr_pivot.html#wide-to-long",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "pivot_longer(D, \n             cols=c(Enrollment, Cap), \n             names_to=\"Type\",  # Quote since not a current column\n             values_to=\"Number\")\n\n\n\n# A tibble: 12 × 4\n  Semester Course     Type       Number\n  &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;       &lt;dbl&gt;\n1 Fall     Accounting Enrollment    200\n2 Fall     Accounting Cap           250\n3 Fall     Law        Enrollment    100\n# ℹ 9 more rows\n\n\n\ncols to pivot\nnames_to: column where to put (old) column name\nvalues_to: column where to store old values"
+    "section": "Wide to Long",
+    "text": "Wide to Long\n\npivot_longer(D, \n             cols=c(Enrollment, Cap), \n             names_to=\"Type\",  # Quote since not a current column\n             values_to=\"Number\")\n\n\n\n# A tibble: 12 × 4\n  Semester Course     Type       Number\n  &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;       &lt;dbl&gt;\n1 Fall     Accounting Enrollment    200\n2 Fall     Accounting Cap           250\n3 Fall     Law        Enrollment    100\n# ℹ 9 more rows\n\n\n\ncols to pivot\nnames_to: column where to put (old) column name\nvalues_to: column where to store old values"
   },
   {
     "objectID": "slides/2025-04-22/08_tidyr_pivot.html#long-to-wide",
     "href": "slides/2025-04-22/08_tidyr_pivot.html#long-to-wide",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "pivot_wider(D2, \n            id_cols = c(Semester, Course), \n            values_from = Number, \n            names_from = Type)\n\n# A tibble: 6 × 4\n  Semester Course     Enrollment   Cap\n  &lt;chr&gt;    &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;\n1 Fall     Accounting        200   250\n2 Fall     Law               100   125\n3 Fall     Statistics        200   200\n4 Spring   Accounting        300   350\n5 Spring   Law                50   100\n6 Spring   Statistics        400   400\n\n\n\nid_cols: columns kept in place\nnames_from: column where to get new column names\nvalues_from: column where to get values"
+    "section": "Long to Wide",
+    "text": "Long to Wide\n\npivot_wider(D2, \n            id_cols = c(Semester, Course), \n            values_from = Number, \n            names_from = Type)\n\n# A tibble: 6 × 4\n  Semester Course     Enrollment   Cap\n  &lt;chr&gt;    &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;\n1 Fall     Accounting        200   250\n2 Fall     Law               100   125\n3 Fall     Statistics        200   200\n4 Spring   Accounting        300   350\n5 Spring   Law                50   100\n6 Spring   Statistics        400   400\n\n\n\nid_cols: columns kept in place\nnames_from: column where to get new column names\nvalues_from: column where to get values"
   },
   {
     "objectID": "slides/2025-04-22/05_dplyr_groupby.html",
