@@ -592,9 +592,6 @@
 <section id="specifying-joins" class="slide level2">
 <h2>Specifying Joins</h2>
 <p>In <code>R</code>, we specify joins with the <code>join_by</code> function</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">inner_join</span>(band_instruments, band_members, <span class="fu">join_by</span>(name <span class="sc">==</span> name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <p><code>join_by</code> gives a “Join Specification”</p>
 <ul>
 <li><code>name</code> == <code>name</code> are column names from first and second table</li>
@@ -606,9 +603,6 @@
 <p><code>inner_join</code> discards unmatched rows</p>
 <p><img data-src="https://r4ds.hadley.nz/diagrams/join/inner.png" style="width:40.0%"></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">inner_join</span>(band_instruments, </span>
-<span id="cb6-2"><a></a>           band_members, </span>
-<span id="cb6-3"><a></a>           <span class="fu">join_by</span>(name <span class="sc">==</span> name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   name  plays  band   
@@ -623,9 +617,6 @@
 <p><code>full_join</code> keeps all rows</p>
 <p><img data-src="https://r4ds.hadley.nz/diagrams/join/full.png" style="width:40.0%"></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">full_join</span>(band_instruments, </span>
-<span id="cb8-2"><a></a>          band_members, </span>
-<span id="cb8-3"><a></a>          <span class="fu">join_by</span>(name <span class="sc">==</span> name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
   name  plays  band   
@@ -642,9 +633,6 @@
 <p><code>left_join</code> keeps unmatched rows from first table</p>
 <p><img data-src="https://r4ds.hadley.nz/diagrams/join/left.png" style="width:40.0%"></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">left_join</span>(band_instruments, </span>
-<span id="cb10-2"><a></a>          band_members, </span>
-<span id="cb10-3"><a></a>          <span class="fu">join_by</span>(name <span class="sc">==</span> name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   name  plays  band   
@@ -660,9 +648,6 @@
 <p><code>right_join</code> flips <code>left_join</code></p>
 <p><img data-src="https://r4ds.hadley.nz/diagrams/join/right.png" style="width:40.0%"></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">right_join</span>(band_instruments, </span>
-<span id="cb12-2"><a></a>           band_members, </span>
-<span id="cb12-3"><a></a>           <span class="fu">join_by</span>(name <span class="sc">==</span> name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   name  plays  band   
@@ -685,7 +670,7 @@
 <section id="specifying-column-names" class="slide level2">
 <h2>Specifying Column Names</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>band_instruments2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>band_instruments2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   artist plays 
@@ -700,9 +685,9 @@
 <section id="specifying-names" class="slide level2">
 <h2>Specifying Names</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">inner_join</span>(band_instruments2, </span>
-<span id="cb16-2"><a></a>           band_members, </span>
-<span id="cb16-3"><a></a>           <span class="fu">join_by</span>(artist <span class="sc">==</span> name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">inner_join</span>(band_instruments2, </span>
+<span id="cb11-2"><a></a>           band_members, </span>
+<span id="cb11-3"><a></a>           <span class="fu">join_by</span>(artist <span class="sc">==</span> name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   artist plays  band   
@@ -716,12 +701,12 @@
 <h2>Computing Z-Scores</h2>
 <p>Let’s compute the <code>z</code>-scores of mass for our penguins by species</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>penguin_stats <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
-<span id="cb18-2"><a></a>    <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span></span>
-<span id="cb18-3"><a></a>    <span class="fu">summarize</span>(<span class="at">mass_mean =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
-<span id="cb18-4"><a></a>              <span class="at">mass_sd =</span> <span class="fu">sd</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
-<span id="cb18-5"><a></a></span>
-<span id="cb18-6"><a></a>penguin_stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>penguin_stats <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a></a>    <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a></a>    <span class="fu">summarize</span>(<span class="at">mass_mean =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
+<span id="cb13-4"><a></a>              <span class="at">mass_sd =</span> <span class="fu">sd</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
+<span id="cb13-5"><a></a></span>
+<span id="cb13-6"><a></a>penguin_stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   species   mass_mean mass_sd
@@ -735,10 +720,10 @@
 <section id="computing-z-scores-1" class="slide level2">
 <h2>Computing Z-Scores</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb20-2"><a></a>    <span class="fu">inner_join</span>(penguin_stats, </span>
-<span id="cb20-3"><a></a>               <span class="fu">join_by</span>(species <span class="sc">==</span> species)) <span class="sc">|&gt;</span></span>
-<span id="cb20-4"><a></a>    <span class="fu">select</span>(species, body_mass_g, mass_mean, mass_sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a></a>    <span class="fu">inner_join</span>(penguin_stats, </span>
+<span id="cb15-3"><a></a>               <span class="fu">join_by</span>(species <span class="sc">==</span> species)) <span class="sc">|&gt;</span></span>
+<span id="cb15-4"><a></a>    <span class="fu">select</span>(species, body_mass_g, mass_mean, mass_sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 344 × 4
    species body_mass_g mass_mean mass_sd
@@ -760,11 +745,11 @@
 <section id="computing-z-scores-2" class="slide level2">
 <h2>Computing Z-Scores</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb22-2"><a></a>    <span class="fu">inner_join</span>(penguin_stats, </span>
-<span id="cb22-3"><a></a>               <span class="fu">join_by</span>(species <span class="sc">==</span> species)) <span class="sc">|&gt;</span></span>
-<span id="cb22-4"><a></a>    <span class="fu">mutate</span>(<span class="at">mass_z =</span> (body_mass_g <span class="sc">-</span> mass_mean) <span class="sc">/</span> mass_sd) <span class="sc">|&gt;</span></span>
-<span id="cb22-5"><a></a>    <span class="fu">select</span>(species, body_mass_g, mass_z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a></a>    <span class="fu">inner_join</span>(penguin_stats, </span>
+<span id="cb17-3"><a></a>               <span class="fu">join_by</span>(species <span class="sc">==</span> species)) <span class="sc">|&gt;</span></span>
+<span id="cb17-4"><a></a>    <span class="fu">mutate</span>(<span class="at">mass_z =</span> (body_mass_g <span class="sc">-</span> mass_mean) <span class="sc">/</span> mass_sd) <span class="sc">|&gt;</span></span>
+<span id="cb17-5"><a></a>    <span class="fu">select</span>(species, body_mass_g, mass_z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 344 × 3
    species body_mass_g mass_z
@@ -1018,6 +1003,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

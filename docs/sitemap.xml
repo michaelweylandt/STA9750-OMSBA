@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-05-13/17_python_strings.html</loc>
+    <lastmod>2025-04-25T16:51:50.369Z</lastmod>
+  </url>
+  <url>
     <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-05-13/15_python_pydata.html</loc>
     <lastmod>2025-04-01T02:16:00.980Z</lastmod>
   </url>
   <url>
-    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-05-06/13_python_basics_objects.html</loc>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-05-13/13_python_basics_objects.html</loc>
     <lastmod>2025-04-01T02:39:52.621Z</lastmod>
   </url>
   <url>
-    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-05-06/11_python_basics_syntax.html</loc>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-29/11_python_basics_syntax.html</loc>
     <lastmod>2025-04-01T02:40:01.623Z</lastmod>
   </url>
   <url>
@@ -57,23 +61,23 @@
     <lastmod>2025-04-22T13:58:39.055Z</lastmod>
   </url>
   <url>
-    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-29/08_tidyr_pivot.html</loc>
-    <lastmod>2025-04-21T18:12:48.752Z</lastmod>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-22/08_tidyr_pivot.html</loc>
+    <lastmod>2025-04-22T15:14:37.482Z</lastmod>
   </url>
   <url>
     <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-29/10_python_install.html</loc>
     <lastmod>2025-04-01T02:40:08.219Z</lastmod>
   </url>
   <url>
-    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-05-06/12_python_basics_control.html</loc>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-29/12_python_basics_control.html</loc>
     <lastmod>2025-04-01T02:39:57.942Z</lastmod>
   </url>
   <url>
-    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-05-06/14_python_packages.html</loc>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-05-13/14_python_packages.html</loc>
     <lastmod>2025-04-01T02:40:27.419Z</lastmod>
   </url>
   <url>
-    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-04-22/08_tidyr_pivot.html</loc>
-    <lastmod>2025-04-22T15:14:37.482Z</lastmod>
+    <loc>https://michael-weylandt.com/STA9750-OMSBA/slides/2025-05-13/16_html.html</loc>
+    <lastmod>2025-04-25T16:51:45.029Z</lastmod>
   </url>
 </urlset>

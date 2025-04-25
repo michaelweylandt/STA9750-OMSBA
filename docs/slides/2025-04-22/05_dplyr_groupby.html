@@ -545,7 +545,6 @@
 <h2>Numeric Variables</h2>
 <p>In general, grouping on continuous variables is a bad choice:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">group_by</span>(body_mass_g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 344 × 8
 # Groups:   body_mass_g [95]
@@ -574,10 +573,10 @@
 <li>Group on quantiles (<code>ntile</code>) or cut points (<code>cut</code>)</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb30-2"><a></a>    <span class="fu">mutate</span>(<span class="at">mass_5ile =</span> <span class="fu">ntile</span>(body_mass_g, <span class="dv">5</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb30-3"><a></a>    <span class="fu">group_by</span>(mass_5ile) <span class="sc">|&gt;</span></span>
-<span id="cb30-4"><a></a>    ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb29-2"><a></a>    <span class="fu">mutate</span>(<span class="at">mass_5ile =</span> <span class="fu">ntile</span>(body_mass_g, <span class="dv">5</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb29-3"><a></a>    <span class="fu">group_by</span>(mass_5ile) <span class="sc">|&gt;</span></span>
+<span id="cb29-4"><a></a>    ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="rowwise-operations" class="slide level2">
@@ -585,7 +584,7 @@
 <p><em>Rarely</em>, you may need to apply an operation to each row separately without vectorization</p>
 <p><code>rowwise</code> lets you do so - makes each row its own group</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">rowwise</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>penguins <span class="sc">|&gt;</span> <span class="fu">rowwise</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -832,6 +831,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

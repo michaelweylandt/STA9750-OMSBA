@@ -1,56 +1,56 @@
 [
   {
-    "objectID": "slides/2025-05-06/13_python_basics_objects.html#where-are-we",
-    "href": "slides/2025-05-06/13_python_basics_objects.html#where-are-we",
+    "objectID": "slides/2025-05-13/13_python_basics_objects.html#where-are-we",
+    "href": "slides/2025-05-13/13_python_basics_objects.html#where-are-we",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
     "section": "Where are We?",
     "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\npython Basics\n\nInstalling python\nBasic Syntax and Control Flow\npython Objects\nUsing Packages\n\nWeb Scraping with python"
   },
   {
-    "objectID": "slides/2025-05-06/13_python_basics_objects.html#goals-for-this-video",
-    "href": "slides/2025-05-06/13_python_basics_objects.html#goals-for-this-video",
+    "objectID": "slides/2025-05-13/13_python_basics_objects.html#goals-for-this-video",
+    "href": "slides/2025-05-13/13_python_basics_objects.html#goals-for-this-video",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
     "section": "Goals for this Video",
     "text": "Goals for this Video\nIn this video:"
   },
   {
-    "objectID": "slides/2025-05-06/13_python_basics_objects.html#looking-ahead",
-    "href": "slides/2025-05-06/13_python_basics_objects.html#looking-ahead",
+    "objectID": "slides/2025-05-13/13_python_basics_objects.html#looking-ahead",
+    "href": "slides/2025-05-13/13_python_basics_objects.html#looking-ahead",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
     "section": "Looking Ahead",
     "text": "Looking Ahead"
   },
   {
-    "objectID": "slides/2025-05-06/13_python_basics_objects.html#learning-more",
-    "href": "slides/2025-05-06/13_python_basics_objects.html#learning-more",
+    "objectID": "slides/2025-05-13/13_python_basics_objects.html#learning-more",
+    "href": "slides/2025-05-13/13_python_basics_objects.html#learning-more",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
     "section": "Learning More",
     "text": "Learning More"
   },
   {
-    "objectID": "slides/2025-05-06/11_python_basics_syntax.html#where-are-we",
-    "href": "slides/2025-05-06/11_python_basics_syntax.html#where-are-we",
+    "objectID": "slides/2025-04-29/11_python_basics_syntax.html#where-are-we",
+    "href": "slides/2025-04-29/11_python_basics_syntax.html#where-are-we",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
     "section": "Where are We?",
     "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\npython Basics\n\nInstalling python\nBasic Syntax and Control Flow\npython Objects\nUsing Packages\n\nWeb Scraping with python"
   },
   {
-    "objectID": "slides/2025-05-06/11_python_basics_syntax.html#goals-for-this-video",
-    "href": "slides/2025-05-06/11_python_basics_syntax.html#goals-for-this-video",
+    "objectID": "slides/2025-04-29/11_python_basics_syntax.html#goals-for-this-video",
+    "href": "slides/2025-04-29/11_python_basics_syntax.html#goals-for-this-video",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
     "section": "Goals for this Video",
     "text": "Goals for this Video\nIn this video:"
   },
   {
-    "objectID": "slides/2025-05-06/11_python_basics_syntax.html#looking-ahead",
-    "href": "slides/2025-05-06/11_python_basics_syntax.html#looking-ahead",
+    "objectID": "slides/2025-04-29/11_python_basics_syntax.html#looking-ahead",
+    "href": "slides/2025-04-29/11_python_basics_syntax.html#looking-ahead",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
     "section": "Looking Ahead",
     "text": "Looking Ahead"
   },
   {
-    "objectID": "slides/2025-05-06/11_python_basics_syntax.html#learning-more",
-    "href": "slides/2025-05-06/11_python_basics_syntax.html#learning-more",
+    "objectID": "slides/2025-04-29/11_python_basics_syntax.html#learning-more",
+    "href": "slides/2025-04-29/11_python_basics_syntax.html#learning-more",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
     "section": "Learning More",
     "text": "Learning More"
@@ -96,6 +96,181 @@
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
     "section": "Goals for this Video",
     "text": "Goals for this Video\nIn this video:\n\n\nIdentify suitable keys\nUnderstand different types of join operators\nSpecify columns to be used in joins"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#combining-tables",
+    "href": "slides/2025-04-22/07_dplyr_join.html#combining-tables",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Combining Tables",
+    "text": "Combining Tables\nOften in data analysis, we combine data from multiple sources to create new insights\njoins provide us a unified framework for combining data sets"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#new-example-data",
+    "href": "slides/2025-04-22/07_dplyr_join.html#new-example-data",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "New Example Data",
+    "text": "New Example Data\n\nband_members\n\n# A tibble: 3 × 2\n  name  band   \n  &lt;chr&gt; &lt;chr&gt;  \n1 Mick  Stones \n2 John  Beatles\n3 Paul  Beatles\n\n\n\nband_instruments\n\n# A tibble: 3 × 2\n  name  plays \n  &lt;chr&gt; &lt;chr&gt; \n1 John  guitar\n2 Paul  bass  \n3 Keith guitar"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#new-example-data-1",
+    "href": "slides/2025-04-22/07_dplyr_join.html#new-example-data-1",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "New Example Data",
+    "text": "New Example Data\nPartial alignment on name\nMissing:\n\nKeith (Richards) of the Rolling Stones in band_members\nMick (Jagger) as a guitarist in band_instruments"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#table-keys",
+    "href": "slides/2025-04-22/07_dplyr_join.html#table-keys",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Table Keys",
+    "text": "Table Keys\nRecall the concept of a key - a unique identifier in a table\n\nIdeally a single column (e.g., Employee ID)\nSometimes several columns (name + birth date)\n\nIn our example, name is a key we can use"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#your-first-join",
+    "href": "slides/2025-04-22/07_dplyr_join.html#your-first-join",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Your First Join",
+    "text": "Your First Join\nRecall our two data sets\n\n\n\n\n\n\n\n\n\nband_instruments\nband_members\n\n\n\n\nname\nplays\nname\nband\n\n\nJohn\nguitar\nMick\nStones\n\n\nPaul\nbass\nJohn\nBeatles\n\n\nKeith\nguitar\nPaul\nBeatles"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#your-first-join-1",
+    "href": "slides/2025-04-22/07_dplyr_join.html#your-first-join-1",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Your First Join",
+    "text": "Your First Join\nTo use name as a key, reorder rows so that name matches\n\n\n\n\n\n\n\n\n\nband_instruments\nband_members\n\n\n\n\nname\nplays\nname\nband\n\n\nJohn\nguitar\nJohn\nBeatles\n\n\nPaul\nbass\nPaul\nBeatles\n\n\nKeith\nguitar\n\n\n\n\n\n\nMick\nStones"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#your-first-join-2",
+    "href": "slides/2025-04-22/07_dplyr_join.html#your-first-join-2",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Your First Join",
+    "text": "Your First Join\nNote that Keith and Mick don’t have a matching row\n\n\n\n\n\n\n\n\n\nband_instruments\nband_members\n\n\n\n\nname\nplays\nname\nband\n\n\nJohn\nguitar\nJohn\nBeatles\n\n\nPaul\nbass\nPaul\nBeatles\n\n\nKeith\nguitar\n\n\n\n\n\n\nMick\nStones"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#your-first-join-3",
+    "href": "slides/2025-04-22/07_dplyr_join.html#your-first-join-3",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Your First Join",
+    "text": "Your First Join\nWe will definitely keep\n\n\n\n\n\n\n\n\n\nband_instruments\nband_members\n\n\n\n\nname\nplays\nname\nband\n\n\nJohn\nguitar\nJohn\nBeatles\n\n\nPaul\nbass\nPaul\nBeatles\n\n\n\nNeed to decide on unmatched rows"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#your-first-inner-join",
+    "href": "slides/2025-04-22/07_dplyr_join.html#your-first-inner-join",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Your First Inner Join",
+    "text": "Your First Inner Join\ninner_join - keep only rows with matches\n\n\n\nname\nplays\nband\n\n\n\n\nJohn\nguitar\nBeatles\n\n\nPaul\nbass\nBeatles"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#your-first-full-join",
+    "href": "slides/2025-04-22/07_dplyr_join.html#your-first-full-join",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Your First Full Join",
+    "text": "Your First Full Join\nfull_join - keep all rows and fill with NA\n\n\n\nname\nplays\nband\n\n\n\n\nJohn\nguitar\nBeatles\n\n\nPaul\nbass\nBeatles\n\n\nKeith\nguitar\nNA\n\n\nMick\nNA\nStones"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#your-first-left-join",
+    "href": "slides/2025-04-22/07_dplyr_join.html#your-first-left-join",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Your First Left Join",
+    "text": "Your First Left Join\nleft_join - keep unmatched rows from first (“left”) table\n\n\n\nname\nplays\nband\n\n\n\n\nJohn\nguitar\nBeatles\n\n\nPaul\nbass\nBeatles\n\n\nKeith\nguitar\nNA"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#your-first-right-join",
+    "href": "slides/2025-04-22/07_dplyr_join.html#your-first-right-join",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Your First Right Join",
+    "text": "Your First Right Join\nright_join - keep unmatched rows from first (“right”) table\n\n\n\nname\nplays\nband\n\n\n\n\nJohn\nguitar\nBeatles\n\n\nPaul\nbass\nBeatles\n\n\nMick\nNA\nStones"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#types-of-joins",
+    "href": "slides/2025-04-22/07_dplyr_join.html#types-of-joins",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Types of Joins",
+    "text": "Types of Joins\nFigure from R for Data Science\n\nFigure from R for Data Science"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#specifying-joins",
+    "href": "slides/2025-04-22/07_dplyr_join.html#specifying-joins",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Specifying Joins",
+    "text": "Specifying Joins\nIn R, we specify joins with the join_by function\njoin_by gives a “Join Specification”\n\nname == name are column names from first and second table\nBe explicit or R will “auto-guess” based on names matched"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#inner_join",
+    "href": "slides/2025-04-22/07_dplyr_join.html#inner_join",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "inner_join",
+    "text": "inner_join\ninner_join discards unmatched rows\n\n\n\n# A tibble: 2 × 3\n  name  plays  band   \n  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  \n1 John  guitar Beatles\n2 Paul  bass   Beatles"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#full_join",
+    "href": "slides/2025-04-22/07_dplyr_join.html#full_join",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "full_join",
+    "text": "full_join\nfull_join keeps all rows\n\n\n\n# A tibble: 4 × 3\n  name  plays  band   \n  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  \n1 John  guitar Beatles\n2 Paul  bass   Beatles\n3 Keith guitar &lt;NA&gt;   \n4 Mick  &lt;NA&gt;   Stones"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#left_join",
+    "href": "slides/2025-04-22/07_dplyr_join.html#left_join",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "left_join",
+    "text": "left_join\nleft_join keeps unmatched rows from first table\n\n\n\n# A tibble: 3 × 3\n  name  plays  band   \n  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  \n1 John  guitar Beatles\n2 Paul  bass   Beatles\n3 Keith guitar &lt;NA&gt;"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#right_join",
+    "href": "slides/2025-04-22/07_dplyr_join.html#right_join",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "right_join",
+    "text": "right_join\nright_join flips left_join\n\n\n\n# A tibble: 3 × 3\n  name  plays  band   \n  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  \n1 John  guitar Beatles\n2 Paul  bass   Beatles\n3 Mick  &lt;NA&gt;   Stones"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#picking-a-join",
+    "href": "slides/2025-04-22/07_dplyr_join.html#picking-a-join",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Picking a Join",
+    "text": "Picking a Join\nType of join depends on treatment of missing values\n\nWhy is data missing?\nIf going to na.rm=TRUE, inner_join\nIf going to investigate further, full or left/right"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#specifying-column-names",
+    "href": "slides/2025-04-22/07_dplyr_join.html#specifying-column-names",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Specifying Column Names",
+    "text": "Specifying Column Names\n\nband_instruments2\n\n# A tibble: 3 × 2\n  artist plays \n  &lt;chr&gt;  &lt;chr&gt; \n1 John   guitar\n2 Paul   bass  \n3 Keith  guitar\n\n\nSame as before, but now name -&gt; artist"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#specifying-names",
+    "href": "slides/2025-04-22/07_dplyr_join.html#specifying-names",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Specifying Names",
+    "text": "Specifying Names\n\ninner_join(band_instruments2, \n           band_members, \n           join_by(artist == name))\n\n# A tibble: 2 × 3\n  artist plays  band   \n  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  \n1 John   guitar Beatles\n2 Paul   bass   Beatles"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#computing-z-scores",
+    "href": "slides/2025-04-22/07_dplyr_join.html#computing-z-scores",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Computing Z-Scores",
+    "text": "Computing Z-Scores\nLet’s compute the z-scores of mass for our penguins by species\n\npenguin_stats &lt;- penguins |&gt;\n    group_by(species) |&gt;\n    summarize(mass_mean = mean(body_mass_g, na.rm=TRUE), \n              mass_sd = sd(body_mass_g, na.rm=TRUE))\n\npenguin_stats\n\n# A tibble: 3 × 3\n  species   mass_mean mass_sd\n  &lt;fct&gt;         &lt;dbl&gt;   &lt;dbl&gt;\n1 Adelie        3701.    459.\n2 Chinstrap     3733.    384.\n3 Gentoo        5076.    504."
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#computing-z-scores-1",
+    "href": "slides/2025-04-22/07_dplyr_join.html#computing-z-scores-1",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Computing Z-Scores",
+    "text": "Computing Z-Scores\n\npenguins |&gt;\n    inner_join(penguin_stats, \n               join_by(species == species)) |&gt;\n    select(species, body_mass_g, mass_mean, mass_sd)\n\n# A tibble: 344 × 4\n   species body_mass_g mass_mean mass_sd\n   &lt;fct&gt;         &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 Adelie         3750     3701.    459.\n 2 Adelie         3800     3701.    459.\n 3 Adelie         3250     3701.    459.\n 4 Adelie           NA     3701.    459.\n 5 Adelie         3450     3701.    459.\n 6 Adelie         3650     3701.    459.\n 7 Adelie         3625     3701.    459.\n 8 Adelie         4675     3701.    459.\n 9 Adelie         3475     3701.    459.\n10 Adelie         4250     3701.    459.\n# ℹ 334 more rows"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#computing-z-scores-2",
+    "href": "slides/2025-04-22/07_dplyr_join.html#computing-z-scores-2",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Computing Z-Scores",
+    "text": "Computing Z-Scores\n\npenguins |&gt;\n    inner_join(penguin_stats, \n               join_by(species == species)) |&gt;\n    mutate(mass_z = (body_mass_g - mass_mean) / mass_sd) |&gt;\n    select(species, body_mass_g, mass_z)\n\n# A tibble: 344 × 3\n   species body_mass_g mass_z\n   &lt;fct&gt;         &lt;int&gt;  &lt;dbl&gt;\n 1 Adelie         3750  0.108\n 2 Adelie         3800  0.217\n 3 Adelie         3250 -0.983\n 4 Adelie           NA NA    \n 5 Adelie         3450 -0.547\n 6 Adelie         3650 -0.110\n 7 Adelie         3625 -0.165\n 8 Adelie         4675  2.12 \n 9 Adelie         3475 -0.492\n10 Adelie         4250  1.20 \n# ℹ 334 more rows"
+  },
+  {
+    "objectID": "slides/2025-04-22/07_dplyr_join.html#computing-z-scores-3",
+    "href": "slides/2025-04-22/07_dplyr_join.html#computing-z-scores-3",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Computing Z-Scores",
+    "text": "Computing Z-Scores\nJoin onto summary statistics to get group (species) statistics\ninner_join since we know all penguins match to one species"
   },
   {
     "objectID": "slides/2025-04-22/07_dplyr_join.html#looking-ahead",
@@ -196,6 +371,13 @@
     "text": "Effects of group_by\nHence,\n\npenguins |&gt; \n    group_by(species) |&gt;\n    mutate(mass_max = max(body_mass_g, na.rm=TRUE))\n    filter(body_mass_g == mass_max)\n\n\npenguins |&gt; group_by(species) |&gt; slice_max(body_mass_g)\n\n# A tibble: 3 × 8\n# Groups:   species [3]\n  species   island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;     &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie    Biscoe           43.2          19                 197        4775\n2 Chinstrap Dream            52            20.7               210        4800\n3 Gentoo    Biscoe           49.2          15.2               221        6300\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\ngives a 3 row answer (one per group)"
   },
   {
+    "objectID": "slides/2025-04-22/05_dplyr_groupby.html#effects-of-group_by-5",
+    "href": "slides/2025-04-22/05_dplyr_groupby.html#effects-of-group_by-5",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Effects of group_by",
+    "text": "Effects of group_by\nOperations do not have to select only a single row like slice_max\n\nTo get “above average” penguins for each species\n\npenguins |&gt; \n    group_by(species) |&gt; \n    filter(body_mass_g &gt; mean(body_mass_g, na.rm=TRUE))"
+  },
+  {
     "objectID": "slides/2025-04-22/05_dplyr_groupby.html#compound-grouping",
     "href": "slides/2025-04-22/05_dplyr_groupby.html#compound-grouping",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
@@ -217,25 +399,25 @@
     "text": "Compound Grouping\nMissing ‘combinations’ automatically dropped:\n\npenguins |&gt; \n    group_by(species, island) \n\n\n\n# A tibble: 344 × 4\n# Groups:   species, island [5]\n   species island    body_mass_g sex   \n   &lt;fct&gt;   &lt;fct&gt;           &lt;int&gt; &lt;fct&gt; \n 1 Adelie  Torgersen        3750 male  \n 2 Adelie  Torgersen        3800 female\n 3 Adelie  Torgersen        3250 female\n 4 Adelie  Torgersen          NA &lt;NA&gt;  \n 5 Adelie  Torgersen        3450 female\n 6 Adelie  Torgersen        3650 male  \n 7 Adelie  Torgersen        3625 female\n 8 Adelie  Torgersen        4675 male  \n 9 Adelie  Torgersen        3475 &lt;NA&gt;  \n10 Adelie  Torgersen        4250 &lt;NA&gt;  \n# ℹ 334 more rows"
   },
   {
-    "objectID": "slides/2025-04-22/05_dplyr_groupby.html#stopping-grouped-operations",
-    "href": "slides/2025-04-22/05_dplyr_groupby.html#stopping-grouped-operations",
+    "objectID": "slides/2025-04-22/05_dplyr_groupby.html#stopping-groups",
+    "href": "slides/2025-04-22/05_dplyr_groupby.html#stopping-groups",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Stopping grouped operations",
-    "text": "Stopping grouped operations\nOnce you are done with grouped operations, ungroup\n\npenguins |&gt; \n    group_by(species, island) |&gt;\n    slice_max(body_mass_g) |&gt;\n    ungroup()\n\n# A tibble: 5 × 8\n  species   island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;     &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie    Biscoe              43.2          19                 197        4775\n2 Adelie    Dream               39.8          19.1               184        4650\n3 Adelie    Torgersen           42.9          17.6               196        4700\n4 Chinstrap Dream               52            20.7               210        4800\n5 Gentoo    Biscoe              49.2          15.2               221        6300\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+    "section": "Stopping groups",
+    "text": "Stopping groups\nOnce you are done with grouped operations, ungroup\n\npenguins |&gt; \n    group_by(species, island) |&gt;\n    slice_max(body_mass_g) |&gt;\n    ungroup()\n\n# A tibble: 5 × 8\n  species   island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;     &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie    Biscoe              43.2          19                 197        4775\n2 Adelie    Dream               39.8          19.1               184        4650\n3 Adelie    Torgersen           42.9          17.6               196        4700\n4 Chinstrap Dream               52            20.7               210        4800\n5 Gentoo    Biscoe              49.2          15.2               221        6300\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
   },
   {
-    "objectID": "slides/2025-04-22/05_dplyr_groupby.html#grouping-on-numeric-variables",
-    "href": "slides/2025-04-22/05_dplyr_groupby.html#grouping-on-numeric-variables",
+    "objectID": "slides/2025-04-22/05_dplyr_groupby.html#numeric-variables",
+    "href": "slides/2025-04-22/05_dplyr_groupby.html#numeric-variables",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Grouping on Numeric Variables",
-    "text": "Grouping on Numeric Variables\nIn general, grouping on continuous variables is a bad choice:\n\n\n# A tibble: 344 × 8\n# Groups:   body_mass_g [95]\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n(Analogy: Checking exact equality of continuous random variables)"
+    "section": "Numeric Variables",
+    "text": "Numeric Variables\nIn general, grouping on continuous variables is a bad choice:\n\n\n# A tibble: 344 × 8\n# Groups:   body_mass_g [95]\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n(Analogy: Checking exact equality of continuous random variables)"
   },
   {
-    "objectID": "slides/2025-04-22/05_dplyr_groupby.html#grouping-on-numeric-variables-1",
-    "href": "slides/2025-04-22/05_dplyr_groupby.html#grouping-on-numeric-variables-1",
+    "objectID": "slides/2025-04-22/05_dplyr_groupby.html#numeric-variables-1",
+    "href": "slides/2025-04-22/05_dplyr_groupby.html#numeric-variables-1",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Grouping on Numeric Variables",
-    "text": "Grouping on Numeric Variables\nBetter choices:\n\nGroup on quantiles (ntile) or cut points (cut)"
+    "section": "Numeric Variables",
+    "text": "Numeric Variables\nBetter choices:\n\nGroup on quantiles (ntile) or cut points (cut)\n\n\npenguins |&gt;\n    mutate(mass_5ile = ntile(body_mass_g, 5)) |&gt;\n    group_by(mass_5ile) |&gt;\n    ..."
   },
   {
     "objectID": "slides/2025-04-22/05_dplyr_groupby.html#rowwise-operations",
@@ -333,7 +515,7 @@
     "href": "slides/2025-04-01/03_dplyr_filter.html#slice-functions-2",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
     "section": "slice functions",
-    "text": "slice functions\nslice_sample: random subset of your data\n\nUseful if exploring a large data set\n\n\npenguins |&gt; slice_sample(n=10)\n\n# A tibble: 10 × 8\n   species   island   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;     &lt;fct&gt;             &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Chinstrap Dream              46.4          18.6               190        3450\n 2 Gentoo    Biscoe             44            13.6               208        4350\n 3 Adelie    Biscoe             40.6          18.6               183        3550\n 4 Gentoo    Biscoe             50.4          15.7               222        5750\n 5 Adelie    Biscoe             39.7          18.9               184        3550\n 6 Gentoo    Biscoe             49.6          16                 225        5700\n 7 Adelie    Torgers…           36.2          17.2               187        3150\n 8 Gentoo    Biscoe             41.7          14.7               210        4700\n 9 Gentoo    Biscoe             46.1          13.2               211        4500\n10 Adelie    Biscoe             42.7          18.3               196        4075\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+    "text": "slice functions\nslice_sample: random subset of your data\n\nUseful if exploring a large data set\n\n\npenguins |&gt; slice_sample(n=10)\n\n# A tibble: 10 × 8\n   species   island   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;     &lt;fct&gt;             &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Chinstrap Dream              40.9          16.6               187        3200\n 2 Chinstrap Dream              46.5          17.9               192        3500\n 3 Adelie    Dream              36.3          19.5               190        3800\n 4 Adelie    Dream              36            17.1               187        3700\n 5 Adelie    Torgers…           37.8          17.3               180        3700\n 6 Adelie    Torgers…           37.7          19.8               198        3500\n 7 Chinstrap Dream              49.7          18.6               195        3600\n 8 Gentoo    Biscoe             41.7          14.7               210        4700\n 9 Gentoo    Biscoe             44            13.6               208        4350\n10 Chinstrap Dream              52.7          19.8               197        3725\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
   },
   {
     "objectID": "slides/2025-04-01/03_dplyr_filter.html#looking-ahead",
@@ -795,7 +977,7 @@
     "href": "slides/2025-04-22/06_dplyr_summarize.html#group_by-summarize-1",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
     "section": "group_by + summarize",
-    "text": "group_by + summarize\n\npenguins |&gt; \n    group_by(species) |&gt; \n    summarize(avg_mass = mean(body_mass_g, na.rm=TRUE))\n\n# A tibble: 3 × 2\n  species   avg_mass\n  &lt;fct&gt;        &lt;dbl&gt;\n1 Adelie       3701.\n2 Chinstrap    3733.\n3 Gentoo       5076.\n\n\nWhat happened to other features (e.g., flipper_length_mm)?\n\nsummarize only keeps:\n\nGrouping variables (species)\nCreated variables (avg_mass)\n\nAll other data is dropped"
+    "text": "group_by + summarize\n\n\n# A tibble: 3 × 2\n  species   avg_mass\n  &lt;fct&gt;        &lt;dbl&gt;\n1 Adelie       3701.\n2 Chinstrap    3733.\n3 Gentoo       5076.\n\n\nWhat happened to other features (e.g., flipper_length_mm)?\n\nsummarize only keeps:\n\nGrouping variables (species)\nCreated variables (avg_mass)\n\nAll other data is dropped"
   },
   {
     "objectID": "slides/2025-04-22/06_dplyr_summarize.html#group_by-summarize-2",
@@ -819,412 +1001,6 @@
     "text": "summarize helpers\ncur_group() returns the current group name\n\npenguins |&gt; \n    group_by(species) |&gt; \n    summarize(mass_avg = mean(body_mass_g, na.rm=TRUE), \n              mass_sd = sd(body_mass_g, na.rm=TRUE), \n              n = n(), \n              mass_se = mass_sd / sqrt(n), \n              species_cap = toupper(cur_group()))\n\n# A tibble: 3 × 6\n  species   mass_avg mass_sd     n mass_se species_cap\n  &lt;fct&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;      \n1 Adelie       3701.    459.   152    37.2 1          \n2 Chinstrap    3733.    384.    68    46.6 2          \n3 Gentoo       5076.    504.   124    45.3 3          \n\n\nCan also use species directly"
   },
   {
-    "objectID": "slides/2025-04-22/06_dplyr_summarize.html#summarize-removes-grouping",
-    "href": "slides/2025-04-22/06_dplyr_summarize.html#summarize-removes-grouping",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "summarize removes grouping",
-    "text": "summarize removes grouping\nsummarize removes the last level of grouping\n\npenguins |&gt; \n    group_by(species) |&gt; \n    summarize(mass_avg = mean(body_mass_g, na.rm=TRUE))\n\n# A tibble: 3 × 2\n  species   mass_avg\n  &lt;fct&gt;        &lt;dbl&gt;\n1 Adelie       3701.\n2 Chinstrap    3733.\n3 Gentoo       5076.\n\n\nNo grouping remains"
-  },
-  {
-    "objectID": "slides/2025-04-22/06_dplyr_summarize.html#summarize-removes-grouping-1",
-    "href": "slides/2025-04-22/06_dplyr_summarize.html#summarize-removes-grouping-1",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "summarize removes grouping",
-    "text": "summarize removes grouping\nsummarize removes the last level of grouping\n\npenguins |&gt; \n    group_by(species, sex) |&gt; \n    summarize(mass_avg = mean(body_mass_g, na.rm=TRUE))\n\n`summarise()` has grouped output by 'species'. You can override using the\n`.groups` argument.\n\n\n# A tibble: 8 × 3\n# Groups:   species [3]\n  species   sex    mass_avg\n  &lt;fct&gt;     &lt;fct&gt;     &lt;dbl&gt;\n1 Adelie    female    3369.\n2 Adelie    male      4043.\n3 Adelie    &lt;NA&gt;      3540 \n4 Chinstrap female    3527.\n5 Chinstrap male      3939.\n6 Gentoo    female    4680.\n7 Gentoo    male      5485.\n8 Gentoo    &lt;NA&gt;      4588.\n\n\nGrouping by species still active"
-  },
-  {
-    "objectID": "slides/2025-04-22/06_dplyr_summarize.html#summarize-removes-grouping-2",
-    "href": "slides/2025-04-22/06_dplyr_summarize.html#summarize-removes-grouping-2",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "summarize removes grouping",
-    "text": "summarize removes grouping\nAdvice:\n\ngroup_by should be as close to summarize as possible\nungroup and re-group_by defensively"
-  },
-  {
-    "objectID": "slides/2025-04-22/06_dplyr_summarize.html#summarize-column-names",
-    "href": "slides/2025-04-22/06_dplyr_summarize.html#summarize-column-names",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "summarize column names",
-    "text": "summarize column names\nLike mutate, you should always give summarize column names\nDefaults are unhelpful:\n\npenguins |&gt; \n    group_by(species) |&gt;\n    summarize(sd(body_mass_g, na.rm=TRUE))\n\n# A tibble: 3 × 2\n  species   `sd(body_mass_g, na.rm = TRUE)`\n  &lt;fct&gt;                               &lt;dbl&gt;\n1 Adelie                               459.\n2 Chinstrap                            384.\n3 Gentoo                               504."
-  },
-  {
-    "objectID": "slides/2025-04-22/06_dplyr_summarize.html#summarize-multiple-columns",
-    "href": "slides/2025-04-22/06_dplyr_summarize.html#summarize-multiple-columns",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "summarize multiple columns",
-    "text": "summarize multiple columns\nRemember the selection helpers from select\n\npenguins |&gt; \n    select(where(is.numeric))\n\n# A tibble: 344 × 5\n   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year\n            &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt; &lt;int&gt;\n 1           39.1          18.7               181        3750  2007\n 2           39.5          17.4               186        3800  2007\n 3           40.3          18                 195        3250  2007\n 4           NA            NA                  NA          NA  2007\n 5           36.7          19.3               193        3450  2007\n 6           39.3          20.6               190        3650  2007\n 7           38.9          17.8               181        3625  2007\n 8           39.2          19.6               195        4675  2007\n 9           34.1          18.1               193        3475  2007\n10           42            20.2               190        4250  2007\n# ℹ 334 more rows"
-  },
-  {
-    "objectID": "slides/2025-04-22/06_dplyr_summarize.html#summarize-multiple-columns-1",
-    "href": "slides/2025-04-22/06_dplyr_summarize.html#summarize-multiple-columns-1",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "summarize multiple columns",
-    "text": "summarize multiple columns\nCan be used inside summarize as well\n\nsafe_mean &lt;- function(x) mean(x, na.rm=TRUE)\npenguins |&gt; \n    group_by(species) |&gt;\n    summarize(across(where(is.numeric), safe_mean))\n\n# A tibble: 3 × 6\n  species   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year\n  &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n1 Adelie              38.8          18.3              190.       3701. 2008.\n2 Chinstrap           48.8          18.4              196.       3733. 2008.\n3 Gentoo              47.5          15.0              217.       5076. 2008."
-  },
-  {
-    "objectID": "slides/2025-04-22/06_dplyr_summarize.html#summarize-without-group_by",
-    "href": "slides/2025-04-22/06_dplyr_summarize.html#summarize-without-group_by",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "summarize without group_by",
-    "text": "summarize without group_by\nWithout group_by, summarize takes summaries of the entire data set:\n\npenguins |&gt; \n    summarize(n=n(), \n              across(where(is.numeric), safe_mean))\n\n# A tibble: 1 × 6\n      n bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year\n  &lt;dbl&gt;          &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n1   344           43.9          17.2              201.       4202. 2008."
-  },
-  {
-    "objectID": "slides/2025-04-22/06_dplyr_summarize.html#summarize-and-group_by",
-    "href": "slides/2025-04-22/06_dplyr_summarize.html#summarize-and-group_by",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "summarize and group_by",
-    "text": "summarize and group_by\nsummarize computes summary statistics of a population\n\nmeans, standard deviations, counts, etc.\n\ngroup_by changes these to conditional summary statistics\n\nE.g., mean of body mass, conditional on adelie species\n\n\nMany steps of real data analysis fits this pattern\nIf you dive deeper into split-apply-combine, can determine group-wise models as well (e.g., different trends for different groups)"
-  },
-  {
-    "objectID": "slides/2025-04-22/06_dplyr_summarize.html#looking-ahead",
-    "href": "slides/2025-04-22/06_dplyr_summarize.html#looking-ahead",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Looking Ahead",
-    "text": "Looking Ahead\n\nApply Grouped Operations ✅\nSummarize Across Multiple Rows ✅\nJoin Multiple Tables\nReshape Tables with pivot Operations"
-  },
-  {
-    "objectID": "slides/2025-04-22/06_dplyr_summarize.html#learning-more",
-    "href": "slides/2025-04-22/06_dplyr_summarize.html#learning-more",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Learning More",
-    "text": "Learning More\nFor more, check out Sections 3.5-3.6 - “Groups” of R for Data Science"
-  },
-  {
-    "objectID": "slides/2025-04-29/08_tidyr_pivot.html#where-are-we",
-    "href": "slides/2025-04-29/08_tidyr_pivot.html#where-are-we",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Where are We?",
-    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\n\nSelecting Rows and Columns\nComputing Groupwise Summaries\nJoining Tables\nReshaping Tables\n\npython Basics\nWeb Scraping with python"
-  },
-  {
-    "objectID": "slides/2025-04-29/08_tidyr_pivot.html#goals-for-this-video",
-    "href": "slides/2025-04-29/08_tidyr_pivot.html#goals-for-this-video",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Goals for this Video",
-    "text": "Goals for this Video\nIn this video:"
-  },
-  {
-    "objectID": "slides/2025-04-29/08_tidyr_pivot.html#looking-ahead",
-    "href": "slides/2025-04-29/08_tidyr_pivot.html#looking-ahead",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Looking Ahead",
-    "text": "Looking Ahead\n\nApply Grouped Operations ✅\nSummarize Across Multiple Rows ✅\nJoin Multiple Tables ✅\nReshape Tables with pivot Operations ✅"
-  },
-  {
-    "objectID": "slides/2025-04-29/08_tidyr_pivot.html#learning-more",
-    "href": "slides/2025-04-29/08_tidyr_pivot.html#learning-more",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Learning More",
-    "text": "Learning More\nFor more, check out Chapter 5 - “Tidying” of R for Data Science"
-  },
-  {
-    "objectID": "slides/2025-04-29/10_python_install.html#where-are-we",
-    "href": "slides/2025-04-29/10_python_install.html#where-are-we",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Where are We?",
-    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\npython Basics\n\nInstalling python\nBasic Syntax and Control Flow\npython Objects\nUsing Packages\n\nWeb Scraping with python"
-  },
-  {
-    "objectID": "slides/2025-04-29/10_python_install.html#goals-for-this-video",
-    "href": "slides/2025-04-29/10_python_install.html#goals-for-this-video",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Goals for this Video",
-    "text": "Goals for this Video\nIn this video:"
-  },
-  {
-    "objectID": "slides/2025-04-29/10_python_install.html#looking-ahead",
-    "href": "slides/2025-04-29/10_python_install.html#looking-ahead",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Looking Ahead",
-    "text": "Looking Ahead"
-  },
-  {
-    "objectID": "slides/2025-04-29/10_python_install.html#learning-more",
-    "href": "slides/2025-04-29/10_python_install.html#learning-more",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Learning More",
-    "text": "Learning More"
-  },
-  {
-    "objectID": "slides/2025-05-06/12_python_basics_control.html#where-are-we",
-    "href": "slides/2025-05-06/12_python_basics_control.html#where-are-we",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Where are We?",
-    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\npython Basics\n\nInstalling python\nBasic Syntax and Control Flow\npython Objects\nUsing Packages\n\nWeb Scraping with python"
-  },
-  {
-    "objectID": "slides/2025-05-06/12_python_basics_control.html#goals-for-this-video",
-    "href": "slides/2025-05-06/12_python_basics_control.html#goals-for-this-video",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Goals for this Video",
-    "text": "Goals for this Video\nIn this video:"
-  },
-  {
-    "objectID": "slides/2025-05-06/12_python_basics_control.html#looking-ahead",
-    "href": "slides/2025-05-06/12_python_basics_control.html#looking-ahead",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Looking Ahead",
-    "text": "Looking Ahead"
-  },
-  {
-    "objectID": "slides/2025-05-06/12_python_basics_control.html#learning-more",
-    "href": "slides/2025-05-06/12_python_basics_control.html#learning-more",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Learning More",
-    "text": "Learning More"
-  },
-  {
-    "objectID": "slides/2025-05-06/14_python_packages.html#where-are-we",
-    "href": "slides/2025-05-06/14_python_packages.html#where-are-we",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Where are We?",
-    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\npython Basics\n\nInstalling python\nBasic Syntax and Control Flow\npython Objects\nUsing Packages\n\nWeb Scraping with python"
-  },
-  {
-    "objectID": "slides/2025-05-06/14_python_packages.html#goals-for-this-video",
-    "href": "slides/2025-05-06/14_python_packages.html#goals-for-this-video",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Goals for this Video",
-    "text": "Goals for this Video\nIn this video:"
-  },
-  {
-    "objectID": "slides/2025-05-06/14_python_packages.html#looking-ahead",
-    "href": "slides/2025-05-06/14_python_packages.html#looking-ahead",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Looking Ahead",
-    "text": "Looking Ahead"
-  },
-  {
-    "objectID": "slides/2025-05-06/14_python_packages.html#learning-more",
-    "href": "slides/2025-05-06/14_python_packages.html#learning-more",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Learning More",
-    "text": "Learning More"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html",
-    "href": "slides/2025-04-22/07_dplyr_join.html",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "R Basics\nData Visualization\nR Programming\nTidy Data Manipulation\n\nSelecting Rows and Columns\nComputing Groupwise Summaries\nJoining Tables\nReshaping Tables\n\npython Basics\nWeb Scraping with python\n\n\n\n\n\nIn this video:\n\n\nIdentify suitable keys\nUnderstand different types of join operators\nSpecify columns to be used in joins\n\n\n\n\n\nOften in data analysis, we combine data from multiple sources to create new insights\njoins provide us a unified framework for combining data sets\n\n\n\n\nband_members\n\n# A tibble: 3 × 2\n  name  band   \n  &lt;chr&gt; &lt;chr&gt;  \n1 Mick  Stones \n2 John  Beatles\n3 Paul  Beatles\n\n\n\nband_instruments\n\n# A tibble: 3 × 2\n  name  plays \n  &lt;chr&gt; &lt;chr&gt; \n1 John  guitar\n2 Paul  bass  \n3 Keith guitar\n\n\n\n\n\nPartial alignment on name\nMissing:\n\nKeith (Richards) of the Rolling Stones in band_members\nMick (Jagger) as a guitarist in band_instruments\n\n\n\n\nRecall the concept of a key - a unique identifier in a table\n\nIdeally a single column (e.g., Employee ID)\nSometimes several columns (name + birth date)\n\nIn our example, name is a key we can use\n\n\n\nRecall our two data sets\n\n\n\n\n\n\n\n\n\nband_instruments\nband_members\n\n\n\n\nname\nplays\nname\nband\n\n\nJohn\nguitar\nMick\nStones\n\n\nPaul\nbass\nJohn\nBeatles\n\n\nKeith\nguitar\nPaul\nBeatles\n\n\n\n\n\n\nTo use name as a key, reorder rows so that name matches\n\n\n\n\n\n\n\n\n\nband_instruments\nband_members\n\n\n\n\nname\nplays\nname\nband\n\n\nJohn\nguitar\nJohn\nBeatles\n\n\nPaul\nbass\nPaul\nBeatles\n\n\nKeith\nguitar\n\n\n\n\n\n\nMick\nStones\n\n\n\n\n\n\nNote that Keith and Mick don’t have a matching row\n\n\n\n\n\n\n\n\n\nband_instruments\nband_members\n\n\n\n\nname\nplays\nname\nband\n\n\nJohn\nguitar\nJohn\nBeatles\n\n\nPaul\nbass\nPaul\nBeatles\n\n\nKeith\nguitar\n\n\n\n\n\n\nMick\nStones\n\n\n\n\n\n\nWe will definitely keep\n\n\n\n\n\n\n\n\n\nband_instruments\nband_members\n\n\n\n\nname\nplays\nname\nband\n\n\nJohn\nguitar\nJohn\nBeatles\n\n\nPaul\nbass\nPaul\nBeatles\n\n\n\nNeed to decide on unmatched rows\n\n\n\ninner_join - keep only rows with matches\n\n\n\nname\nplays\nband\n\n\n\n\nJohn\nguitar\nBeatles\n\n\nPaul\nbass\nBeatles\n\n\n\n\n\n\nfull_join - keep all rows and fill with NA\n\n\n\nname\nplays\nband\n\n\n\n\nJohn\nguitar\nBeatles\n\n\nPaul\nbass\nBeatles\n\n\nKeith\nguitar\nNA\n\n\nMick\nNA\nStones\n\n\n\n\n\n\nleft_join - keep unmatched rows from first (“left”) table\n\n\n\nname\nplays\nband\n\n\n\n\nJohn\nguitar\nBeatles\n\n\nPaul\nbass\nBeatles\n\n\nKeith\nguitar\nNA\n\n\n\n\n\n\nright_join - keep unmatched rows from first (“right”) table\n\n\n\nname\nplays\nband\n\n\n\n\nJohn\nguitar\nBeatles\n\n\nPaul\nbass\nBeatles\n\n\nMick\nNA\nStones\n\n\n\n\n\n\nFigure from R for Data Science\n\nFigure from R for Data Science\n\n\n\nIn R, we specify joins with the join_by function\n\ninner_join(band_instruments, band_members, join_by(name == name))\n\njoin_by gives a “Join Specification”\n\nname == name are column names from first and second table\nBe explicit or R will “auto-guess” based on names matched\n\n\n\n\ninner_join discards unmatched rows\n\n\ninner_join(band_instruments, \n           band_members, \n           join_by(name == name))\n\n# A tibble: 2 × 3\n  name  plays  band   \n  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  \n1 John  guitar Beatles\n2 Paul  bass   Beatles\n\n\n\n\n\nfull_join keeps all rows\n\n\nfull_join(band_instruments, \n          band_members, \n          join_by(name == name))\n\n# A tibble: 4 × 3\n  name  plays  band   \n  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  \n1 John  guitar Beatles\n2 Paul  bass   Beatles\n3 Keith guitar &lt;NA&gt;   \n4 Mick  &lt;NA&gt;   Stones \n\n\n\n\n\nleft_join keeps unmatched rows from first table\n\n\nleft_join(band_instruments, \n          band_members, \n          join_by(name == name))\n\n# A tibble: 3 × 3\n  name  plays  band   \n  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  \n1 John  guitar Beatles\n2 Paul  bass   Beatles\n3 Keith guitar &lt;NA&gt;   \n\n\n\n\n\nright_join flips left_join\n\n\nright_join(band_instruments, \n           band_members, \n           join_by(name == name))\n\n# A tibble: 3 × 3\n  name  plays  band   \n  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  \n1 John  guitar Beatles\n2 Paul  bass   Beatles\n3 Mick  &lt;NA&gt;   Stones \n\n\n\n\n\nType of join depends on treatment of missing values\n\nWhy is data missing?\nIf going to na.rm=TRUE, inner_join\nIf going to investigate further, full or left/right\n\n\n\n\n\nband_instruments2\n\n# A tibble: 3 × 2\n  artist plays \n  &lt;chr&gt;  &lt;chr&gt; \n1 John   guitar\n2 Paul   bass  \n3 Keith  guitar\n\n\nSame as before, but now name -&gt; artist\n\n\n\n\ninner_join(band_instruments2, \n           band_members, \n           join_by(artist == name))\n\n# A tibble: 2 × 3\n  artist plays  band   \n  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  \n1 John   guitar Beatles\n2 Paul   bass   Beatles\n\n\n\n\n\nLet’s compute the z-scores of mass for our penguins by species\n\npenguin_stats &lt;- penguins |&gt;\n    group_by(species) |&gt;\n    summarize(mass_mean = mean(body_mass_g, na.rm=TRUE), \n              mass_sd = sd(body_mass_g, na.rm=TRUE))\n\npenguin_stats\n\n# A tibble: 3 × 3\n  species   mass_mean mass_sd\n  &lt;fct&gt;         &lt;dbl&gt;   &lt;dbl&gt;\n1 Adelie        3701.    459.\n2 Chinstrap     3733.    384.\n3 Gentoo        5076.    504.\n\n\n\n\n\n\npenguins |&gt;\n    inner_join(penguin_stats, \n               join_by(species == species)) |&gt;\n    select(species, body_mass_g, mass_mean, mass_sd)\n\n# A tibble: 344 × 4\n   species body_mass_g mass_mean mass_sd\n   &lt;fct&gt;         &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 Adelie         3750     3701.    459.\n 2 Adelie         3800     3701.    459.\n 3 Adelie         3250     3701.    459.\n 4 Adelie           NA     3701.    459.\n 5 Adelie         3450     3701.    459.\n 6 Adelie         3650     3701.    459.\n 7 Adelie         3625     3701.    459.\n 8 Adelie         4675     3701.    459.\n 9 Adelie         3475     3701.    459.\n10 Adelie         4250     3701.    459.\n# ℹ 334 more rows\n\n\n\n\n\n\npenguins |&gt;\n    inner_join(penguin_stats, \n               join_by(species == species)) |&gt;\n    mutate(mass_z = (body_mass_g - mass_mean) / mass_sd) |&gt;\n    select(species, body_mass_g, mass_z)\n\n# A tibble: 344 × 3\n   species body_mass_g mass_z\n   &lt;fct&gt;         &lt;int&gt;  &lt;dbl&gt;\n 1 Adelie         3750  0.108\n 2 Adelie         3800  0.217\n 3 Adelie         3250 -0.983\n 4 Adelie           NA NA    \n 5 Adelie         3450 -0.547\n 6 Adelie         3650 -0.110\n 7 Adelie         3625 -0.165\n 8 Adelie         4675  2.12 \n 9 Adelie         3475 -0.492\n10 Adelie         4250  1.20 \n# ℹ 334 more rows\n\n\n\n\n\nJoin onto summary statistics to get group (species) statistics\ninner_join since we know all penguins match to one species\n\n\n\n\nApply Grouped Operations ✅\nSummarize Across Multiple Rows ✅\nJoin Multiple Tables ✅\nReshape Tables with pivot Operations\n\n\n\n\nFor more, check out Chapter 19 - “Joins” of R for Data Science"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#combining-tables",
-    "href": "slides/2025-04-22/07_dplyr_join.html#combining-tables",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Combining Tables",
-    "text": "Combining Tables\nOften in data analysis, we combine data from multiple sources to create new insights\njoins provide us a unified framework for combining data sets"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#new-example-data",
-    "href": "slides/2025-04-22/07_dplyr_join.html#new-example-data",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "New Example Data",
-    "text": "New Example Data\n\nband_members\n\n# A tibble: 3 × 2\n  name  band   \n  &lt;chr&gt; &lt;chr&gt;  \n1 Mick  Stones \n2 John  Beatles\n3 Paul  Beatles\n\n\n\nband_instruments\n\n# A tibble: 3 × 2\n  name  plays \n  &lt;chr&gt; &lt;chr&gt; \n1 John  guitar\n2 Paul  bass  \n3 Keith guitar"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#table-keys",
-    "href": "slides/2025-04-22/07_dplyr_join.html#table-keys",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Table Keys",
-    "text": "Table Keys\nRecall the concept of a key - a unique identifier in a table\n\nIdeally a single column (e.g., Employee ID)\nSometimes several columns (name + birth date)\n\nIn our example, name is a key we can use"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#your-first-join",
-    "href": "slides/2025-04-22/07_dplyr_join.html#your-first-join",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Your First Join",
-    "text": "Your First Join\nRecall our two data sets\n\n\n\n\n\n\n\n\n\nband_instruments\nband_members\n\n\n\n\nname\nplays\nname\nband\n\n\nJohn\nguitar\nMick\nStones\n\n\nPaul\nbass\nJohn\nBeatles\n\n\nKeith\nguitar\nPaul\nBeatles"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#specifying-joins",
-    "href": "slides/2025-04-22/07_dplyr_join.html#specifying-joins",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Specifying Joins",
-    "text": "Specifying Joins\nIn R, we specify joins with the join_by function\n\ninner_join(band_instruments, band_members, join_by(name == name))\n\njoin_by gives a “Join Specification”\n\nname == name are column names from first and second table\nBe explicit or R will “auto-guess” based on names matched"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#new-example-data-1",
-    "href": "slides/2025-04-22/07_dplyr_join.html#new-example-data-1",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "New Example Data",
-    "text": "New Example Data\nPartial alignment on name\nMissing:\n\nKeith (Richards) of the Rolling Stones in band_members\nMick (Jagger) as a guitarist in band_instruments"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#your-first-join-1",
-    "href": "slides/2025-04-22/07_dplyr_join.html#your-first-join-1",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Your First Join",
-    "text": "Your First Join\nTo use name as a key, reorder rows so that name matches\n\n\n\n\n\n\n\n\n\nband_instruments\nband_members\n\n\n\n\nname\nplays\nname\nband\n\n\nJohn\nguitar\nJohn\nBeatles\n\n\nPaul\nbass\nPaul\nBeatles\n\n\nKeith\nguitar\n\n\n\n\n\n\nMick\nStones"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#your-first-join-2",
-    "href": "slides/2025-04-22/07_dplyr_join.html#your-first-join-2",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Your First Join",
-    "text": "Your First Join\nNote that Keith and Mick don’t have a matching row\n\n\n\n\n\n\n\n\n\nband_instruments\nband_members\n\n\n\n\nname\nplays\nname\nband\n\n\nJohn\nguitar\nJohn\nBeatles\n\n\nPaul\nbass\nPaul\nBeatles\n\n\nKeith\nguitar\n\n\n\n\n\n\nMick\nStones"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#your-first-join-3",
-    "href": "slides/2025-04-22/07_dplyr_join.html#your-first-join-3",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Your First Join",
-    "text": "Your First Join\nWe will definitely keep\n\n\n\n\n\n\n\n\n\nband_instruments\nband_members\n\n\n\n\nname\nplays\nname\nband\n\n\nJohn\nguitar\nJohn\nBeatles\n\n\nPaul\nbass\nPaul\nBeatles\n\n\n\nNeed to decide on unmatched rows"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#your-first-join---inner-join",
-    "href": "slides/2025-04-22/07_dplyr_join.html#your-first-join---inner-join",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "inner_join - keep only rows with matches\n\n\n\nname\nplays\nband\n\n\n\n\nJohn\nguitar\nBeatles\n\n\nPaul\nbass\nBeatles"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#your-first-join---full-join",
-    "href": "slides/2025-04-22/07_dplyr_join.html#your-first-join---full-join",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "full_join - keep all rows and fill with NA\n\n\n\nname\nplays\nband\n\n\n\n\nJohn\nguitar\nBeatles\n\n\nPaul\nbass\nBeatles\n\n\nKeith\nguitar\nNA\n\n\nMick\nNA\nStones"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#your-first-join---left-join",
-    "href": "slides/2025-04-22/07_dplyr_join.html#your-first-join---left-join",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "left_join - keep unmatched rows from first (“left”) table\n\n\n\nname\nplays\nband\n\n\n\n\nJohn\nguitar\nBeatles\n\n\nPaul\nbass\nBeatles\n\n\nKeith\nguitar\nNA"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#your-first-join---right-join",
-    "href": "slides/2025-04-22/07_dplyr_join.html#your-first-join---right-join",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "right_join - keep unmatched rows from first (“right”) table\n\n\n\nname\nplays\nband\n\n\n\n\nJohn\nguitar\nBeatles\n\n\nPaul\nbass\nBeatles\n\n\nMick\nNA\nStones"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#types-of-joins",
-    "href": "slides/2025-04-22/07_dplyr_join.html#types-of-joins",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Types of Joins",
-    "text": "Types of Joins\nFigure from R for Data Science\n\nFigure from R for Data Science"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#inner_join",
-    "href": "slides/2025-04-22/07_dplyr_join.html#inner_join",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "inner_join",
-    "text": "inner_join\ninner_join discards unmatched rows\n\n\ninner_join(band_instruments, \n           band_members, \n           join_by(name == name))\n\n# A tibble: 2 × 3\n  name  plays  band   \n  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  \n1 John  guitar Beatles\n2 Paul  bass   Beatles"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#full_join",
-    "href": "slides/2025-04-22/07_dplyr_join.html#full_join",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "full_join",
-    "text": "full_join\nfull_join keeps all rows\n\n\nfull_join(band_instruments, \n          band_members, \n          join_by(name == name))\n\n# A tibble: 4 × 3\n  name  plays  band   \n  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  \n1 John  guitar Beatles\n2 Paul  bass   Beatles\n3 Keith guitar &lt;NA&gt;   \n4 Mick  &lt;NA&gt;   Stones"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#left_join",
-    "href": "slides/2025-04-22/07_dplyr_join.html#left_join",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "left_join",
-    "text": "left_join\nleft_join keeps unmatched rows from first table\n\n\nleft_join(band_instruments, \n          band_members, \n          join_by(name == name))\n\n# A tibble: 3 × 3\n  name  plays  band   \n  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  \n1 John  guitar Beatles\n2 Paul  bass   Beatles\n3 Keith guitar &lt;NA&gt;"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#right_join",
-    "href": "slides/2025-04-22/07_dplyr_join.html#right_join",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "right_join",
-    "text": "right_join\nright_join flips left_join\n\n\nright_join(band_instruments, \n           band_members, \n           join_by(name == name))\n\n# A tibble: 3 × 3\n  name  plays  band   \n  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  \n1 John  guitar Beatles\n2 Paul  bass   Beatles\n3 Mick  &lt;NA&gt;   Stones"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#picking-a-join",
-    "href": "slides/2025-04-22/07_dplyr_join.html#picking-a-join",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Picking a Join",
-    "text": "Picking a Join\nType of join depends on treatment of missing values\n\nWhy is data missing?\nIf going to na.rm=TRUE, inner_join\nIf going to investigate further, full or left/right"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#specifying-alternate-column-names",
-    "href": "slides/2025-04-22/07_dplyr_join.html#specifying-alternate-column-names",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Specifying Alternate Column Names",
-    "text": "Specifying Alternate Column Names\n\ninner_join(band_instruments2, \n           band_members, \n           join_by(artist == name))\n\n# A tibble: 2 × 3\n  artist plays  band   \n  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  \n1 John   guitar Beatles\n2 Paul   bass   Beatles"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#specifying-alternate-column-names-1",
-    "href": "slides/2025-04-22/07_dplyr_join.html#specifying-alternate-column-names-1",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Specifying Alternate Column Names",
-    "text": "Specifying Alternate Column Names\n\n\n# A tibble: 2 × 3\n  artist plays  band   \n  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  \n1 John   guitar Beatles\n2 Paul   bass   Beatles"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#computing-z-scores",
-    "href": "slides/2025-04-22/07_dplyr_join.html#computing-z-scores",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Computing Z-Scores",
-    "text": "Computing Z-Scores\nLet’s compute the z-scores of mass for our penguins by species\n\npenguin_stats &lt;- penguins |&gt;\n    group_by(species) |&gt;\n    summarize(mass_mean = mean(body_mass_g, na.rm=TRUE), \n              mass_sd = sd(body_mass_g, na.rm=TRUE))\n\npenguin_stats\n\n# A tibble: 3 × 3\n  species   mass_mean mass_sd\n  &lt;fct&gt;         &lt;dbl&gt;   &lt;dbl&gt;\n1 Adelie        3701.    459.\n2 Chinstrap     3733.    384.\n3 Gentoo        5076.    504."
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#computing-z-scores-1",
-    "href": "slides/2025-04-22/07_dplyr_join.html#computing-z-scores-1",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Computing Z-Scores",
-    "text": "Computing Z-Scores\n\npenguins |&gt;\n    inner_join(penguin_stats, \n               join_by(species == species)) |&gt;\n    select(species, body_mass_g, mass_mean, mass_sd)\n\n# A tibble: 344 × 4\n   species body_mass_g mass_mean mass_sd\n   &lt;fct&gt;         &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;\n 1 Adelie         3750     3701.    459.\n 2 Adelie         3800     3701.    459.\n 3 Adelie         3250     3701.    459.\n 4 Adelie           NA     3701.    459.\n 5 Adelie         3450     3701.    459.\n 6 Adelie         3650     3701.    459.\n 7 Adelie         3625     3701.    459.\n 8 Adelie         4675     3701.    459.\n 9 Adelie         3475     3701.    459.\n10 Adelie         4250     3701.    459.\n# ℹ 334 more rows"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#computing-z-scores-2",
-    "href": "slides/2025-04-22/07_dplyr_join.html#computing-z-scores-2",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Computing Z-Scores",
-    "text": "Computing Z-Scores\n\npenguins |&gt;\n    inner_join(penguin_stats, \n               join_by(species == species)) |&gt;\n    mutate(mass_z = (body_mass_g - mass_mean) / mass_sd) |&gt;\n    select(species, body_mass_g, mass_z)\n\n# A tibble: 344 × 3\n   species body_mass_g mass_z\n   &lt;fct&gt;         &lt;int&gt;  &lt;dbl&gt;\n 1 Adelie         3750  0.108\n 2 Adelie         3800  0.217\n 3 Adelie         3250 -0.983\n 4 Adelie           NA NA    \n 5 Adelie         3450 -0.547\n 6 Adelie         3650 -0.110\n 7 Adelie         3625 -0.165\n 8 Adelie         4675  2.12 \n 9 Adelie         3475 -0.492\n10 Adelie         4250  1.20 \n# ℹ 334 more rows"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#computing-z-scores-3",
-    "href": "slides/2025-04-22/07_dplyr_join.html#computing-z-scores-3",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Computing Z-Scores",
-    "text": "Computing Z-Scores\nJoin onto summary statistics to get group (species) statistics\ninner_join since we know all penguins match to one species"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#specifying-column-names",
-    "href": "slides/2025-04-22/07_dplyr_join.html#specifying-column-names",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Specifying Column Names",
-    "text": "Specifying Column Names\n\nband_instruments2\n\n# A tibble: 3 × 2\n  artist plays \n  &lt;chr&gt;  &lt;chr&gt; \n1 John   guitar\n2 Paul   bass  \n3 Keith  guitar\n\n\nSame as before, but now name -&gt; artist"
-  },
-  {
-    "objectID": "slides/2025-04-22/06_dplyr_summarize.html",
-    "href": "slides/2025-04-22/06_dplyr_summarize.html",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "R Basics\nData Visualization\nR Programming\nTidy Data Manipulation\n\nSelecting Rows and Columns\nComputing Groupwise Summaries\nJoining Tables\nReshaping Tables\n\npython Basics\nWeb Scraping with python\n\n\n\n\n\nIn this video:\n\n\nCombine multiple rows using summarize\nCompute overall and group-wise summary statistics\n\n\n\n\n\nYou have already seen group_by modify the operation of ‘aggregation’ functions:\n\nmin, max\nmean, sum,\nntile\n\netc\n. . .\nNo reduction in data complexity unless combined with filter\n\n\n\ngroup_by and summarize \\(\\implies\\) summary statistics\n\npenguins |&gt; \n    group_by(species) |&gt; \n    summarize(avg_mass = mean(body_mass_g, na.rm=TRUE))\n\n# A tibble: 3 × 2\n  species   avg_mass\n  &lt;fct&gt;        &lt;dbl&gt;\n1 Adelie       3701.\n2 Chinstrap    3733.\n3 Gentoo       5076.\n\n\n. . .\nUnlike filter, these are new rows:\n\nOne row summarizing each group\nNot a subset of old rows\n\n\n\n\n\npenguins |&gt; \n    group_by(species) |&gt; \n    summarize(avg_mass = mean(body_mass_g, na.rm=TRUE))\n\n# A tibble: 3 × 2\n  species   avg_mass\n  &lt;fct&gt;        &lt;dbl&gt;\n1 Adelie       3701.\n2 Chinstrap    3733.\n3 Gentoo       5076.\n\n\nWhat happened to other features (e.g., flipper_length_mm)?\n. . .\nsummarize only keeps:\n\nGrouping variables (species)\nCreated variables (avg_mass)\n\nAll other data is dropped\n\n\n\nCan perform multiple summaries at once:\n\npenguins |&gt; \n    group_by(species) |&gt; \n    summarize(avg_mass = mean(body_mass_g, na.rm=TRUE), \n              sd_mass = sd(body_mass_g, na.rm=TRUE))\n\n# A tibble: 3 × 3\n  species   avg_mass sd_mass\n  &lt;fct&gt;        &lt;dbl&gt;   &lt;dbl&gt;\n1 Adelie       3701.    459.\n2 Chinstrap    3733.    384.\n3 Gentoo       5076.    504.\n\n\nImportant to do all summaries in one call\n\n\n\nThe n() function will count the number of rows in a group\n\npenguins |&gt; \n    group_by(species) |&gt; \n    summarize(mass_avg = mean(body_mass_g, na.rm=TRUE), \n              mass_sd = sd(body_mass_g, na.rm=TRUE), \n              n = n(), \n              mass_se = mass_sd / sqrt(n))\n\n# A tibble: 3 × 5\n  species   mass_avg mass_sd     n mass_se\n  &lt;fct&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;\n1 Adelie       3701.    459.   152    37.2\n2 Chinstrap    3733.    384.    68    46.6\n3 Gentoo       5076.    504.   124    45.3\n\n\n\n\n\ncur_group() returns the current group name\n\npenguins |&gt; \n    group_by(species) |&gt; \n    summarize(mass_avg = mean(body_mass_g, na.rm=TRUE), \n              mass_sd = sd(body_mass_g, na.rm=TRUE), \n              n = n(), \n              mass_se = mass_sd / sqrt(n), \n              species_cap = toupper(cur_group()))\n\n# A tibble: 3 × 6\n  species   mass_avg mass_sd     n mass_se species_cap\n  &lt;fct&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;      \n1 Adelie       3701.    459.   152    37.2 1          \n2 Chinstrap    3733.    384.    68    46.6 2          \n3 Gentoo       5076.    504.   124    45.3 3          \n\n\nCan also use species directly\n\n\n\nsummarize removes the last level of grouping\n\npenguins |&gt; \n    group_by(species) |&gt; \n    summarize(mass_avg = mean(body_mass_g, na.rm=TRUE))\n\n# A tibble: 3 × 2\n  species   mass_avg\n  &lt;fct&gt;        &lt;dbl&gt;\n1 Adelie       3701.\n2 Chinstrap    3733.\n3 Gentoo       5076.\n\n\nNo grouping remains\n\n\n\nsummarize removes the last level of grouping\n\npenguins |&gt; \n    group_by(species, sex) |&gt; \n    summarize(mass_avg = mean(body_mass_g, na.rm=TRUE))\n\n\n\n`summarise()` has grouped output by 'species'. You can override using the\n`.groups` argument.\n\n\n# A tibble: 8 × 3\n# Groups:   species [3]\n  species   sex    mass_avg\n  &lt;fct&gt;     &lt;fct&gt;     &lt;dbl&gt;\n1 Adelie    female    3369.\n2 Adelie    male      4043.\n3 Adelie    &lt;NA&gt;      3540 \n4 Chinstrap female    3527.\n5 Chinstrap male      3939.\n# ℹ 3 more rows\n\n\nGrouping by species still active\n\n\n\nAdvice:\n\ngroup_by should be as close to summarize as possible\nungroup and re-group_by defensively\n\n\n\n\nLike mutate, give summarize column names\nDefaults are unhelpful:\n\npenguins |&gt; \n    group_by(species) |&gt;\n    summarize(sd(body_mass_g, na.rm=TRUE))\n\n# A tibble: 3 × 2\n  species   `sd(body_mass_g, na.rm = TRUE)`\n  &lt;fct&gt;                               &lt;dbl&gt;\n1 Adelie                               459.\n2 Chinstrap                            384.\n3 Gentoo                               504.\n\n\n\n\n\nRemember the selection helpers from select\n\npenguins |&gt; \n    select(where(is.numeric)) |&gt;\n    print(n=4)\n\n# A tibble: 344 × 5\n  bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year\n           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt; &lt;int&gt;\n1           39.1          18.7               181        3750  2007\n2           39.5          17.4               186        3800  2007\n3           40.3          18                 195        3250  2007\n4           NA            NA                  NA          NA  2007\n# ℹ 340 more rows\n\n\n\n\n\nCan be used inside summarize as well\n\nsafe_mean &lt;- function(x) mean(x, na.rm=TRUE)\npenguins |&gt; \n    group_by(species) |&gt;\n    summarize(across(where(is.numeric), safe_mean))\n\n# A tibble: 3 × 6\n  species   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year\n  &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n1 Adelie              38.8          18.3              190.       3701. 2008.\n2 Chinstrap           48.8          18.4              196.       3733. 2008.\n3 Gentoo              47.5          15.0              217.       5076. 2008.\n\n\n\n\n\nWithout group_by, summarize takes summaries of the entire data set:\n\npenguins |&gt; \n    summarize(n=n(), \n              across(where(is.numeric), safe_mean))\n\n# A tibble: 1 × 6\n      n bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year\n  &lt;dbl&gt;          &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n1   344           43.9          17.2              201.       4202. 2008.\n\n\n\n\n\nsummarize computes summary statistics of a population\n\nmeans, standard deviations, counts, etc.\n\ngroup_by changes these to conditional summary statistics\n\nE.g., mean of body mass, conditional on adelie species\n\n. . .\nMany steps of real data analysis fits this pattern\nIf you dive deeper into split-apply-combine, can determine group-wise models as well (e.g., different trends for different groups)\n\n\n\n\nApply Grouped Operations ✅\nSummarize Across Multiple Rows ✅\nJoin Multiple Tables\nReshape Tables with pivot Operations\n\n\n\n\nFor more, check out Sections 3.5-3.6 - “Groups” of R for Data Science"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#your-first-inner-join",
-    "href": "slides/2025-04-22/07_dplyr_join.html#your-first-inner-join",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Your First Inner Join",
-    "text": "Your First Inner Join\ninner_join - keep only rows with matches\n\n\n\nname\nplays\nband\n\n\n\n\nJohn\nguitar\nBeatles\n\n\nPaul\nbass\nBeatles"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#your-first-full-join",
-    "href": "slides/2025-04-22/07_dplyr_join.html#your-first-full-join",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Your First Full Join",
-    "text": "Your First Full Join\nfull_join - keep all rows and fill with NA\n\n\n\nname\nplays\nband\n\n\n\n\nJohn\nguitar\nBeatles\n\n\nPaul\nbass\nBeatles\n\n\nKeith\nguitar\nNA\n\n\nMick\nNA\nStones"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#your-first-left-join",
-    "href": "slides/2025-04-22/07_dplyr_join.html#your-first-left-join",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Your First Left Join",
-    "text": "Your First Left Join\nleft_join - keep unmatched rows from first (“left”) table\n\n\n\nname\nplays\nband\n\n\n\n\nJohn\nguitar\nBeatles\n\n\nPaul\nbass\nBeatles\n\n\nKeith\nguitar\nNA"
-  },
-  {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#your-first-right-join",
-    "href": "slides/2025-04-22/07_dplyr_join.html#your-first-right-join",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Your First Right Join",
-    "text": "Your First Right Join\nright_join - keep unmatched rows from first (“right”) table\n\n\n\nname\nplays\nband\n\n\n\n\nJohn\nguitar\nBeatles\n\n\nPaul\nbass\nBeatles\n\n\nMick\nNA\nStones"
-  },
-  {
     "objectID": "slides/2025-04-22/06_dplyr_summarize.html#removes-grouping",
     "href": "slides/2025-04-22/06_dplyr_summarize.html#removes-grouping",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
@@ -1236,7 +1012,7 @@
     "href": "slides/2025-04-22/06_dplyr_summarize.html#removes-grouping-1",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
     "section": "Removes grouping",
-    "text": "Removes grouping\nsummarize removes the last level of grouping\n\npenguins |&gt; \n    group_by(species, sex) |&gt; \n    summarize(mass_avg = mean(body_mass_g, na.rm=TRUE))\n\n\n\n`summarise()` has grouped output by 'species'. You can override using the\n`.groups` argument.\n\n\n# A tibble: 8 × 3\n# Groups:   species [3]\n  species   sex    mass_avg\n  &lt;fct&gt;     &lt;fct&gt;     &lt;dbl&gt;\n1 Adelie    female    3369.\n2 Adelie    male      4043.\n3 Adelie    &lt;NA&gt;      3540 \n4 Chinstrap female    3527.\n5 Chinstrap male      3939.\n# ℹ 3 more rows\n\n\nGrouping by species still active"
+    "text": "Removes grouping\nsummarize removes the last level of grouping\n\npenguins |&gt; \n    group_by(species, sex) |&gt; \n    summarize(mass_avg = mean(body_mass_g, na.rm=TRUE))\n\n\n\n# A tibble: 8 × 3\n# Groups:   species [3]\n  species   sex    mass_avg\n  &lt;fct&gt;     &lt;fct&gt;     &lt;dbl&gt;\n1 Adelie    female    3369.\n2 Adelie    male      4043.\n3 Adelie    &lt;NA&gt;      3540 \n4 Chinstrap female    3527.\n5 Chinstrap male      3939.\n# ℹ 3 more rows\n\n\nGrouping by species still active"
   },
   {
     "objectID": "slides/2025-04-22/06_dplyr_summarize.html#removes-grouping-2",
@@ -1274,18 +1050,25 @@
     "text": "Without group_by\nWithout group_by, summarize takes summaries of the entire data set:\n\npenguins |&gt; \n    summarize(n=n(), \n              across(where(is.numeric), safe_mean))\n\n# A tibble: 1 × 6\n      n bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year\n  &lt;dbl&gt;          &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;\n1   344           43.9          17.2              201.       4202. 2008."
   },
   {
-    "objectID": "slides/2025-04-22/07_dplyr_join.html#specifying-names",
-    "href": "slides/2025-04-22/07_dplyr_join.html#specifying-names",
+    "objectID": "slides/2025-04-22/06_dplyr_summarize.html#summarize-and-group_by",
+    "href": "slides/2025-04-22/06_dplyr_summarize.html#summarize-and-group_by",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Specifying Names",
-    "text": "Specifying Names\n\ninner_join(band_instruments2, \n           band_members, \n           join_by(artist == name))\n\n# A tibble: 2 × 3\n  artist plays  band   \n  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  \n1 John   guitar Beatles\n2 Paul   bass   Beatles"
+    "section": "summarize and group_by",
+    "text": "summarize and group_by\nsummarize computes summary statistics of a population\n\nmeans, standard deviations, counts, etc.\n\ngroup_by changes these to conditional summary statistics\n\nE.g., mean of body mass, conditional on adelie species\n\n\nMany steps of real data analysis fits this pattern\nIf you dive deeper into split-apply-combine, can determine group-wise models as well (e.g., different trends for different groups)"
   },
   {
-    "objectID": "slides/2025-04-22/08_tidyr_pivot.html",
-    "href": "slides/2025-04-22/08_tidyr_pivot.html",
+    "objectID": "slides/2025-04-22/06_dplyr_summarize.html#looking-ahead",
+    "href": "slides/2025-04-22/06_dplyr_summarize.html#looking-ahead",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "R Basics\nData Visualization\nR Programming\nTidy Data Manipulation\n\nSelecting Rows and Columns\nComputing Groupwise Summaries\nJoining Tables\nReshaping Tables\n\npython Basics\nWeb Scraping with python\n\n\n\n\n\nIn this video:\n\n\nIdentify wide and long format data\nPivot data from wide to long format\nPivot data from long to wide format\n\n\n\n\n\nRecall our Baruch enrollment example of tidy data ✅\n\n\n# A tibble: 6 × 4\n  Semester Course     Enrollment   Cap\n  &lt;chr&gt;    &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;\n1 Fall     Accounting        200   250\n2 Fall     Law               100   125\n3 Fall     Statistics        200   200\n4 Spring   Accounting        300   350\n5 Spring   Law                50   100\n6 Spring   Statistics        400   400\n\n\n\n\n\nWe can plot this\n\nggplot(D, aes(x=Semester, y=Enrollment, color=Course)) +\n    geom_jitter() + theme_bw()\n\n\n\n\n\n\n\n\n\n\n\nNot easy to plot both Enrollment and Cap columns\n. . .\nNeed data in this “untidy” format\n\n\n# A tibble: 12 × 4\n   Semester Course     Number Type      \n   &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;     \n 1 Fall     Accounting    200 Enrollment\n 2 Fall     Accounting    250 Cap       \n 3 Fall     Law           100 Enrollment\n 4 Fall     Law           125 Cap       \n 5 Fall     Statistics    200 Enrollment\n 6 Fall     Statistics    200 Cap       \n 7 Spring   Accounting    300 Enrollment\n 8 Spring   Accounting    350 Cap       \n 9 Spring   Law            50 Enrollment\n10 Spring   Law           100 Cap       \n11 Spring   Statistics    400 Enrollment\n12 Spring   Statistics    400 Cap       \n\n\n\n\n\n\nggplot(D2, aes(x=Semester, y=Number, shape=Type, color=Course)) +\n    geom_jitter() + theme_bw() + theme(legend.position = \"bottom\")\n\n\n\n\n\n\n\n\n\n\n\nWe switched from a “wide” format to a “long” format\n\nNot absolute terms, relative to each other\nWide has more columns (tidier)\nLong is easier for certain plots\n\n\n\n\npivot operations can be used to switch between formats\n\npivot_longer combine columns\npivot_wider split a column\n\nSyntax is hard to remember:\n\nuse ?pivot_wider and ?pivot_longer\n\n\n\n\n\npivot_longer(D, \n             cols=c(Enrollment, Cap), \n             names_to=\"Type\",  # Quote since not a current column\n             values_to=\"Number\")\n\n\n\n# A tibble: 12 × 4\n  Semester Course     Type       Number\n  &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;       &lt;dbl&gt;\n1 Fall     Accounting Enrollment    200\n2 Fall     Accounting Cap           250\n3 Fall     Law        Enrollment    100\n# ℹ 9 more rows\n\n\n\ncols to pivot\nnames_to: column where to put (old) column name\nvalues_to: column where to store old values\n\n\n\n\n\npivot_wider(D2, \n            id_cols = c(Semester, Course), \n            values_from = Number, \n            names_from = Type)\n\n# A tibble: 6 × 4\n  Semester Course     Enrollment   Cap\n  &lt;chr&gt;    &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;\n1 Fall     Accounting        200   250\n2 Fall     Law               100   125\n3 Fall     Statistics        200   200\n4 Spring   Accounting        300   350\n5 Spring   Law                50   100\n6 Spring   Statistics        400   400\n\n\n\nid_cols: columns kept in place\nnames_from: column where to get new column names\nvalues_from: column where to get values\n\n\n\n\n\nApply Grouped Operations ✅\nSummarize Across Multiple Rows ✅\nJoin Multiple Tables ✅\nReshape Tables with pivot Operations ✅\n\n. . .\nNow it’s your turn!\n\n\n\nFor more, check out Chapter 5 - “Tidying” of R for Data Science"
+    "section": "Looking Ahead",
+    "text": "Looking Ahead\n\nApply Grouped Operations ✅\nSummarize Across Multiple Rows ✅\nJoin Multiple Tables\nReshape Tables with pivot Operations"
+  },
+  {
+    "objectID": "slides/2025-04-22/06_dplyr_summarize.html#learning-more",
+    "href": "slides/2025-04-22/06_dplyr_summarize.html#learning-more",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Learning More",
+    "text": "Learning More\nFor more, check out Sections 3.5-3.6 - “Groups” of R for Data Science"
   },
   {
     "objectID": "slides/2025-04-22/08_tidyr_pivot.html#where-are-we",
@@ -1300,20 +1083,6 @@
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
     "section": "Goals for this Video",
     "text": "Goals for this Video\nIn this video:\n\n\nIdentify wide and long format data\nPivot data from wide to long format\nPivot data from long to wide format"
-  },
-  {
-    "objectID": "slides/2025-04-22/08_tidyr_pivot.html#looking-ahead",
-    "href": "slides/2025-04-22/08_tidyr_pivot.html#looking-ahead",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Looking Ahead",
-    "text": "Looking Ahead\n\nApply Grouped Operations ✅\nSummarize Across Multiple Rows ✅\nJoin Multiple Tables ✅\nReshape Tables with pivot Operations ✅\n\n\nNow it’s your turn!"
-  },
-  {
-    "objectID": "slides/2025-04-22/08_tidyr_pivot.html#learning-more",
-    "href": "slides/2025-04-22/08_tidyr_pivot.html#learning-more",
-    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Learning More",
-    "text": "Learning More\nFor more, check out Chapter 5 - “Tidying” of R for Data Science"
   },
   {
     "objectID": "slides/2025-04-22/08_tidyr_pivot.html#tidy-data",
@@ -1372,38 +1141,101 @@
     "text": "Long to Wide\n\npivot_wider(D2, \n            id_cols = c(Semester, Course), \n            values_from = Number, \n            names_from = Type)\n\n# A tibble: 6 × 4\n  Semester Course     Enrollment   Cap\n  &lt;chr&gt;    &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;\n1 Fall     Accounting        200   250\n2 Fall     Law               100   125\n3 Fall     Statistics        200   200\n4 Spring   Accounting        300   350\n5 Spring   Law                50   100\n6 Spring   Statistics        400   400\n\n\n\nid_cols: columns kept in place\nnames_from: column where to get new column names\nvalues_from: column where to get values"
   },
   {
-    "objectID": "slides/2025-04-22/05_dplyr_groupby.html",
-    "href": "slides/2025-04-22/05_dplyr_groupby.html",
+    "objectID": "slides/2025-04-22/08_tidyr_pivot.html#looking-ahead",
+    "href": "slides/2025-04-22/08_tidyr_pivot.html#looking-ahead",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "",
-    "text": "R Basics\nData Visualization\nR Programming\nTidy Data Manipulation\n\nSelecting Rows and Columns\nComputing Groupwise Summaries\nJoining Tables\nReshaping Tables\n\npython Basics\nWeb Scraping with python\n\n\n\n\n\nIn this video:\n\n\nUnderstand “grouped” dplyr operations\nUse nested/compound group structures\nApply rowwise() operations\n\n\n\n\n\nSo far, we have applied vectorized operations to data.frames:\n\nselect: Keep and drop columns\nmutate: Create new columns\nfilter: Keep and drop rows\n\n. . .\nFor each of these, we have operated on the whole data set\nOften, we instead want to operate on chunks of the data at a time\n\n\n\nRecall our penguins:\n\npenguins\n\n\n\n# A tibble: 344 × 3\n  species bill_length_mm body_mass_g\n  &lt;fct&gt;            &lt;dbl&gt;       &lt;int&gt;\n1 Adelie            39.1        3750\n2 Adelie            39.5        3800\n3 Adelie            40.3        3250\n# ℹ 341 more rows\n\n\n. . .\nHeaviest penguin:\n\npenguins |&gt; slice_max(body_mass_g)\n\n\n\n# A tibble: 1 × 3\n  species bill_length_mm body_mass_g\n  &lt;fct&gt;            &lt;dbl&gt;       &lt;int&gt;\n1 Gentoo            49.2        6300\n\n\n\n\n\nHow can we get the heaviest penguin of each species?\n. . .\nConceptually:\n\nSplit the data into three groups\nApply slice_max to each group separately\nCombine the three rows back together\n\n. . .\nSometimes called the split-apply-combine paradigm\n\n\n\nImplemented using the group_by adverb\n\nDoesn’t do anything on its own\nChanges the behavior of other functions\n\n. . .\n\npenguins |&gt; group_by(species) |&gt; slice_max(body_mass_g)\n\n# A tibble: 3 × 8\n# Groups:   species [3]\n  species   island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;     &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie    Biscoe           43.2          19                 197        4775\n2 Chinstrap Dream            52            20.7               210        4800\n3 Gentoo    Biscoe           49.2          15.2               221        6300\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n\n\n\nLet’s take this step-by-step\n\npenguins |&gt; group_by(species)\n\n# A tibble: 344 × 8\n# Groups:   species [3]\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\nSame data as before, but here # Groups: species[3]\n\n\n\ngroup_by changes behavior of aggregating functions:\n\nmin(), max(), n(), sum(), prod(), etc.\n\nMany other operations use these internally\n\n\n\nRecall\n\npenguins |&gt; slice_max(body_mass_g)\n\nis equivalent to:\n\npenguins |&gt; filter(body_mass_g == max(body_mass_g, na.rm=TRUE))\n\nor even\n\npenguins |&gt; \n    mutate(mass_max = max(body_mass_g, na.rm=TRUE))\n    filter(body_mass_g == mass_max)\n\n\n\n\nLooking at the first step\n\npenguins |&gt; \n    mutate(mass_max = max(body_mass_g, na.rm=TRUE))\n\n\n\n# A tibble: 344 × 3\n  species body_mass_g mass_max\n  &lt;fct&gt;         &lt;int&gt;    &lt;int&gt;\n1 Adelie         3750     6300\n2 Adelie         3800     6300\n3 Adelie         3250     6300\n# ℹ 341 more rows\n\n\n\n\n\nWith group_by, a different max for each group\n\npenguins |&gt; \n    group_by(species) |&gt;\n    mutate(mass_max = max(body_mass_g, na.rm=TRUE))\n\n\n\n# A tibble: 344 × 3\n# Groups:   species [3]\n  species body_mass_g mass_max\n  &lt;fct&gt;         &lt;int&gt;    &lt;int&gt;\n1 Adelie         3750     4775\n2 Adelie         3800     4775\n3 Adelie         3250     4775\n# ℹ 341 more rows\n\n\n\n\n\nHence,\n\npenguins |&gt; \n    group_by(species) |&gt;\n    mutate(mass_max = max(body_mass_g, na.rm=TRUE))\n    filter(body_mass_g == mass_max)\n\n\npenguins |&gt; group_by(species) |&gt; slice_max(body_mass_g)\n\n# A tibble: 3 × 8\n# Groups:   species [3]\n  species   island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;     &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie    Biscoe           43.2          19                 197        4775\n2 Chinstrap Dream            52            20.7               210        4800\n3 Gentoo    Biscoe           49.2          15.2               221        6300\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\ngives a 3 row answer (one per group)\n\n\n\nOperations do not have to select only a single row like slice_max\n. . .\nTo get “above average” penguins for each species\n\npenguins |&gt; \n    group_by(species) |&gt; \n    filter(body_mass_g &gt; mean(body_mass_g, na.rm=TRUE))\n\n\n\n\nCan apply group_by to create “compound” groups\n\npenguins |&gt; group_by(species, year)\n\n# A tibble: 344 × 8\n# Groups:   species, year [9]\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n\\(9 = 3 \\times 3\\) groups\n\n\n\nGrouped operations apply as before:\n\npenguins |&gt; \n    group_by(species, year) |&gt; \n    slice_max(body_mass_g)\n\n# A tibble: 9 × 8\n# Groups:   species, year [9]\n  species   island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;     &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie    Torgersen           39.2          19.6               195        4675\n2 Adelie    Torgersen           42.9          17.6               196        4700\n3 Adelie    Biscoe              43.2          19                 197        4775\n4 Chinstrap Dream               49.2          18.2               195        4400\n5 Chinstrap Dream               52            20.7               210        4800\n6 Chinstrap Dream               50.8          18.5               201        4450\n7 Gentoo    Biscoe              49.2          15.2               221        6300\n8 Gentoo    Biscoe              51.1          16.3               220        6000\n9 Gentoo    Biscoe              48.8          16.2               222        6000\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n\n\n\nMissing ‘combinations’ automatically dropped:\n\npenguins |&gt; \n    group_by(species, island) \n\n\n\n# A tibble: 344 × 4\n# Groups:   species, island [5]\n   species island    body_mass_g sex   \n   &lt;fct&gt;   &lt;fct&gt;           &lt;int&gt; &lt;fct&gt; \n 1 Adelie  Torgersen        3750 male  \n 2 Adelie  Torgersen        3800 female\n 3 Adelie  Torgersen        3250 female\n 4 Adelie  Torgersen          NA &lt;NA&gt;  \n 5 Adelie  Torgersen        3450 female\n 6 Adelie  Torgersen        3650 male  \n 7 Adelie  Torgersen        3625 female\n 8 Adelie  Torgersen        4675 male  \n 9 Adelie  Torgersen        3475 &lt;NA&gt;  \n10 Adelie  Torgersen        4250 &lt;NA&gt;  \n# ℹ 334 more rows\n\n\n\n\n\nOnce you are done with grouped operations, ungroup\n\npenguins |&gt; \n    group_by(species, island) |&gt;\n    slice_max(body_mass_g) |&gt;\n    ungroup()\n\n# A tibble: 5 × 8\n  species   island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;     &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie    Biscoe              43.2          19                 197        4775\n2 Adelie    Dream               39.8          19.1               184        4650\n3 Adelie    Torgersen           42.9          17.6               196        4700\n4 Chinstrap Dream               52            20.7               210        4800\n5 Gentoo    Biscoe              49.2          15.2               221        6300\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n\n\n\nIn general, grouping on continuous variables is a bad choice:\n\npenguins |&gt; group_by(body_mass_g)\n\n# A tibble: 344 × 8\n# Groups:   body_mass_g [95]\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n(Analogy: Checking exact equality of continuous random variables)\n\n\n\nBetter choices:\n\nGroup on quantiles (ntile) or cut points (cut)\n\n\npenguins |&gt;\n    mutate(mass_5ile = ntile(body_mass_g, 5)) |&gt;\n    group_by(mass_5ile) |&gt;\n    ...\n\n\n\n\nRarely, you may need to apply an operation to each row separately without vectorization\nrowwise lets you do so - makes each row its own group\n\npenguins |&gt; rowwise()\n\n\n\n# A tibble: 344 × 4\n# Rowwise: \n  sex    island    flipper_length_mm body_mass_g\n  &lt;fct&gt;  &lt;fct&gt;                 &lt;int&gt;       &lt;int&gt;\n1 male   Torgersen               181        3750\n2 female Torgersen               186        3800\n# ℹ 342 more rows\n\n\n. . .\nNote: This is a bit dangerous - vectorization is important for data integrity\n\n\n\n\nApply Grouped Operations ✅\nSummarize Across Multiple Rows\nJoin Multiple Tables\nReshape Tables with pivot Operations\n\n\n\n\nFor more, check out Sections 3.5-3.6 - “Groups” of R for Data Science"
+    "section": "Looking Ahead",
+    "text": "Looking Ahead\n\nApply Grouped Operations ✅\nSummarize Across Multiple Rows ✅\nJoin Multiple Tables ✅\nReshape Tables with pivot Operations ✅\n\n\nNow it’s your turn!"
   },
   {
-    "objectID": "slides/2025-04-22/05_dplyr_groupby.html#effects-of-group_by-5",
-    "href": "slides/2025-04-22/05_dplyr_groupby.html#effects-of-group_by-5",
+    "objectID": "slides/2025-04-22/08_tidyr_pivot.html#learning-more",
+    "href": "slides/2025-04-22/08_tidyr_pivot.html#learning-more",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Effects of group_by",
-    "text": "Effects of group_by\nOperations do not have to select only a single row like slice_max\n\nTo get “above average” penguins for each species\n\npenguins |&gt; \n    group_by(species) |&gt; \n    filter(body_mass_g &gt; mean(body_mass_g, na.rm=TRUE))"
+    "section": "Learning More",
+    "text": "Learning More\nFor more, check out Chapter 5 - “Tidying” of R for Data Science"
   },
   {
-    "objectID": "slides/2025-04-22/05_dplyr_groupby.html#stopping-groups",
-    "href": "slides/2025-04-22/05_dplyr_groupby.html#stopping-groups",
+    "objectID": "slides/2025-04-29/10_python_install.html#where-are-we",
+    "href": "slides/2025-04-29/10_python_install.html#where-are-we",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Stopping groups",
-    "text": "Stopping groups\nOnce you are done with grouped operations, ungroup\n\npenguins |&gt; \n    group_by(species, island) |&gt;\n    slice_max(body_mass_g) |&gt;\n    ungroup()\n\n# A tibble: 5 × 8\n  species   island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;     &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie    Biscoe              43.2          19                 197        4775\n2 Adelie    Dream               39.8          19.1               184        4650\n3 Adelie    Torgersen           42.9          17.6               196        4700\n4 Chinstrap Dream               52            20.7               210        4800\n5 Gentoo    Biscoe              49.2          15.2               221        6300\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+    "section": "Where are We?",
+    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\npython Basics\n\nInstalling python\nBasic Syntax and Control Flow\npython Objects\nUsing Packages\n\nWeb Scraping with python"
   },
   {
-    "objectID": "slides/2025-04-22/05_dplyr_groupby.html#numeric-variables",
-    "href": "slides/2025-04-22/05_dplyr_groupby.html#numeric-variables",
+    "objectID": "slides/2025-04-29/10_python_install.html#goals-for-this-video",
+    "href": "slides/2025-04-29/10_python_install.html#goals-for-this-video",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Numeric Variables",
-    "text": "Numeric Variables\nIn general, grouping on continuous variables is a bad choice:\n\npenguins |&gt; group_by(body_mass_g)\n\n# A tibble: 344 × 8\n# Groups:   body_mass_g [95]\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n(Analogy: Checking exact equality of continuous random variables)"
+    "section": "Goals for this Video",
+    "text": "Goals for this Video\nIn this video:"
   },
   {
-    "objectID": "slides/2025-04-22/05_dplyr_groupby.html#numeric-variables-1",
-    "href": "slides/2025-04-22/05_dplyr_groupby.html#numeric-variables-1",
+    "objectID": "slides/2025-04-29/10_python_install.html#looking-ahead",
+    "href": "slides/2025-04-29/10_python_install.html#looking-ahead",
     "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
-    "section": "Numeric Variables",
-    "text": "Numeric Variables\nBetter choices:\n\nGroup on quantiles (ntile) or cut points (cut)\n\n\npenguins |&gt;\n    mutate(mass_5ile = ntile(body_mass_g, 5)) |&gt;\n    group_by(mass_5ile) |&gt;\n    ..."
+    "section": "Looking Ahead",
+    "text": "Looking Ahead"
+  },
+  {
+    "objectID": "slides/2025-04-29/10_python_install.html#learning-more",
+    "href": "slides/2025-04-29/10_python_install.html#learning-more",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Learning More",
+    "text": "Learning More"
+  },
+  {
+    "objectID": "slides/2025-04-29/12_python_basics_control.html#where-are-we",
+    "href": "slides/2025-04-29/12_python_basics_control.html#where-are-we",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Where are We?",
+    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\npython Basics\n\nInstalling python\nBasic Syntax and Control Flow\npython Objects\nUsing Packages\n\nWeb Scraping with python"
+  },
+  {
+    "objectID": "slides/2025-04-29/12_python_basics_control.html#goals-for-this-video",
+    "href": "slides/2025-04-29/12_python_basics_control.html#goals-for-this-video",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Goals for this Video",
+    "text": "Goals for this Video\nIn this video:"
+  },
+  {
+    "objectID": "slides/2025-04-29/12_python_basics_control.html#looking-ahead",
+    "href": "slides/2025-04-29/12_python_basics_control.html#looking-ahead",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Looking Ahead",
+    "text": "Looking Ahead"
+  },
+  {
+    "objectID": "slides/2025-04-29/12_python_basics_control.html#learning-more",
+    "href": "slides/2025-04-29/12_python_basics_control.html#learning-more",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Learning More",
+    "text": "Learning More"
+  },
+  {
+    "objectID": "slides/2025-05-13/14_python_packages.html#where-are-we",
+    "href": "slides/2025-05-13/14_python_packages.html#where-are-we",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Where are We?",
+    "text": "Where are We?\n\n\nR Basics\nData Visualization\nR Programming\nTidy Data Manipulation\npython Basics\n\nInstalling python\nBasic Syntax and Control Flow\npython Objects\nUsing Packages\n\nWeb Scraping with python"
+  },
+  {
+    "objectID": "slides/2025-05-13/14_python_packages.html#goals-for-this-video",
+    "href": "slides/2025-05-13/14_python_packages.html#goals-for-this-video",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Goals for this Video",
+    "text": "Goals for this Video\nIn this video:"
+  },
+  {
+    "objectID": "slides/2025-05-13/14_python_packages.html#looking-ahead",
+    "href": "slides/2025-05-13/14_python_packages.html#looking-ahead",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Looking Ahead",
+    "text": "Looking Ahead"
+  },
+  {
+    "objectID": "slides/2025-05-13/14_python_packages.html#learning-more",
+    "href": "slides/2025-05-13/14_python_packages.html#learning-more",
+    "title": "Software Tools for Data AnalysisSTA 9750Michael Weylandt",
+    "section": "Learning More",
+    "text": "Learning More"
   }
 ]

@@ -271,9 +271,6 @@
 <section id="group_by-summarize-1" class="slide level2">
 <h2>group_by + summarize</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb3-2"><a></a>    <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
-<span id="cb3-3"><a></a>    <span class="fu">summarize</span>(<span class="at">avg_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   species   avg_mass
@@ -297,10 +294,10 @@
 <h2>group_by + summarize</h2>
 <p>Can perform multiple summaries at once:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb5-2"><a></a>    <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
-<span id="cb5-3"><a></a>    <span class="fu">summarize</span>(<span class="at">avg_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
-<span id="cb5-4"><a></a>              <span class="at">sd_mass =</span> <span class="fu">sd</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a></a>    <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a></a>    <span class="fu">summarize</span>(<span class="at">avg_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
+<span id="cb4-4"><a></a>              <span class="at">sd_mass =</span> <span class="fu">sd</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   species   avg_mass sd_mass
@@ -316,12 +313,12 @@
 <h2>summarize helpers</h2>
 <p>The <code>n()</code> function will count the number of rows in a group</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a></a>    <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
-<span id="cb7-3"><a></a>    <span class="fu">summarize</span>(<span class="at">mass_avg =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
-<span id="cb7-4"><a></a>              <span class="at">mass_sd =</span> <span class="fu">sd</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
-<span id="cb7-5"><a></a>              <span class="at">n =</span> <span class="fu">n</span>(), </span>
-<span id="cb7-6"><a></a>              <span class="at">mass_se =</span> mass_sd <span class="sc">/</span> <span class="fu">sqrt</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a></a>    <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb6-3"><a></a>    <span class="fu">summarize</span>(<span class="at">mass_avg =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
+<span id="cb6-4"><a></a>              <span class="at">mass_sd =</span> <span class="fu">sd</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
+<span id="cb6-5"><a></a>              <span class="at">n =</span> <span class="fu">n</span>(), </span>
+<span id="cb6-6"><a></a>              <span class="at">mass_se =</span> mass_sd <span class="sc">/</span> <span class="fu">sqrt</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 5
   species   mass_avg mass_sd     n mass_se
@@ -336,13 +333,13 @@
 <h2>summarize helpers</h2>
 <p><code>cur_group()</code> returns the current group name</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb9-2"><a></a>    <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
-<span id="cb9-3"><a></a>    <span class="fu">summarize</span>(<span class="at">mass_avg =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
-<span id="cb9-4"><a></a>              <span class="at">mass_sd =</span> <span class="fu">sd</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
-<span id="cb9-5"><a></a>              <span class="at">n =</span> <span class="fu">n</span>(), </span>
-<span id="cb9-6"><a></a>              <span class="at">mass_se =</span> mass_sd <span class="sc">/</span> <span class="fu">sqrt</span>(n), </span>
-<span id="cb9-7"><a></a>              <span class="at">species_cap =</span> <span class="fu">toupper</span>(<span class="fu">cur_group</span>()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a></a>    <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb8-3"><a></a>    <span class="fu">summarize</span>(<span class="at">mass_avg =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
+<span id="cb8-4"><a></a>              <span class="at">mass_sd =</span> <span class="fu">sd</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>), </span>
+<span id="cb8-5"><a></a>              <span class="at">n =</span> <span class="fu">n</span>(), </span>
+<span id="cb8-6"><a></a>              <span class="at">mass_se =</span> mass_sd <span class="sc">/</span> <span class="fu">sqrt</span>(n), </span>
+<span id="cb8-7"><a></a>              <span class="at">species_cap =</span> <span class="fu">toupper</span>(<span class="fu">cur_group</span>()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 6
   species   mass_avg mass_sd     n mass_se species_cap
@@ -358,9 +355,9 @@
 <h2>Removes grouping</h2>
 <p><code>summarize</code> removes the <em>last</em> level of grouping</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb11-2"><a></a>    <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
-<span id="cb11-3"><a></a>    <span class="fu">summarize</span>(<span class="at">mass_avg =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a></a>    <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb10-3"><a></a>    <span class="fu">summarize</span>(<span class="at">mass_avg =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   species   mass_avg
@@ -376,15 +373,11 @@
 <h2>Removes grouping</h2>
 <p><code>summarize</code> removes the <em>last</em> level of grouping</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb13-2"><a></a>    <span class="fu">group_by</span>(species, sex) <span class="sc">|&gt;</span> </span>
-<span id="cb13-3"><a></a>    <span class="fu">summarize</span>(<span class="at">mass_avg =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a></a>    <span class="fu">group_by</span>(species, sex) <span class="sc">|&gt;</span> </span>
+<span id="cb12-3"><a></a>    <span class="fu">summarize</span>(<span class="at">mass_avg =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'species'. You can override using the
-`.groups` argument.</code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 3
 # Groups:   species [3]
@@ -413,9 +406,9 @@
 <p>Like <code>mutate</code>, give <code>summarize</code> column names</p>
 <p>Defaults are unhelpful:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb16-2"><a></a>    <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span></span>
-<span id="cb16-3"><a></a>    <span class="fu">summarize</span>(<span class="fu">sd</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a></a>    <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span></span>
+<span id="cb14-3"><a></a>    <span class="fu">summarize</span>(<span class="fu">sd</span>(body_mass_g, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   species   `sd(body_mass_g, na.rm = TRUE)`
@@ -430,9 +423,9 @@
 <h2>Multiple columns</h2>
 <p>Remember the selection helpers from <code>select</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb18-2"><a></a>    <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">|&gt;</span></span>
-<span id="cb18-3"><a></a>    <span class="fu">print</span>(<span class="at">n=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a></a>    <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">|&gt;</span></span>
+<span id="cb16-3"><a></a>    <span class="fu">print</span>(<span class="at">n=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 344 × 5
   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year
@@ -449,10 +442,10 @@
 <h2>Multiple columns</h2>
 <p>Can be used inside <code>summarize</code> as well</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>safe_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">mean</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb20-2"><a></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb20-3"><a></a>    <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span></span>
-<span id="cb20-4"><a></a>    <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), safe_mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>safe_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">mean</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb18-2"><a></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb18-3"><a></a>    <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span></span>
+<span id="cb18-4"><a></a>    <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), safe_mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 6
   species   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year
@@ -467,9 +460,9 @@
 <h2>Without group_by</h2>
 <p>Without <code>group_by</code>, <code>summarize</code> takes summaries of the entire data set:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb22-2"><a></a>    <span class="fu">summarize</span>(<span class="at">n=</span><span class="fu">n</span>(), </span>
-<span id="cb22-3"><a></a>              <span class="fu">across</span>(<span class="fu">where</span>(is.numeric), safe_mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a></a>    <span class="fu">summarize</span>(<span class="at">n=</span><span class="fu">n</span>(), </span>
+<span id="cb20-3"><a></a>              <span class="fu">across</span>(<span class="fu">where</span>(is.numeric), safe_mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 6
       n bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year
@@ -723,6 +716,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
