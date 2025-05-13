@@ -149,7 +149,7 @@ Often we want to loop and count: `enumerate`
 ```{python}
 my_courses = ["STA 9750", "STA 9708", "STA 9700"]
 for num, course in enumerate(my_courses):
-    print("Course Number", num, "is", item)
+    print("Course Number", num, "is", course)
 ```
 
 . . . 
@@ -159,7 +159,7 @@ Recall 0-based, so you may prefer
 ```{python}
 my_courses = ["STA 9750", "STA 9708", "STA 9700"]
 for num, course in enumerate(my_courses):
-    print("Course Number", num + 1, "is", item)
+    print("Course Number", num + 1, "is", course)
 ```
 
 
