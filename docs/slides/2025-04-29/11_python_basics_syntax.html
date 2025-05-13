@@ -27,6 +27,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-7178ceb0ddec93948d1ae946e30bd356.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -161,18 +226,271 @@
 <p>In this video:</p>
 <div>
 <ul>
-<li class="fragment"></li>
-<li class="fragment"></li>
-<li class="fragment"></li>
-<li class="fragment"></li>
+<li class="fragment">Basic Syntax of <code>python</code></li>
+<li class="fragment"><code>python</code> Containers</li>
+<li class="fragment">Function Calls in <code>python</code></li>
 </ul>
 </div>
 </section>
+<section id="syntax-literals" class="slide level2">
+<h2>Syntax: Literals</h2>
+<p>Like <code>R</code>, <code>python</code> has <em>literal</em> syntax for basic types</p>
+<ul>
+<li>integers</li>
+<li>real numbers</li>
+<li>strings</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="dv">3</span></span>
+<span id="cb1-2"><a></a><span class="fl">3.5</span></span>
+<span id="cb1-3"><a></a><span class="co">"abc"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For basic types, essentially unchanged</p>
+</section>
+<section id="syntax-assignment" class="slide level2">
+<h2>Syntax: Assignment</h2>
+<p><code>python</code> only assigns with the <code>=</code> operator (no <code>&lt;-</code>)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>x <span class="op">=</span> <span class="st">"abc"</span></span>
+<span id="cb2-2"><a></a>y <span class="op">=</span> <span class="fl">3.5</span> <span class="op">+</span> <span class="dv">200</span></span>
+<span id="cb2-3"><a></a>z <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb2-4"><a></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'abc'</code></pre>
+</div>
+</div>
+<p>Functions are defined differently (later)</p>
+</section>
+<section id="syntax-names" class="slide level2">
+<h2>Syntax: Names</h2>
+<p><code>python</code> variable names are similar to <code>R</code>:</p>
+<ul>
+<li>Any lower/upper letters</li>
+<li>Numbers and underscores not at start</li>
+</ul>
+<div class="fragment">
+<p>Python <em>convention</em> is to name variables and functions in</p>
+<p><code>snake_case</code></p>
+<p>with <code>CamelCase</code> for types (later)</p>
+</div>
+<div class="fragment">
+<p>No analogy to <code>R</code> backticks (non-syntactic names)</p>
+</div>
+</section>
+<section id="syntax-arithmetic" class="slide level2">
+<h2>Syntax: Arithmetic</h2>
+<p>Basic arithmetic looks like <code>R</code>: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code></p>
+<p>Differences:</p>
+<ul>
+<li><code>^</code> is bitwise <code>XOR</code>: use <code>**</code> instead</li>
+<li><code>//</code> integer division (in <code>R</code>, <code>%/%</code>)</li>
+<li><code>%</code> division remainder (in <code>R</code>, <code>%%</code>)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>interest_rate <span class="op">=</span> <span class="fl">0.03</span> <span class="co"># 3% Annual rate</span></span>
+<span id="cb4-2"><a></a>monthly_rate <span class="op">=</span> (<span class="dv">1</span> <span class="op">+</span> interest_rate) <span class="op">**</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">12</span>) <span class="op">-</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="containers" class="slide level2">
+<h2>Containers</h2>
+<p>In <code>python</code>, scalars are real (not just length-1 vectors)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="bu">len</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>TypeError: object of type 'int' has no len()</code></pre>
+</div>
+</div>
+<p><em>vs</em> equivalent <code>R</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">length</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>Three primary <em>containers</em> in <code>python</code></p>
+<ul>
+<li><code>list</code></li>
+<li><code>set</code></li>
+<li><code>dict</code></li>
+</ul>
+</div>
+</section>
+<section id="list-objects" class="slide level2">
+<h2>list Objects</h2>
+<p>A <code>python</code> <code>list</code> is (like <code>R</code>):</p>
+<ul>
+<li>an <em>ordered</em> container</li>
+<li>of arbitrary types</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="fl">3.5</span>, <span class="st">"fish"</span>, [<span class="st">"a"</span>, <span class="st">"different"</span>, <span class="st">"list"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<p>Unlike <code>R</code>, <code>python</code> is <em>zero-based</em>!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>x[<span class="dv">2</span>] <span class="co"># Third item!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'fish'</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="list-objects-1" class="slide level2">
+<h2>list Objects</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="fl">3.5</span>, <span class="st">"fish"</span>, [<span class="st">"a"</span>, <span class="st">"different"</span>, <span class="st">"list"</span>]]</span>
+<span id="cb12-2"><a></a></span>
+<span id="cb12-3"><a></a><span class="dv">1</span> <span class="kw">in</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>True</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="dv">2</span> <span class="kw">in</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>False</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="co">"list"</span> <span class="kw">in</span> x </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>False</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="kw">del</span> x[<span class="dv">2</span>] <span class="co"># Remove _third_ item!</span></span>
+<span id="cb18-2"><a></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1, 3.5, ['a', 'different', 'list']]</code></pre>
+</div>
+</div>
+</section>
+<section id="set-objects" class="slide level2">
+<h2>set Objects</h2>
+<p>A <code>python</code> <code>set</code> is:</p>
+<ul>
+<li>an <em>unordered</em> container</li>
+<li>of arbitrary types</li>
+<li>without duplicates</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>x <span class="op">=</span> {<span class="dv">1</span>, <span class="fl">3.5</span>, <span class="st">"fish"</span>, <span class="fl">3.5</span>}</span>
+<span id="cb20-2"><a></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{1, 3.5, 'fish'}</code></pre>
+</div>
+</div>
+<p>Note no repeat in <code>x</code> (3.5)</p>
+<p>Can’t put <code>list</code>s inside <code>set</code>s</p>
+</section>
+<section id="set-objects-1" class="slide level2">
+<h2>set Objects</h2>
+<p>To check if item is in set, use <code>in</code> operator:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{1, 3.5, 'fish'}</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="dv">2</span> <span class="kw">in</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>False</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="dv">1</span> <span class="kw">in</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>True</code></pre>
+</div>
+</div>
+<p>Set operations:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a>x <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>}</span>
+<span id="cb28-2"><a></a>y <span class="op">=</span> {<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>}</span>
+<span id="cb28-3"><a></a>x <span class="op">&amp;</span> y <span class="co"># Intersection</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{3}</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a>x <span class="op">|</span> y <span class="co"># Union</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{1, 2, 3, 4, 5}</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a>x <span class="op">-</span> y <span class="co"># Set difference</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{1, 2}</code></pre>
+</div>
+</div>
+</section>
+<section id="dict-objects" class="slide level2">
+<h2>dict Objects</h2>
+<p>A <code>python</code> <code>dict</code> is:</p>
+<ul>
+<li>An <em>unordered</em> mapping</li>
+<li>key =&gt; value pairs</li>
+</ul>
+<p><em>Incredibly</em> useful for ‘look-ups’</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a>x <span class="op">=</span> {<span class="st">"Zicklin"</span>: <span class="st">"Business"</span>, <span class="st">"Weissman"</span>: <span class="st">"A&amp;S"</span>, <span class="st">"Marxe"</span>: <span class="st">"Public Affairs"</span>}</span>
+<span id="cb34-2"><a></a>x[<span class="st">"Zicklin"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'Business'</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>Some rules about what the <em>keys</em> can be - strings are a good baseline</p>
+</div>
+</section>
+<section id="dict-objects-1" class="slide level2">
+<h2>dict Objects</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'Zicklin': 'Business', 'Weissman': 'A&amp;S', 'Marxe': 'Public Affairs'}</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a></a>x[<span class="st">"Zicklin"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'Business'</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a></a><span class="co">"Zicklin"</span> <span class="kw">in</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>True</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a></a><span class="co">"Baruch"</span> <span class="kw">in</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>False</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a></a><span class="kw">del</span> x[<span class="st">"Zicklin"</span>] <span class="co"># Remove (delete) a pair</span></span>
+<span id="cb44-2"><a></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'Weissman': 'A&amp;S', 'Marxe': 'Public Affairs'}</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a></a>x[<span class="st">"Baruch"</span>] <span class="op">=</span> <span class="st">"Awesome"</span> <span class="co"># Set value</span></span>
+<span id="cb46-2"><a></a>x[<span class="st">"Baruch"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'Awesome'</code></pre>
+</div>
+</div>
+</section>
+<section id="tuple" class="slide level2">
+<h2>tuple</h2>
+<p>A tuple is a ‘frozen’ list</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb48-2"><a></a>y <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb48-3"><a></a></span>
+<span id="cb48-4"><a></a><span class="kw">del</span> x[<span class="dv">0</span>]</span>
+<span id="cb48-5"><a></a><span class="kw">del</span> y[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>TypeError: 'tuple' object doesn't support item deletion</code></pre>
+</div>
+</div>
+<p>Very common behind the scenes</p>
+</section>
 <section id="looking-ahead" class="slide level2">
 <h2>Looking Ahead</h2>
+<ul>
+<li>Use Basic Syntax ✅</li>
+<li>Manipulate Containers ✅</li>
+<li>Iterate on Containers</li>
+<li>Call Functions</li>
+<li>Control Flow</li>
+</ul>
 </section>
 <section id="learning-more" class="slide level2">
 <h2>Learning More</h2>
+<p>See <a href="https://wesmckinney.com/book/python-builtin#tut_data_structures">Section 3.1</a> of <em>Python for Data Science</em></p>
 
 
 </section></section>
@@ -391,44 +709,6 @@
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

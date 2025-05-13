@@ -1,0 +1,198 @@
+---
+topic: "Basic Statistical Analysis"
+---
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(tidyverse)
+library(palmerpenguins)
+```
+
+# {{< meta topic >}}
+
+## Where are We?
+
+::: {style="font-size: 85%;"}
+- `R` Basics
+- Data Visualization
+- [`R` Programming]{color="blue"}
+  - [Statistical Analysis]{color="blue"}
+- Tidy Data Manipulation
+- `python` Basics
+- Web Scraping with `python`
+
+:::
+
+
+## Goals for this Video
+
+In this video: 
+
+::: incremental
+
+- Formula Syntax
+- Classical Statistical Models with `R`
+- Key Accessor Functions
+
+:::
+
+
+## Formula Notation
+
+`R` was designed for statistical analysis (originally called `S`)
+
+. . . 
+
+Major contributions
+
+- `data.frame` / tidy structure
+- Formula language ("Wilkinson-Rogers notation")
+
+## Formula Notation
+
+In `R`, a `formula` is a special object defined by a `~`
+
+. . . 
+
+Most common structure
+
+> `y ~ x1 + x2`
+
+Predict variable `y` using `x1` and `x2`
+
+. . . 
+
+- Modern `R` uses formulas in many other contexts
+- Various extensions provided by packages
+
+## Modeling Functions
+
+Basic modeling function: `lm` (_linear model_)
+
+```{r}
+#| echo: true
+library(palmerpenguins)
+lm(body_mass_g ~ flipper_length_mm, data=penguins)
+```
+
+
+## Modeling Functions
+
+```{r}
+lm(body_mass_g ~ flipper_length_mm, data=penguins)
+```
+
+- Provide model (`formula`) and data (`data.frame`) instead of $X, y$
+- By default automatically includes an intercept term
+
+## Modeling Functions
+
+```{r}
+lm(body_mass_g ~ flipper_length_mm + species, data=penguins)
+```
+
+Automatically: 
+
+- Encodes categorical (`factor`) variables
+  - `?C` for details
+- Removes extra / redundant columns
+
+
+## Modeling Functions
+
+```{r}
+lm(body_mass_g ~ flipper_length_mm*bill_depth_mm, data=penguins)
+```
+
+- `*` creates both 'main' effects and interactions
+
+
+## Modeling Functions
+
+```{r}
+lm(body_mass_g ~ flipper_length_mm*species, data=penguins)
+```
+
+- `*` of continuous and categorical creates ANCOVA
+
+## Modeling Functions 
+
+Many extensions
+
+```{r}
+#| echo: true
+#| message: false
+library(mgcv)
+gam(body_mass_g ~ s(flipper_length_mm) + s(bill_depth_mm, by=species), data=penguins)
+```
+Fits a *mixed-effect non-linear regression*
+
+## Accessors
+
+Helper functions to access fitted models: 
+
+```{r}
+#| echo: true
+m <- lm(body_mass_g ~ flipper_length_mm*bill_depth_mm + species, data=penguins)
+coef(m)
+```
+
+## Accessors
+
+```{r}
+#| echo: true
+summary(m)
+```
+
+## Accessors
+
+In-sample / training prediction: 
+
+```{r}
+#| echo: true
+predict(m)
+```
+
+## Accessors
+
+Out-of-sample / test prediction:
+
+```{r}
+#| echo: true
+toppenguins <- penguins |> slice_max(body_mass_g, n=10)
+predict(m, newdata=toppenguins)
+```
+
+## Accessors
+
+For just `lm`: 
+
+```{r}
+#| echo: true
+methods(class="lm")
+```
+
+Even more for other models
+
+
+## Looking Ahead
+
+Your turn!
+
+. . . 
+
+Applications to course project: 
+
+- Build models to _explore_ and _understand_ data
+
+
+## Learning More
+
+For more: 
+
+- Additional STA and CIS classes
+  - STA 9708: Basic Inferential Statistics
+  - STA 9700: Regression (`lm` and similar)
+  - and many more!

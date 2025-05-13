@@ -35,14 +35,351 @@ In this video:
 
 ::: incremental
 
-- 
-- 
-- 
-- 
+- Block-based Control Flow
+- Iterating over Containers
+- Function Calls
+- Defining Functions
 
 :::
 
+## Control Flow
+
+Recall in `R`, "blocks" of code were delimited by braces `{}`
+
+```{r}
+#| eval: true
+#| echo: true
+x <- -3
+if(x > 0){
+    print("x is positive")
+} else {
+    print("x is negative")
+}
+```
+
+## Control Flow
+
+`python` uses _indented_ blocks instead: 
+
+```{python}
+#| eval: true
+#| echo: true
+x = 1
+if x > 0:
+    print("x is positive")
+else:
+    print("x is negative")
+```
+
+No _explicit_ end - just next non-indented line
+
+## Control Flow
+
+If you've used good formatting in `R`, won't be a huge shift
+
+. . . 
+
+Tricky at command line (have to manually indent whole blocks): 
+
+- notebook based execution preferred 
+
+. . . 
+
+You _must_ be consistent (number of spaces, tabs vs spaces)
+
+- Recommendation: 4 spaces per 'level'
+
+## Control Flow
+
+Nesting requires multiple indents:
+
+```{python}
+#| eval: true
+x = 100
+if x > 0:
+    print("x is positive")
+    
+    if x >= 100: 
+        print("x has three digits")
+else:
+    print("x is negative")
+```
+
+## Control Flow
+
+`python` provides an `elif` where in `R` we used `else if`: 
+
+```{python}
+#| eval: true
+x = 0
+if x > 0:
+    print("x is positive")
+elif x < 0:
+    print("x is negative")
+else: 
+    print("x is zero")
+```
+
+Neither `elif` or `else` are required, but `else` must be last
+
+## Looping
+
+Unlike `R`, explicit loops are common (and good!) in `python`
+
+```{python}
+list_of_numbers = [1, 2, 3]
+for number in list_of_numbers:
+    print("The number is", number)
+```
+
+## Looping
+
+Loops over `list`s and `tuple`s are "natural"
+
+```{python}
+my_tuple = (1, 2, "fish", ["bottle", "of", "rum"])
+for item in my_tuple:
+    print(item)
+```
+
+## Looping
+
+Often we want to loop and count: `enumerate`
+
+```{python}
+my_courses = ["STA 9750", "STA 9708", "STA 9700"]
+for num, course in enumerate(my_courses):
+    print("Course Number", num, "is", item)
+```
+
+. . . 
+
+Recall 0-based, so you may prefer
+
+```{python}
+my_courses = ["STA 9750", "STA 9708", "STA 9700"]
+for num, course in enumerate(my_courses):
+    print("Course Number", num + 1, "is", item)
+```
+
+
+## Looping sets
+
+`set` objects are looped in an unpredictable order
+
+```{python}
+my_set = {"cat", "dog", "cow", "horse"}
+for num, animal in enumerate(my_set):
+    print("Animal Number", num + 1, "is", animal)
+```
+
+Often **but not always** order of creation
+
+- Can't depend on this
+
+## Looping dicts
+
+By default, a `dict` loops on its keys _only_
+
+```{python}
+animals = {
+    "dog": "Canis familiaris",
+    "cat": "Felis catus", 
+    "human": "Homo sapiens",
+    "cow": "Bos taurus"
+}
+for english in animals: 
+    print("The Latin name for", english, "is", animals[english])
+```
+
+## Looping dicts
+
+To loop on key-value pairs use the `.items()` **method**
+
+```{python}
+animals = {
+    "dog": "Canis familiaris",
+    "cat": "Felis catus", 
+    "human": "Homo sapiens",
+    "cow": "Bos taurus"
+}
+for english, latin in animals.items(): 
+    print("The Latin name for", english, "is", latin)
+```
+
+(We will cover methods in more detail later)
+
+## Comprehensions
+
+`python` allows compact a loop syntax called a _comprehension_
+
+```{python}
+x = [1, 2, 3, 2, 1]
+x_sq = [n**2 for n in x]
+```
+
+Creates and captures `n**2` into a list automatically!
+
+. . . 
+
+Much nicer than: 
+
+```{python}
+x = [1, 2, 3, 2, 1]
+x_sq = []
+for n in x:
+    x_sq.append(n**2)
+```
+
+## Comprehensions
+
+Also supports `set` and `dict` comprehensions:
+
+```{python}
+x = [1, 2, 3, 2, 1]
+[n**2 for n in x] # List comprehension
+{n**2 for n in x} # Set comprehension (removes dupes)
+{n:n**2 for n in x} # Dict comprehension (key-value)
+```
+
+## Comprehensions
+
+Comprehensions can even nest conditionals:
+
+```{python}
+x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+even_squares = [n**2 for n in x if n % 2 == 0] 
+even_squares
+```
+
+. . . 
+
+You can do a lot inside a comprehension, but don't go crazy
+
+## Function calls
+
+Basic function calls look like `R`: 
+
+> `function_name(argument1, argument2)`
+
+You have already seen the `print()` and `enumerate()` functions
+
+## Function help
+
+You can get help with the built-in `help` function: 
+
+```{python}
+#| eval: false
+help(print)
+help(enumerate)
+```
+
+## Keyword Arguments
+
+Sometimes, we pass a named ('keyword') argument: 
+
+```{python}
+print(1, 2, 3, sep="\n")
+```
+
+
+## Keyword Arguments
+
+Keyword arguments must match _exactly_ and must come last
+
+```{python}
+#| error: true
+print(1, 2, 3, sep="\n", 4)
+```
+
+. . . 
+
+```{python}
+#| error: true
+print(1, 2, 3, s="\n")
+```
+
+## Defining Functions
+
+Define custom functions with a `def` statement (not `=`)
+
+```{python}
+def say_hello(name):
+    print("Hello", name, "! It's great to meet you!")
+
+say_hello("Michael")
+```
+
+## Defining Functions
+
+Optional arguments require defaults: 
+
+```{python}
+def say_hello(name, message = "It's great to meet you!"):
+    print("Hello", name, "!", message)
+
+say_hello("Michael")
+say_hello("Michael", "Welcome to STA 9750!")
+```
+
+## Defining Functions
+
+Common to use `None` (roughly equivalent to `R` `NULL`) for 
+'missing'-type default values
+
+```{python}
+def say_hello(name, message = None):
+    if message: 
+        print("Hello", name, "!", message)
+    else: 
+        print("Hello", name, "!")
+
+say_hello("Michael")
+say_hello("Michael", "Welcome to STA 9750!")
+```
+
+## Put it Together!
+
+```{python}
+def say_hello(name, message = None):
+    if message: 
+        print("Hello", name, "!", message)
+    else: 
+        print("Hello", name, "!")
+
+students = ["Alice", "Bob", "Carol"]
+
+[say_hello(s) for s in students]
+```
+
+## Put it Together!
+
+Or even 
+
+```{python}
+[say_hello(s, "You are Student Number#" + str(num)) 
+  for num,s in enumerate(students)]
+```
+
+This is too complex - a plain loop is more readable here
 
 ## Looking Ahead
 
+- Use Basic Syntax ✅
+- Manipulate Containers ✅
+- Iterate on Containers ✅
+- Call Functions ✅
+- Control Flow ✅
+
+. . . 
+
+Next, moving beyond _basic_ `python` to data analysis: 
+
+- Packages
+- The "Object Model"
+- Web Scraping and Data Import
+
 ## Learning More
+
+See [Chapter 3](https://wesmckinney.com/book/python-builtin) of *Python for Data Science*
+

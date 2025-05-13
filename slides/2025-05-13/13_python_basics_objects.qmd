@@ -35,10 +35,9 @@ In this video:
 
 ::: incremental
 
-- 
-- 
-- 
-- 
+- The `python` object model
+- Methods vs Functions
+- Mutating vs Non-Mutating Methods
 
 :::
 

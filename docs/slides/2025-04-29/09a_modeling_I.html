@@ -226,7 +226,6 @@
 <li class="fragment">Formula Syntax</li>
 <li class="fragment">Classical Statistical Models with <code>R</code></li>
 <li class="fragment">Key Accessor Functions</li>
-<li class="fragment">Predictive Modeling in <code>R</code></li>
 </ul>
 </div>
 </section>
@@ -364,23 +363,8 @@ flipper_length_mm:speciesChinstrap     flipper_length_mm:speciesGentoo
 <h2>Modeling Functions</h2>
 <p>Many extensions</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">library</span>(mgcv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: nlme</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'nlme'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:dplyr':
-
-    collapse</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>This is mgcv 1.9-3. For overview type 'help("mgcv-package")'.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">gam</span>(body_mass_g <span class="sc">~</span> <span class="fu">s</span>(flipper_length_mm) <span class="sc">+</span> <span class="fu">s</span>(bill_depth_mm, <span class="at">by=</span>species), <span class="at">data=</span>penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">library</span>(mgcv)</span>
+<span id="cb11-2"><a></a><span class="fu">gam</span>(body_mass_g <span class="sc">~</span> <span class="fu">s</span>(flipper_length_mm) <span class="sc">+</span> <span class="fu">s</span>(bill_depth_mm, <span class="at">by=</span>species), <span class="at">data=</span>penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Family: gaussian 
@@ -401,8 +385,8 @@ GCV score: 106441.7     </code></pre>
 <h2>Accessors</h2>
 <p>Helper functions to access fitted models:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm<span class="sc">*</span>bill_depth_mm <span class="sc">+</span> species, <span class="at">data=</span>penguins)</span>
-<span id="cb18-2"><a></a><span class="fu">coef</span>(m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm<span class="sc">*</span>bill_depth_mm <span class="sc">+</span> species, <span class="at">data=</span>penguins)</span>
+<span id="cb13-2"><a></a><span class="fu">coef</span>(m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                    (Intercept)               flipper_length_mm 
                   -4844.4526376                      27.3153209 
@@ -416,7 +400,7 @@ GCV score: 106441.7     </code></pre>
 <section id="accessors-1" class="slide level2">
 <h2>Accessors</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">summary</span>(m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">summary</span>(m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -449,7 +433,7 @@ F-statistic: 332.5 on 5 and 336 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h2>Accessors</h2>
 <p>In-sample / training prediction:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">predict</span>(m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">predict</span>(m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       1        2        3        5        6        7        8        9 
 3536.088 3425.933 3767.175 3953.280 4114.393 3370.697 4059.188 3734.055 
@@ -544,8 +528,8 @@ F-statistic: 332.5 on 5 and 336 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h2>Accessors</h2>
 <p>Out-of-sample / test prediction:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>toppenguins <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">slice_max</span>(body_mass_g, <span class="at">n=</span><span class="dv">10</span>)</span>
-<span id="cb24-2"><a></a><span class="fu">predict</span>(m, <span class="at">newdata=</span>toppenguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>toppenguins <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> <span class="fu">slice_max</span>(body_mass_g, <span class="at">n=</span><span class="dv">10</span>)</span>
+<span id="cb19-2"><a></a><span class="fu">predict</span>(m, <span class="at">newdata=</span>toppenguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       1        2        3        4        5        6        7        8 
 5214.684 5771.046 5387.019 5420.707 5482.561 5547.870 4898.577 5201.160 
@@ -558,7 +542,7 @@ F-statistic: 332.5 on 5 and 336 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h2>Accessors</h2>
 <p>For just <code>lm</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">methods</span>(<span class="at">class=</span><span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">methods</span>(<span class="at">class=</span><span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] add1           alias          anova          case.names     coerce        
  [6] confint        cooks.distance deviance       dfbeta         dfbetas       
@@ -573,530 +557,14 @@ see '?methods' for accessing help and source code</code></pre>
 </div>
 </div>
 <p>Even more for other models</p>
-</section></section>
-<section>
-<section id="new-material-predictive-modeling-in-tidymodels" class="title-slide slide level1 center">
-<h1>New Material: Predictive Modeling in <code>tidymodels</code></h1>
-
-</section>
-<section id="agenda" class="slide level2">
-<h2>Agenda</h2>
-<ul>
-<li>Predictive Modeling with <code>tidymodels</code></li>
-</ul>
-<p>Adapted from <a href="https://www.tidymodels.org/start/case-study/">Case Study</a></p>
-</section>
-<section id="tidymodels" class="slide level2">
-<h2><code>tidymodels</code></h2>
-<p>Strength of <code>R</code>:</p>
-<ul>
-<li>Thousands of authors contributing packages to CRAN</li>
-</ul>
-<div class="fragment">
-<p>Weakness of <code>R</code>:</p>
-<ul>
-<li>Thousands of authors contributing <em>slightly incompatible</em> packages to CRAN</li>
-</ul>
-</div>
-<div class="fragment">
-<p>No two modeling packages have <em>exactly</em> the same API. Makes changing between interfaces cumbersome</p>
-</div>
-</section>
-<section id="tidymodels-1" class="slide level2">
-<h2><code>tidymodels</code></h2>
-<p><code>tidymodels</code> attemps to provide a <em>uniform</em> interface to a wide variety of <em>predictive</em> Machine Learning tools</p>
-<p>Advantages:</p>
-<ul>
-<li>Easy to swap out different algorithms to find the best</li>
-</ul>
-<p>Disadvantages:</p>
-<ul>
-<li>Harder to take advantage of the strengths of each approach</li>
-</ul>
-<div class="fragment">
-<p>I have dedicated my academic life to the differences in these methods, but 99% of the time, “black-box” prediction is good enough. In STA 9890, we get into the weeds - not here.</p>
-</div>
-</section>
-<section id="ml-vs-statistical-pipelines" class="slide level2">
-<h2>ML vs Statistical Pipelines</h2>
-<p>Statistics / Data Science:</p>
-<ul>
-<li>Find the model that <em>fits</em> the data best</li>
-<li>Model should capture all important data features</li>
-<li><em>Interpretability</em></li>
-<li>History: Grounded in lab sciences where experiments are expensive and data is limited</li>
-</ul>
-</section>
-<section id="ml-vs-statistical-pipelines-1" class="slide level2">
-<h2>ML vs Statistical Pipelines</h2>
-<p>Machine Learning:</p>
-<ul>
-<li>Find the model that <em>predicts</em> the data best</li>
-<li>No “perfect” model - just the best one we’ve found so far</li>
-<li>Black-box techniques are great, <em>if effective</em></li>
-<li>History: Silicon Valley “at scale”</li>
-</ul>
-<p>Validation based on <em>of-of-sample</em> or <em>test</em> predictions</p>
-</section>
-<section id="validating-predictive-power" class="slide level2">
-<h2>Validating Predictive Power</h2>
-<p>How to check whether a model <em>predicts</em> well?</p>
-<div class="fragment">
-<p>Need more data! But where to get more data?</p>
-<ul>
-<li>Actually get more data (hard, expensive, slow)</li>
-<li>Split data into parts - test/training split</li>
-<li>Cross-Validation</li>
-<li>Resampling</li>
-</ul>
-</div>
-<div class="fragment">
-<p>Today, we’ll primarily use a combination: <strong>Test/Train</strong> split &amp; <strong>Cross-Validation</strong>!</p>
-</div>
-</section>
-<section id="cross-validation" class="slide level2">
-<h2>Cross-Validation</h2>
-<p><img data-src="https://scikit-learn.org/1.5/_images/grid_search_cross_validation.png"></p>
-<p>Cross-Validation is done on the <em>estimator</em>, not the fitted algorithm</p>
-</section>
-<section id="tidymodels-2" class="slide level2">
-<h2><code>tidymodels</code></h2>
-<p><code>tidymodels</code> workflow:</p>
-<ul>
-<li>Initial Split</li>
-<li>Pre-Process</li>
-<li>Fit (<em>many</em>) models</li>
-<li>Select best</li>
-<li>Refit</li>
-<li>Test Set Assessment</li>
-</ul>
-<p><code>tidymodels</code> is <em>very</em> punny, so a bit hard to tell which step is which…</p>
-</section>
-<section id="acquire-data" class="slide level2">
-<h2>Acquire Data</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">library</span>(tidymodels); <span class="fu">library</span>(readr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching packages ────────────────────────────────────── tidymodels 1.3.0 ──</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>✔ broom        1.0.8     ✔ rsample      1.3.0
-✔ dials        1.4.0     ✔ tune         1.3.0
-✔ infer        1.0.8     ✔ workflows    1.2.0
-✔ modeldata    1.4.0     ✔ workflowsets 1.1.0
-✔ parsnip      1.3.1     ✔ yardstick    1.3.2
-✔ recipes      1.3.0     </code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──
-✖ nlme::collapse()  masks dplyr::collapse()
-✖ scales::discard() masks purrr::discard()
-✖ dplyr::filter()   masks stats::filter()
-✖ recipes::fixed()  masks stringr::fixed()
-✖ dplyr::lag()      masks stats::lag()
-✖ yardstick::spec() masks readr::spec()
-✖ recipes::step()   masks stats::step()</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>hotels <span class="ot">&lt;-</span> </span>
-<span id="cb32-2"><a></a>  <span class="fu">read_csv</span>(<span class="st">"https://tidymodels.org/start/case-study/hotels.csv"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb32-3"><a></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character), as.factor))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 50000 Columns: 23</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr  (11): hotel, children, meal, country, market_segment, distribution_chan...
-dbl  (11): lead_time, stays_in_weekend_nights, stays_in_week_nights, adults,...
-date  (1): arrival_date
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a><span class="fu">glimpse</span>(hotels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 50,000
-Columns: 23
-$ hotel                          &lt;fct&gt; City_Hotel, City_Hotel, Resort_Hotel, R…
-$ lead_time                      &lt;dbl&gt; 217, 2, 95, 143, 136, 67, 47, 56, 80, 6…
-$ stays_in_weekend_nights        &lt;dbl&gt; 1, 0, 2, 2, 1, 2, 0, 0, 0, 2, 1, 0, 1, …
-$ stays_in_week_nights           &lt;dbl&gt; 3, 1, 5, 6, 4, 2, 2, 3, 4, 2, 2, 1, 2, …
-$ adults                         &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 1, 2, …
-$ children                       &lt;fct&gt; none, none, none, none, none, none, chi…
-$ meal                           &lt;fct&gt; BB, BB, BB, HB, HB, SC, BB, BB, BB, BB,…
-$ country                        &lt;fct&gt; DEU, PRT, GBR, ROU, PRT, GBR, ESP, ESP,…
-$ market_segment                 &lt;fct&gt; Offline_TA/TO, Direct, Online_TA, Onlin…
-$ distribution_channel           &lt;fct&gt; TA/TO, Direct, TA/TO, TA/TO, Direct, TA…
-$ is_repeated_guest              &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
-$ previous_cancellations         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
-$ previous_bookings_not_canceled &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
-$ reserved_room_type             &lt;fct&gt; A, D, A, A, F, A, C, B, D, A, A, D, A, …
-$ assigned_room_type             &lt;fct&gt; A, K, A, A, F, A, C, A, D, A, D, D, A, …
-$ booking_changes                &lt;dbl&gt; 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
-$ deposit_type                   &lt;fct&gt; No_Deposit, No_Deposit, No_Deposit, No_…
-$ days_in_waiting_list           &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
-$ customer_type                  &lt;fct&gt; Transient-Party, Transient, Transient, …
-$ average_daily_rate             &lt;dbl&gt; 80.75, 170.00, 8.00, 81.00, 157.60, 49.…
-$ required_car_parking_spaces    &lt;fct&gt; none, none, none, none, none, none, non…
-$ total_of_special_requests      &lt;dbl&gt; 1, 3, 2, 1, 4, 1, 1, 1, 1, 1, 0, 1, 0, …
-$ arrival_date                   &lt;date&gt; 2016-09-01, 2017-08-25, 2016-11-19, 20…</code></pre>
-</div>
-</div>
-</section>
-<section id="initial-split" class="slide level2">
-<h2>Initial Split</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="co"># Stratified sampling to ensure balance</span></span>
-<span id="cb37-2"><a></a>splits      <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(hotels, </span>
-<span id="cb37-3"><a></a>                             <span class="at">strata =</span> children)</span>
-<span id="cb37-4"><a></a></span>
-<span id="cb37-5"><a></a>hotel_train <span class="ot">&lt;-</span> <span class="fu">training</span>(splits)</span>
-<span id="cb37-6"><a></a>hotel_test  <span class="ot">&lt;-</span> <span class="fu">testing</span>(splits)</span>
-<span id="cb37-7"><a></a></span>
-<span id="cb37-8"><a></a>hotel_train</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 37,500 × 23
-   hotel   lead_time stays_in_weekend_nig…¹ stays_in_week_nights adults children
-   &lt;fct&gt;       &lt;dbl&gt;                  &lt;dbl&gt;                &lt;dbl&gt;  &lt;dbl&gt; &lt;fct&gt;   
- 1 City_H…       217                      1                    3      2 none    
- 2 City_H…         2                      0                    1      2 none    
- 3 Resort…        95                      2                    5      2 none    
- 4 Resort…       136                      1                    4      2 none    
- 5 City_H…        67                      2                    2      2 none    
- 6 City_H…        56                      0                    3      0 children
- 7 City_H…       130                      1                    2      2 none    
- 8 City_H…        27                      0                    1      1 none    
- 9 Resort…        46                      0                    2      2 none    
-10 City_H…       297                      1                    1      2 none    
-# ℹ 37,490 more rows
-# ℹ abbreviated name: ¹​stays_in_weekend_nights
-# ℹ 17 more variables: meal &lt;fct&gt;, country &lt;fct&gt;, market_segment &lt;fct&gt;,
-#   distribution_channel &lt;fct&gt;, is_repeated_guest &lt;dbl&gt;,
-#   previous_cancellations &lt;dbl&gt;, previous_bookings_not_canceled &lt;dbl&gt;,
-#   reserved_room_type &lt;fct&gt;, assigned_room_type &lt;fct&gt;, booking_changes &lt;dbl&gt;,
-#   deposit_type &lt;fct&gt;, days_in_waiting_list &lt;dbl&gt;, customer_type &lt;fct&gt;, …</code></pre>
-</div>
-</div>
-</section>
-<section id="pre-process" class="slide level2 scrollable">
-<h2>Pre-Process</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">library</span>(recipes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>holidays <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AllSouls"</span>, <span class="st">"AshWednesday"</span>, <span class="st">"ChristmasEve"</span>, <span class="st">"Easter"</span>, </span>
-<span id="cb40-2"><a></a>              <span class="st">"ChristmasDay"</span>, <span class="st">"GoodFriday"</span>, <span class="st">"NewYearsDay"</span>, <span class="st">"PalmSunday"</span>)</span>
-<span id="cb40-3"><a></a></span>
-<span id="cb40-4"><a></a>lr_recipe <span class="ot">&lt;-</span> </span>
-<span id="cb40-5"><a></a>  <span class="fu">recipe</span>(children <span class="sc">~</span> ., <span class="at">data =</span> hotels) <span class="sc">|&gt;</span> </span>
-<span id="cb40-6"><a></a>  <span class="fu">step_date</span>(arrival_date) <span class="sc">|&gt;</span> </span>
-<span id="cb40-7"><a></a>  <span class="fu">step_holiday</span>(arrival_date, <span class="at">holidays =</span> holidays) <span class="sc">|&gt;</span> </span>
-<span id="cb40-8"><a></a>  <span class="fu">step_rm</span>(arrival_date) <span class="sc">|&gt;</span> </span>
-<span id="cb40-9"><a></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">|&gt;</span> </span>
-<span id="cb40-10"><a></a>  <span class="fu">step_zv</span>(<span class="fu">all_predictors</span>()) <span class="sc">|&gt;</span> </span>
-<span id="cb40-11"><a></a>  <span class="fu">step_normalize</span>(<span class="fu">all_predictors</span>())</span>
-<span id="cb40-12"><a></a></span>
-<span id="cb40-13"><a></a>lr_recipe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code></code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Recipe ──────────────────────────────────────────────────────────────────────</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code></code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Inputs </code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Number of variables by role</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>outcome:    1
-predictor: 22</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code></code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Operations </code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>• Date features from: arrival_date</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>• Holiday features from: arrival_date</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>• Variables removed: arrival_date</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>• Dummy variables from: all_nominal_predictors()</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>• Zero variance filter on: all_predictors()</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>• Centering and scaling for: all_predictors()</code></pre>
-</div>
-</div>
-</section>
-<section id="fit-models" class="slide level2">
-<h2>Fit Models</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a>lr_model <span class="ot">&lt;-</span> </span>
-<span id="cb55-2"><a></a>  <span class="fu">logistic_reg</span>(<span class="at">penalty =</span> <span class="fu">tune</span>(), <span class="at">mixture =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb55-3"><a></a>  <span class="fu">set_engine</span>(<span class="st">"glmnet"</span>)</span>
-<span id="cb55-4"><a></a></span>
-<span id="cb55-5"><a></a>lr_model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Logistic Regression Model Specification (classification)
-
-Main Arguments:
-  penalty = tune()
-  mixture = 1
-
-Computational engine: glmnet </code></pre>
-</div>
-</div>
-</section>
-<section id="select-best" class="slide level2">
-<h2>Select Best</h2>
-<p>Find a <em>grid</em> of parameters</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a>lr_reg_grid <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">penalty =</span> <span class="dv">10</span><span class="sc">^</span><span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">30</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Perform CV splits:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a>lr_folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(hotel_train, <span class="at">v =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="select-best-1" class="slide level2">
-<h2>Select Best</h2>
-<p>Define a <em>workflow</em>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a>lr_workflow <span class="ot">&lt;-</span>  </span>
-<span id="cb59-2"><a></a>  <span class="fu">workflow</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb59-3"><a></a>  <span class="fu">add_model</span>(lr_model) <span class="sc">|&gt;</span> </span>
-<span id="cb59-4"><a></a>  <span class="fu">add_recipe</span>(lr_recipe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Fit workflow to a grid of parameters:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a></a>lr_results <span class="ot">&lt;-</span> </span>
-<span id="cb60-2"><a></a>  lr_workflow <span class="sc">|&gt;</span> </span>
-<span id="cb60-3"><a></a>  <span class="fu">tune_grid</span>(<span class="at">grid =</span> lr_reg_grid,</span>
-<span id="cb60-4"><a></a>            <span class="at">control =</span> <span class="fu">control_grid</span>(<span class="at">save_pred =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb60-5"><a></a>                                   <span class="at">save_workflow=</span><span class="cn">TRUE</span>),</span>
-<span id="cb60-6"><a></a>            <span class="at">resamples =</span> lr_folds,</span>
-<span id="cb60-7"><a></a>            <span class="at">metrics =</span> <span class="fu">metric_set</span>(roc_auc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>ℹ The workflow being saved contains a recipe, which is 6.79 Mb in ℹ memory. If
-this was not intentional, please set the control setting ℹ `save_workflow =
-FALSE`.</code></pre>
-</div>
-</div>
-</section>
-<section id="select-best-2" class="slide level2">
-<h2>Select Best</h2>
-<p>Visual examination</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a>lr_results <span class="sc">|&gt;</span> </span>
-<span id="cb62-2"><a></a>  <span class="fu">collect_metrics</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb62-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> penalty, <span class="at">y =</span> mean)) <span class="sc">+</span> </span>
-<span id="cb62-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb62-5"><a></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb62-6"><a></a>  <span class="fu">ylab</span>(<span class="st">"Area under the ROC Curve"</span>) <span class="sc">+</span></span>
-<span id="cb62-7"><a></a>  <span class="fu">scale_x_log10</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="09_modeling_files/figure-html/unnamed-chunk-22-1.png" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="select-best-3" class="slide level2">
-<h2>Select Best</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a>lr_results <span class="sc">|&gt;</span> <span class="fu">show_best</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in show_best(lr_results): No value of `metric` was given; "roc_auc"
-will be used.</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 7
-   penalty .metric .estimator  mean     n std_err .config              
-     &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;                
-1 0.00108  roc_auc binary     0.877     5 0.00492 Preprocessor1_Model11
-2 0.00137  roc_auc binary     0.877     5 0.00488 Preprocessor1_Model12
-3 0.000853 roc_auc binary     0.877     5 0.00498 Preprocessor1_Model10
-4 0.00174  roc_auc binary     0.876     5 0.00485 Preprocessor1_Model13
-5 0.000672 roc_auc binary     0.876     5 0.00503 Preprocessor1_Model09</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a></a>lr_best <span class="ot">&lt;-</span> lr_results <span class="sc">|&gt;</span> <span class="fu">select_best</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in select_best(lr_results): No value of `metric` was given; "roc_auc"
-will be used.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a></a>lr_best</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 2
-  penalty .config              
-    &lt;dbl&gt; &lt;chr&gt;                
-1 0.00108 Preprocessor1_Model11</code></pre>
-</div>
-</div>
-</section>
-<section id="refit-best-model" class="slide level2">
-<h2>Refit Best Model</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a></a>lr_best_fit <span class="ot">&lt;-</span> lr_results <span class="sc">|&gt;</span> <span class="fu">fit_best</span>()</span>
-<span id="cb70-2"><a></a>lr_best_fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>══ Workflow [trained] ══════════════════════════════════════════════════════════
-Preprocessor: Recipe
-Model: logistic_reg()
-
-── Preprocessor ────────────────────────────────────────────────────────────────
-6 Recipe Steps
-
-• step_date()
-• step_holiday()
-• step_rm()
-• step_dummy()
-• step_zv()
-• step_normalize()
-
-── Model ───────────────────────────────────────────────────────────────────────
-
-Call:  glmnet::glmnet(x = maybe_matrix(x), y = y, family = "binomial",      alpha = ~1) 
-
-    Df  %Dev   Lambda
-1    0  0.00 0.078450
-2    2  2.46 0.071480
-3    2  5.20 0.065130
-4    3  7.76 0.059350
-5    4 10.20 0.054070
-6    4 12.46 0.049270
-7    4 14.12 0.044890
-8    5 15.61 0.040900
-9    5 17.01 0.037270
-10   5 18.09 0.033960
-11   5 18.96 0.030940
-12   6 19.95 0.028190
-13   6 20.80 0.025690
-14   6 21.51 0.023410
-15   8 22.40 0.021330
-16   8 23.12 0.019430
-17   8 23.69 0.017710
-18   9 24.18 0.016130
-19  10 24.70 0.014700
-20  11 25.20 0.013390
-21  11 25.63 0.012200
-22  11 25.99 0.011120
-23  13 26.33 0.010130
-24  14 26.65 0.009232
-25  17 26.98 0.008412
-26  19 27.36 0.007665
-27  23 27.78 0.006984
-28  25 28.30 0.006363
-29  28 28.78 0.005798
-30  30 29.23 0.005283
-31  32 29.66 0.004814
-32  35 30.16 0.004386
-33  40 30.61 0.003996
-34  40 31.03 0.003641
-35  43 31.40 0.003318
-36  48 31.74 0.003023
-37  51 32.06 0.002755
-38  54 32.32 0.002510
-39  61 32.56 0.002287
-40  63 32.78 0.002084
-41  67 32.98 0.001899
-42  74 33.15 0.001730
-43  80 33.32 0.001576
-44  85 33.46 0.001436
-45  87 33.58 0.001309
-46  90 33.69 0.001192
-
-...
-and 38 more lines.</code></pre>
-</div>
-</div>
-</section>
-<section id="test-set-assessment" class="slide level2">
-<h2>Test Set Assessment</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a></a><span class="fu">predict</span>(lr_best_fit, hotel_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12,500 × 1
-   .pred_class
-   &lt;fct&gt;      
- 1 none       
- 2 children   
- 3 none       
- 4 none       
- 5 none       
- 6 none       
- 7 none       
- 8 none       
- 9 none       
-10 none       
-# ℹ 12,490 more rows</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a></a><span class="fu">augment</span>(lr_best_fit, hotel_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12,500 × 26
-   .pred_class .pred_children .pred_none hotel  lead_time stays_in_weekend_nig…¹
-   &lt;fct&gt;                &lt;dbl&gt;      &lt;dbl&gt; &lt;fct&gt;      &lt;dbl&gt;                  &lt;dbl&gt;
- 1 none               0.0343      0.966  Resor…       143                      2
- 2 children           0.942       0.0583 Resor…        47                      0
- 3 none               0.0478      0.952  City_…        80                      0
- 4 none               0.128       0.872  City_…         6                      2
- 5 none               0.00235     0.998  Resor…        16                      1
- 6 none               0.0178      0.982  Resor…       209                      2
- 7 none               0.0208      0.979  City_…         1                      1
- 8 none               0.0242      0.976  City_…        43                      1
- 9 none               0.0201      0.980  City_…         0                      0
-10 none               0.0591      0.941  Resor…       171                      2
-# ℹ 12,490 more rows
-# ℹ abbreviated name: ¹​stays_in_weekend_nights
-# ℹ 20 more variables: stays_in_week_nights &lt;dbl&gt;, adults &lt;dbl&gt;,
-#   children &lt;fct&gt;, meal &lt;fct&gt;, country &lt;fct&gt;, market_segment &lt;fct&gt;,
-#   distribution_channel &lt;fct&gt;, is_repeated_guest &lt;dbl&gt;,
-#   previous_cancellations &lt;dbl&gt;, previous_bookings_not_canceled &lt;dbl&gt;,
-#   reserved_room_type &lt;fct&gt;, assigned_room_type &lt;fct&gt;, …</code></pre>
-</div>
-</div>
-</section>
-<section id="other-tidymodels-tools" class="slide level2">
-<h2>Other <code>tidymodels</code> tools</h2>
-<ul>
-<li>Feature Importance Scores</li>
-<li>Model Stacking</li>
-<li>Probabilistic Predictions</li>
-<li>Uncertainty Bounds (Conformal Inference)</li>
-<li>Multilevel (Mixed-Effect) Models</li>
-<li>Fairness Audits</li>
-</ul>
 </section>
 <section id="looking-ahead" class="slide level2">
 <h2>Looking Ahead</h2>
+<p>Your turn!</p>
+<div class="fragment">
 <p>Applications to course project:</p>
-<div>
 <ul>
-<li class="fragment">Two variables are <em>statistically independent</em> if one cannot be used to predict the other</li>
-<li class="fragment">Many questions take the form “Is <span class="math inline">\(X\)</span> related to <span class="math inline">\(Y\)</span>?”</li>
-<li class="fragment">Build a <em>model</em> to predict <span class="math inline">\(Y\)</span> from <span class="math inline">\(X\)</span>
-<ul>
-<li class="fragment">If model doesn’t use <span class="math inline">\(X\)</span> (small coefficient or importance), unlikely to be related</li>
-<li class="fragment">Move beyond simple linear correlation</li>
-</ul></li>
-<li class="fragment">Also consider <em>occlusion</em> studies</li>
+<li>Build models to <em>explore</em> and <em>understand</em> data</li>
 </ul>
 </div>
 </section>
@@ -1104,14 +572,15 @@ and 38 more lines.</code></pre>
 <h2>Learning More</h2>
 <p>For more:</p>
 <ul>
-<li>Modeling - future STA and CIS classes</li>
-<li><code>tidymodels</code> - <a href="https://www.tidymodels.org/start/case-study/">Case Study</a></li>
+<li>Additional STA and CIS classes
+<ul>
+<li>STA 9708: Basic Inferential Statistics</li>
+<li>STA 9700: Regression (<code>lm</code> and similar)</li>
+<li>and many more!</li>
+</ul></li>
 </ul>
-<div class="fragment">
-<p>To see more worked examples of predictive models, check out the <a href="https://www.tidymodels.org/learn/"><code>tidymodels</code> Gallery</a></p>
 
 
-</div>
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
