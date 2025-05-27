@@ -1,0 +1,183 @@
+---
+title: "</br></br></br></br></br>Software Tools for Data Analysis</br>STA 9750</br>Michael Weylandt"
+topic: "Regular Expressions: Tools for Advanced String Manipulation"
+---
+
+# {{< meta topic >}}
+
+## Where are We?
+
+::: {style="font-size: 75%;"}
+- `R` Basics
+- Data Visualization
+- `R` Programming
+- Tidy Data Manipulation
+- `python` Basics
+- Web Scraping with `python`
+  - Basics of HTTP
+  - Making HTTP Requests with `Python`
+  - Structure of HTML
+  - Parsing HTML with `Python`
+  - [String Manipulation in `Python`]{color="blue"}
+
+:::
+
+
+## Goals for this Video
+
+In this video: 
+
+::: {.incremental}
+
+- Regular Expressions
+- Quantifiers
+- Character Classes
+- Capture Groups
+- Using Regex to Clean Text
+
+:::
+
+## Regular Expressions
+
+Often, we aren't looking for a particular string, but strings of a 'type': 
+
+- Pull all phone numbers from a long text
+- Identify all error messages in a log file
+- Find all emails on a web page to spam 😈 
+
+. . . 
+
+Rather than hard coding _every_ possible phone number, specify a pattern
+
+. . . 
+
+> Phone Number: 3 digits  + '-' + 3 digits + '-' + 4 digits
+
+## Regular Expressions
+
+Regular expressions define pattern matching *rules* to be applied to strings
+
+. . . 
+
+The simplest regular expression is just a literal string: 
+
+```{python}
+import re
+x = "I bought 3 bananas, 2 apples, and 10 carrots"
+re.findall("banana", x) # Find y in x
+```
+
+## Regular Expressions
+
+Use `[]` to mean anything in this set
+
+```{python}
+x = "I bought 3 bananas, 2 apples, and 10 carrots"
+re.findall("[0123456789]", x) # Find all numbers
+```
+
+## Regular Expressions
+
+Can use "character classes" for common sets (digits, letters, *etc.*)
+
+```{python}
+x = "I bought 3 bananas, 2 apples, and 10 carrots"
+re.findall(r"\d", x) 
+```
+
+- Digits: `\d`
+- Spaces: `\s`
+- Letters: `\w`
+
+Note use of `r`-string since we have a `\`
+
+## Regular Expressions
+
+"Quantifiers" capture the idea of repeatable values: 
+
+::: {.incremental}
+
+- `a{n}`: `a` repeated `n` times
+- `a{m, n}`: Between `m` and `n` copies of `a` 
+- `a{, n}`: No more than `n` copies
+- `a{m, }`: At least `n` copies
+
+:::
+
+
+## Regular Expressions
+
+"Quantifiers" capture the idea of repeatable values: 
+
+::: {.incremental}
+
+- `a?` is the same as `a{0, 1}` - optional `a`
+- `a+` is the same as `a{1, }` - at least one `a`
+- `a*` is the same as `a{0, }` - unlimited `a` (if any)
+
+:::
+
+## Regular Expressions
+
+"Quantifiers" capture the idea of repeatable values: 
+
+```{python}
+x = "I bought 3 bananas, 2 apples, and 10 carrots"
+re.findall(r"\d+", x) 
+```
+
+## Regular Expressions
+
+Character sets can be 'inverted' by starting with a `^`: 
+
+```{python}
+x = "I bought 3 bananas, 2 apples, and 10 carrots"
+re.findall(r"[^\s]+", x) 
+```
+
+One or more items that is **not** a space (`\s`)
+
+. . .
+
+```{python}
+x = "I bought 3 bananas, 2 apples, and 10 carrots"
+re.findall(r"[^\s\d]+", x) 
+```
+
+## Capture Groups
+
+Often, we want to pull out part of a string that matches a regex:
+
+- Capture groups (parentheses) can be used for this: 
+
+```{python}
+re.findall(r"\d+ ([a-z]+)", x)
+```
+
+Here we pull *only* those elements (words) inside the parentheses
+
+## Regex in action
+
+Regex can be used to pull out values from long blocks of text
+
+```{python}
+x = """According to a survey of 1,000 teenagers, 
+the best possible phone number is 123-456-7890, followed
+by 555-555-5555. This contradicts a survey of 9000
+adults, who much prefered the phone number 867-5309."""
+
+re.findall(r"\d{3}-\d{3}-\d{4}", x)
+```
+
+## Looking Ahead
+
+In the exercises, you will now apply regex processing to 
+clean up data extracted from a website. 
+
+## Learning More
+
+- Testing Regular Expressions Interactively: [regex101.com/](https://regex101.com/)
+- Alternative [regexr.com/](https://regexr.com/)
+- Automated Regular Expression Builder: [regex-generator](https://regex-generator.olafneumann.org) 
+- AI Regexp Builder: [hregexgo.com/](https://www.regexgo.com/)
+

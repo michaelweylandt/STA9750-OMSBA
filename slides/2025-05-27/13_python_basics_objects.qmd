@@ -2,14 +2,6 @@
 topic: "`python` Basics: Objects"
 ---
 
-```{r}
-#| echo: false
-#| warning: false
-#| message: false
-library(tidyverse)
-library(palmerpenguins)
-```
-
 # {{< meta topic >}}
 
 ## Where are We?
@@ -33,7 +25,7 @@ library(palmerpenguins)
 
 In this video: 
 
-::: incremental
+::: {.incremental}
 
 - The `python` object model
 - Methods vs Functions
@@ -41,7 +33,431 @@ In this video:
 
 :::
 
+## Objects
+
+**Everything** in `Python` is an **object**
+
+. . . 
+
+What does this mean? What is an object? 
+
+. . . 
+
+In CS, an `object` is 
+
+- A "package" of values ('state') and behaviors ('methods')
+- An instance of a `class`
+
+## Value Storage
+
+```{python}
+#| echo: false
+class Dog:
+    def __init__(self, name, owner):
+        self.name = name
+        self.owner = owner
+        
+    def __repr__(self):
+        return f"Dog(name='{self.name}', owner='{self.owner}')"
+    
+    def bark(self, n=1):
+        return "Woof!" * n
+```
+
+`object`s can store values (and different objects have different values). 
+
+```{python}
+gus = Dog(name='Gus', owner='Michael')
+
+gus
+```
+
+## Value Storage
+
+Access `object` values using the `dot` operator
+
+```{python}
+gus.owner
+```
+
+The dot looks _inside_ the object for an attribute called `owner`. 
+
+. . . 
+
+Not all names work: 
+
+```{python}
+#| error: true
+gus.breed
+```
+
+## Value Storage
+
+Technically, you can inspect any attribute of an object this way
+
+. . . 
+
+By convention, attributes starting with a `_` should not be used directly. 
+
+. . . 
+
+See all attributes with `dir`
+
+```{python}
+dir(gus)
+```
+
+## Methods
+
+In addition to storing _values_, objects can contain _functions_. 
+
+. . . 
+
+```{python}
+#| eval: false
+obj.func(arg1, arg2)
+```
+
+is transformed to 
+
+```{python}
+#| eval: false
+func(obj, arg1, arg2)
+```
+
+. . . 
+
+For example
+
+```{python}
+gus.bark()
+```
+
+and 
+
+```{python}
+gus.bark(3)
+```
+
+## Methods
+
+(Basically) _Everything_ is a method under the hood: 
+
+```{python}
+# 2 + 2
+x = 2
+x.__add__(2)
+```
+
+Magic double-underscore ("dunder") methods should not be used directly, but are implicitly called by most operations
+
+## Classes
+
+A `class` is a "category" that defines a set of behaviors and provides space for values to be stored
+
+. . . 
+
+> `object` template
+
+. . . 
+
+Because everything in `python` is an `object`, 
+the behavior of objects is controlled by their `class`
+
+. . . 
+
+```{python}
+gus.bark()
+```
+
+`gus` (object) has no special `bark`, so fallback
+to `Dog` class which defines a `bark` method
+
+## Defining Classes
+
+You can define a class with a `class` statement: 
+
+```{python}
+#| eval: false
+class Dog:
+    def __init__(self, name, owner):
+        self.name = name
+        self.owner = owner
+        
+    def __repr__(self):
+        return f"Dog(name='{self.name}', owner='{self.owner}')"
+    
+    def bark(self, n=1):
+        return "Woof!" * n
+```
+
+Two 'magic' methods
+
+- `__init__`: What happens when we *initialize* a new instance? 
+  - Value attributes set here
+- `__repr__`: Default print method of object
+
+## Defining Classes
+
+You can define a class with a `class` statement: 
+
+```{python}
+#| eval: false
+class Dog:
+    def __init__(self, name, owner):
+        self.name = name
+        self.owner = owner
+        
+    def __repr__(self):
+        return f"Dog(name='{self.name}', owner='{self.owner}')"
+    
+    def bark(self, n=1):
+        return "Woof!" * n
+```
+
+
+One regular method (`bark`)
+
+- All methods take `self` as the first object
+
+## Subclasses
+
+Subclasses are hierarchical refinements of classes
+
+> `X` is a subclass of `Y` if all instances of `X` are also `Y` but not *vice versa*
+
+For example: dog breeds
+
+- Basset Hound: dog that howls instead of barking
+- Basenji: dog that doesn't bark
+- Collie: dog with a regular bark
+
+## Subclasses
+
+```{python}
+class BassetHound(Dog):
+    breed = "Basset Hound"
+    
+    def bark(self, n=1): 
+        return "Arooo!" * n
+    
+class Basenji(Dog):
+    breed = "Basenji"
+    
+    def bark(self, n=1):
+        return ""
+    
+class Collie(Dog):
+    breed = "Collie"
+```
+
+## Subclasses
+
+```{python}
+nora = BassetHound(name="Nora", owner="Michael")
+nora # Default Dog __repr__ used to print
+```
+
+. . . 
+
+Subclass uses specialized methods first: 
+
+```{python}
+nora.bark()
+```
+
+. . . 
+
+If no method found, fall back to default
+
+```{python}
+rex = Collie(name="Rex", owner="Bernard")
+rex.bark()
+```
+
+## Subclasses
+
+Subclasses can add attributes that don't exist in parent class: 
+
+```{python}
+nora.breed
+```
+
+*vs.*
+
+```{python}
+#| error: true
+gus.breed
+```
+
+## Subclasses
+
+All objects are ultimately instances of `object`
+type ("universal parent") and inherit many methods
+automatically
+
+```{python} 
+dir(nora)
+```
+
+## Methods vs Functions
+
+Why use methods instead of functions? 
+
+::: {.incremental}
+
+- Avoid name collisions: 
+  - We don't need `basset_bark()`, `basenji_bark()`, *etc*
+- Keep definitions 'inside' classes
+- Make _mutating_ intent clear
+
+::: 
+
+## Methods vs Functions
+
+Unlike `R`, `python` objects can be changed "in place": 
+
+```{python}
+class BankAccount:
+    def __init__(self, initial_balance=0):
+        self._balance = initial_balance
+    
+    def deposit(self, deposit_amount):
+        self._balance += deposit_amount
+        
+    def withdraw(self, withdraw_amount):
+        self._balance -= withdraw_amount
+        
+    def balance(self):
+        return self._balance
+        
+    def __repr__(self):
+        return f"BankAccount({self._balance})"
+```
+
+## Methods vs Functions
+
+```{python}
+my_account = BankAccount(100)
+my_account
+```
+
+. . . 
+
+Make a new deposit:
+
+```{python}
+my_account.deposit(50)
+my_account
+```
+
+. . . 
+
+Make a withdrawal: 
+
+```{python}
+my_account.withdraw(150)
+my_account.balance()
+```
+
+## Mutating Methods
+
+Methods which change an object 'in place' 
+_usually_ don't return any value
+
+```{python}
+x = [4, 1, 2]
+x.sort()
+```
+
+No value returned, but afterwards: 
+
+```{python}
+x
+```
+
+## Danger - Multiple References
+
+Because `python` objects can be changed in place, 
+we need to understand _references_
+
+. . . 
+
+Two names can refer to same object: 
+
+- "Prof. Weylandt" (to you) => Me
+- "Michael" (to my dept. chair) => Me
+- "Honey" (to my wife) => Me
+
+If "Michael" catches a cold, so does "Prof. Weylandt" and "Honey"
+
+## Danger - Multiple References
+
+```{python}
+x = [3, 1, 2]
+y = x
+print(y)
+
+## Lots of code here...
+x.sort()
+
+## More code ...
+
+## Finally
+print(y)
+```
+
+`y` got changed because same _object_ as `x`, even though we never touched `y`:  
+
+```{python}
+x is y
+```
+
+
+## Danger - Multiple References
+
+The `copy` method makes an independent copy: 
+
+```{python}
+x is y
+```
+
+```{python}
+y = x.copy()
+print(x is y)
+```
+
+. . . 
+
+Now changes to `x` don't impact `y`: 
+
+```{python}
+x.append(4)
+x
+```
+
+```{python}
+y # No 4!
+```
 
 ## Looking Ahead
 
+We are now ready to start digging into important libraries
+
+. . . 
+
+Upcoming
+
+- `pandas` for pythonic Data Frames
+- `requests` for web access
+- `BeautifulSoup` for reading web pages
+
 ## Learning More
+
+The [`python` docs](https://docs.python.org/3/reference/datamodel.html) give full technical details of objects and methods
+
+. . . 
+
+For now, 'go with the flow' and get used to using methods and objects - details not super important until you start writing your own libraries
+
+

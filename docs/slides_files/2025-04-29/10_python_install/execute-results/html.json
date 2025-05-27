@@ -1,0 +1,15 @@
+{
+  "hash": "7f804871cb47e25dacaa482b51f96631",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntopic: \"Installing `python`\"\n---\n\n::: {.cell}\n\n:::\n\n\n\n\n\n# NOT READY TO FILM\n\n# {{< meta topic >}}\n\n## Where are We?\n\n::: {style=\"font-size: 85%;\"}\n- `R` Basics\n- Data Visualization\n- `R` Programming\n- Tidy Data Manipulation\n- [`python` Basics]{color=\"blue\"}\n  - [Installing `python`]{color=\"blue\"}\n  - Basic Syntax and Control Flow\n  - `python` Objects\n  - Using Packages\n- Web Scraping with `python`\n\n:::\n\n\n## Goals for this Video\n\nIn this video: \n\n::: incremental\n\n- \n- \n- \n- \n\n:::\n\n\n## Looking Ahead\n\n## Learning More\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

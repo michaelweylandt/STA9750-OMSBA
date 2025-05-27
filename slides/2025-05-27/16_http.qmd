@@ -1,0 +1,227 @@
+---
+topic: "HTTP: Requesting and Receiving Internet Content"
+title: "</br></br></br></br></br>Software Tools for Data Analysis</br>STA 9750</br>Michael Weylandt"
+---
+
+# {{< meta topic >}}
+
+## Where are We?
+
+::: {style="font-size: 75%;"}
+- `R` Basics
+- Data Visualization
+- `R` Programming
+- Tidy Data Manipulation
+- `python` Basics
+- Web Scraping with `python`
+  - [Basics of HTTP]{color="blue"}
+  - [Making HTTP Requests with `Python`]{color="blue"}
+  - Structure of HTML
+  - Parsing HTML with `Python`
+  - String Manipulation in `Python`
+
+:::
+
+
+## Goals for this Video
+
+In this video: 
+
+::: {.incremental}
+
+- What is `http`?
+- `http` requests with `requests`
+
+:::
+
+## Web Protocols
+
+Data are transfered over the internet using _protocols_: standards for
+
+- What a message looks like
+- How the destination is specified
+- What content a message contains
+
+and more
+
+Protocols give structure ('common language') to bytes: 'file format' for the internet
+
+## Web Protocols
+
+Popular protocols: 
+
+- `sms`/`mms` (text messages)
+- `smtp` (email)
+- `ftp` (sending big files)
+- `http`: HyperText Transfer Protocol
+
+. . . 
+
+`http` is the big one: it defines the _web_ and associated concepts (pages, sites, refresh, *etc*)
+
+## HTTP
+
+`http`: HyperText Transmission Protocol
+
+::: {.incremental}
+
+- Client-Server
+- Request-Response
+- (Essentially) Stateless
+- Methods
+- Status Codes
+- Headers
+- Body
+
+:::
+
+## URL
+
+Your computer ("client") makes a _request_ to another computer ("server")
+
+. . . 
+
+URL (or URI) - Uniform Resource Locator (Identifier)
+
+- Server
+- Location on Server 
+
+. . . 
+
+![](https://abstrax.io/wp-content/uploads/2022/07/parts-of-url-1024x335.png)
+
+
+## URL
+
+Example: I go to `www.baruch.cuny.edu/index.html`
+
+::: {.incremental}
+
+1. First my computer makes a request to `edu`: directions to `edu.cuny`
+2. Next, ask `edu.cuny` for `edu.cuny.baruch`
+3. Next, ask `edu.cuny.baruch` for `edu.cuny.baruch.www` (often same server)
+4. Finally, ask `edu.cuny.baruch.www` for the file `index.html`
+
+:::
+
+. . . 
+
+Behind the scenes, 'caching' used to speed this up
+
+## HTTP Verbs
+
+HTTP requests come with several verbs: 
+
+- `GET`
+- `POST`
+- `HEAD`
+- `DELETE`
+- . . . 
+
+## HTTP Verbs
+
+`GET` and `POST` are the most important HTTP Verbs: 
+
+- Ask for a page (`GET`)
+- Submit values to a server (`POST`) - *e.g.*, forms, logins
+
+. . . 
+
+99% of time, `GET` page
+
+- Typical to embed details in URL: 
+
+> `https://www.google.com/search?q=baruch`
+
+## HTTP Response
+
+Server replies with a _response_ 
+
+- Status Code
+- Headers + Body
+
+. . . 
+
+Status code characterizes what happened: 
+
+::: {style="font-size: 75%;"}
+::: {.incremental}
+
+- `200 OK`
+- `404 NOT FOUND`
+- `401`, `403` (Unauthorized)
+- `301`, `307`, `308` (Various redirects)
+- `500` (Internal error)
+
+:::
+:::
+
+## HTTP Response
+
+If `200`: 
+
+- Headers: a `dict` of side information (cookies, last updated, *etc*)
+- Body: actual requested content
+
+## requests
+
+`requests` is a Python library for making HTTP requests
+
+```{python}
+import requests as r
+resp = r.get("https://michael-weylandt.com/index.html")
+resp
+```
+
+## requests
+
+```{python}
+resp.status_code
+```
+
+or 
+
+```{python}
+resp.ok
+```
+
+. . . 
+
+Examine headers:
+
+```{python}
+resp.headers["Last-Modified"]
+```
+
+## requests
+
+Bulk of response is `text`: 
+
+```{python}
+resp.headers["Content-Type"]
+```
+
+Default HTML but other text possible (*e.g.*, CSV, JSON)
+
+. . . 
+
+Access via `.text`:
+
+```{python}
+resp.text
+```
+
+## Looking Ahead
+
+Next, we will look at HTML, the most content type of HTTP response
+
+## Learning More
+
+The [MDN docs](https://developer.mozilla.org/en-US/docs/Web/HTTP) describe HTTP in detail and are pretty readable
+
+. . . 
+
+The [`requests` docs](https://docs.python-requests.org/en/latest/index.html) are quite readable as well
+
+- [Quickstart](https://docs.python-requests.org/en/latest/user/quickstart/)
+

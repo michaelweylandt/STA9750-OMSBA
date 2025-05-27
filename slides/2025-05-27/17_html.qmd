@@ -1,0 +1,179 @@
+---
+title: "</br></br></br></br></br>Software Tools for Data Analysis</br>STA 9750</br>Michael Weylandt"
+topic: "HTML: Structured Text for the Web"
+---
+
+# {{< meta topic >}}
+
+## Where are We?
+
+::: {style="font-size: 75%;"}
+- `R` Basics
+- Data Visualization
+- `R` Programming
+- Tidy Data Manipulation
+- `python` Basics
+- Web Scraping with `python`
+  - Basics of HTTP
+  - Making HTTP Requests with `Python`
+  - [Structure of HTML]{color="blue"}
+  - [Parsing HTML with `Python`]{color="blue"}
+  - String Manipulation in `Python`
+
+:::
+
+
+## Goals for this Video
+
+In this video: 
+
+::: {.incremental}
+
+- What is `html`?
+- `html` manipulation with `BeautifulSoup4`
+
+:::
+
+## HTML
+
+HTML: HyperText Markup Language
+
+. . . 
+
+Formatting language for web-pages
+
+Separation of _structure_ (HTML) from _style_ (CSS)
+
+- Leaky abstraction
+
+. . . 
+
+Today: 90% coverage (lots of edge cases)
+
+## HTML Elements
+
+Core idea of HTML: _elements_
+
+> ` <tag attr='value' attr2='value2'> Content </tag>`
+
+::: {.incremental}
+
+- Matched `<tag>` (start) and `</tag>` (end) delimiters
+- Content is _anything_ between tags, including other elements
+- Attributes
+
+:::
+
+## HTML Elements
+
+> ` <tag attr='value' attr2='value2'> Content </tag>`
+
+Common Tag Types: 
+
+::: {style="font-size: 75%;"}
+::: {.incremental}
+
+- `p`: Paragraph
+- `a`: Anchor (*i.e.*, link)
+- `main`, `section`, `header`: Structure
+- `table`
+  - `thead`: table header
+  - `tbody`: table body
+  - `tr`: table row
+  - `td`: table datum (cell)
+  
+:::
+:::
+
+## HTML with BeautifulSoup
+
+HTML can become _very_ overwhelming: 
+
+```{python}
+import requests as r
+r.get("https://michael-weylandt.com/index.html").text
+```
+
+## HTML with BeautifulSoup
+
+The `BeautifulSoup` library makes working with HTML easy (... easier)
+
+. . . 
+
+```{python}
+import requests as r
+from bs4 import BeautifulSoup as bs
+html = r.get("https://michael-weylandt.com/index.html").text
+soup = bs(html)
+soup
+```
+
+## HTML with BeautifulSoup
+
+```{python}
+soup.find("nav") # Find first `p` element
+```
+
+. . . 
+
+For content: 
+
+```{python}
+soup.find("nav").text
+```
+
+
+## HTML with BeautifulSoup
+
+```{python}
+#| eval: false
+soup.find_all("p") # Find _all_ `p` elements
+```
+
+Combine with comprehensions:
+
+```{python}
+[p.text for p in soup.find_all("p")]
+```
+
+## HTML with BeautifulSoup
+
+Recall a link is an `a` element with `href` attribute: 
+
+> `<a href="http://page.to.link"> Text of Link </a>`
+
+Extract all links from page: 
+
+```{python}
+links = [a["href"] for a in soup.find_all("a")]
+links[:3]
+```
+
+Use `dict` syntax for attributes. 
+
+## HTML with BeautifulSoup
+
+You can pass additional arguments to `find` and `find_all` to 
+select based on attributes instead of tag type: 
+
+```{python}
+#| eval: false
+soup.find(id="quarto-content")
+soup.find(class_="footer") # Underscore to avoid clash with `class`
+```
+
+## Looking Ahead
+
+`BeautifulSoup` is a deep and powerful library: we have only scratched 
+the surface. In the exercises, you will apply `bs4` to extract 
+tables from a variety of tables. 
+
+## Learning More
+
+The [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/HTML) on HTML is extensive and well-written. 
+
+HTML is a _huge_ specification, so I'd recommend looking things up as needed rather than reading front-to-back
+
+. . . 
+
+The [BeautifulSoup docs](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) are also excellent

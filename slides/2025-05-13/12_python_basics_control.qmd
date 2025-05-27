@@ -2,13 +2,6 @@
 topic: "`python` Basics: Control Flow"
 ---
 
-```{r}
-#| echo: false
-#| warning: false
-#| message: false
-library(tidyverse)
-library(palmerpenguins)
-```
 
 # {{< meta topic >}}
 

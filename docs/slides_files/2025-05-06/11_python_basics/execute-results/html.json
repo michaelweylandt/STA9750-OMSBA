@@ -1,0 +1,15 @@
+{
+  "hash": "b1eda35cfffd397bf59c0264f8569d1a",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntopic: \"`python` Basics: Syntax\"\n---\n\n::: {.cell}\n\n:::\n\n\n\n\n# {{< meta topic >}}\n\n## Where are We?\n\n::: {style=\"font-size: 85%;\"}\n- `R` Basics\n- Data Visualization\n- `R` Programming\n- Tidy Data Manipulation\n- [`python` Basics]{color=\"blue\"}\n  - Installing `python`\n  - [Basic Syntax]{color=\"blue\"}\n  - Control Flow\n  - Comparing `R` and `python`\n- Web Scraping with `python`\n\n:::\n\n\n## Goals for this Video\n\nIn this video: \n\n::: incremental\n\n- \n- \n- \n- \n\n:::\n\n\n## Looking Ahead\n\n## Learning More\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,255 @@
+---
+title: "</br></br></br></br></br>Software Tools for Data Analysis</br>STA 9750</br>Michael Weylandt"
+topic: "Strings in `python`"
+---
+
+# {{< meta topic >}}
+
+## Where are We?
+
+::: {style="font-size: 75%;"}
+- `R` Basics
+- Data Visualization
+- `R` Programming
+- Tidy Data Manipulation
+- `python` Basics
+- Web Scraping with `python`
+  - Basics of HTTP
+  - Making HTTP Requests with `Python`
+  - Structure of HTML
+  - Parsing HTML with `Python`
+  - [String Manipulation in `Python`]{color="blue"}
+
+:::
+
+
+## Goals for this Video
+
+In this video: 
+
+::: {.incremental}
+
+- Strings, Bytes, and Unicode
+- Basic String Manipulation
+
+:::
+
+## Strings
+
+Like `R`, `python` strings are used to capture text data
+
+. . . 
+
+Unlike `R`, `python` needs you to know a bit about the way computers handle
+text
+
+## Text Representations
+
+The first computers used 7 bits to represent characters: 
+
+- 52 letters (upper and lower)
+- Various punctuation marks
+- Control characters (tab, newline, *etc*)
+
+And all was well. Until...
+
+## Text Representations
+
+Computers spread to Spain and to France
+
+- Needed accented characters
+- Added an 8th bit (128 $\to$ 256 characters)
+
+And all was well. Until...
+
+## Text Representations
+
+Computers spread to Greece and Russia
+
+- Needed two whole new alphabets
+- No one wanted to add another bit, so *encodings*
+  - Rules saying "interpret as Greek" or "interpret as Latin"
+
+And all was well. Until...
+
+
+## Text Representations
+
+Computers spread to China and Japan
+
+- Entirely different language model
+
+...
+
+## Unicode
+
+After a few more iterations of this cycle, the `Unicode` standard
+was born
+
+. . . 
+
+Massive list of characters, codepoints (numbers), and rules for 
+standard text operations (case folding, combining accents, *etc*)
+
+## Unicode
+
+Unicode has everything: 
+
+- Modern languages
+- Emoji
+- Symbols from math, music, astrology, *etc.*
+- Ancient languages
+- Fake languages
+
+and room for more
+
+
+## Unicode
+
+Deciding what goes in Unicode is politically and socially tricky: 
+
+. . . 
+
+Taco Bell Saga: 
+
+- Taco Emoji [History](https://www.huffpost.com/entry/taco-bell-emoji-petition_n_6416798)
+- Taco Emoji [Controversy](https://www.vice.com/en/article/the-brief-history-of-the-taco-emoji-now-has-a-happy-ending/)
+
+## Unicode for You
+
+Modern `python` implements unicode natively and things generally "just work"
+
+```{python}
+x = "H"
+y = "Η"
+```
+
+. . . 
+
+```{python}
+x.lower()
+```
+
+```{python}
+y.lower()
+```
+
+
+## Unicode for You
+
+Modern `python` implements unicode natively and things generally "just work"
+
+```{python}
+x = "H"
+y = "Η"
+```
+
+. . . 
+
+```{python}
+from unicodedata import name
+name(x)
+```
+
+```{python}
+name(y)
+```
+
+## Unicode for You
+
+Modern `python` implements unicode natively and things generally "just work"
+
+If your source document is "UTF-8" encoded, all will be good
+
+- Most modern technologies are UTF-8
+- Legacy systems may be in older encoding
+
+## Working with Strings
+
+Like everything else, strings are objects with many useful methods
+
+```{python}
+me = "Michael Weylandt"
+me.upper()
+```
+
+```{python}
+me.lower()
+```
+
+```{python}
+me.title() # Does nothing here
+me.swapcase()
+```
+
+## Working with Strings
+
+The `strip` are particularly useful for cleaning HTML:
+
+```{python}
+z = " Baruch College CUNY   " # Extra spaces
+z.strip() # Spaces removed
+```
+
+```{python}
+z.lstrip()
+```
+
+```{python}
+z.rstrip()
+```
+
+
+## Working with Strings
+
+Minor string edits are also supported
+
+```{python}
+z.strip().removesuffix(" CUNY")
+```
+
+```{python}
+z.replace("Baruch", "Hunter")
+```
+
+## Working with Strings
+
+For long text, `split` is helpful: 
+
+```{python}
+x = "Hunter College, Baruch College, City College"
+x.split(", ")
+```
+
+## f-Strings
+
+When building complex strings, the `f-string` is a powerful
+alternative to `R`-style `paste` operations: 
+
+```{python}
+x = 100
+y = "SPY"
+f"I bought ${x} worth of {y} and other ETFs today."
+```
+
+Automatic substitution of values inside `{}`
+
+. . . 
+
+Additional extensions provide for rounding, zero padding, *etc*. 
+
+## Looking Ahead
+
+In the next video, we will dive into more advanced 
+string processing using _regular expressions_
+
+## Learning More
+
+See the official python docs: 
+
+- [Unicode Tutorial](https://docs.python.org/3/howto/unicode.html)
+- [`str` Methods](https://docs.python.org/3/library/stdtypes.html#string-methods)
+
+. . . 
+
+- Unicode Tables: [unicodeplus.com/](https://unicodeplus.com)

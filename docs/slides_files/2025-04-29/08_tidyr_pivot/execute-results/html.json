@@ -1,0 +1,19 @@
+{
+  "hash": "520e877aef47874e26bb328c18472df3",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntopic: \"Reshaping Tidy Data\"\n---\n\n::: {.cell}\n\n:::\n\n\n\n# {{< meta topic >}}\n\n## Where are We?\n\n::: {style=\"font-size: 85%;\"}\n- `R` Basics\n- Data Visualization\n- `R` Programming\n- [Tidy Data Manipulation]{color=\"blue\"}\n  - Selecting Rows and Columns\n  - Computing Groupwise Summaries\n  - Joining Tables\n  - [Reshaping Tables]{color=\"blue\"}\n- `python` Basics\n- Web Scraping with `python`\n\n:::\n\n\n## Goals for this Video\n\nIn this video: \n\n::: incremental\n\n- \n- \n- \n- \n\n:::\n\n\n## Looking Ahead\n\n- Apply Grouped Operations ✅ \n- Summarize Across Multiple Rows ✅ \n- Join Multiple Tables ✅ \n- Reshape Tables with `pivot` Operations ✅ \n\n## Learning More\n\nFor more, check out \n[Chapter 5 - \"Tidying\"](https://r4ds.hadley.nz/data-tidy.html) \nof *`R` for Data Science*\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-after-body": [
+        "\n<script>\n  // htmlwidgets need to know to resize themselves when slides are shown/hidden.\n  // Fire the \"slideenter\" event (handled by htmlwidgets.js) when the current\n  // slide changes (different for each slide format).\n  (function () {\n    // dispatch for htmlwidgets\n    function fireSlideEnter() {\n      const event = window.document.createEvent(\"Event\");\n      event.initEvent(\"slideenter\", true, true);\n      window.document.dispatchEvent(event);\n    }\n\n    function fireSlideChanged(previousSlide, currentSlide) {\n      fireSlideEnter();\n\n      // dispatch for shiny\n      if (window.jQuery) {\n        if (previousSlide) {\n          window.jQuery(previousSlide).trigger(\"hidden\");\n        }\n        if (currentSlide) {\n          window.jQuery(currentSlide).trigger(\"shown\");\n        }\n      }\n    }\n\n    // hookup for slidy\n    if (window.w3c_slidy) {\n      window.w3c_slidy.add_observer(function (slide_num) {\n        // slide_num starts at position 1\n        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);\n      });\n    }\n\n  })();\n</script>\n\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
