@@ -11,41 +11,6 @@ library(palmerpenguins)
 ```
 
 
-# NOT READY TO FILM
+# DECIDED NOT TO FILM
 
-# {{< meta topic >}}
-
-## Where are We?
-
-::: {style="font-size: 85%;"}
-- `R` Basics
-- Data Visualization
-- `R` Programming
-- Tidy Data Manipulation
-- [`python` Basics]{color="blue"}
-  - [Installing `python`]{color="blue"}
-  - Basic Syntax and Control Flow
-  - `python` Objects
-  - Using Packages
-- Web Scraping with `python`
-
-:::
-
-
-## Goals for this Video
-
-In this video: 
-
-::: incremental
-
-- 
-- 
-- 
-- 
-
-:::
-
-
-## Looking Ahead
-
-## Learning More
+## Decided Not to Film

@@ -1,14 +1,6 @@
 ---
-topic: "`python` Basics: Control Flow"
+topic: "Installing and Using `python` Packages"
 ---
-
-```{r}
-#| echo: false
-#| warning: false
-#| message: false
-library(tidyverse)
-library(palmerpenguins)
-```
 
 # {{< meta topic >}}
 
@@ -35,14 +27,221 @@ In this video:
 
 ::: incremental
 
-- 
-- 
-- 
-- 
+- Introduce `python` modules and packages
+- `import` packages into a `python` session
+- Introduce the Python Standard Library
+- Introduce and Install Packages from `PyPI`
+
+:::
+
+## Modules and Packages
+
+Like `R`, `python` has a system for enhancing 
+the core language with pre-packaged code
+
+![](https://pypi.org/static/images/logo-large.516e776d.svg)
+
+The Python Package Index  ([PyPI](https://pypi.org/)) 
+contains over 640K packages of F/OSS code, free to use
+
+## Modules and Packages
+
+Standard `python` comes with over 200 packages pre-installed
+
+. . . 
+
+> Aside: `packages` versus `modules`
+> 
+> `modules` are single-file units of code 
+> 
+> `packages` are collections of `modules`
+
+. . . 
+
+These are known as the [_standard library_](https://docs.python.org/3/library/index.html)
+
+## import
+
+Unlike `R`, `python` standard library is not pre-loaded by default
+
+. . . 
+
+The `import` keyword is used to load a package
+
+```{python}
+#| error: true
+math
+```
+
+. . . 
+
+```{python}
+import math
+math
+```
+
+## import
+
+_Everything_ in `python` is an object, including packages
+
+. . . 
+
+Use `.` to access things in a package: 
+
+```{python}
+math.cos
+```
+
+```{python}
+math.cos(2 * math.pi)
+```
+
+## import
+
+Use `dir` to see all elements of a package: 
+
+```{python}
+dir(math)
+```
+
+. . . 
+
+Online documentation is typically better
+
+## import as
+
+You can change name of imported package
+
+```{python}
+import math
+mathfunctions = math
+mathfunctions.sin
+```
+
+. . . 
+
+Cleaner to rename at time of import: 
+
+```{python}
+import math as mathfunctions
+mathfunctions.sqrt
+```
+
+. . . 
+
+Try to use 'standard' names to increase readability
+
+- Certain packages with long names have standard 'abbreviations' 
+  
+## from import
+
+Sometimes, you just need one or two objects from a package: 
+
+```{python}
+from math import pi
+pi # No math needed
+```
+
+. . . 
+
+You can even rename at import
+
+```{python}
+from math import ceil as ceiling
+ceiling
+```
+
+## from import
+
+_Technically_, you can import all objects from a package
+
+```{python}
+#| eval: true
+from math import *
+lgamma
+```
+
+**Don't do this - dangerous!**
+
+## Standard Library
+
+Some important standard library packages for data science: 
+
+::: {.incremental}
+
+- `math`, `statistics`, `random`
+- `datetime`
+- `json`
+- `os`, `pathlib`
+- `collections`, `functools`, `itertools`
 
 :::
 
 
+## Third Party Packages
+
+To install non-stdlib packages from `PyPI`, use [`pip`](https://pip.pypa.io/en/stable/getting-started/)
+
+. . . 
+
+Run at _command line_, not Python terminal: 
+
+> `$ pip install numpy`
+
+. . . 
+
+Alternatively, `conda install numpy` if using `conda`
+
+
+## Package Management
+
+There are multiple 'frameworks' for managing packages in `python`: 
+
+- `pip` / `virtualenv`
+- `conda`
+
+. . . 
+
+Not easily interoperable - just pick one
+
+- At work: whatever is supported by IT
+- Here: `pip` is easier, `conda` is safer
+
+See additional instructions online
+
+## So Many Packages!
+
+Packages for _every_ use: 
+
+```{sh}
+$ pip install pyjokes
+```
+
+. . . 
+
+```{python}
+#| eval: false
+import pyjokes as j
+j.get_joke()
+```
+
+. . . 
+
+```{python}
+#| echo: false
+# Hard code for safer rendering
+print("Why did the programmer quit his job? Because he didn't get arrays.")
+```
+
 ## Looking Ahead
 
+In our next video: 
+
+- Introduce key `python` packages for Data Science
+  - `numpy`
+  - `pandas`
+
 ## Learning More
+
+- [A Brief Tour of the Python Standard Library](https://docs.python.org/3/tutorial/stdlib.html)
+- [Getting Started with `pip`](https://pip.pypa.io/en/stable/getting-started/)

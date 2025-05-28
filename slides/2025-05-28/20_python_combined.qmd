@@ -1,0 +1,153 @@
+---
+title: "</br></br></br></br></br>Software Tools for Data Analysis</br>STA 9750</br>Michael Weylandt"
+topic: "Putting it Together"
+---
+
+# {{< meta topic >}}
+
+## Where are We?
+
+::: {style="font-size: 75%;"}
+- `R` Basics
+- Data Visualization
+- `R` Programming
+- Tidy Data Manipulation
+- `python` Basics
+- Web Scraping with `python`
+  - Basics of HTTP
+  - Making HTTP Requests with `Python`
+  - Structure of HTML
+  - Parsing HTML with `Python`
+  - [String Manipulation in `Python`]{color="blue"}
+
+:::
+
+
+## Goals for this Video
+
+In this video: 
+
+- Fully read and clean a data set using `python`
+
+## Our Target
+
+[https://www.scrapethissite.com/pages/simple/](https://www.scrapethissite.com/pages/simple/)
+
+Not organized as a table, but still pretty clean
+
+![](../../scraping.png)
+
+## Our Tools
+
+Load packages: 
+
+- `requests` for accessing the web
+- `bs4` (Beautiful Soup) for parsing HTML
+- `pandas` for putting data into a `DataFrame`
+
+```{python}
+import requests
+from bs4 import BeautifulSoup as bs
+import pandas as pd
+```
+
+## Request and Parse
+
+Access and parse (static) HTML:
+
+```{python}
+#| cache: true
+r = requests.get("https://www.scrapethissite.com/pages/simple/")
+soup = bs(r.text)
+soup
+```
+
+## Investigate Page Source
+
+Right click in browser to view source
+
+[SelectorGadget](https://selectorgadget.com/) may also be helpful
+
+![](../../source.png)
+
+## Investigate Page Source
+
+![](../../source.png)
+
+Insights: 
+
+- Each country is in a `div` with class `country`
+- Values in `div` with class `country-name`, `country-capital`, *etc.*
+
+## Select Relevant Elements
+
+Recall `class` attribute maps to `class_` in `python`:
+
+```{python}
+entries = soup.find_all(class_="country")
+entries[0]
+```
+
+## Pull out Elements
+
+```{python}
+ALL = []
+for e in entries: 
+    name = e.find("h3").text.strip()
+    capital = e.find(class_="country-capital").text
+    population = e.find(class_="country-population").text
+    area = e.find(class_="country-area").text
+
+    ALL.append((name, capital, float(population), float(area)))
+    
+ALL[:3]
+```
+
+## Construct Data Frame
+
+`pd.DataFrame` has many _constructors_: 
+
+```{python}
+df = pd.DataFrame(ALL, 
+    columns=['name', 'capital', 'population', 'area'])
+df.info()
+```
+
+
+## Inspect Visually {.smaller}
+
+Visualize a few random rows
+
+```{python}
+df.sample(n=4)
+```
+
+## Inspect Visually {.smaller}
+
+Summary statistics: 
+
+```{python}
+df.describe()
+```
+
+## Export for Later Use
+
+Could also save to `json` or `xlsx`: 
+
+```{python}
+#| eval: false
+df.to_csv("country_info.csv")
+```
+
+## Looking Ahead
+
+Now it's your turn!
+
+## Learning More
+
+Data Cleaning is best learned by _doing_ 
+
+- [https://www.scrapethissite.com/](https://www.scrapethissite.com/)
+- [https://toscrape.com/](https://toscrape.com/)
+
+or any source that interests you!

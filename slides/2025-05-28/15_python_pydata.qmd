@@ -1,0 +1,349 @@
+---
+topic: "The `PyData` Ecosystem"
+---
+
+# {{< meta topic >}}
+
+## Where are We?
+
+::: {style="font-size: 85%;"}
+- `R` Basics
+- Data Visualization
+- `R` Programming
+- Tidy Data Manipulation
+- [`python` Basics]{color="blue"}
+  - Installing `python`
+  - Basic Syntax and Control Flow
+  - `python` Objects
+  - [Using Packages]{color="blue"}
+- Web Scraping with `python`
+
+:::
+
+## Goals for this Video
+
+In this video: 
+
+::: incremental
+
+- Introduce important `python` Data Science packages
+- Introduce the `pandas` `DataFrame`
+- Compare Data Frames in `R` and `python`
+- Perform split-apply-combine analysis in `pandas`
+
+:::
+
+## Data Science in python
+
+Unlike `R`, the `python` DS ecosystem is entirely third-party
+
+. . . 
+
+Install via `pip install` or `conda install`
+
+::: {.incremental}
+
+- `numpy`: Basic vector and matrix data structures
+- `matplotlib`: Data visualization
+- `seaborn`: Data visualization made easier
+- `statsmodels`: Statistical models
+- `sklearn`: Machine Learning models
+- `pandas`: `DataFrame`s 
+
+:::
+
+## Data Science in python
+
+Everything you do in `R` (base + `tidyverse`) can be done 
+in `python` (stdlib + `pydata`)
+
+. . . 
+
+Data Scientists should know the basics of _both_ 
+
+- Pick the best tool for the job
+
+. . . 
+
+Our (opinionated) view: 
+
+- Acquire and prep data in `python`
+- Analyze, model, and visualize in `R`
+
+Your decisions may differ
+
+## pydata Packages
+
+This video - focus on `pandas`:
+
+- Powered by `numpy` (and `pyarrow` soon) under the hood
+
+Closest to `dplyr` and friends
+
+## DataFrame
+
+`pandas`: Panel Data Analysis 
+
+- Originally designed for quantitative finance
+- Provides `Series` and `DataFrame` classes
+
+. . . 
+
+Almost always imported as `pd`
+
+```{python}
+#| echo: true
+import pandas as pd
+pd.DataFrame
+```
+
+## DataFrame
+
+Let's load up our trusty penguins: 
+
+```{python}
+#| echo: true
+PENGUIN_URL = 'https://raw.githubusercontent.com/allisonhorst/palmerpenguins/refs/heads/main/inst/extdata/penguins.csv'
+penguins = pd.read_csv(PENGUIN_URL)
+penguins
+```
+
+## DataFrame
+
+Get basic structure: 
+
+```{python}
+#| echo: true
+penguins.info()
+```
+
+## DataFrame
+
+Get quick summary of _numeric_ columns: 
+
+```{python}
+#| echo: true
+penguins.describe()
+```
+
+## DataFrame
+
+Subset by a string to select a column:
+
+```{python}
+#| echo: true
+penguins["species"]
+```
+
+This gives a `Series` object
+
+## DataFrame
+
+List of strings to select _multiple_ columns: 
+
+```{python}
+#| echo: true
+penguins[["species", "body_mass_g"]]
+```
+
+## DataFrame
+
+Get top and bottom rows with `.head()` and `.tail()`
+
+- These are _by position_ not by values
+
+```{python}
+penguins.head(5)
+```
+
+## DataFrame
+
+Basic subsetting operates like base `R` (not `dplyr`):
+
+```{python}
+#| echo: true
+#| eval: false
+penguins[penguins["species"] == "Adelie"].head(4)
+```
+
+
+Compare to: 
+
+```{R}
+#| echo: true
+#| eval: false
+penguins[penguins[,"species"] == "Adelie"]
+```
+
+## DataFrames
+
+For a more `dplyr`-experience, use `.query`: 
+
+```{python}
+#| echo: true
+penguins.query('species == "Adelie"').head(4)
+```
+
+
+::: {.incremental}
+
+- Pass query as a _string_
+- Unquoted names are columns
+- Supports basic arithmetic operations
+- See [docs](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.query.html)
+
+:::
+
+## DataFrames
+
+`.groupby` can be used for grouped analyses
+
+```{python}
+#| echo: true
+penguins.groupby('species')
+```
+
+## DataFrames
+
+`.groupby` can be used for grouped analyses
+
+```{python}
+#| echo: true
+penguins.groupby('species').\
+  agg({'body_mass_g': ['sum', 'max', 'min']})
+```
+
+`.agg` takes a `dict` of operations to perform
+
+## DataFrames
+
+Use `.mean()` or similar to take _columnwise_ means
+
+```{python}
+#| echo: true
+penguins[['species', 'body_mass_g', 'flipper_length_mm']].\
+  groupby('species').\
+  mean()
+```
+
+## DataFrames
+
+Applies to all columns, even if strings, so a bit fragile:
+
+```{python}
+#| echo: true
+#| error: true
+penguins.groupby('species').mean()
+```
+
+## DataFrames
+
+`.agg` allows automatic renaming:
+
+```{python}
+#| echo: true
+penguins.groupby('species').\
+  agg(mean_mass = ('body_mass_g', 'sum'))
+```
+
+Pass (`input`, `operation`) pairs with keyword argument
+
+## DataFrames
+
+Renaming is useful for later joins
+
+```{python}
+#| echo: true
+species_avg = penguins.groupby('species').\
+                agg(mean_mass = ('body_mass_g', 'mean'))
+penguins.join(species_avg, on = 'species')
+```
+
+## DataFrames
+
+Note that `groupby` by default puts groups in `.index`, not a column:
+
+```{python}
+#| echo: true
+penguins.groupby('species').\
+    agg(mean_mass = ('body_mass_g', 'mean'))
+```
+
+## DataFrames
+
+Change with `as_index=False` 
+
+```{python}
+#| echo: true
+penguins.groupby('species', as_index=False).\
+    agg(mean_mass = ('body_mass_g', 'mean'))
+```
+
+or `.reset_index()` later
+
+. . . 
+
+Confusing merge errors down the road usually result from mixing up
+`.index`s and `.column`s
+
+## DataFrames
+
+Can combine with `.query` for subsequent analysis
+
+```{python}
+#| echo: true
+species_avg = penguins.groupby('species').\
+                agg(mean_mass = ('body_mass_g', 'mean'))
+penguins.join(species_avg, on = 'species').\
+    query('body_mass_g > mean_mass')
+```
+
+## DataFrames
+
+Built-in I/O support for `csv`, `xls(x)`, `json`, `html` and more
+
+```{python}
+#| eval: false
+penguins.to_csv("penguins.csv")
+```
+
+*Many* configuration options - [docs](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_csv.html)
+
+. . . 
+
+```{python}
+#| echo: false
+help(pd.DataFrame.to_csv)
+```
+
+## DataFrames
+
+`pd.read_html` will read tables off web pages
+
+```{python}
+#| cache: true
+tables = pd.read_html("https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population")
+tables[2].head(3)
+```
+
+Still needs some work, but good start!
+
+## Looking Ahead
+
+In our next video: 
+
+- Interact with the Internet
+- Acquire Data to Analyze in `Python` or `R`
+- Handle data too messy for `pd.read_html`
+
+## Learning More
+
+The book [`Python` for Data Analysis](https://wesmckinney.com/book/) covers `pandas` in detail
+
+. . . 
+
+The [`polars`](https://pola.rs/) library reimplements `DataFrames` to be faster and easier-to-use (and more `dplyr`-like) 
+
+- Not quite "ready-for-prime-time" 
+- Likely the standard in 3-5 years (2028-2030)
+- Get ahead of the curve now!
